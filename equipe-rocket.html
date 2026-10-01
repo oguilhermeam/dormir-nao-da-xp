@@ -80,9 +80,6 @@
         </div>
 
         <div style="display: flex; gap: 10px; margin-top: 16px; align-items: center;">
-          <a href="#time-economico" class="btn btn-secondary">
-            Ver Time Econômico &darr;
-          </a>
           <span style="font-size: 0.78rem; color: var(--text-muted);">
             Lado esquerdo = Inimigo | Lado direito = Recomendado
           </span>
@@ -128,11 +125,11 @@
         <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">Alterne entre o time recomendado padrão e o time barato de baixo custo.</div>
       </div>
       <div class="tier-mode-switcher">
-        <button type="button" class="tier-mode-btn btn-mode-recomendado active" id="globalBtnRecomendado" onclick="setGlobalRocketMode('recomendado')">
-          ⭐ Time Recomendado (Meta)
-        </button>
-        <button type="button" class="tier-mode-btn btn-mode-izzonim" id="globalBtnIzzonim" onclick="setGlobalRocketMode('izzonim')">
+        <button type="button" class="tier-mode-btn btn-mode-izzonim active" id="globalBtnIzzonim" onclick="setGlobalRocketMode('izzonim')">
           🪙 Time Barato (by izzonim)
+        </button>
+        <button type="button" class="tier-mode-btn btn-mode-recomendado" id="globalBtnRecomendado" onclick="setGlobalRocketMode('recomendado')">
+          ⭐ Time Recomendado (Meta)
         </button>
       </div>
     </div>
@@ -148,16 +145,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 01</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('01', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('01', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('01', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('01', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-01">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-01" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-01-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-01-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/muk.png" loading="lazy" alt="Muk" class="poke-sprite">
@@ -225,7 +222,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-01-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-01-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/muk.png" loading="lazy" alt="Muk" class="poke-sprite">
@@ -303,16 +300,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 02</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('02', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('02', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('02', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('02', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-02">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-02" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-02-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-02-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/misdreavus.png" loading="lazy" alt="Misdreavus" class="poke-sprite">
@@ -380,7 +377,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-02-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-02-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/misdreavus.png" loading="lazy" alt="Misdreavus" class="poke-sprite">
@@ -458,16 +455,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 03</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('03', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('03', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('03', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('03', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-03">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-03" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-03-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-03-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_haunter.png" loading="lazy" alt="SH Haunter" class="poke-sprite">
@@ -535,7 +532,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-03-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-03-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_haunter.png" loading="lazy" alt="SH Haunter" class="poke-sprite">
@@ -613,16 +610,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 04</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('04', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('04', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('04', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('04', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-04">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-04" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-04-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-04-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_gengar.png" loading="lazy" alt="SH Gengar" class="poke-sprite">
@@ -690,7 +687,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-04-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-04-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_gengar.png" loading="lazy" alt="SH Gengar" class="poke-sprite">
@@ -768,16 +765,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 05</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('05', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('05', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('05', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('05', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-05">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-05" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-05-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-05-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
@@ -845,7 +842,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-05-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-05-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
@@ -923,16 +920,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 06</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('06', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('06', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('06', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('06', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-06">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-06" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-06-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-06-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
@@ -1000,7 +997,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-06-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-06-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
@@ -1078,16 +1075,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 07</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('07', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('07', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('07', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('07', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-07">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-07" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-07-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-07-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
@@ -1155,7 +1152,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-07-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-07-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
@@ -1233,16 +1230,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 08</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('08', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('08', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('08', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('08', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-08">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-08" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-08-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-08-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/charizard.png" loading="lazy" alt="Charizard" class="poke-sprite">
@@ -1310,7 +1307,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-08-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-08-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/charizard.png" loading="lazy" alt="Charizard" class="poke-sprite">
@@ -1388,16 +1385,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 09</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('09', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('09', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('09', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('09', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-09">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-09" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-09-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-09-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/typhlosion.png" loading="lazy" alt="Typhlosion" class="poke-sprite">
@@ -1465,7 +1462,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-09-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-09-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/typhlosion.png" loading="lazy" alt="Typhlosion" class="poke-sprite">
@@ -1543,16 +1540,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 10</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('10', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('10', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('10', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('10', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-10">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-10" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-10-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-10-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_gyarados.png" loading="lazy" alt="SH Gyarados" class="poke-sprite">
@@ -1620,7 +1617,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-10-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-10-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_gyarados.png" loading="lazy" alt="SH Gyarados" class="poke-sprite">
@@ -1698,16 +1695,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 11</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('11', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('11', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('11', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('11', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-11">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-11" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-11-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-11-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_ninetales.png" loading="lazy" alt="SH Ninetales" class="poke-sprite">
@@ -1775,7 +1772,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-11-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-11-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_ninetales.png" loading="lazy" alt="SH Ninetales" class="poke-sprite">
@@ -1853,16 +1850,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 12</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('12', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('12', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('12', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('12', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-12">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-12" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-12-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-12-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_magmar.png" loading="lazy" alt="SH Magmar" class="poke-sprite">
@@ -1930,7 +1927,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-12-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-12-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_magmar.png" loading="lazy" alt="SH Magmar" class="poke-sprite">
@@ -2008,16 +2005,16 @@
             <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 13</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('13', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('13', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('13', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('13', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-13">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-13" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-13-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-13-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_arcanine.png" loading="lazy" alt="SH Arcanine" class="poke-sprite">
@@ -2085,7 +2082,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-13-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-13-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_arcanine.png" loading="lazy" alt="SH Arcanine" class="poke-sprite">
@@ -2163,16 +2160,16 @@
             <span style="background: rgba(255, 200, 37, 0.15); border: 1px solid var(--edg-gold); color: #fff; font-weight: 700; padding: 2px 7px; border-radius: var(--radius-sm); font-size: 0.7rem; font-family: var(--font-mono);">Requer 130 Vitórias</span>
           </div>
           <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
-            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('14', 'recomendado')">⭐ Meta</button>
-            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('14', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('14', 'izzonim')">🪙 by izzonim</button>
+            <button type="button" class="tier-mode-btn btn-mode-recomendado" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('14', 'recomendado')">⭐ Meta</button>
           </div>
         </div>
         <div class="duel-legend-row" style="background: rgba(20, 15, 28, 0.9);">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter" id="legend-14">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-14" style="color: #70df8e;">TIME BARATO (BY IZZONIM) &#9654;</span>
         </div>
-        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-14-recomendado">
+        <div class="npc-duels npc-duels-mode mode-recomendado" style="display: none;" id="content-14-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_nidoqueen.png" loading="lazy" alt="SH Nidoqueen" class="poke-sprite">
@@ -2240,7 +2237,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-14-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim active" id="content-14-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_nidoqueen.png" loading="lazy" alt="SH Nidoqueen" class="poke-sprite">
@@ -2311,78 +2308,6 @@
       </div>
     </div>
 
-    <!-- SEÇÃO: MEU TIME ECONÔMICO -->
-    <section class="budget-section" id="time-economico">
-      <div class="budget-header">
-        <div>
-          <span style="font-size: 0.72rem; color: var(--counter-text); font-weight: 700; text-transform: uppercase; font-family: var(--font-mono); letter-spacing: 0.05em;">Estratégia Low Cost</span>
-          <h2 style="font-size: 1.35rem; color: #fff; margin-top: 4px;">Meu Time Econômico (Pokémons Baratos que usei)</h2>
-          <p style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 2px;">
-            Pokémons acessíveis que funcionam muito bem sem precisar gastar rios de dinheiro em shinies caros.
-          </p>
-        </div>
-        <button id="btnEditBudget" class="btn btn-secondary" style="font-size: 0.8rem;">
-          &#9998; Personalizar Minha Lista
-        </button>
-      </div>
-
-      <div class="budget-grid">
-        <div class="budget-card">
-          <img src="assets/img/pokemon/scizor.png" loading="lazy" class="poke-sprite" alt="Scizor">
-          <div>
-            <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">Scizor (Normal)</div>
-            <div style="font-size: 0.75rem; color: var(--counter-text);">Anti-Psíquico Barato</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Limpa Hypno, Alakazam e Mime sem precisar de shiny.</div>
-          </div>
-        </div>
-
-        <div class="budget-card">
-          <img src="assets/img/pokemon/gyarados.png" loading="lazy" class="poke-sprite" alt="Gyarados">
-          <div>
-            <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">Gyarados (Normal)</div>
-            <div style="font-size: 0.75rem; color: var(--counter-text);">Imune a Terra</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Custo quase nulo, vence Dugtrio e pokés de terra do Giovanni.</div>
-          </div>
-        </div>
-
-        <div class="budget-card">
-          <img src="assets/img/pokemon/machamp.png" loading="lazy" class="poke-sprite" alt="Machamp">
-          <div>
-            <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">Machamp (Normal)</div>
-            <div style="font-size: 0.75rem; color: var(--counter-text);">Lutador Essencial</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Substituto econômico para Snorlax, Persian e Tauros.</div>
-          </div>
-        </div>
-
-        <div class="budget-card">
-          <img src="assets/img/pokemon/starmie.png" loading="lazy" class="poke-sprite" alt="Starmie">
-          <div>
-            <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">Starmie (Normal)</div>
-            <div style="font-size: 0.75rem; color: var(--counter-text);">Água &bull; Alta Velocidade</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Derrete Magcargo, Typhlosion e Arcanine com facilidade.</div>
-          </div>
-        </div>
-
-        <div class="budget-card">
-          <img src="assets/img/pokemon/sandslash.png" loading="lazy" class="poke-sprite" alt="Sandslash">
-          <div>
-            <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">Sandslash (Comum)</div>
-            <div style="font-size: 0.75rem; color: var(--counter-text);">Anti-Elétrico Barato</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Resolve Raichu, Electabuzz e Ampharos com pouco investimento.</div>
-          </div>
-        </div>
-
-        <div class="budget-card">
-          <img src="assets/img/pokemon/venusaur.png" loading="lazy" class="poke-sprite" alt="Venusaur">
-          <div>
-            <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">Venusaur (Normal)</div>
-            <div style="font-size: 0.75rem; color: var(--counter-text);">Anti-Água e Pedra</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Excelente contra Blastoise, Omastar e Rhydon.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <!-- Modal Lightbox para o Mapa -->
@@ -2417,7 +2342,7 @@
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/animations.js" defer></script>
   <script>
-    let currentGlobalRocketMode = 'recomendado';
+    let currentGlobalRocketMode = 'izzonim';
 
     function setGlobalRocketMode(mode) {
       currentGlobalRocketMode = mode;
@@ -2500,20 +2425,6 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeMapModal();
     });
-
-    // Edição do time barato com sanitização de tamanho
-    const btnEdit = document.getElementById('btnEditBudget');
-    if (btnEdit) {
-      btnEdit.addEventListener('click', () => {
-        const stored = localStorage.getItem('dndxp_budget_notes') || '';
-        const customNote = prompt("Insira anotações ou pokémons extras do seu time barato:", stored);
-        if (customNote !== null) {
-          const safeNote = customNote.trim().slice(0, 500);
-          localStorage.setItem('dndxp_budget_notes', safeNote);
-          alert("Anotação salva com sucesso no seu navegador!");
-        }
-      });
-    }
   </script>
 </body>
 </html>
