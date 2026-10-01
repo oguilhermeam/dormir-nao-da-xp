@@ -6,7 +6,7 @@
   <title>Equipe Rocket — Dormir Não Dá XP (PokeAlliance)</title>
   <meta name="description" content="Tabela de counters da Equipe Rocket PokeAlliance. Inimigos vs Recomendados com sprites e rota de Viridian.">
   <link rel="icon" type="image/webp" href="assets/img/logo.webp">
-  <link rel="stylesheet" href="assets/css/style.css"></head>
+  <link rel="stylesheet" href="assets/css/style.css?v=2.0"></head>
 <body>
 
   <!-- Top Navigation -->
@@ -155,7 +155,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-01">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-01-recomendado">
           <div class="duel-row">
@@ -225,7 +225,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-01-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-01-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/muk.png" loading="lazy" alt="Muk" class="poke-sprite">
@@ -310,7 +310,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-02">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-02-recomendado">
           <div class="duel-row">
@@ -380,7 +380,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-02-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-02-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/misdreavus.png" loading="lazy" alt="Misdreavus" class="poke-sprite">
@@ -465,7 +465,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-03">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-03-recomendado">
           <div class="duel-row">
@@ -535,7 +535,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-03-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-03-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_haunter.png" loading="lazy" alt="SH Haunter" class="poke-sprite">
@@ -620,7 +620,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-04">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-04-recomendado">
           <div class="duel-row">
@@ -690,7 +690,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-04-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-04-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_gengar.png" loading="lazy" alt="SH Gengar" class="poke-sprite">
@@ -775,7 +775,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-05">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-05-recomendado">
           <div class="duel-row">
@@ -845,7 +845,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-05-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-05-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
@@ -930,7 +930,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-06">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-06-recomendado">
           <div class="duel-row">
@@ -1000,7 +1000,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-06-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-06-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
@@ -1085,7 +1085,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-07">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-07-recomendado">
           <div class="duel-row">
@@ -1155,7 +1155,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-07-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-07-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
@@ -1240,7 +1240,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-08">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-08-recomendado">
           <div class="duel-row">
@@ -1310,7 +1310,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-08-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-08-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/charizard.png" loading="lazy" alt="Charizard" class="poke-sprite">
@@ -1395,7 +1395,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-09">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-09-recomendado">
           <div class="duel-row">
@@ -1465,7 +1465,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-09-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-09-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/typhlosion.png" loading="lazy" alt="Typhlosion" class="poke-sprite">
@@ -1550,7 +1550,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-10">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-10-recomendado">
           <div class="duel-row">
@@ -1620,7 +1620,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-10-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-10-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_gyarados.png" loading="lazy" alt="SH Gyarados" class="poke-sprite">
@@ -1705,7 +1705,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-11">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-11-recomendado">
           <div class="duel-row">
@@ -1775,7 +1775,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-11-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-11-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_ninetales.png" loading="lazy" alt="SH Ninetales" class="poke-sprite">
@@ -1860,7 +1860,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-12">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-12-recomendado">
           <div class="duel-row">
@@ -1930,7 +1930,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-12-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-12-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_magmar.png" loading="lazy" alt="SH Magmar" class="poke-sprite">
@@ -2015,7 +2015,7 @@
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-13">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-13-recomendado">
           <div class="duel-row">
@@ -2085,7 +2085,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-13-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-13-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_arcanine.png" loading="lazy" alt="SH Arcanine" class="poke-sprite">
@@ -2170,7 +2170,7 @@
         <div class="duel-legend-row" style="background: rgba(20, 15, 28, 0.9);">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
-          <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
+          <span class="duel-legend-counter" id="legend-14">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
         <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-14-recomendado">
           <div class="duel-row">
@@ -2240,7 +2240,7 @@
             </div>
           </div>
         </div>
-        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-14-izzonim">
+        <div class="npc-duels npc-duels-mode mode-izzonim" style="display: none;" id="content-14-izzonim">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_nidoqueen.png" loading="lazy" alt="SH Nidoqueen" class="poke-sprite">
@@ -2442,13 +2442,29 @@
 
       const cRec = document.getElementById(`content-${cardId}-recomendado`);
       const cIzz = document.getElementById(`content-${cardId}-izzonim`);
+      const legend = document.getElementById(`legend-${cardId}`);
+
       if (cRec && cIzz) {
-        cRec.classList.toggle('active', mode === 'recomendado');
-        cIzz.classList.toggle('active', mode === 'izzonim');
-        const activeContent = mode === 'recomendado' ? cRec : cIzz;
+        const isRec = mode === 'recomendado';
+        cRec.classList.toggle('active', isRec);
+        cIzz.classList.toggle('active', !isRec);
+        cRec.style.display = isRec ? '' : 'none';
+        cIzz.style.display = isRec ? 'none' : '';
+
+        const activeContent = isRec ? cRec : cIzz;
         activeContent.style.animation = 'none';
         void activeContent.offsetWidth;
         activeContent.style.animation = '';
+      }
+
+      if (legend) {
+        if (mode === 'izzonim') {
+          legend.innerHTML = 'TIME BARATO (BY IZZONIM) &#9654;';
+          legend.style.color = '#70df8e';
+        } else {
+          legend.innerHTML = 'SEU POKÉMON (RECOMENDADO) &#9654;';
+          legend.style.color = '';
+        }
       }
     }
 

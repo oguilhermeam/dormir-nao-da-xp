@@ -1315,17 +1315,17 @@ a {
   color: #70df8e;
 }
 
-.npc-duels-mode {
-  display: none;
+.npc-duels.npc-duels-mode {
+  display: none !important;
 }
 
-.npc-duels-mode.active {
-  display: block;
+.npc-duels.npc-duels-mode.active {
+  display: flex !important;
   animation: hoennTabFade 0.22s ease-out;
 }
 
-.npc-card-giovanni .npc-duels-mode.active {
-  display: grid;
+.npc-card-giovanni .npc-duels.npc-duels-mode.active {
+  display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 10px;
 }
