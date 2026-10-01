@@ -1754,18 +1754,17 @@ a {
 }
 
 /* ==========================================================================
-   CHECKLIST / ROSTER DE POKÉMONS NECESSÁRIOS (EQUIPE ROCKET)
+   CHECKLIST / ACCORDION DE POKÉMONS NECESSÁRIOS (EQUIPE ROCKET)
    ========================================================================== */
 .rocket-roster-panel {
   background: var(--bg-surface);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  padding: 18px 20px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .rocket-roster-panel::before {
@@ -1784,30 +1783,41 @@ a {
   background: linear-gradient(90deg, var(--edg-gold) 0%, rgba(255, 200, 37, 0.2) 50%, transparent 100%);
 }
 
-.roster-header {
+.roster-header-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 14px 18px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font-family: inherit;
+  transition: background-color 0.16s ease;
+}
+
+.roster-header-toggle:hover {
+  background-color: var(--bg-surface-hover);
 }
 
 .roster-header-left {
-  flex: 1 1 340px;
+  flex: 1 1 auto;
 }
 
 .roster-badge-label {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--counter-text);
   font-family: var(--font-mono);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   transition: color 0.2s ease;
 }
 
@@ -1816,63 +1826,93 @@ a {
 }
 
 .roster-title {
-  font-size: 1.15rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 4px 0;
-  line-height: 1.3;
+  margin: 0 0 2px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.roster-count-badge {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  background: var(--counter-badge);
+  color: var(--counter-text);
+  border: 1px solid var(--counter-border);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.rocket-roster-panel.mode-recomendado .roster-count-badge {
+  background: rgba(255, 200, 37, 0.12);
+  color: var(--edg-gold);
+  border-color: rgba(255, 200, 37, 0.35);
 }
 
 .roster-desc {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.45;
-  max-width: 720px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
   margin: 0;
 }
 
 .roster-header-right {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
-.roster-count-pill {
+.roster-toggle-action {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 8px 14px;
-  white-space: nowrap;
-}
-
-.roster-count-pill .pill-number {
+  gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 700;
   font-family: var(--font-mono);
-  font-size: 1.3rem;
-  font-weight: 800;
   color: var(--counter-text);
-  line-height: 1;
-  transition: color 0.2s ease;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-card);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
 }
 
-.rocket-roster-panel.mode-recomendado .roster-count-pill .pill-number {
+.roster-header-toggle:hover .roster-toggle-action {
+  border-color: var(--counter-border);
+  background: var(--bg-darker);
+}
+
+.rocket-roster-panel.mode-recomendado .roster-toggle-action {
   color: var(--edg-gold);
 }
 
-.roster-count-pill .pill-text {
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+.rocket-roster-panel.mode-recomendado .roster-header-toggle:hover .roster-toggle-action {
+  border-color: rgba(255, 200, 37, 0.4);
+}
+
+.roster-arrow-icon {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rocket-roster-panel.is-open .roster-arrow-icon {
+  transform: rotate(180deg);
+}
+
+.roster-collapsible-content {
+  padding: 0 18px 18px 18px;
+  border-top: 1px solid var(--border-subtle);
+  animation: fadeIn 0.2s ease;
 }
 
 .roster-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
   gap: 8px;
-  margin-bottom: 14px;
+  padding-top: 14px;
 }
 
 .roster-chip {
@@ -1882,7 +1922,7 @@ a {
   background: var(--bg-elevated);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
-  padding: 6px 9px;
+  padding: 6px 10px;
   cursor: pointer;
   transition: all 0.16s ease;
   text-align: left;
@@ -1915,8 +1955,8 @@ a {
 }
 
 .roster-chip-sprite-wrap {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1926,17 +1966,10 @@ a {
 }
 
 .roster-chip-sprite {
-  max-width: 28px;
-  max-height: 28px;
+  max-width: 24px;
+  max-height: 24px;
   object-fit: contain;
   image-rendering: auto;
-}
-
-.roster-chip-info {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  flex-grow: 1;
 }
 
 .roster-chip-name {
@@ -1948,82 +1981,27 @@ a {
   text-overflow: ellipsis;
   display: flex;
   align-items: center;
-  gap: 3px;
-}
-
-.roster-chip-count {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.roster-chip-count.high {
-  color: var(--counter-text);
-}
-
-.rocket-roster-panel.mode-recomendado .roster-chip-count.high {
-  color: var(--edg-gold);
-}
-
-.roster-chip-count.medium {
-  color: #8ed0f8;
-}
-
-.roster-footer-tip {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  background: rgba(112, 223, 142, 0.05);
-  border: 1px dashed rgba(112, 223, 142, 0.25);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-  transition: all 0.2s ease;
-}
-
-.rocket-roster-panel.mode-recomendado .roster-footer-tip {
-  background: rgba(255, 200, 37, 0.05);
-  border-color: rgba(255, 200, 37, 0.25);
-}
-
-.roster-footer-tip .tip-icon {
-  font-size: 1rem;
-  line-height: 1;
-  flex-shrink: 0;
+  gap: 4px;
 }
 
 @media (max-width: 768px) {
-  .rocket-roster-panel {
-    padding: 14px 14px;
+  .roster-header-toggle {
+    padding: 12px 14px;
+    align-items: flex-start;
   }
-  .roster-header {
-    flex-direction: column;
-    gap: 10px;
+  .roster-collapsible-content {
+    padding: 0 14px 14px 14px;
   }
   .roster-grid {
     grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
     gap: 6px;
   }
   .roster-chip {
-    padding: 5px 7px;
+    padding: 5px 8px;
     gap: 6px;
-  }
-  .roster-chip-sprite-wrap {
-    width: 26px;
-    height: 26px;
-  }
-  .roster-chip-sprite {
-    max-width: 24px;
-    max-height: 24px;
   }
   .roster-chip-name {
     font-size: 0.7rem;
-  }
-  .roster-chip-count {
-    font-size: 0.64rem;
   }
 }
 

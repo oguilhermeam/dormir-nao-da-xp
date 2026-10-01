@@ -134,379 +134,264 @@
       </div>
     </div>
 
-    <!-- Roster / Checklist de Pokémons Necessários -->
-    <div class="rocket-roster-panel" id="rocketRosterPanel">
-      <div class="roster-header">
+        <!-- Checklist / Accordion de Pokémons Necessários -->
+    <div class="rocket-roster-panel is-collapsed" id="rocketRosterPanel">
+      <button type="button" class="roster-header-toggle" id="rosterToggleBtn" onclick="toggleRosterCollapse()" aria-expanded="false">
         <div class="roster-header-left">
           <div class="roster-badge-label">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            CHECKLIST DE CAPTURA &amp; TIME COMPLETO
+            CHECKLIST DA QUEST
           </div>
-          <h2 class="roster-title">Pokémons Necessários para Fazer a Quest</h2>
-          <p class="roster-desc">Tenha estes pokémons prontos na sua bag/box para vencer os 14 membros da Rocket sem precisar voltar para a cidade. Clique em qualquer pokémon para filtrar os NPCs onde ele duela.</p>
+          <h2 class="roster-title">
+            Pokémons Necessários para a Quest
+            <span class="roster-count-badge" id="rosterCountBadge">22 Pokémons</span>
+          </h2>
+          <p class="roster-desc">Clique para expandir/ocultar todos os pokémons utilizados nesta versão.</p>
         </div>
         <div class="roster-header-right">
-          <div class="roster-count-pill" id="rosterCountPill">
-            <span class="pill-number" id="rosterPillNumber">22</span>
-            <span class="pill-text" id="rosterPillText">Pokémons no Time Barato</span>
-          </div>
+          <span class="roster-toggle-action">
+            <span class="toggle-text" id="rosterToggleText">Ver Pokémons</span>
+            <svg class="roster-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
         </div>
-      </div>
+      </button>
 
-      <!-- Grid Izzonim (Default / Ativo) -->
-      <div class="roster-grid-wrapper" id="rosterWrapperIzzonim">
-        <div class="roster-grid">
-          <button type="button" class="roster-chip" data-poke="machamp" onclick="filterByRosterPokemon('machamp')" title="Machamp - Usado em 12 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/machamp.png" alt="Machamp" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Machamp</span>
-              <span class="roster-chip-count high">12x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="tyranitar" onclick="filterByRosterPokemon('tyranitar')" title="Tyranitar - Usado em 11 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/tyranitar.png" alt="Tyranitar" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Tyranitar</span>
-              <span class="roster-chip-count high">11x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="rhydon" onclick="filterByRosterPokemon('rhydon')" title="SH Rhydon - Usado em 7 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_rhydon.png" alt="SH Rhydon" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Rhydon <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count medium">7x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="victreebel" onclick="filterByRosterPokemon('victreebel')" title="SH Victreebel - Usado em 7 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_victreebel.png" alt="SH Victreebel" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Victreebel <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count medium">7x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="arcanine" onclick="filterByRosterPokemon('arcanine')" title="Arcanine - Usado em 6 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/arcanine.png" alt="Arcanine" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Arcanine</span>
-              <span class="roster-chip-count medium">6x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="starmie" onclick="filterByRosterPokemon('starmie')" title="SH Starmie - Usado em 6 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_starmie.png" alt="SH Starmie" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Starmie <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count medium">6x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="scizor" onclick="filterByRosterPokemon('scizor')" title="Scizor - Usado em 5 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/scizor.png" alt="Scizor" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Scizor</span>
-              <span class="roster-chip-count medium">5x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="persian" onclick="filterByRosterPokemon('persian')" title="SH Persian - Usado em 4 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_persian.png" alt="SH Persian" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Persian <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">4x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="leafeon" onclick="filterByRosterPokemon('leafeon')" title="Leafeon - Usado em 4 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/leafeon.png" alt="Leafeon" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Leafeon</span>
-              <span class="roster-chip-count low">4x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="piloswine" onclick="filterByRosterPokemon('piloswine')" title="SH Piloswine - Usado em 3 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_piloswine.png" alt="SH Piloswine" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Piloswine <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">3x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="scyther" onclick="filterByRosterPokemon('scyther')" title="Scyther - Usado em 3 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/scyther.png" alt="Scyther" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Scyther</span>
-              <span class="roster-chip-count low">3x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="wigglytuff" onclick="filterByRosterPokemon('wigglytuff')" title="Wigglytuff - Usado em 3 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/wigglytuff.png" alt="Wigglytuff" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Wigglytuff</span>
-              <span class="roster-chip-count low">3x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="glaceon" onclick="filterByRosterPokemon('glaceon')" title="Glaceon - Usado em 2 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/glaceon.png" alt="Glaceon" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Glaceon</span>
-              <span class="roster-chip-count low">2x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="sandslash" onclick="filterByRosterPokemon('sandslash')" title="SH Sandslash - Usado em 2 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_sandslash.png" alt="SH Sandslash" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Sandslash <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">2x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="electabuzz" onclick="filterByRosterPokemon('electabuzz')" title="Electabuzz - Usado em 2 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/electabuzz.png" alt="Electabuzz" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Electabuzz</span>
-              <span class="roster-chip-count low">2x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="alakazam" onclick="filterByRosterPokemon('alakazam')" title="Alakazam - Usado em 1 duelo. Clique para filtrar.">
+      <div class="roster-collapsible-content" id="rosterContent" style="display: none;">
+        <!-- Grid Izzonim (Default) -->
+        <div class="roster-grid-wrapper" id="rosterWrapperIzzonim">
+          <div class="roster-grid">
+          <button type="button" class="roster-chip" data-poke="alakazam" onclick="filterByRosterPokemon('alakazam')" title="Alakazam - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
               <img src="assets/img/pokemon/alakazam.png" alt="Alakazam" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Alakazam</span>
-              <span class="roster-chip-count low">1x</span>
-            </div>
+            <span class="roster-chip-name">Alakazam</span>
           </button>
-          <button type="button" class="roster-chip" data-poke="steelix" onclick="filterByRosterPokemon('steelix')" title="Steelix - Usado em 1 duelo. Clique para filtrar.">
+          <button type="button" class="roster-chip" data-poke="arcanine" onclick="filterByRosterPokemon('arcanine')" title="Arcanine - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/steelix.png" alt="Steelix" class="roster-chip-sprite" loading="lazy">
+              <img src="assets/img/pokemon/arcanine.png" alt="Arcanine" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Steelix</span>
-              <span class="roster-chip-count low">1x</span>
-            </div>
+            <span class="roster-chip-name">Arcanine</span>
           </button>
-          <button type="button" class="roster-chip" data-poke="mimikyu" onclick="filterByRosterPokemon('mimikyu')" title="Mimikyu - Usado em 1 duelo. Clique para filtrar.">
+          <button type="button" class="roster-chip" data-poke="electabuzz" onclick="filterByRosterPokemon('electabuzz')" title="Electabuzz - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/mimikyu.png" alt="Mimikyu" class="roster-chip-sprite" loading="lazy">
+              <img src="assets/img/pokemon/electabuzz.png" alt="Electabuzz" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Mimikyu</span>
-              <span class="roster-chip-count low">1x</span>
-            </div>
+            <span class="roster-chip-name">Electabuzz</span>
           </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="venusaur" onclick="filterByRosterPokemon('venusaur')" title="SH Venusaur - Usado em 1 duelo. Clique para filtrar.">
+          <button type="button" class="roster-chip" data-poke="glaceon" onclick="filterByRosterPokemon('glaceon')" title="Glaceon - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_venusaur.png" alt="SH Venusaur" class="roster-chip-sprite" loading="lazy">
+              <img src="assets/img/pokemon/glaceon.png" alt="Glaceon" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Venusaur <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">1x</span>
-            </div>
+            <span class="roster-chip-name">Glaceon</span>
           </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="jynx" onclick="filterByRosterPokemon('jynx')" title="SH Jynx - Usado em 1 duelo. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_jynx.png" alt="SH Jynx" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Jynx <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">1x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="hitmontop" onclick="filterByRosterPokemon('hitmontop')" title="SH Hitmontop - Usado em 1 duelo. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_hitmontop.png" alt="SH Hitmontop" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Hitmontop <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">1x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="gyarados" onclick="filterByRosterPokemon('gyarados')" title="Gyarados - Usado em 1 duelo. Clique para filtrar.">
+          <button type="button" class="roster-chip" data-poke="gyarados" onclick="filterByRosterPokemon('gyarados')" title="Gyarados - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
               <img src="assets/img/pokemon/gyarados.png" alt="Gyarados" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Gyarados</span>
-              <span class="roster-chip-count low">1x</span>
-            </div>
+            <span class="roster-chip-name">Gyarados</span>
           </button>
-        </div>
-      </div>
-
-      <!-- Grid Recomendado (Meta) -->
-      <div class="roster-grid-wrapper" id="rosterWrapperRecomendado" style="display: none;">
-        <div class="roster-grid">
-          <button type="button" class="roster-chip is-shiny" data-poke="arcanine" onclick="filterByRosterPokemon('arcanine')" title="SH Arcanine - Usado em 10 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_arcanine.png" alt="SH Arcanine" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Arcanine <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count high">10x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="golem" onclick="filterByRosterPokemon('golem')" title="SH Golem - Usado em 10 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_golem.png" alt="SH Golem" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Golem <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count high">10x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="starmie" onclick="filterByRosterPokemon('starmie')" title="SH Starmie - Usado em 10 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_starmie.png" alt="SH Starmie" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Starmie <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count high">10x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="sandslash" onclick="filterByRosterPokemon('sandslash')" title="SH Sandslash - Usado em 9 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_sandslash.png" alt="SH Sandslash" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Sandslash <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count high">9x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="hitmontop" onclick="filterByRosterPokemon('hitmontop')" title="SH Hitmontop - Usado em 8 duelos. Clique para filtrar.">
+          <button type="button" class="roster-chip is-shiny" data-poke="hitmontop" onclick="filterByRosterPokemon('hitmontop')" title="SH Hitmontop - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
               <img src="assets/img/pokemon/sh_hitmontop.png" alt="SH Hitmontop" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Hitmontop <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count medium">8x</span>
-            </div>
+            <span class="roster-chip-name">SH Hitmontop <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
           </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="raichu" onclick="filterByRosterPokemon('raichu')" title="SH Raichu - Usado em 7 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_raichu.png" alt="SH Raichu" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Raichu <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count medium">7x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="venusaur" onclick="filterByRosterPokemon('venusaur')" title="SH Venusaur - Usado em 6 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_venusaur.png" alt="SH Venusaur" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Venusaur <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count medium">6x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="pidgeot" onclick="filterByRosterPokemon('pidgeot')" title="SH Pidgeot - Usado em 5 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_pidgeot.png" alt="SH Pidgeot" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Pidgeot <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count medium">5x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="persian" onclick="filterByRosterPokemon('persian')" title="SH Persian - Usado em 4 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_persian.png" alt="SH Persian" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Persian <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">4x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="scizor" onclick="filterByRosterPokemon('scizor')" title="Scizor - Usado em 4 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/scizor.png" alt="Scizor" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Scizor</span>
-              <span class="roster-chip-count low">4x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="jynx" onclick="filterByRosterPokemon('jynx')" title="SH Jynx - Usado em 4 duelos. Clique para filtrar.">
+          <button type="button" class="roster-chip is-shiny" data-poke="jynx" onclick="filterByRosterPokemon('jynx')" title="SH Jynx - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
               <img src="assets/img/pokemon/sh_jynx.png" alt="SH Jynx" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Jynx <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">4x</span>
-            </div>
+            <span class="roster-chip-name">SH Jynx <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
           </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="clefable" onclick="filterByRosterPokemon('clefable')" title="SH Clefable - Usado em 3 duelos. Clique para filtrar.">
+          <button type="button" class="roster-chip" data-poke="leafeon" onclick="filterByRosterPokemon('leafeon')" title="Leafeon - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_clefable.png" alt="SH Clefable" class="roster-chip-sprite" loading="lazy">
+              <img src="assets/img/pokemon/leafeon.png" alt="Leafeon" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Clefable <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">3x</span>
-            </div>
+            <span class="roster-chip-name">Leafeon</span>
           </button>
-          <button type="button" class="roster-chip is-shiny" data-poke="marowak" onclick="filterByRosterPokemon('marowak')" title="SH Marowak - Usado em 2 duelos. Clique para filtrar.">
-            <div class="roster-chip-sprite-wrap">
-              <img src="assets/img/pokemon/sh_marowak.png" alt="SH Marowak" class="roster-chip-sprite" loading="lazy">
-            </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">SH Marowak <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
-              <span class="roster-chip-count low">2x</span>
-            </div>
-          </button>
-          <button type="button" class="roster-chip" data-poke="machamp" onclick="filterByRosterPokemon('machamp')" title="Machamp - Usado em 1 duelo. Clique para filtrar.">
+          <button type="button" class="roster-chip" data-poke="machamp" onclick="filterByRosterPokemon('machamp')" title="Machamp - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
               <img src="assets/img/pokemon/machamp.png" alt="Machamp" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Machamp</span>
-              <span class="roster-chip-count low">1x</span>
-            </div>
+            <span class="roster-chip-name">Machamp</span>
           </button>
-          <button type="button" class="roster-chip" data-poke="gyarados" onclick="filterByRosterPokemon('gyarados')" title="Gyarados - Usado em 1 duelo. Clique para filtrar.">
+          <button type="button" class="roster-chip" data-poke="mimikyu" onclick="filterByRosterPokemon('mimikyu')" title="Mimikyu - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/mimikyu.png" alt="Mimikyu" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">Mimikyu</span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="persian" onclick="filterByRosterPokemon('persian')" title="SH Persian - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_persian.png" alt="SH Persian" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Persian <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="piloswine" onclick="filterByRosterPokemon('piloswine')" title="SH Piloswine - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_piloswine.png" alt="SH Piloswine" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Piloswine <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="rhydon" onclick="filterByRosterPokemon('rhydon')" title="SH Rhydon - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_rhydon.png" alt="SH Rhydon" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Rhydon <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="sandslash" onclick="filterByRosterPokemon('sandslash')" title="SH Sandslash - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_sandslash.png" alt="SH Sandslash" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Sandslash <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip" data-poke="scizor" onclick="filterByRosterPokemon('scizor')" title="Scizor - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/scizor.png" alt="Scizor" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">Scizor</span>
+          </button>
+          <button type="button" class="roster-chip" data-poke="scyther" onclick="filterByRosterPokemon('scyther')" title="Scyther - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/scyther.png" alt="Scyther" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">Scyther</span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="starmie" onclick="filterByRosterPokemon('starmie')" title="SH Starmie - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_starmie.png" alt="SH Starmie" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Starmie <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip" data-poke="steelix" onclick="filterByRosterPokemon('steelix')" title="Steelix - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/steelix.png" alt="Steelix" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">Steelix</span>
+          </button>
+          <button type="button" class="roster-chip" data-poke="tyranitar" onclick="filterByRosterPokemon('tyranitar')" title="Tyranitar - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/tyranitar.png" alt="Tyranitar" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">Tyranitar</span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="venusaur" onclick="filterByRosterPokemon('venusaur')" title="SH Venusaur - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_venusaur.png" alt="SH Venusaur" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Venusaur <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="victreebel" onclick="filterByRosterPokemon('victreebel')" title="SH Victreebel - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_victreebel.png" alt="SH Victreebel" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Victreebel <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip" data-poke="wigglytuff" onclick="filterByRosterPokemon('wigglytuff')" title="Wigglytuff - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/wigglytuff.png" alt="Wigglytuff" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">Wigglytuff</span>
+          </button>
+          </div>
+        </div>
+
+        <!-- Grid Recomendado (Meta) -->
+        <div class="roster-grid-wrapper" id="rosterWrapperRecomendado" style="display: none;">
+          <div class="roster-grid">
+          <button type="button" class="roster-chip is-shiny" data-poke="arcanine" onclick="filterByRosterPokemon('arcanine')" title="SH Arcanine - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_arcanine.png" alt="SH Arcanine" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Arcanine <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="clefable" onclick="filterByRosterPokemon('clefable')" title="SH Clefable - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_clefable.png" alt="SH Clefable" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Clefable <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="golem" onclick="filterByRosterPokemon('golem')" title="SH Golem - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_golem.png" alt="SH Golem" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Golem <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip" data-poke="gyarados" onclick="filterByRosterPokemon('gyarados')" title="Gyarados - Clique para filtrar">
             <div class="roster-chip-sprite-wrap">
               <img src="assets/img/pokemon/gyarados.png" alt="Gyarados" class="roster-chip-sprite" loading="lazy">
             </div>
-            <div class="roster-chip-info">
-              <span class="roster-chip-name">Gyarados</span>
-              <span class="roster-chip-count low">1x</span>
-            </div>
+            <span class="roster-chip-name">Gyarados</span>
           </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="hitmontop" onclick="filterByRosterPokemon('hitmontop')" title="SH Hitmontop - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_hitmontop.png" alt="SH Hitmontop" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Hitmontop <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="jynx" onclick="filterByRosterPokemon('jynx')" title="SH Jynx - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_jynx.png" alt="SH Jynx" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Jynx <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip" data-poke="machamp" onclick="filterByRosterPokemon('machamp')" title="Machamp - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/machamp.png" alt="Machamp" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">Machamp</span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="marowak" onclick="filterByRosterPokemon('marowak')" title="SH Marowak - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_marowak.png" alt="SH Marowak" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Marowak <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="persian" onclick="filterByRosterPokemon('persian')" title="SH Persian - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_persian.png" alt="SH Persian" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Persian <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="pidgeot" onclick="filterByRosterPokemon('pidgeot')" title="SH Pidgeot - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_pidgeot.png" alt="SH Pidgeot" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Pidgeot <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="raichu" onclick="filterByRosterPokemon('raichu')" title="SH Raichu - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_raichu.png" alt="SH Raichu" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Raichu <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="sandslash" onclick="filterByRosterPokemon('sandslash')" title="SH Sandslash - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_sandslash.png" alt="SH Sandslash" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Sandslash <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip" data-poke="scizor" onclick="filterByRosterPokemon('scizor')" title="Scizor - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/scizor.png" alt="Scizor" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">Scizor</span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="starmie" onclick="filterByRosterPokemon('starmie')" title="SH Starmie - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_starmie.png" alt="SH Starmie" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Starmie <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          <button type="button" class="roster-chip is-shiny" data-poke="venusaur" onclick="filterByRosterPokemon('venusaur')" title="SH Venusaur - Clique para filtrar">
+            <div class="roster-chip-sprite-wrap">
+              <img src="assets/img/pokemon/sh_venusaur.png" alt="SH Venusaur" class="roster-chip-sprite" loading="lazy">
+            </div>
+            <span class="roster-chip-name">SH Venusaur <img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"></span>
+          </button>
+          </div>
         </div>
       </div>
-
-      <!-- Dica Rápida / Resumo da Estratégia -->
-      <div class="roster-footer-tip" id="rosterFooterTip">
-        <span class="tip-icon">&#128161;</span>
-        <span class="tip-text" id="rosterTipText">
-          <strong>Dica do Time Barato:</strong> Com apenas <strong>Machamp</strong> (12x), <strong>Tyranitar</strong> (11x), <strong>SH Rhydon</strong> (7x), <strong>SH Victreebel</strong> (7x), <strong>Arcanine</strong> (6x) e <strong>SH Starmie</strong> (6x), você já cobre mais da metade de todos os duelos da Rocket!
-        </span>
-      </div>
     </div>
-
 
     <!-- Grid de NPCs -->
     <div class="npc-grid" id="npcContainer">
@@ -2716,6 +2601,22 @@
   <script>
     let currentGlobalRocketMode = 'izzonim';
 
+    function toggleRosterCollapse() {
+      const panel = document.getElementById('rocketRosterPanel');
+      const content = document.getElementById('rosterContent');
+      const toggleBtn = document.getElementById('rosterToggleBtn');
+      const toggleText = document.getElementById('rosterToggleText');
+      if (!panel || !content) return;
+
+      const isOpening = panel.classList.contains('is-collapsed');
+      panel.classList.toggle('is-collapsed', !isOpening);
+      panel.classList.toggle('is-open', isOpening);
+      content.style.display = isOpening ? 'block' : 'none';
+
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', isOpening ? 'true' : 'false');
+      if (toggleText) toggleText.textContent = isOpening ? 'Ocultar' : 'Ver Pokémons';
+    }
+
     function setGlobalRocketMode(mode) {
       currentGlobalRocketMode = mode;
       document.getElementById('globalBtnRecomendado').classList.toggle('active', mode === 'recomendado');
@@ -2725,9 +2626,7 @@
       const rosterPanel = document.getElementById('rocketRosterPanel');
       const rosterIzz = document.getElementById('rosterWrapperIzzonim');
       const rosterRec = document.getElementById('rosterWrapperRecomendado');
-      const pillNumber = document.getElementById('rosterPillNumber');
-      const pillText = document.getElementById('rosterPillText');
-      const tipText = document.getElementById('rosterTipText');
+      const countBadge = document.getElementById('rosterCountBadge');
 
       if (rosterPanel && rosterIzz && rosterRec) {
         const isRec = mode === 'recomendado';
@@ -2735,13 +2634,8 @@
         rosterIzz.style.display = isRec ? 'none' : '';
         rosterRec.style.display = isRec ? '' : 'none';
 
-        if (pillNumber) pillNumber.textContent = isRec ? '15' : '22';
-        if (pillText) pillText.textContent = isRec ? 'Pokémons no Time Meta' : 'Pokémons no Time Barato';
-
-        if (tipText) {
-          tipText.innerHTML = isRec
-            ? '<strong>Dica do Time Recomendado:</strong> Com foco no time meta, <strong>SH Arcanine</strong> (10x), <strong>SH Golem</strong> (10x), <strong>SH Starmie</strong> (10x), <strong>SH Sandslash</strong> (9x) e <strong>SH Hitmontop</strong> (8x) formam a espinha dorsal para derrotar praticamente toda a Rocket!'
-            : '<strong>Dica do Time Barato:</strong> Com apenas <strong>Machamp</strong> (12x), <strong>Tyranitar</strong> (11x), <strong>SH Rhydon</strong> (7x), <strong>SH Victreebel</strong> (7x), <strong>Arcanine</strong> (6x) e <strong>SH Starmie</strong> (6x), você já cobre mais da metade de todos os duelos da Rocket!';
+        if (countBadge) {
+          countBadge.textContent = isRec ? '15 Pokémons (Meta)' : '22 Pokémons (Barato)';
         }
       }
 
