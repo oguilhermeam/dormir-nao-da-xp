@@ -2359,11 +2359,10 @@
       const card = document.getElementById(`card-${cardId}`);
       if (!card) return;
 
-      const btns = card.querySelectorAll('.npc-card-header .tier-mode-btn');
-      if (btns.length >= 2) {
-        btns[0].classList.toggle('active', mode === 'recomendado');
-        btns[1].classList.toggle('active', mode === 'izzonim');
-      }
+      const btnRec = card.querySelector('.npc-card-header .btn-mode-recomendado');
+      const btnIzz = card.querySelector('.npc-card-header .btn-mode-izzonim');
+      if (btnRec) btnRec.classList.toggle('active', mode === 'recomendado');
+      if (btnIzz) btnIzz.classList.toggle('active', mode === 'izzonim');
 
       const cRec = document.getElementById(`content-${cardId}-recomendado`);
       const cIzz = document.getElementById(`content-${cardId}-izzonim`);
