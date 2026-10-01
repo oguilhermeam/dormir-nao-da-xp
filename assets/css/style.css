@@ -1305,6 +1305,31 @@ a {
   color: #ffc825;
 }
 
+.tier-mode-btn.active.btn-mode-recomendado {
+  border-color: rgba(255, 200, 37, 0.6);
+  color: #ffc825;
+}
+
+.tier-mode-btn.active.btn-mode-izzonim {
+  border-color: rgba(112, 223, 142, 0.6);
+  color: #70df8e;
+}
+
+.npc-duels-mode {
+  display: none;
+}
+
+.npc-duels-mode.active {
+  display: block;
+  animation: hoennTabFade 0.22s ease-out;
+}
+
+.npc-card-giovanni .npc-duels-mode.active {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 10px;
+}
+
 .tier-mode-content {
   display: none;
 }

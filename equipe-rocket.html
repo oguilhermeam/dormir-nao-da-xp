@@ -120,21 +120,44 @@
       <input type="text" id="npcSearch" class="search-input" placeholder="Buscar por NPC (ex: Blaze, Frost, Shadow, Giovanni) ou por Pokémon (ex: Gengar, Raichu, Charizard)...">
     </div>
 
+    <!-- Alternador de Versão da Tabela (Igual Times Hoenn) -->
+    <div class="tier-mode-switcher-container" style="margin-bottom: 22px; padding: 14px 18px; background: var(--bg-surface); border: 1px solid var(--border-card); border-radius: var(--radius-md);">
+      <div>
+        <span style="font-size: 0.72rem; color: var(--counter-text); font-weight: 700; text-transform: uppercase; font-family: var(--font-mono); letter-spacing: 0.05em;">Estratégia de Duelo</span>
+        <div style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-top: 2px;">Versão dos Counters da Rocket</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">Alterne entre o time recomendado padrão e o time barato de baixo custo.</div>
+      </div>
+      <div class="tier-mode-switcher">
+        <button type="button" class="tier-mode-btn btn-mode-recomendado active" id="globalBtnRecomendado" onclick="setGlobalRocketMode('recomendado')">
+          ⭐ Time Recomendado (Meta)
+        </button>
+        <button type="button" class="tier-mode-btn btn-mode-izzonim" id="globalBtnIzzonim" onclick="setGlobalRocketMode('izzonim')">
+          🪙 Time Barato (by izzonim)
+        </button>
+      </div>
+    </div>
+
     <!-- Grid de NPCs -->
     <div class="npc-grid" id="npcContainer">
 
-<!-- 1. BLAZE -->
-      <div class="npc-card" data-npc="blaze muk raticate weezing arbok ariados golbat marowak hitmontop sandslash arcanine golem">
+      <!-- 1. BLAZE -->
+      <div class="npc-card" id="card-01" data-npc="blaze muk raticate weezing arbok ariados golbat marowak hitmontop sandslash arcanine golem machamp">
         <div class="npc-card-header">
-          <span class="npc-name">BLAZE</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 01</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">BLAZE</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 01</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('01', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('01', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-01-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/muk.png" loading="lazy" alt="Muk" class="poke-sprite">
@@ -202,20 +225,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-01-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/muk.png" loading="lazy" alt="Muk" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Muk</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/raticate.png" loading="lazy" alt="Raticate" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Raticate</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Machamp <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/machamp.png" loading="lazy" alt="Machamp" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/weezing.png" loading="lazy" alt="Weezing" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Weezing</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/arbok.png" loading="lazy" alt="Arbok" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Arbok</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/ariados.png" loading="lazy" alt="Ariados" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Ariados</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Arcanine</span></div>
+              <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/golbat.png" loading="lazy" alt="Golbat" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Golbat</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Golem</span></div>
+              <img src="assets/img/pokemon/golem.png" loading="lazy" alt="Golem" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 2. FROST -->
-      <div class="npc-card" data-npc="frost misdreavus hypno magcargo gligar houndour murkrow persian scizor starmie jynx hitmontop golem">
+      <div class="npc-card" id="card-02" data-npc="frost misdreavus hypno magcargo gligar houndour murkrow persian scizor starmie jynx hitmontop golem machamp">
         <div class="npc-card-header">
-          <span class="npc-name">FROST</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 02</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">FROST</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 02</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('02', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('02', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-02-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/misdreavus.png" loading="lazy" alt="Misdreavus" class="poke-sprite">
@@ -283,20 +380,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-02-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/misdreavus.png" loading="lazy" alt="Misdreavus" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Misdreavus</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Scizor <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/scizor.png" loading="lazy" alt="Scizor" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/hypno.png" loading="lazy" alt="Hypno" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Hypno</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Scizor <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/scizor.png" loading="lazy" alt="Scizor" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/magcargo.png" loading="lazy" alt="Magcargo" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Magcargo</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/gligar.png" loading="lazy" alt="Gligar" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Gligar</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Jynx</span></div>
+              <img src="assets/img/pokemon/jynx.png" loading="lazy" alt="Jynx" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/houndour.png" loading="lazy" alt="Houndour" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Houndour</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Machamp <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/machamp.png" loading="lazy" alt="Machamp" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/murkrow.png" loading="lazy" alt="Murkrow" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Murkrow</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Golem</span></div>
+              <img src="assets/img/pokemon/golem.png" loading="lazy" alt="Golem" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 3. THORN -->
-      <div class="npc-card" data-npc="thorn haunter hypno arbok golbat houndoom murkrow persian scizor sandslash golem starmie jynx">
+      <div class="npc-card" id="card-03" data-npc="thorn haunter hypno arbok golbat houndoom murkrow persian scizor sandslash golem starmie jynx">
         <div class="npc-card-header">
-          <span class="npc-name">THORN</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 03</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">THORN</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 03</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('03', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('03', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-03-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_haunter.png" loading="lazy" alt="SH Haunter" class="poke-sprite">
@@ -364,20 +535,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-03-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_haunter.png" loading="lazy" alt="SH Haunter" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Haunter</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Persian</span></div>
+              <img src="assets/img/pokemon/persian.png" loading="lazy" alt="Persian" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_hypno.png" loading="lazy" alt="SH Hypno" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Hypno</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Scizor <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/scizor.png" loading="lazy" alt="Scizor" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_arbok.png" loading="lazy" alt="SH Arbok" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Arbok</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_golbat.png" loading="lazy" alt="SH Golbat" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Golbat</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Golem</span></div>
+              <img src="assets/img/pokemon/golem.png" loading="lazy" alt="Golem" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/houndoom.png" loading="lazy" alt="Houndoom" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Houndoom</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_murkrow.png" loading="lazy" alt="SH Murkrow" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Murkrow</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Jynx</span></div>
+              <img src="assets/img/pokemon/jynx.png" loading="lazy" alt="Jynx" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 4. SHADOW -->
-      <div class="npc-card" data-npc="shadow gengar alakazam muk feraligatr houndoom crobat sandslash scizor marowak raichu starmie golem">
+      <div class="npc-card" id="card-04" data-npc="shadow gengar alakazam muk feraligatr houndoom crobat sandslash scizor marowak raichu starmie golem venusaur">
         <div class="npc-card-header">
-          <span class="npc-name">SHADOW</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 04</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">SHADOW</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 04</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('04', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('04', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-04-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_gengar.png" loading="lazy" alt="SH Gengar" class="poke-sprite">
@@ -445,20 +690,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-04-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_gengar.png" loading="lazy" alt="SH Gengar" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Gengar</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/alakazam.png" loading="lazy" alt="Alakazam" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Alakazam</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Scizor <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/scizor.png" loading="lazy" alt="Scizor" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/muk.png" loading="lazy" alt="Muk" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Muk</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/feraligatr.png" loading="lazy" alt="Feraligatr" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Feraligatr</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/houndoom.png" loading="lazy" alt="Houndoom" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Houndoom</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_crobat.png" loading="lazy" alt="SH Crobat" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Crobat</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Golem</span></div>
+              <img src="assets/img/pokemon/golem.png" loading="lazy" alt="Golem" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 5. CIPHER -->
-      <div class="npc-card" data-npc="cipher meganium venusaur electabuzz feraligatr persian typhlosion arcanine pidgeot sandslash raichu hitmontop starmie">
+      <div class="npc-card" id="card-05" data-npc="cipher meganium venusaur electabuzz feraligatr persian typhlosion arcanine pidgeot sandslash raichu hitmontop starmie machamp">
         <div class="npc-card-header">
-          <span class="npc-name">CIPHER</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 05</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">CIPHER</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 05</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('05', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('05', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-05-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
@@ -526,20 +845,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-05-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Meganium</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Arcanine</span></div>
+              <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Venusaur</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Pidgeot</span></div>
+              <img src="assets/img/pokemon/pidgeot.png" loading="lazy" alt="Pidgeot" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/electabuzz.png" loading="lazy" alt="Electabuzz" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Electabuzz</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/feraligatr.png" loading="lazy" alt="Feraligatr" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Feraligatr</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_persian.png" loading="lazy" alt="SH Persian" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Persian</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Machamp <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/machamp.png" loading="lazy" alt="Machamp" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/typhlosion.png" loading="lazy" alt="Typhlosion" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Typhlosion</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 6. PHOENIX -->
-      <div class="npc-card" data-npc="phoenix meganium blastoise electrode magneton charizard arcanine raichu sandslash venusaur golem">
+      <div class="npc-card" id="card-06" data-npc="phoenix meganium blastoise electrode magneton charizard arcanine raichu sandslash venusaur golem">
         <div class="npc-card-header">
-          <span class="npc-name">PHOENIX</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 06</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">PHOENIX</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 06</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('06', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('06', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-06-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
@@ -607,20 +1000,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-06-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Meganium</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Arcanine</span></div>
+              <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/blastoise.png" loading="lazy" alt="Blastoise" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Blastoise</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_electrode.png" loading="lazy" alt="SH Electrode" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Electrode</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_blastoise.png" loading="lazy" alt="SH Blastoise" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Blastoise</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_magneton.png" loading="lazy" alt="SH Magneton" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Magneton</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/charizard.png" loading="lazy" alt="Charizard" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Charizard</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Golem</span></div>
+              <img src="assets/img/pokemon/golem.png" loading="lazy" alt="Golem" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 7. SCYTHE -->
-      <div class="npc-card" data-npc="scythe arcanine raichu ampharos nidoqueen houndoom scyther starmie sandslash golem jynx hitmontop">
+      <div class="npc-card" id="card-07" data-npc="scythe arcanine raichu ampharos nidoqueen houndoom scyther starmie sandslash golem jynx hitmontop machamp">
         <div class="npc-card-header">
-          <span class="npc-name">SCYTHE</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 07</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">SCYTHE</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 07</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('07', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('07', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-07-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
@@ -688,20 +1155,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-07-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Arcanine</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_raichu.png" loading="lazy" alt="SH Raichu" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Raichu</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_ampharos.png" loading="lazy" alt="SH Ampharos" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Ampharos</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/nidoqueen.png" loading="lazy" alt="Nidoqueen" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Nidoqueen</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_houndoom.png" loading="lazy" alt="SH Houndoom" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Houndoom</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Machamp <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/machamp.png" loading="lazy" alt="Machamp" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/scyther.png" loading="lazy" alt="Scyther" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Scyther</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Arcanine</span></div>
+              <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 8. MIRAGE -->
-      <div class="npc-card" data-npc="mirage charizard venusaur blastoise golem arcanine pidgeot raichu starmie">
+      <div class="npc-card" id="card-08" data-npc="mirage charizard venusaur blastoise golem arcanine pidgeot raichu starmie">
         <div class="npc-card-header">
-          <span class="npc-name">MIRAGE</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 08</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">MIRAGE</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 08</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('08', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('08', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-08-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/charizard.png" loading="lazy" alt="Charizard" class="poke-sprite">
@@ -769,20 +1310,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-08-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/charizard.png" loading="lazy" alt="Charizard" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Charizard</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Golem</span></div>
+              <img src="assets/img/pokemon/golem.png" loading="lazy" alt="Golem" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_venusaur.png" loading="lazy" alt="SH Venusaur" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Venusaur</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Arcanine</span></div>
+              <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Venusaur</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Pidgeot</span></div>
+              <img src="assets/img/pokemon/pidgeot.png" loading="lazy" alt="Pidgeot" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_blastoise.png" loading="lazy" alt="SH Blastoise" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Blastoise</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/blastoise.png" loading="lazy" alt="Blastoise" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Blastoise</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_charizard.png" loading="lazy" alt="SH Charizard" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Charizard</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 9. ZEPHYR -->
-      <div class="npc-card" data-npc="zephyr typhlosion meganium feraligatr golem arcanine pidgeot raichu venusaur starmie">
+      <div class="npc-card" id="card-09" data-npc="zephyr typhlosion meganium feraligatr golem arcanine pidgeot raichu venusaur starmie">
         <div class="npc-card-header">
-          <span class="npc-name">ZEPHYR</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 09</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">ZEPHYR</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 09</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('09', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('09', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-09-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/typhlosion.png" loading="lazy" alt="Typhlosion" class="poke-sprite">
@@ -850,20 +1465,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-09-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/typhlosion.png" loading="lazy" alt="Typhlosion" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Typhlosion</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_meganium.png" loading="lazy" alt="SH Meganium" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Meganium</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Arcanine</span></div>
+              <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/meganium.png" loading="lazy" alt="Meganium" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Meganium</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Pidgeot</span></div>
+              <img src="assets/img/pokemon/pidgeot.png" loading="lazy" alt="Pidgeot" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_feraligatr.png" loading="lazy" alt="SH Feraligatr" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Feraligatr</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/feraligatr.png" loading="lazy" alt="Feraligatr" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name">Feraligatr</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_typhlosion.png" loading="lazy" alt="SH Typhlosion" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Typhlosion</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 10. OBSIDIAN -->
-      <div class="npc-card" data-npc="obsidian gyarados scizor machamp kingdra persian pidgeot raichu arcanine clefable hitmontop golem">
+      <div class="npc-card" id="card-10" data-npc="obsidian gyarados scizor machamp kingdra persian pidgeot raichu arcanine clefable hitmontop golem">
         <div class="npc-card-header">
-          <span class="npc-name">OBSIDIAN</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 10</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">OBSIDIAN</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 10</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('10', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('10', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-10-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_gyarados.png" loading="lazy" alt="SH Gyarados" class="poke-sprite">
@@ -931,20 +1620,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-10-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_gyarados.png" loading="lazy" alt="SH Gyarados" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Gyarados</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Raichu</span></div>
+              <img src="assets/img/pokemon/raichu.png" loading="lazy" alt="Raichu" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_scizor.png" loading="lazy" alt="SH Scizor" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Scizor</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Arcanine</span></div>
+              <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_machamp.png" loading="lazy" alt="SH Machamp" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Machamp</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Pidgeot</span></div>
+              <img src="assets/img/pokemon/pidgeot.png" loading="lazy" alt="Pidgeot" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_kingdra.png" loading="lazy" alt="SH Kingdra" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Kingdra</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Clefable</span></div>
+              <img src="assets/img/pokemon/clefable.png" loading="lazy" alt="Clefable" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_persian.png" loading="lazy" alt="SH Persian" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Persian</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Machamp <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/machamp.png" loading="lazy" alt="Machamp" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_pidgeot.png" loading="lazy" alt="SH Pidgeot" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Pidgeot</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Golem</span></div>
+              <img src="assets/img/pokemon/golem.png" loading="lazy" alt="Golem" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 11. VORTEX -->
-      <div class="npc-card" data-npc="vortex ninetales kabutops omastar electrode magneton pidgeot starmie venusaur raichu sandslash arcanine golem">
+      <div class="npc-card" id="card-11" data-npc="vortex ninetales kabutops omastar electrode magneton pidgeot starmie venusaur raichu sandslash arcanine golem">
         <div class="npc-card-header">
-          <span class="npc-name">VORTEX</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 11</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">VORTEX</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 11</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('11', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('11', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-11-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_ninetales.png" loading="lazy" alt="SH Ninetales" class="poke-sprite">
@@ -1012,20 +1775,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-11-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_ninetales.png" loading="lazy" alt="SH Ninetales" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Ninetales</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_kabutops.png" loading="lazy" alt="SH Kabutops" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Kabutops</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_omastar.png" loading="lazy" alt="SH Omastar" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Omastar</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_electrode.png" loading="lazy" alt="SH Electrode" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Electrode</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_magneton.png" loading="lazy" alt="SH Magneton" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Magneton</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_pidgeot.png" loading="lazy" alt="SH Pidgeot" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Pidgeot</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Golem</span></div>
+              <img src="assets/img/pokemon/golem.png" loading="lazy" alt="Golem" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 12. TEMPEST -->
-      <div class="npc-card" data-npc="tempest magmar snorlax pupitar umbreon misdreavus mime starmie hitmontop venusaur clefable persian scizor">
+      <div class="npc-card" id="card-12" data-npc="tempest magmar snorlax pupitar umbreon misdreavus mime starmie hitmontop venusaur clefable persian scizor machamp">
         <div class="npc-card-header">
-          <span class="npc-name">TEMPEST</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 12</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">TEMPEST</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 12</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('12', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('12', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-12-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_magmar.png" loading="lazy" alt="SH Magmar" class="poke-sprite">
@@ -1093,20 +1930,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-12-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_magmar.png" loading="lazy" alt="SH Magmar" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Magmar</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_snorlax.png" loading="lazy" alt="SH Snorlax" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Snorlax</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Machamp <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/machamp.png" loading="lazy" alt="Machamp" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_pupitar.png" loading="lazy" alt="SH Pupitar" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Pupitar</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_umbreon.png" loading="lazy" alt="SH Umbreon" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Umbreon</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Clefable</span></div>
+              <img src="assets/img/pokemon/clefable.png" loading="lazy" alt="Clefable" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_misdreavus.png" loading="lazy" alt="SH Misdreavus" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Misdreavus</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Persian</span></div>
+              <img src="assets/img/pokemon/persian.png" loading="lazy" alt="Persian" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_mime.png" loading="lazy" alt="SH Mime" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Mime</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Scizor <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/scizor.png" loading="lazy" alt="Scizor" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 13. ECLIPSE -->
-      <div class="npc-card" data-npc="eclipse arcanine pinsir skarmory dragonair tauros espeon starmie pidgeot clefable hitmontop persian">
+      <div class="npc-card" id="card-13" data-npc="eclipse arcanine pinsir skarmory dragonair tauros espeon starmie pidgeot clefable hitmontop persian machamp scizor">
         <div class="npc-card-header">
-          <span class="npc-name">ECLIPSE</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 13</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="npc-name">ECLIPSE</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">NPC 13</span>
+          </div>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('13', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('13', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-13-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_arcanine.png" loading="lazy" alt="SH Arcanine" class="poke-sprite">
@@ -1174,22 +2085,94 @@
             </div>
           </div>
         </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-13-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_arcanine.png" loading="lazy" alt="SH Arcanine" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Arcanine</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Starmie <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/starmie.png" loading="lazy" alt="Starmie" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_pinsir.png" loading="lazy" alt="SH Pinsir" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Pinsir</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Pidgeot</span></div>
+              <img src="assets/img/pokemon/pidgeot.png" loading="lazy" alt="Pidgeot" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_skarmory.png" loading="lazy" alt="SH Skarmory" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Skarmory</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Arcanine</span></div>
+              <img src="assets/img/pokemon/arcanine.png" loading="lazy" alt="Arcanine" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_dragonair.png" loading="lazy" alt="SH Dragonair" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Dragonair</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Clefable</span></div>
+              <img src="assets/img/pokemon/clefable.png" loading="lazy" alt="Clefable" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_tauros.png" loading="lazy" alt="SH Tauros" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Tauros</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Machamp <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/machamp.png" loading="lazy" alt="Machamp" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_espeon.png" loading="lazy" alt="SH Espeon" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Espeon</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Scizor <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/scizor.png" loading="lazy" alt="Scizor" class="poke-sprite">
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 14. GIOVANNI (CHEFÃO FINAL - 130 BATALHAS) -->
-      <div class="npc-card npc-card-giovanni" data-npc="giovanni nidoqueen persian rhydon nidoking kangaskhan dugtrio sandslash machamp venusaur jynx hitmontop gyarados">
-        <div class="npc-card-header" style="background: rgba(255, 200, 37, 0.12); border-bottom-color: rgba(255, 200, 37, 0.4);">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span class="npc-name" style="color: var(--edg-gold); font-size: 1.2rem;">&#9813; GIOVANNI (LÍDER ROCKET)</span>
+      <div class="npc-card npc-card-giovanni" id="card-14" data-npc="giovanni nidoqueen persian rhydon nidoking kangaskhan dugtrio sandslash machamp venusaur jynx hitmontop gyarados">
+        <div class="npc-card-header" style="background: rgba(255, 200, 37, 0.12); border-bottom-color: rgba(255, 200, 37, 0.4); flex-wrap: wrap; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span class="npc-name" style="color: var(--edg-gold); font-size: 1.15rem;">&#9813; GIOVANNI (LÍDER ROCKET)</span>
+            <span style="background: rgba(255, 200, 37, 0.15); border: 1px solid var(--edg-gold); color: #fff; font-weight: 700; padding: 2px 7px; border-radius: var(--radius-sm); font-size: 0.7rem; font-family: var(--font-mono);">Requer 130 Vitórias</span>
           </div>
-          <span style="background: rgba(255, 200, 37, 0.15); border: 1px solid var(--edg-gold); color: #fff; font-weight: 700; padding: 3px 8px; border-radius: var(--radius-sm); font-size: 0.72rem; font-family: var(--font-mono);">Requer 130 Vitórias</span>
+          <div class="tier-mode-switcher" style="padding: 2px; gap: 3px;">
+            <button type="button" class="tier-mode-btn btn-mode-recomendado active" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('14', 'recomendado')">⭐ Meta</button>
+            <button type="button" class="tier-mode-btn btn-mode-izzonim" style="padding: 3px 9px; font-size: 0.72rem;" onclick="setCardRocketMode('14', 'izzonim')">🪙 by izzonim</button>
+          </div>
         </div>
         <div class="duel-legend-row" style="background: rgba(20, 15, 28, 0.9);">
           <span class="duel-legend-enemy">&#9664; INIMIGO (NPC)</span>
           <span></span>
           <span class="duel-legend-counter">SEU POKÉMON (RECOMENDADO) &#9654;</span>
         </div>
-        <div class="npc-duels" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 10px;">
+        <div class="npc-duels npc-duels-mode mode-recomendado active" id="content-14-recomendado">
           <div class="duel-row">
             <div class="duel-side enemy-side">
               <img src="assets/img/pokemon/sh_nidoqueen.png" loading="lazy" alt="SH Nidoqueen" class="poke-sprite">
@@ -1253,6 +2236,74 @@
             <div class="duel-vs">VS</div>
             <div class="duel-side counter-side">
               <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Gyarados</span></div>
+              <img src="assets/img/pokemon/gyarados.png" loading="lazy" alt="Gyarados" class="poke-sprite">
+            </div>
+          </div>
+        </div>
+        <div class="npc-duels npc-duels-mode mode-izzonim" id="content-14-izzonim">
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_nidoqueen.png" loading="lazy" alt="SH Nidoqueen" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Nidoqueen</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_persian.png" loading="lazy" alt="SH Persian" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Persian</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Machamp <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/machamp.png" loading="lazy" alt="Machamp" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_rhydon.png" loading="lazy" alt="SH Rhydon" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Rhydon</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Venusaur <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/venusaur.png" loading="lazy" alt="Venusaur" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_nidoking.png" loading="lazy" alt="SH Nidoking" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Nidoking</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Sandslash <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/sandslash.png" loading="lazy" alt="Sandslash" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_kangaskhan.png" loading="lazy" alt="SH Kangaskhan" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Kangaskhan</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Machamp <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
+              <img src="assets/img/pokemon/machamp.png" loading="lazy" alt="Machamp" class="poke-sprite">
+            </div>
+          </div>
+          <div class="duel-row">
+            <div class="duel-side enemy-side">
+              <img src="assets/img/pokemon/sh_dugtrio.png" loading="lazy" alt="SH Dugtrio" class="poke-sprite">
+              <div class="poke-info"><span class="poke-name"><img src="assets/img/shiny_stars.svg" alt="Shiny" class="shiny-star-icon"> SH Dugtrio</span></div>
+            </div>
+            <div class="duel-vs">VS</div>
+            <div class="duel-side counter-side">
+              <div class="poke-info" style="align-items: flex-end;"><span class="poke-name">Gyarados <span style="font-size: 0.65rem; background: rgba(112, 223, 142, 0.15); color: #70df8e; border: 1px solid rgba(112, 223, 142, 0.4); border-radius: 3px; padding: 1px 4px; margin-left: 4px; font-weight: 700;">Core</span></span></div>
               <img src="assets/img/pokemon/gyarados.png" loading="lazy" alt="Gyarados" class="poke-sprite">
             </div>
           </div>
@@ -1366,6 +2417,41 @@
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/animations.js" defer></script>
   <script>
+    let currentGlobalRocketMode = 'recomendado';
+
+    function setGlobalRocketMode(mode) {
+      currentGlobalRocketMode = mode;
+      document.getElementById('globalBtnRecomendado').classList.toggle('active', mode === 'recomendado');
+      document.getElementById('globalBtnIzzonim').classList.toggle('active', mode === 'izzonim');
+
+      document.querySelectorAll('.npc-card').forEach(card => {
+        const id = card.id.replace('card-', '');
+        setCardRocketMode(id, mode);
+      });
+    }
+
+    function setCardRocketMode(cardId, mode) {
+      const card = document.getElementById(`card-${cardId}`);
+      if (!card) return;
+
+      const btns = card.querySelectorAll('.npc-card-header .tier-mode-btn');
+      if (btns.length >= 2) {
+        btns[0].classList.toggle('active', mode === 'recomendado');
+        btns[1].classList.toggle('active', mode === 'izzonim');
+      }
+
+      const cRec = document.getElementById(`content-${cardId}-recomendado`);
+      const cIzz = document.getElementById(`content-${cardId}-izzonim`);
+      if (cRec && cIzz) {
+        cRec.classList.toggle('active', mode === 'recomendado');
+        cIzz.classList.toggle('active', mode === 'izzonim');
+        const activeContent = mode === 'recomendado' ? cRec : cIzz;
+        activeContent.style.animation = 'none';
+        void activeContent.offsetWidth;
+        activeContent.style.animation = '';
+      }
+    }
+
     // Filtro dinâmico com debounce para melhor performance
     const npcSearch = document.getElementById('npcSearch');
     const npcCards = document.querySelectorAll('.npc-card');
