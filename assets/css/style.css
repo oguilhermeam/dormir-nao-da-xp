@@ -93,6 +93,13 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  animation: pageEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+body.is-page-transitioning {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.16s ease-out, transform 0.16s ease-out;
 }
 
 a {
@@ -1638,12 +1645,84 @@ a {
   }
 }
 
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Transição e feedback visual suave ao navegar para seções */
+.section-target-highlight {
+  animation: sectionTargetPulse 1.2s ease-out forwards;
+}
+
+@keyframes sectionTargetPulse {
+  0% {
+    box-shadow: 0 0 0 2px rgba(255, 200, 37, 0.5), 0 0 20px rgba(255, 200, 37, 0.15);
+  }
+  60% {
+    box-shadow: 0 0 0 2px rgba(255, 200, 37, 0.2), 0 0 10px rgba(255, 200, 37, 0.05);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+/* Entrada escalonada de cards ao alternar abas/modos em Hoenn */
+.hoenn-element-panel.active .tier-mode-content.active .strategy-col,
+.hoenn-element-panel.active .tier-mode-content.active .poke-card {
+  animation: hoennCardEntrance 0.28s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.hoenn-element-panel.active .tier-mode-content.active .strategy-col:nth-child(1),
+.hoenn-element-panel.active .tier-mode-content.active .poke-card:nth-child(1) {
+  animation-delay: 0.02s;
+}
+
+.hoenn-element-panel.active .tier-mode-content.active .strategy-col:nth-child(2),
+.hoenn-element-panel.active .tier-mode-content.active .poke-card:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.hoenn-element-panel.active .tier-mode-content.active .strategy-col:nth-child(3),
+.hoenn-element-panel.active .tier-mode-content.active .poke-card:nth-child(3) {
+  animation-delay: 0.08s;
+}
+
+@keyframes hoennCardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal-ready,
-  .fade-in-up {
+  body {
+    animation: none !important;
+  }
+  body.is-page-transitioning {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  .reveal-ready,
+  .fade-in-up,
+  .section-target-highlight,
+  .hoenn-element-panel.active .tier-mode-content.active .strategy-col,
+  .hoenn-element-panel.active .tier-mode-content.active .poke-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
   }
   @keyframes btn-ripple { to {} }
   @keyframes pulse-dot { 0%, 100% {} }

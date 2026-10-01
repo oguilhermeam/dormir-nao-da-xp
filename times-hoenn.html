@@ -3388,7 +3388,13 @@
       });
 
       document.querySelectorAll('.hoenn-element-panel').forEach(panel => {
-        panel.classList.toggle('active', panel.id === `panel-${targetId}`);
+        const isTarget = panel.id === `panel-${targetId}`;
+        panel.classList.toggle('active', isTarget);
+        if (isTarget) {
+          panel.style.animation = 'none';
+          void panel.offsetWidth;
+          panel.style.animation = '';
+        }
       });
     }
 
@@ -3415,12 +3421,16 @@
         btns[1].classList.toggle('active', mode === 'plus');
       }
 
-      // Alterna conteúdo interno
+      // Alterna conteúdo interno com animação fluida
       const cInicial = document.getElementById(`content-${cardId}-inicial`);
       const cPlus = document.getElementById(`content-${cardId}-plus`);
       if (cInicial && cPlus) {
         cInicial.classList.toggle('active', mode === 'inicial');
         cPlus.classList.toggle('active', mode === 'plus');
+        const activeContent = mode === 'inicial' ? cInicial : cPlus;
+        activeContent.style.animation = 'none';
+        void activeContent.offsetWidth;
+        activeContent.style.animation = '';
       }
     }
   </script>

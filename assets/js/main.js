@@ -6,8 +6,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   initSearchAndFilter();
   initKeyboardShortcuts();
-  initSmoothScroll();
 });
+
+// Utilitário para evitar execuções excessivas e quedas de frame (debouncing)
+function debounce(fn, delay = 100) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
 
 // Busca em tempo real e filtros de categorias
 function initSearchAndFilter() {
@@ -21,6 +29,7 @@ function initSearchAndFilter() {
   let searchTerm = '';
 
   function filterCards() {
+    let visibleCount = 0;
     cards.forEach(card => {
       const title = (card.getAttribute('data-title') || '').toLowerCase();
       const desc = (card.getAttribute('data-desc') || '').toLowerCase();
@@ -36,6 +45,7 @@ function initSearchAndFilter() {
 
       if (matchesSearch && matchesCategory) {
         card.style.display = 'flex';
+        visibleCount++;
       } else {
         card.style.display = 'none';
       }
@@ -44,16 +54,15 @@ function initSearchAndFilter() {
     // Feedback de estado vazio se nenhum card for encontrado
     const noResultsEl = document.getElementById('noResults');
     if (noResultsEl) {
-      const visibleCount = Array.from(cards).filter(c => c.style.display !== 'none').length;
       noResultsEl.style.display = visibleCount === 0 ? 'block' : 'none';
     }
   }
 
   if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
+    searchInput.addEventListener('input', debounce((e) => {
       searchTerm = e.target.value.trim().toLowerCase();
       filterCards();
-    });
+    }, 100));
   }
 
   filterButtons.forEach(btn => {
@@ -79,23 +88,5 @@ function initKeyboardShortcuts() {
       searchInput.focus();
       searchInput.select();
     }
-  });
-}
-
-// Suavização do scroll para links do sumário (TOC)
-function initSmoothScroll() {
-  const tocLinks = document.querySelectorAll('.guide-toc-link');
-  tocLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      if (targetId && targetId.startsWith('#')) {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          e.preventDefault();
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-          history.pushState(null, '', targetId);
-        }
-      }
-    });
   });
 }

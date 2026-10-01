@@ -1286,40 +1286,48 @@
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/animations.js" defer></script>
   <script>
-    // Filtro dinâmico
+    // Filtro dinâmico com debounce para melhor performance
     const npcSearch = document.getElementById('npcSearch');
     const npcCards = document.querySelectorAll('.npc-card');
 
     if (npcSearch) {
+      let npcTimer;
       npcSearch.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
-        npcCards.forEach(card => {
-          const data = (card.getAttribute('data-npc') || '').toLowerCase();
-          card.style.display = (!query || data.includes(query)) ? 'flex' : 'none';
-        });
+        clearTimeout(npcTimer);
+        npcTimer = setTimeout(() => {
+          const query = e.target.value.toLowerCase().trim();
+          npcCards.forEach(card => {
+            const data = (card.getAttribute('data-npc') || '').toLowerCase();
+            card.style.display = (!query || data.includes(query)) ? 'flex' : 'none';
+          });
+        }, 80);
       });
     }
 
     // Modal Lightbox do Mapa
     function openMapModal() {
-      document.getElementById('mapModal').classList.add('active');
+      const modal = document.getElementById('mapModal');
+      if (modal) modal.classList.add('active');
     }
 
     function closeMapModal(e) {
-      document.getElementById('mapModal').classList.remove('active');
+      const modal = document.getElementById('mapModal');
+      if (modal) modal.classList.remove('active');
     }
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeMapModal();
     });
 
-    // Edição do time barato
+    // Edição do time barato com sanitização de tamanho
     const btnEdit = document.getElementById('btnEditBudget');
     if (btnEdit) {
       btnEdit.addEventListener('click', () => {
-        const customNote = prompt("Insira anotações ou pokémons extras do seu time barato:", localStorage.getItem('dndxp_budget_notes') || '');
+        const stored = localStorage.getItem('dndxp_budget_notes') || '';
+        const customNote = prompt("Insira anotações ou pokémons extras do seu time barato:", stored);
         if (customNote !== null) {
-          localStorage.setItem('dndxp_budget_notes', customNote);
+          const safeNote = customNote.trim().slice(0, 500);
+          localStorage.setItem('dndxp_budget_notes', safeNote);
           alert("Anotação salva com sucesso no seu navegador!");
         }
       });
