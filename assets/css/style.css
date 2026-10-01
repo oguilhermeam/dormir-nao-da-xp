@@ -1755,6 +1755,7 @@ a {
 
 /* ==========================================================================
    CHECKLIST / ACCORDION DE POKÉMONS NECESSÁRIOS (EQUIPE ROCKET)
+   Design: Formato Pílula (Pill), Animações Fluidas de Entrada e Destaque Tático
    ========================================================================== */
 .rocket-roster-panel {
   background: var(--bg-surface);
@@ -1764,7 +1765,7 @@ a {
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rocket-roster-panel::before {
@@ -1836,6 +1837,7 @@ a {
   flex-wrap: wrap;
 }
 
+/* Badge em Formato Pílula */
 .roster-count-badge {
   font-size: 0.72rem;
   font-family: var(--font-mono);
@@ -1843,8 +1845,8 @@ a {
   background: var(--counter-badge);
   color: var(--counter-text);
   border: 1px solid var(--counter-border);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
+  padding: 3px 12px;
+  border-radius: 9999px;
   transition: all 0.2s ease;
 }
 
@@ -1866,6 +1868,7 @@ a {
   flex-shrink: 0;
 }
 
+/* Botão de Toggle em Formato Pílula */
 .roster-toggle-action {
   display: inline-flex;
   align-items: center;
@@ -1876,14 +1879,15 @@ a {
   color: var(--counter-text);
   background: var(--bg-elevated);
   border: 1px solid var(--border-card);
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  transition: all 0.2s ease;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .roster-header-toggle:hover .roster-toggle-action {
   border-color: var(--counter-border);
   background: var(--bg-darker);
+  transform: translateY(-1px);
 }
 
 .rocket-roster-panel.mode-recomendado .roster-toggle-action {
@@ -1895,7 +1899,7 @@ a {
 }
 
 .roster-arrow-icon {
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rocket-roster-panel.is-open .roster-arrow-icon {
@@ -1905,26 +1909,28 @@ a {
 .roster-collapsible-content {
   padding: 0 18px 18px 18px;
   border-top: 1px solid var(--border-subtle);
-  animation: fadeIn 0.2s ease;
+  animation: fadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Container Flexível dos Chips em Pílula */
 .roster-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   padding-top: 14px;
 }
 
+/* CHIP FORMATO PÍLULA (PILL) */
 .roster-chip {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   background: var(--bg-elevated);
   border: 1px solid var(--border-card);
-  border-radius: var(--radius-sm);
-  padding: 6px 10px;
+  border-radius: 9999px; /* Formato pílula autêntico */
+  padding: 4px 14px 4px 5px;
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: left;
   user-select: none;
   font-family: inherit;
@@ -1934,54 +1940,178 @@ a {
 .roster-chip:hover {
   background: var(--bg-surface-hover);
   border-color: var(--counter-border);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 12px rgba(112, 223, 142, 0.2);
+}
+
+.roster-chip:active {
+  transform: translateY(0) scale(0.97);
 }
 
 .rocket-roster-panel.mode-recomendado .roster-chip:hover {
   border-color: rgba(255, 200, 37, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 200, 37, 0.2);
 }
 
 .roster-chip.selected {
-  background: var(--counter-bg);
+  background: linear-gradient(135deg, rgba(51, 152, 75, 0.3) 0%, rgba(17, 19, 24, 0.95) 100%);
   border-color: var(--counter-text);
-  box-shadow: 0 0 10px rgba(112, 223, 142, 0.25);
+  box-shadow: 0 0 16px rgba(112, 223, 142, 0.38);
+  transform: translateY(-1px) scale(1.02);
 }
 
 .rocket-roster-panel.mode-recomendado .roster-chip.selected {
-  background: rgba(255, 200, 37, 0.1);
+  background: linear-gradient(135deg, rgba(255, 200, 37, 0.22) 0%, rgba(17, 19, 24, 0.95) 100%);
   border-color: var(--edg-gold);
-  box-shadow: 0 0 10px rgba(255, 200, 37, 0.25);
+  box-shadow: 0 0 16px rgba(255, 200, 37, 0.38);
 }
 
 .roster-chip-sprite-wrap {
   width: 28px;
   height: 28px;
+  border-radius: 9999px; /* Círculo perfeito */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.roster-chip:hover .roster-chip-sprite-wrap,
+.roster-chip.selected .roster-chip-sprite-wrap {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.65);
 }
 
 .roster-chip-sprite {
-  max-width: 24px;
-  max-height: 24px;
+  max-width: 22px;
+  max-height: 22px;
   object-fit: contain;
   image-rendering: auto;
 }
 
 .roster-chip-name {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: #fff;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  padding-right: 2px;
+}
+
+/* ==========================================================================
+   BARRA DE STATUS DO FILTRO (FORMATO PÍLULA)
+   ========================================================================== */
+.filter-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--counter-border);
+  border-radius: 9999px;
+  padding: 6px 14px 6px 18px;
+  margin-top: -12px;
+  margin-bottom: 20px;
+  animation: rocketCardEntrance 0.28s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.filter-status-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+}
+
+.filter-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--counter-text);
+  box-shadow: 0 0 10px var(--counter-text);
+  animation: pulse-dot 1.8s infinite;
+}
+
+.filter-clear-btn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  border-radius: 9999px;
+  padding: 3px 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.filter-clear-btn:hover {
+  background: rgba(234, 50, 60, 0.16);
+  border-color: rgba(234, 50, 60, 0.4);
+  color: #f58288;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   ANIMAÇÃO ESCALONADA DOS CARDS DA ROCKET AO FILTRAR
+   ========================================================================== */
+@keyframes rocketCardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-animate-in {
+  animation: rocketCardEntrance 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* ==========================================================================
+   DESTAQUE FLUÍDO DA LINHA DE DUELO AO FILTRAR UM POKÉMON
+   ========================================================================== */
+.duel-row.duel-highlighted {
+  background: rgba(112, 223, 142, 0.13) !important;
+  border-color: var(--counter-border) !important;
+  box-shadow: 0 0 16px rgba(112, 223, 142, 0.22);
+  transform: scale(1.012);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.duel-row.duel-highlighted .counter-side .poke-name {
+  color: #fff !important;
+  text-shadow: 0 0 8px rgba(112, 223, 142, 0.7);
+  font-weight: 800;
+}
+
+.duel-row.duel-highlighted .counter-side .poke-sprite {
+  filter: drop-shadow(0 0 7px rgba(112, 223, 142, 0.6));
+  transform: scale(1.1);
+  transition: transform 0.25s ease;
+}
+
+.mode-recomendado .duel-row.duel-highlighted {
+  background: rgba(255, 200, 37, 0.13) !important;
+  border-color: rgba(255, 200, 37, 0.45) !important;
+  box-shadow: 0 0 16px rgba(255, 200, 37, 0.22);
+}
+
+.mode-recomendado .duel-row.duel-highlighted .counter-side .poke-name {
+  text-shadow: 0 0 8px rgba(255, 200, 37, 0.7);
+}
+
+.mode-recomendado .duel-row.duel-highlighted .counter-side .poke-sprite {
+  filter: drop-shadow(0 0 7px rgba(255, 200, 37, 0.6));
 }
 
 @media (max-width: 768px) {
@@ -1993,15 +2123,21 @@ a {
     padding: 0 14px 14px 14px;
   }
   .roster-grid {
-    grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
     gap: 6px;
   }
   .roster-chip {
-    padding: 5px 8px;
+    padding: 4px 11px 4px 4px;
     gap: 6px;
   }
   .roster-chip-name {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
+  }
+  .filter-status-bar {
+    border-radius: var(--radius-md);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 14px;
   }
 }
 

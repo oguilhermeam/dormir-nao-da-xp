@@ -393,6 +393,17 @@
       </div>
     </div>
 
+    <!-- Barra de Status do Filtro (Formato Pílula) -->
+    <div class="filter-status-bar" id="filterStatusBar" style="display: none;">
+      <div class="filter-status-info">
+        <span class="filter-status-dot"></span>
+        <span id="filterStatusText">Filtrando counters</span>
+      </div>
+      <button type="button" class="filter-clear-btn" onclick="clearPokeFilter()">
+        Limpar Filtro &times;
+      </button>
+    </div>
+
     <!-- Grid de NPCs -->
     <div class="npc-grid" id="npcContainer">
 
@@ -2644,6 +2655,11 @@
         const id = card.id.replace('card-', '');
         setCardRocketMode(id, mode);
       });
+
+      // Se houver busca/filtro ativo, reaplica animation e highlight no novo modo
+      if (npcSearch && npcSearch.value) {
+        applyFilter(npcSearch.value);
+      }
     }
 
     function setCardRocketMode(cardId, mode) {
@@ -2683,9 +2699,65 @@
       }
     }
 
-    // Filtro dinâmico com busca e clique nos chips
+    // Filtro dinâmico com animação fluida (estilo Times Hoenn) e destaque no duelo
     const npcSearch = document.getElementById('npcSearch');
     const npcCards = document.querySelectorAll('.npc-card');
+    const filterStatusBar = document.getElementById('filterStatusBar');
+    const filterStatusText = document.getElementById('filterStatusText');
+
+    function applyFilter(query) {
+      const q = query.toLowerCase().trim();
+      let matchCount = 0;
+      let visibleIndex = 0;
+
+      npcCards.forEach(card => {
+        const data = (card.getAttribute('data-npc') || '').toLowerCase();
+        const text = card.textContent.toLowerCase();
+        const matches = !q || data.includes(q) || text.includes(q);
+
+        if (matches) {
+          card.style.display = 'flex';
+          matchCount++;
+          // Animação escalonada igual Times Hoenn
+          card.classList.remove('card-animate-in');
+          void card.offsetWidth;
+          card.style.animationDelay = `${Math.min(visibleIndex * 0.035, 0.28)}s`;
+          card.classList.add('card-animate-in');
+          visibleIndex++;
+        } else {
+          card.style.display = 'none';
+          card.classList.remove('card-animate-in');
+        }
+
+        // Destaca a linha de duelo exata onde o Pokémon participa
+        const currentActiveMode = currentGlobalRocketMode || 'izzonim';
+        const activeDuels = card.querySelector(`.npc-duels-mode.mode-${currentActiveMode}`) || card.querySelector(`.npc-duels-mode.active`);
+        if (activeDuels) {
+          activeDuels.querySelectorAll('.duel-row').forEach(row => {
+            const counterSide = row.querySelector('.counter-side');
+            const hasPoke = q && counterSide && counterSide.textContent.toLowerCase().includes(q);
+            row.classList.toggle('duel-highlighted', !!hasPoke);
+          });
+        }
+      });
+
+      // Atualiza estado selected nos chips em formato pílula
+      document.querySelectorAll('.roster-chip').forEach(chip => {
+        const chipPoke = (chip.getAttribute('data-poke') || '').toLowerCase();
+        chip.classList.toggle('selected', !!q && chipPoke === q);
+      });
+
+      // Atualiza a barra de status do filtro
+      if (filterStatusBar && filterStatusText) {
+        if (q) {
+          filterStatusBar.style.display = 'flex';
+          const capitalized = q.charAt(0).toUpperCase() + q.slice(1);
+          filterStatusText.innerHTML = `Mostrando duelos onde <strong>${capitalized}</strong> é counter (${matchCount} NPC${matchCount === 1 ? '' : 's'} encontrado${matchCount === 1 ? '' : 's'})`;
+        } else {
+          filterStatusBar.style.display = 'none';
+        }
+      }
+    }
 
     function filterByRosterPokemon(pokeQuery) {
       if (!npcSearch) return;
@@ -2695,19 +2767,23 @@
 
       if (isAlreadyActive) {
         npcSearch.value = '';
+        applyFilter('');
       } else {
         npcSearch.value = normalized;
-      }
+        applyFilter(normalized);
 
-      // Dispara o evento de input para filtrar cards e atualizar os chips
-      npcSearch.dispatchEvent(new Event('input'));
-
-      // Se filtrou, rola suavemente até os cards
-      if (!isAlreadyActive) {
-        const npcContainer = document.getElementById('npcContainer');
-        if (npcContainer) {
-          npcContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Scroll suave até a área de duelos / barra de status
+        const targetSection = filterStatusBar || document.getElementById('npcContainer');
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
+      }
+    }
+
+    function clearPokeFilter() {
+      if (npcSearch) {
+        npcSearch.value = '';
+        applyFilter('');
       }
     }
 
@@ -2716,20 +2792,7 @@
       npcSearch.addEventListener('input', (e) => {
         clearTimeout(npcTimer);
         npcTimer = setTimeout(() => {
-          const query = e.target.value.toLowerCase().trim();
-
-          // Atualiza visibilidade dos cards
-          npcCards.forEach(card => {
-            const data = (card.getAttribute('data-npc') || '').toLowerCase();
-            const text = card.textContent.toLowerCase();
-            card.style.display = (!query || data.includes(query) || text.includes(query)) ? 'flex' : 'none';
-          });
-
-          // Atualiza estado selected nos chips
-          document.querySelectorAll('.roster-chip').forEach(chip => {
-            const chipPoke = (chip.getAttribute('data-poke') || '').toLowerCase();
-            chip.classList.toggle('selected', !!query && chipPoke === query);
-          });
+          applyFilter(e.target.value);
         }, 80);
       });
     }
