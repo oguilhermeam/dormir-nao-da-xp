@@ -393,10 +393,9 @@
       </div>
     </div>
 
-    <!-- Barra de Status do Filtro (Formato Pílula) -->
+    <!-- Barra de Status do Filtro (Sóbria) -->
     <div class="filter-status-bar" id="filterStatusBar" style="display: none;">
       <div class="filter-status-info">
-        <span class="filter-status-dot"></span>
         <span id="filterStatusText">Filtrando counters</span>
       </div>
       <button type="button" class="filter-clear-btn" onclick="clearPokeFilter()">
@@ -2771,9 +2770,9 @@
           filterStatusBar.style.display = 'flex';
           const capitalized = q.charAt(0).toUpperCase() + q.slice(1);
           if (filterType === 'roster') {
-            filterStatusText.innerHTML = `Mostrando duelos onde <strong>${capitalized}</strong> é o seu counter (${matchCount} NPC${matchCount === 1 ? '' : 's'} encontrado${matchCount === 1 ? '' : 's'})`;
+            filterStatusText.innerHTML = `Mostrando duelos onde <strong>${capitalized}</strong> é counter &bull; ${matchCount} NPC${matchCount === 1 ? '' : 's'}`;
           } else {
-            filterStatusText.innerHTML = `Resultados da busca por "<strong>${q}</strong>" (${matchCount} NPC${matchCount === 1 ? '' : 's'} encontrado${matchCount === 1 ? '' : 's'})`;
+            filterStatusText.innerHTML = `Busca por <strong>${q}</strong> &bull; ${matchCount} NPC${matchCount === 1 ? '' : 's'}`;
           }
         } else {
           filterStatusBar.style.display = 'none';

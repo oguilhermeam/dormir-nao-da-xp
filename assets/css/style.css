@@ -1755,40 +1755,22 @@ a {
 
 /* ==========================================================================
    CHECKLIST / ACCORDION DE POKÉMONS NECESSÁRIOS (EQUIPE ROCKET)
-   Design: Formato Pílula (Pill), Animações Fluidas de Entrada e Destaque Tático
+   Estilo: Dark Minimalista (Sem brilho neon, sem sombras coloridas)
    ========================================================================== */
 .rocket-roster-panel {
   background: var(--bg-surface);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  margin-bottom: 22px;
-  position: relative;
+  margin-bottom: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.rocket-roster-panel::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--counter-text) 0%, rgba(112, 223, 142, 0.2) 50%, transparent 100%);
-  pointer-events: none;
-  transition: background 0.3s ease;
-}
-
-.rocket-roster-panel.mode-recomendado::before {
-  background: linear-gradient(90deg, var(--edg-gold) 0%, rgba(255, 200, 37, 0.2) 50%, transparent 100%);
+  transition: border-color 0.15s ease;
 }
 
 .roster-header-toggle {
   width: 100%;
-  background: none;
+  background: transparent;
   border: none;
-  padding: 14px 18px;
+  padding: 12px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1797,7 +1779,7 @@ a {
   text-align: left;
   color: inherit;
   font-family: inherit;
-  transition: background-color 0.16s ease;
+  transition: background-color 0.15s ease;
 }
 
 .roster-header-toggle:hover {
@@ -1816,20 +1798,15 @@ a {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--counter-text);
+  color: var(--text-muted);
   font-family: var(--font-mono);
   margin-bottom: 3px;
-  transition: color 0.2s ease;
-}
-
-.rocket-roster-panel.mode-recomendado .roster-badge-label {
-  color: var(--edg-gold);
 }
 
 .roster-title {
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-white);
   margin: 0 0 2px 0;
   display: flex;
   align-items: center;
@@ -1837,23 +1814,16 @@ a {
   flex-wrap: wrap;
 }
 
-/* Badge em Formato Pílula */
+/* Badge simples e sóbrio */
 .roster-count-badge {
   font-size: 0.72rem;
   font-family: var(--font-mono);
   font-weight: 700;
-  background: var(--counter-badge);
-  color: var(--counter-text);
-  border: 1px solid var(--counter-border);
-  padding: 3px 12px;
+  background: var(--bg-darker);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-card);
+  padding: 2px 10px;
   border-radius: 9999px;
-  transition: all 0.2s ease;
-}
-
-.rocket-roster-panel.mode-recomendado .roster-count-badge {
-  background: rgba(255, 200, 37, 0.12);
-  color: var(--edg-gold);
-  border-color: rgba(255, 200, 37, 0.35);
 }
 
 .roster-desc {
@@ -1868,38 +1838,29 @@ a {
   flex-shrink: 0;
 }
 
-/* Botão de Toggle em Formato Pílula */
+/* Botão de Toggle sóbrio */
 .roster-toggle-action {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 700;
   font-family: var(--font-mono);
-  color: var(--counter-text);
-  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  background: var(--bg-darker);
   border: 1px solid var(--border-card);
   padding: 6px 14px;
   border-radius: 9999px;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.15s ease;
 }
 
 .roster-header-toggle:hover .roster-toggle-action {
-  border-color: var(--counter-border);
-  background: var(--bg-darker);
-  transform: translateY(-1px);
-}
-
-.rocket-roster-panel.mode-recomendado .roster-toggle-action {
-  color: var(--edg-gold);
-}
-
-.rocket-roster-panel.mode-recomendado .roster-header-toggle:hover .roster-toggle-action {
-  border-color: rgba(255, 200, 37, 0.4);
+  border-color: var(--border-hover);
+  color: var(--text-white);
 }
 
 .roster-arrow-icon {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.2s ease;
 }
 
 .rocket-roster-panel.is-open .roster-arrow-icon {
@@ -1907,9 +1868,8 @@ a {
 }
 
 .roster-collapsible-content {
-  padding: 0 18px 18px 18px;
-  border-top: 1px solid var(--border-subtle);
-  animation: fadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0 18px 16px 18px;
+  border-top: 1px solid var(--border-card);
 }
 
 /* Container Flexível dos Chips em Pílula */
@@ -1920,128 +1880,96 @@ a {
   padding-top: 14px;
 }
 
-/* CHIP FORMATO PÍLULA (PILL) */
+/* CHIP FORMATO PÍLULA — ESTILO SÓBRIO IGUAL HOENN */
 .roster-chip {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--bg-elevated);
+  background: var(--bg-darker);
   border: 1px solid var(--border-card);
-  border-radius: 9999px; /* Formato pílula autêntico */
-  padding: 4px 14px 4px 5px;
+  border-radius: 9999px;
+  padding: 4px 12px 4px 6px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   text-align: left;
   user-select: none;
   font-family: inherit;
-  color: inherit;
+  color: var(--text-secondary);
 }
 
 .roster-chip:hover {
   background: var(--bg-surface-hover);
-  border-color: var(--counter-border);
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 12px rgba(112, 223, 142, 0.2);
-}
-
-.roster-chip:active {
-  transform: translateY(0) scale(0.97);
-}
-
-.rocket-roster-panel.mode-recomendado .roster-chip:hover {
-  border-color: rgba(255, 200, 37, 0.4);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 200, 37, 0.2);
+  border-color: var(--border-hover);
+  color: var(--text-white);
+  transform: translateY(-1px);
 }
 
 .roster-chip.selected {
-  background: linear-gradient(135deg, rgba(51, 152, 75, 0.3) 0%, rgba(17, 19, 24, 0.95) 100%);
-  border-color: var(--counter-text);
-  box-shadow: 0 0 16px rgba(112, 223, 142, 0.38);
-  transform: translateY(-1px) scale(1.02);
+  background: var(--bg-elevated);
+  border-color: rgba(112, 223, 142, 0.6);
+  color: #70df8e;
 }
 
 .rocket-roster-panel.mode-recomendado .roster-chip.selected {
-  background: linear-gradient(135deg, rgba(255, 200, 37, 0.22) 0%, rgba(17, 19, 24, 0.95) 100%);
-  border-color: var(--edg-gold);
-  box-shadow: 0 0 16px rgba(255, 200, 37, 0.38);
+  border-color: rgba(255, 200, 37, 0.6);
+  color: #ffc825;
 }
 
 .roster-chip-sprite-wrap {
-  width: 28px;
-  height: 28px;
-  border-radius: 9999px; /* Círculo perfeito */
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.roster-chip:hover .roster-chip-sprite-wrap,
-.roster-chip.selected .roster-chip-sprite-wrap {
-  transform: scale(1.1);
-  background: rgba(0, 0, 0, 0.65);
 }
 
 .roster-chip-sprite {
   max-width: 22px;
   max-height: 22px;
   object-fit: contain;
-  image-rendering: auto;
 }
 
 .roster-chip-name {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 600;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding-right: 2px;
+  gap: 4px;
 }
 
 /* ==========================================================================
-   BARRA DE STATUS DO FILTRO (FORMATO PÍLULA)
+   BARRA DE STATUS DO FILTRO — SÓBRIA, SEM NEON
    ========================================================================== */
 .filter-status-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  background: var(--bg-surface);
-  border: 1px solid var(--counter-border);
-  border-radius: 9999px;
-  padding: 6px 14px 6px 18px;
-  margin-top: -12px;
-  margin-bottom: 20px;
-  animation: rocketCardEntrance 0.28s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  padding: 0 4px;
+  margin-top: -8px;
+  margin-bottom: 16px;
 }
 
 .filter-status-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-size: 0.82rem;
-  color: var(--text-primary);
+  color: var(--text-muted);
 }
 
-.filter-status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--counter-text);
-  box-shadow: 0 0 10px var(--counter-text);
-  animation: pulse-dot 1.8s infinite;
+.filter-status-info strong {
+  color: var(--text-white);
 }
 
 .filter-clear-btn {
   background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-card);
   color: var(--text-secondary);
   border-radius: 9999px;
   padding: 3px 12px;
@@ -2049,69 +1977,53 @@ a {
   font-weight: 700;
   font-family: var(--font-mono);
   cursor: pointer;
-  transition: all 0.16s ease;
+  transition: all 0.15s ease;
 }
 
 .filter-clear-btn:hover {
-  background: rgba(234, 50, 60, 0.16);
-  border-color: rgba(234, 50, 60, 0.4);
-  color: #f58288;
-  transform: translateY(-1px);
+  background: var(--bg-surface-hover);
+  border-color: var(--border-hover);
+  color: var(--text-white);
 }
 
 /* ==========================================================================
-   ANIMAÇÃO ESCALONADA DOS CARDS DA ROCKET AO FILTRAR
+   ANIMAÇÃO SUTIL DE ENTRADA AO FILTRAR
    ========================================================================== */
 @keyframes rocketCardEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(14px) scale(0.98);
+  from {
+    opacity: 0.3;
+    transform: translateY(4px);
   }
-  100% {
+  to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
 .card-animate-in {
-  animation: rocketCardEntrance 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation: rocketCardEntrance 0.2s ease-out backwards;
 }
 
 /* ==========================================================================
-   DESTAQUE FLUÍDO DA LINHA DE DUELO AO FILTRAR UM POKÉMON
+   DESTAQUE LIMPO DA LINHA DE DUELO — SEM BRILHO NEON, SEM DROP SHADOW
    ========================================================================== */
 .duel-row.duel-highlighted {
-  background: rgba(112, 223, 142, 0.13) !important;
-  border-color: var(--counter-border) !important;
-  box-shadow: 0 0 16px rgba(112, 223, 142, 0.22);
-  transform: scale(1.012);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(51, 152, 75, 0.12) !important;
+  border-color: rgba(58, 197, 79, 0.35) !important;
 }
 
 .duel-row.duel-highlighted .counter-side .poke-name {
-  color: #fff !important;
-  text-shadow: 0 0 8px rgba(112, 223, 142, 0.7);
-  font-weight: 800;
-}
-
-.duel-row.duel-highlighted .counter-side .poke-sprite {
-  filter: drop-shadow(0 0 7px rgba(112, 223, 142, 0.6));
-  transform: scale(1.1);
-  transition: transform 0.25s ease;
+  color: #70df8e !important;
+  font-weight: 700;
 }
 
 .mode-recomendado .duel-row.duel-highlighted {
-  background: rgba(255, 200, 37, 0.13) !important;
-  border-color: rgba(255, 200, 37, 0.45) !important;
-  box-shadow: 0 0 16px rgba(255, 200, 37, 0.22);
+  background: rgba(255, 200, 37, 0.09) !important;
+  border-color: rgba(255, 200, 37, 0.3) !important;
 }
 
 .mode-recomendado .duel-row.duel-highlighted .counter-side .poke-name {
-  text-shadow: 0 0 8px rgba(255, 200, 37, 0.7);
-}
-
-.mode-recomendado .duel-row.duel-highlighted .counter-side .poke-sprite {
-  filter: drop-shadow(0 0 7px rgba(255, 200, 37, 0.6));
+  color: #ffc825 !important;
 }
 
 @media (max-width: 768px) {
@@ -2126,18 +2038,11 @@ a {
     gap: 6px;
   }
   .roster-chip {
-    padding: 4px 11px 4px 4px;
+    padding: 4px 10px 4px 4px;
     gap: 6px;
   }
   .roster-chip-name {
     font-size: 0.72rem;
-  }
-  .filter-status-bar {
-    border-radius: var(--radius-md);
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 10px 14px;
   }
 }
 
