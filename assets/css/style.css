@@ -457,11 +457,74 @@ a {
 }
 
 /* Grid de NPCs */
+.npc-grid-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+}
+
+.npc-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.npc-toolbar-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: 0.02em;
+}
+
+.npc-toolbar-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.npc-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-toolbar-toggle {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-card);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-sans);
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-toolbar-toggle:hover {
+  background: var(--bg-hover);
+  color: var(--text-white);
+  border-color: var(--border-hover);
+}
+
 .npc-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
-  gap: 14px;
-  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 960px;
+  margin: 0 auto 48px auto;
 }
 
 .npc-card {
@@ -473,51 +536,190 @@ a {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.18s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
 
 .npc-card:hover {
-  transform: translateY(-2px);
   border-color: var(--border-hover);
+}
+
+.npc-card.open {
+  border-color: rgba(99, 102, 241, 0.45);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .npc-card-giovanni {
-  grid-column: 1 / -1;
-  border: 1px solid rgba(255, 200, 37, 0.4);
+  border: 1px solid rgba(255, 200, 37, 0.35);
   background: linear-gradient(180deg, #18151f 0%, var(--bg-surface) 100%);
 }
 
-.npc-card-giovanni .npc-duels {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 6px 12px;
+.npc-card-giovanni.open {
+  border-color: var(--edg-gold);
+  box-shadow: 0 8px 30px rgba(255, 200, 37, 0.12);
 }
 
+.npc-giovanni-badge {
+  background: rgba(255, 200, 37, 0.15);
+  border: 1px solid var(--edg-gold);
+  color: #fff;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+}
+
+/* Accordion Header */
 .npc-card-header {
   background: var(--bg-elevated);
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--border-card);
+  padding: 9px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.npc-card-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.npc-card.open .npc-card-header {
+  border-bottom: 1px solid var(--border-card);
+}
+
+.npc-card-header:focus-visible {
+  outline: 2px solid var(--accent-primary, #6366f1);
+  outline-offset: -2px;
+}
+
+.npc-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .npc-name {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.98rem;
+  font-weight: 800;
   color: var(--text-white);
   letter-spacing: 0.04em;
   font-family: var(--font-sans);
-  font-weight: 800;
+}
+
+.npc-num-badge {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.npc-header-preview {
+  display: flex;
+  align-items: center;
+  margin-left: 6px;
+  margin-right: auto;
+}
+
+.npc-header-enemies {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 3px 8px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.npc-enemy-thumb {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.npc-card:hover .npc-enemy-thumb {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+@media (max-width: 680px) {
+  .npc-header-preview {
+    display: none;
+  }
+}
+
+.npc-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.npc-accordion-action {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+
+.npc-chevron {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.npc-card:hover .npc-chevron {
+  color: var(--text-white);
+}
+
+.npc-card.open .npc-chevron {
+  transform: rotate(180deg);
+  color: var(--accent-primary, #6366f1);
+}
+
+.npc-card-giovanni.open .npc-chevron {
+  color: var(--edg-gold);
+}
+
+/* Accordion Body */
+.npc-card-body {
+  display: none;
+}
+
+.npc-card.open .npc-card-body {
+  display: block;
+  animation: rocketAccordionFade 0.2s ease-out;
+}
+
+@keyframes rocketAccordionFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Indicador Claro de Colunas: Inimigo vs Recomendado */
 .duel-legend-row {
-  display: grid;
-  grid-template-columns: 1fr 20px 1fr;
-  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 14px;
   background: var(--bg-darker);
   border-bottom: 1px solid var(--border-subtle);
   font-size: 0.68rem;
@@ -544,10 +746,10 @@ a {
 
 /* Duelos */
 .npc-duels {
-  padding: 8px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 8px 12px;
 }
 
 .duel-row {
@@ -1349,14 +1551,10 @@ a {
 }
 
 .npc-duels.npc-duels-mode.active {
-  display: flex !important;
-  animation: hoennTabFade 0.22s ease-out;
-}
-
-.npc-card-giovanni .npc-duels.npc-duels-mode.active {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 10px;
+  gap: 8px 12px;
+  animation: hoennTabFade 0.22s ease-out;
 }
 
 .tier-mode-content {
