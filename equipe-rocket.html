@@ -2658,7 +2658,7 @@
 
       // Se houver busca/filtro ativo, reaplica animation e highlight no novo modo
       if (npcSearch && npcSearch.value) {
-        applyFilter(npcSearch.value);
+        applyFilter(npcSearch.value, currentFilterType);
       }
     }
 
@@ -2704,16 +2704,45 @@
     const npcCards = document.querySelectorAll('.npc-card');
     const filterStatusBar = document.getElementById('filterStatusBar');
     const filterStatusText = document.getElementById('filterStatusText');
+    let currentFilterType = 'general'; // 'general' ou 'roster'
 
-    function applyFilter(query) {
+    function applyFilter(query, filterType = 'general') {
+      currentFilterType = filterType;
       const q = query.toLowerCase().trim();
       let matchCount = 0;
       let visibleIndex = 0;
 
       npcCards.forEach(card => {
-        const data = (card.getAttribute('data-npc') || '').toLowerCase();
-        const text = card.textContent.toLowerCase();
-        const matches = !q || data.includes(q) || text.includes(q);
+        const currentActiveMode = currentGlobalRocketMode || 'izzonim';
+        const activeDuels = card.querySelector(`.npc-duels-mode.mode-${currentActiveMode}`) || card.querySelector(`.npc-duels-mode.active`);
+        let hasCounterMatch = false;
+
+        if (activeDuels) {
+          activeDuels.querySelectorAll('.duel-row').forEach(row => {
+            const counterSide = row.querySelector('.counter-side');
+            const counterText = counterSide ? counterSide.textContent.toLowerCase() : '';
+            const isCounter = q && counterText.includes(q);
+            row.classList.toggle('duel-highlighted', !!isCounter);
+            if (isCounter) {
+              hasCounterMatch = true;
+            }
+          });
+        }
+
+        let matches = false;
+        if (!q) {
+          matches = true;
+        } else if (filterType === 'roster') {
+          // Quando vem do clique em um pokémon da lista (roster):
+          // SÓ mostra o NPC se ele for COUNTER no time ativo (evita mostrar NPC onde o pokémon é inimigo)
+          matches = hasCounterMatch;
+        } else {
+          // Busca textual digitada geral
+          const npcName = (card.querySelector('.npc-name') ? card.querySelector('.npc-name').textContent : '').toLowerCase();
+          const data = (card.getAttribute('data-npc') || '').toLowerCase();
+          const text = card.textContent.toLowerCase();
+          matches = hasCounterMatch || npcName.includes(q) || data.includes(q) || text.includes(q);
+        }
 
         if (matches) {
           card.style.display = 'flex';
@@ -2728,23 +2757,12 @@
           card.style.display = 'none';
           card.classList.remove('card-animate-in');
         }
-
-        // Destaca a linha de duelo exata onde o Pokémon participa
-        const currentActiveMode = currentGlobalRocketMode || 'izzonim';
-        const activeDuels = card.querySelector(`.npc-duels-mode.mode-${currentActiveMode}`) || card.querySelector(`.npc-duels-mode.active`);
-        if (activeDuels) {
-          activeDuels.querySelectorAll('.duel-row').forEach(row => {
-            const counterSide = row.querySelector('.counter-side');
-            const hasPoke = q && counterSide && counterSide.textContent.toLowerCase().includes(q);
-            row.classList.toggle('duel-highlighted', !!hasPoke);
-          });
-        }
       });
 
       // Atualiza estado selected nos chips em formato pílula
       document.querySelectorAll('.roster-chip').forEach(chip => {
         const chipPoke = (chip.getAttribute('data-poke') || '').toLowerCase();
-        chip.classList.toggle('selected', !!q && chipPoke === q);
+        chip.classList.toggle('selected', (filterType === 'roster') && !!q && chipPoke === q);
       });
 
       // Atualiza a barra de status do filtro
@@ -2752,7 +2770,11 @@
         if (q) {
           filterStatusBar.style.display = 'flex';
           const capitalized = q.charAt(0).toUpperCase() + q.slice(1);
-          filterStatusText.innerHTML = `Mostrando duelos onde <strong>${capitalized}</strong> é counter (${matchCount} NPC${matchCount === 1 ? '' : 's'} encontrado${matchCount === 1 ? '' : 's'})`;
+          if (filterType === 'roster') {
+            filterStatusText.innerHTML = `Mostrando duelos onde <strong>${capitalized}</strong> é o seu counter (${matchCount} NPC${matchCount === 1 ? '' : 's'} encontrado${matchCount === 1 ? '' : 's'})`;
+          } else {
+            filterStatusText.innerHTML = `Resultados da busca por "<strong>${q}</strong>" (${matchCount} NPC${matchCount === 1 ? '' : 's'} encontrado${matchCount === 1 ? '' : 's'})`;
+          }
         } else {
           filterStatusBar.style.display = 'none';
         }
@@ -2763,14 +2785,14 @@
       if (!npcSearch) return;
 
       const normalized = pokeQuery.toLowerCase().trim();
-      const isAlreadyActive = npcSearch.value.toLowerCase().trim() === normalized;
+      const isAlreadyActive = (currentFilterType === 'roster') && (npcSearch.value.toLowerCase().trim() === normalized);
 
       if (isAlreadyActive) {
         npcSearch.value = '';
-        applyFilter('');
+        applyFilter('', 'general');
       } else {
         npcSearch.value = normalized;
-        applyFilter(normalized);
+        applyFilter(normalized, 'roster');
 
         // Scroll suave até a área de duelos / barra de status
         const targetSection = filterStatusBar || document.getElementById('npcContainer');
@@ -2783,7 +2805,7 @@
     function clearPokeFilter() {
       if (npcSearch) {
         npcSearch.value = '';
-        applyFilter('');
+        applyFilter('', 'general');
       }
     }
 
@@ -2792,7 +2814,7 @@
       npcSearch.addEventListener('input', (e) => {
         clearTimeout(npcTimer);
         npcTimer = setTimeout(() => {
-          applyFilter(e.target.value);
+          applyFilter(e.target.value, 'general');
         }, 80);
       });
     }
