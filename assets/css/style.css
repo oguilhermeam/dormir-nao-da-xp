@@ -26,49 +26,50 @@
 }
 
 :root {
-  /* Dark Style - Base profunda e sóbria */
-  --bg-deep: #090a0d;              /* Preto carvão fosco */
-  --bg-surface: #111318;           /* Superfície de cards */
-  --bg-surface-hover: #161922;     /* Hover suave */
-  --bg-elevated: #1a1e29;         /* Painéis e barras secundárias */
-  --bg-darker: #0d0e12;
+  /* Dark Style Gamer Premium - Base profunda com atmosfera e profundidade */
+  --bg-deep: #07090e;              /* Preto azulado profundo */
+  --bg-surface: #0f131d;           /* Superfície de cards com tom game */
+  --bg-surface-hover: #151b28;     /* Hover suave */
+  --bg-elevated: #1a2233;         /* Painéis e barras secundárias */
+  --bg-darker: #0a0d14;
 
-  /* Bordas minimalistas */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-card: #1f232e;
-  --border-hover: #2d3345;
-  --border-focus: #3e4860;
+  /* Bordas refinadas com transparência elegante */
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-card: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
+  --border-focus: rgba(255, 255, 255, 0.28);
 
   /* Tipografia */
-  --text-white: #f5f6f8;
-  --text-primary: #e2e4e9;
-  --text-secondary: #9096a5;
-  --text-muted: #5e6473;
+  --text-white: #ffffff;
+  --text-primary: #e6e8ee;
+  --text-secondary: #949daf;
+  --text-muted: #5e6678;
 
   /* Lado Inimigo (Vermelho Dark Sóbrio) */
   --enemy-bg: rgba(234, 50, 60, 0.08);
-  --enemy-border: rgba(234, 50, 60, 0.3);
-  --enemy-text: #f58288;
-  --enemy-badge: #42161b;
+  --enemy-border: rgba(234, 50, 60, 0.25);
+  --enemy-text: #f87171;
+  --enemy-badge: #381216;
 
-  /* Lado Recomendado (Verde / Cyan Tático Sóbrio) */
-  --counter-bg: rgba(51, 152, 75, 0.09);
-  --counter-border: rgba(58, 197, 79, 0.35);
-  --counter-text: #70df8e;
-  --counter-badge: #143521;
+  /* Lado Recomendado (Verde Tático Sóbrio) */
+  --counter-bg: rgba(16, 185, 129, 0.08);
+  --counter-border: rgba(16, 185, 129, 0.3);
+  --counter-text: #34d399;
+  --counter-badge: #0f2e21;
 
-  /* Acentos Endesga 64 */
+  /* Acentos Gamer / Tier */
   --edg-red: #ea323c;
-  --edg-gold: #ffc825;
-  --edg-gold-subtle: rgba(255, 200, 37, 0.12);
-  --edg-shiny: #f389f5;
-  --edg-shiny-bg: rgba(243, 137, 245, 0.12);
+  --edg-gold: #f59e0b;
+  --edg-gold-subtle: rgba(245, 158, 11, 0.12);
+  --edg-shiny: #e879f9;
+  --edg-shiny-bg: rgba(232, 121, 249, 0.12);
 
-  --font-sans: 'JetBrains Mono', ui-monospace, 'Consolas', monospace;
+  /* Tipografia: Sans moderno para UI e Mono para números e códigos */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Consolas', monospace;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
 
 *, *::before, *::after {
@@ -88,11 +89,17 @@ html {
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-deep);
+  background-image: 
+    radial-gradient(ellipse 90% 50% at 50% -20%, rgba(30, 41, 59, 0.4) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(15, 23, 42, 0.25) 0%, transparent 60%);
+  background-attachment: fixed;
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: 1.55;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   animation: pageEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -119,11 +126,12 @@ a {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(9, 10, 13, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-card);
-  padding: 12px 0;
+  background: rgba(7, 9, 14, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 10px 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .nav-container {
@@ -160,11 +168,11 @@ a {
 .nav-link {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  transition: all 0.15s ease;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  transition: all 0.16s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -307,27 +315,33 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 16px 0;
+  margin: 14px 0 12px;
 }
 
 .reward-tag {
-  background: var(--bg-surface);
+  background: var(--bg-darker);
   border: 1px solid var(--border-card);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 500;
   color: var(--text-primary);
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  transition: border-color 0.15s ease;
+}
+
+.reward-tag:hover {
+  border-color: var(--border-hover);
 }
 
 .token-pill {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 0.75rem;
-  padding: 1px 6px;
-  border-radius: 3px;
+  font-size: 0.72rem;
+  padding: 1px 7px;
+  border-radius: 9999px;
 }
 
 .token-bronze { background: #5c3024; color: #f6ca9f; }
@@ -336,7 +350,9 @@ a {
 
 /* Minimap Card no cantinho */
 .minimap-card {
-  background: var(--bg-surface);
+  background: rgba(15, 19, 29, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
   padding: 14px;
@@ -412,19 +428,24 @@ a {
 
 .search-input {
   width: 100%;
-  background: var(--bg-surface);
+  background: rgba(15, 19, 29, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-card);
-  border-radius: var(--radius-sm);
-  padding: 12px 16px 12px 42px;
+  border-radius: var(--radius-md);
+  padding: 13px 18px 13px 44px;
   font-size: 0.92rem;
+  font-family: var(--font-sans);
   color: var(--text-white);
   outline: none;
-  transition: border-color 0.15s ease;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .search-input:focus {
-  border-color: var(--border-focus);
-  background: var(--bg-elevated);
+  border-color: var(--border-hover);
+  background: rgba(22, 28, 42, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .search-icon {
@@ -444,16 +465,22 @@ a {
 }
 
 .npc-card {
-  background: var(--bg-surface);
+  background: rgba(15, 19, 29, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .npc-card:hover {
+  transform: translateY(-2px);
   border-color: var(--border-hover);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .npc-card-giovanni {
@@ -482,7 +509,8 @@ a {
   font-weight: 700;
   color: var(--text-white);
   letter-spacing: 0.04em;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 800;
 }
 
 /* Indicador Claro de Colunas: Inimigo vs Recomendado */
@@ -524,19 +552,20 @@ a {
 
 .duel-row {
   display: grid;
-  grid-template-columns: 1fr 20px 1fr;
+  grid-template-columns: 1fr 24px 1fr;
   align-items: center;
-  background: rgba(9, 10, 13, 0.65);
+  background: rgba(10, 13, 20, 0.55);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 2px 6px;
-  gap: 4px;
-  min-height: 38px;
-  transition: background 0.12s ease;
+  padding: 4px 8px;
+  gap: 6px;
+  min-height: 42px;
+  transition: all 0.16s ease;
 }
 
 .duel-row:hover {
-  background: var(--bg-elevated);
+  background: rgba(22, 28, 42, 0.7);
+  border-color: var(--border-card);
 }
 
 .duel-side {
@@ -1276,9 +1305,9 @@ a {
   border: 1px solid transparent;
   background: transparent;
   color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.18s ease;
   user-select: none;
