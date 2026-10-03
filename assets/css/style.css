@@ -91,6 +91,40 @@ html {
   color-scheme: dark;
 }
 
+/* ==========================================================================
+   SCROLLBAR MINIMALISTA & MODERNA
+   ========================================================================== */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+}
+
+/* Chrome, Edge, Brave, Safari, WebKit */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  transition: background 120ms ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--teal);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 body {
   font-family: var(--font-body);
   font-size: 1rem;
@@ -2866,11 +2900,25 @@ html.mode-lite .table-responsive {
   border: 2px solid var(--bg-2);
   border-radius: var(--radius);
   box-shadow: var(--shadow-hard);
-  padding: 10px;
+  padding: 10px 8px 10px 10px;
   position: sticky;
   top: 70px;
   max-height: calc(100vh - 90px);
   overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.talents-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.talents-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+}
+
+.talents-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--teal);
 }
 
 @media (max-width: 860px) {
