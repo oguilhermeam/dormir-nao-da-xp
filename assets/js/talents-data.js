@@ -79,33 +79,33 @@ var TALENTS_DATA = {
       desc_pt: 'Seu personagem terá um aumento de 300 pontos de vida na sua vida máxima.',
       items: [
         {
-          id: 'item_claws_pink',
-          name: 'Pink Claws',
-          name_pt: 'Garras Rosas',
+          id: 'item_pink_wings',
+          name: 'Pink Wings',
           qty: 250,
-          icon: 'assets/img/talents/items/item_claws_pink.png',
+          icon: 'assets/img/talents/items/item_pink_wings.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Clefable',
+            sprite: 'assets/img/pokemon/clefable.png',
+            chance: '54.0%',
+            locations: [
+              'Ilha ao norte de Tangelo Island (subindo de Tangelo)'
+            ],
+            map_image: 'assets/img/talents/maps/map_shiny_clefable.png'
           }
         },
         {
-          id: 'item_spike_pink',
-          name: 'Pink Spike',
-          name_pt: 'Espinho Rosa',
+          id: 'item_wigglytuff_ear',
+          name: 'Wigglytuff Ear',
           qty: 250,
-          icon: 'assets/img/talents/items/item_spike_pink.png',
+          icon: 'assets/img/talents/items/item_wigglytuff_ear.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Wigglytuff',
+            sprite: 'assets/img/pokemon/wigglytuff.png',
+            chance: '54.0%',
+            locations: [
+              'Ilha ao norte de Tangelo Island (seguindo reto ao norte pelo mar)'
+            ],
+            map_image: 'assets/img/talents/maps/map_shiny_wigglytuff.png'
           }
         }
       ]
