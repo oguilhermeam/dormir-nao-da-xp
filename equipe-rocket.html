@@ -2864,11 +2864,27 @@
       }
     }
 
-    // Sistema Accordion para os Cards de NPCs da Rocket
+    // Sistema Accordion Exclusivo para os Cards de NPCs da Rocket (ao abrir 1, fecha os outros)
     function toggleNpcCard(cardId) {
       const card = document.getElementById(`card-${cardId}`);
       if (!card) return;
-      const isOpen = card.classList.toggle('open');
+      const isCurrentlyOpen = card.classList.contains('open');
+
+      // Fecha todos os outros NPCs para manter a lista compacta e organizada
+      if (!isCurrentlyOpen) {
+        document.querySelectorAll('.npc-card.open').forEach(otherCard => {
+          if (otherCard !== card) {
+            otherCard.classList.remove('open');
+            const otherHeader = otherCard.querySelector('.npc-card-header');
+            if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+            const otherHint = otherCard.querySelector('.npc-accordion-hint');
+            if (otherHint) otherHint.textContent = 'Duelos';
+          }
+        });
+      }
+
+      const isOpen = !isCurrentlyOpen;
+      card.classList.toggle('open', isOpen);
       const header = card.querySelector('.npc-card-header');
       if (header) {
         header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
@@ -2876,6 +2892,15 @@
       const hint = card.querySelector('.npc-accordion-hint');
       if (hint) {
         hint.textContent = isOpen ? 'Fechar' : 'Duelos';
+      }
+
+      if (isOpen) {
+        setTimeout(() => {
+          const rect = card.getBoundingClientRect();
+          if (rect.top < 70) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, 50);
       }
     }
 
