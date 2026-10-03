@@ -180,7 +180,7 @@ function renderTalents() {
       return `
         <div class="talent-item-pill" onclick="event.stopPropagation(); openItemDropModal('${it.id}')" title="${it.name_pt} (${it.name}) • Clique para ver drop e local">
           <img src="${it.icon}" alt="${it.name}" class="talent-item-img" onerror="this.src='assets/img/logo.webp'">
-          <span class="talent-item-qty">${it.qty > 1 ? it.qty : ''}</span>
+          <span class="talent-item-qty">${it.qty != null ? it.qty : 1}</span>
         </div>
       `;
     }).join('');
