@@ -40,7 +40,6 @@ var TALENTS_DATA = {
         {
           id: 'item_blue_wings',
           name: 'Blue Wings',
-          name_pt: 'Asas Azuis',
           qty: 1,
           icon: 'assets/img/talents/items/item_blue_wings.png',
           dropper: {
@@ -54,18 +53,18 @@ var TALENTS_DATA = {
           }
         },
         {
-          id: 'item_horn_pink',
-          name: 'Pink Horn',
-          name_pt: 'Chifre Rosa',
+          id: 'item_big_cute_ear',
+          name: 'Big Cute Ear',
           qty: 1,
-          icon: 'assets/img/talents/items/item_horn_pink.png',
+          icon: 'assets/img/talents/items/item_big_cute_ear.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Shiny Wigglytuff',
+            sprite: 'assets/img/pokemon/sh_wigglytuff.png',
+            chance: '1.0%',
+            locations: [
+              'Ilha ao norte de Tangelo Island (seguindo reto ao norte pelo mar)'
+            ],
+            map_image: 'assets/img/talents/maps/map_shiny_wigglytuff.png'
           }
         }
       ]
