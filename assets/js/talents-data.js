@@ -866,6 +866,375 @@ var TALENTS_DATA = {
         }
       ]
     }
+    ,
+    {
+      id: 'talent-cd-8',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_cooldown.png',
+      name_en: 'Bag Cooldown Acceleration VIII',
+      name_pt: 'Aceleração de Cooldown na Bag VIII',
+      desc_en: 'Accelerates the regeneration of 1 second cooldown of the spells of Pokémon stored in the bag (Pokémon that remain inside the Poké Balls).',
+      desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
+      items: [
+        {
+          id: 'item_medal_gold',
+          name: 'Golden Medal',
+          name_pt: 'Medalha de Ouro',
+          qty: 1,
+          icon: 'assets/img/talents/items/item_medal_gold.png',
+          dropper: {
+            name: 'Persian',
+            sprite: 'assets/img/pokemon/persian.png',
+            chance: '0.5%',
+            rarity: 'Raro',
+            locations: ['Rota 7', 'Rota 8']
+          }
+        },
+        {
+          id: 'item_horn_yellow',
+          name: 'Golden Horn',
+          name_pt: 'Chifre Dourado',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_horn_yellow.png',
+          dropper: {
+            name: 'Rapidash',
+            sprite: 'assets/img/pokemon/arcanine.png',
+            chance: '3.8%',
+            rarity: 'Comum',
+            locations: ['Rota 17 (Ciclovia)', 'Cinnabar Island']
+          }
+        },
+        {
+          id: 'item_skull_white',
+          name: 'White Skull',
+          name_pt: 'Crânio Branco',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_skull_white.png',
+          dropper: {
+            name: 'Marowak',
+            sprite: 'assets/img/pokemon/marowak.png',
+            chance: '4.0%',
+            rarity: 'Comum',
+            locations: ['Pokémon Tower (Lavender)']
+          }
+        },
+        {
+          id: 'item_tail_redwhite',
+          name: 'Crimson Crest',
+          name_pt: 'Penacho Carmesim',
+          qty: 1100,
+          icon: 'assets/img/talents/items/item_tail_redwhite.png',
+          dropper: {
+            name: 'Ninetales',
+            sprite: 'assets/img/pokemon/ninetales.png',
+            chance: '2.5%',
+            rarity: 'Incomum',
+            locations: ['Pokémon Mansion', 'Rota 8']
+          }
+        },
+        {
+          id: 'item_pins_metal',
+          name: 'Steel Pins',
+          name_pt: 'Espigão de Metal',
+          qty: 900,
+          icon: 'assets/img/talents/items/item_pins_metal.png',
+          dropper: {
+            name: 'Steelix',
+            sprite: 'assets/img/pokemon/steelix.png',
+            chance: '2.2%',
+            rarity: 'Incomum',
+            locations: ['Rock Tunnel', 'Victory Road']
+          }
+        },
+        {
+          id: 'item_crystal_lightpink',
+          name: 'Radiant Gem',
+          name_pt: 'Gema Radiante',
+          qty: 1000,
+          icon: 'assets/img/talents/items/item_crystal_lightpink.png',
+          dropper: {
+            name: 'Chansey',
+            sprite: 'assets/img/pokemon/clefable.png',
+            chance: '2.8%',
+            rarity: 'Comum',
+            locations: ['Safari Zone (Área 2)', 'Cerulean Cave']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-speed-1',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_speed.png',
+      name_en: 'Movement Speed Boost (+20 Speed)',
+      name_pt: 'Aumento de Velocidade (+20 Speed)',
+      desc_en: 'Give to player more 20 speed.',
+      desc_pt: 'Concede ao jogador mais 20 pontos de velocidade de movimento.',
+      items: [
+        {
+          id: 'item_cape_orange',
+          name: 'Flame Cape',
+          name_pt: 'Manto de Chamas',
+          qty: 80,
+          icon: 'assets/img/talents/items/item_cape_orange.png',
+          dropper: {
+            name: 'Charmeleon',
+            sprite: 'assets/img/pokemon/charizard.png',
+            chance: '1.8%',
+            rarity: 'Incomum',
+            locations: ['Mt. Ember', 'Cinnabar Volcano']
+          }
+        },
+        {
+          id: 'item_cape_blue',
+          name: 'Aqua Cape',
+          name_pt: 'Manto das Águas',
+          qty: 1,
+          icon: 'assets/img/talents/items/item_cape_blue.png',
+          dropper: {
+            name: 'Wartortle',
+            sprite: 'assets/img/pokemon/blastoise.png',
+            chance: '1.0%',
+            rarity: 'Raro',
+            locations: ['Seafoam Islands', 'Vermilion Coast']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-speed-2',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_speed.png',
+      name_en: 'Movement Speed Boost (+20 Speed)',
+      name_pt: 'Aumento de Velocidade (+20 Speed)',
+      desc_en: 'Give to player more 20 speed.',
+      desc_pt: 'Concede ao jogador mais 20 pontos de velocidade de movimento.',
+      items: [
+        {
+          id: 'item_fire_feather',
+          name: 'Fire Feather',
+          name_pt: 'Pluma de Chamas',
+          qty: 100,
+          icon: 'assets/img/talents/items/item_fire_feather.png',
+          dropper: {
+            name: 'Magmar',
+            sprite: 'assets/img/pokemon/charizard.png',
+            chance: '2.0%',
+            rarity: 'Incomum',
+            locations: ['Pokémon Mansion (Cinnabar)', 'Mt. Ember']
+          }
+        },
+        {
+          id: 'item_comet_spark',
+          name: 'Swift Spark',
+          name_pt: 'Centelha Veloz',
+          qty: 100,
+          icon: 'assets/img/talents/items/item_comet_spark.png',
+          dropper: {
+            name: 'Raichu',
+            sprite: 'assets/img/pokemon/raichu.png',
+            chance: '2.0%',
+            rarity: 'Incomum',
+            locations: ['Power Plant', 'Rota 10']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-speed-3',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_speed.png',
+      name_en: 'Movement Speed Boost (+20 Speed)',
+      name_pt: 'Aumento de Velocidade (+20 Speed)',
+      desc_en: 'Give to player more 20 speed.',
+      desc_pt: 'Concede ao jogador mais 20 pontos de velocidade de movimento.',
+      items: [
+        {
+          id: 'item_claws_yellow',
+          name: 'Quick Claws',
+          name_pt: 'Garras Rápidas',
+          qty: 1,
+          icon: 'assets/img/talents/items/item_claws_yellow.png',
+          dropper: {
+            name: 'Sandslash',
+            sprite: 'assets/img/pokemon/sandslash.png',
+            chance: '1.5%',
+            rarity: 'Raro',
+            locations: ['Rota 4 (Deserto)', 'Viridian Caves']
+          }
+        },
+        {
+          id: 'item_capsule_red',
+          name: 'Energy Capsule',
+          name_pt: 'Cápsula de Energia',
+          qty: 1,
+          icon: 'assets/img/talents/items/item_capsule_red.png',
+          dropper: {
+            name: 'Electrode',
+            sprite: 'assets/img/pokemon/electrode.png',
+            chance: '1.5%',
+            rarity: 'Raro',
+            locations: ['Power Plant']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-speed-4',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_speed.png',
+      name_en: 'Movement Speed Boost (+20 Speed)',
+      name_pt: 'Aumento de Velocidade (+20 Speed)',
+      desc_en: 'Give to player more 20 speed.',
+      desc_pt: 'Concede ao jogador mais 20 pontos de velocidade de movimento.',
+      items: [
+        {
+          id: 'item_capsule_red_5',
+          name: 'Vigor Capsule',
+          name_pt: 'Cápsula de Vigor',
+          qty: 5,
+          icon: 'assets/img/talents/items/item_capsule_red_5.png',
+          dropper: {
+            name: 'Voltorb',
+            sprite: 'assets/img/pokemon/electrode.png',
+            chance: '2.5%',
+            rarity: 'Incomum',
+            locations: ['Power Plant', 'Rota 10']
+          }
+        },
+        {
+          id: 'item_claws_yellow_5',
+          name: 'Sharp Claws',
+          name_pt: 'Garras Afiadas',
+          qty: 5,
+          icon: 'assets/img/talents/items/item_claws_yellow_5.png',
+          dropper: {
+            name: 'Sandshrew',
+            sprite: 'assets/img/pokemon/sandslash.png',
+            chance: '2.5%',
+            rarity: 'Incomum',
+            locations: ['Rota 4 (Deserto)', 'Mt. Moon']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-crit-chance',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_crit.png',
+      name_en: 'Team Critical Chance (+1%)',
+      name_pt: 'Chance Crítica da Equipe (+1%)',
+      desc_en: 'Gives all your Pokemon 1% critical chance.',
+      desc_pt: 'Concede a todos os seus Pokémon 1% de chance de acerto crítico.',
+      items: [
+        {
+          id: 'item_shell_gold_crit',
+          name: 'Ancient Shell',
+          name_pt: 'Concha Ancestral',
+          qty: 25,
+          icon: 'assets/img/talents/items/item_shell_gold_crit.png',
+          dropper: {
+            name: 'Omastar',
+            sprite: 'assets/img/pokemon/omastar.png',
+            chance: '2.2%',
+            rarity: 'Incomum',
+            locations: ['Seafoam Islands', 'Cinnabar Coast']
+          }
+        },
+        {
+          id: 'item_fossil_paw',
+          name: 'Claw Fossil',
+          name_pt: 'Fóssil de Garra',
+          qty: 25,
+          icon: 'assets/img/talents/items/item_fossil_paw.png',
+          dropper: {
+            name: 'Kabutops',
+            sprite: 'assets/img/pokemon/kabutops.png',
+            chance: '2.2%',
+            rarity: 'Incomum',
+            locations: ['Seafoam Islands', 'Cerulean Cave']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-crit-dmg',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_crit.png',
+      name_en: 'Team Critical Damage (+10%)',
+      name_pt: 'Dano Crítico da Equipe (+10%)',
+      desc_en: 'Gives all your Pokemon 10% critical damage.',
+      desc_pt: 'Concede a todos os seus Pokémon 10% de dano crítico adicional.',
+      items: [
+        {
+          id: 'item_lens_green',
+          name: 'Scope Lens',
+          name_pt: 'Lente de Precisão',
+          qty: 25,
+          icon: 'assets/img/talents/items/item_lens_green.png',
+          dropper: {
+            name: 'Alakazam',
+            sprite: 'assets/img/pokemon/alakazam.png',
+            chance: '2.5%',
+            rarity: 'Incomum',
+            locations: ['Rota 8', 'Cerulean Cave']
+          }
+        },
+        {
+          id: 'item_ribbon_redwhite',
+          name: 'Focus Band',
+          name_pt: 'Faixa do Foco',
+          qty: 25,
+          icon: 'assets/img/talents/items/item_ribbon_redwhite.png',
+          dropper: {
+            name: 'Machamp',
+            sprite: 'assets/img/pokemon/conkeldurr.png',
+            chance: '2.5%',
+            rarity: 'Incomum',
+            locations: ['Victory Road', 'Rock Tunnel']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-hp-300-3',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_hp.png',
+      name_en: 'Health Boost (+300 HP)',
+      name_pt: 'Aumento de Vida (+300 HP)',
+      desc_en: 'Your character will have an increase of 300 hitpoints in their maximum health.',
+      desc_pt: 'Seu personagem terá um aumento de 300 pontos de vida na sua vida máxima.',
+      items: [
+        {
+          id: 'item_tail_rainbow',
+          name: 'Prismatic Tail',
+          name_pt: 'Cauda Prismática',
+          qty: 10,
+          icon: 'assets/img/talents/items/item_tail_rainbow.png',
+          dropper: {
+            name: 'Dragonite',
+            sprite: 'assets/img/pokemon/dragonite.png',
+            chance: '1.5%',
+            rarity: 'Raro',
+            locations: ['Dragon Den', 'Safari Zone (Água)']
+          }
+        },
+        {
+          id: 'item_scepter_purple',
+          name: 'Shadow Scepter',
+          name_pt: 'Cetro Sombrio',
+          qty: 30,
+          icon: 'assets/img/talents/items/item_scepter_purple.png',
+          dropper: {
+            name: 'Gengar',
+            sprite: 'assets/img/pokemon/gengar.png',
+            chance: '2.8%',
+            rarity: 'Comum',
+            locations: ['Pokémon Tower (Lavender Topo)']
+          }
+        }
+      ]
+    }
   ]
 };
 
