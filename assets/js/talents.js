@@ -286,8 +286,8 @@ function openItemDropModal(itemId) {
     ` : '';
 
     container.innerHTML = `
-      <div class="item-popover-backdrop" onclick="closeItemDropModal(event)">
-        <div class="item-popover" onclick="event.stopPropagation()">
+      <div class="item-popover-backdrop" onmousedown="handleBackdropMouseDown(event)" onclick="handleBackdropClick(event)">
+        <div class="item-popover" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">
           <div class="item-popover-header">
             <div class="item-popover-title-wrap">
               <img src="${item.icon}" alt="${item.name}" class="item-popover-icon" onerror="this.src='assets/img/logo.webp'">
@@ -332,6 +332,7 @@ function openItemDropModal(itemId) {
     mapPanX = 0;
     mapPanY = 0;
     isMapDragging = false;
+    hasJustDraggedMap = false;
   } catch (err) {
     console.error('Erro ao abrir popover de item:', err);
   }
@@ -342,8 +343,27 @@ let mapZoomScale = 1.0;
 let mapPanX = 0;
 let mapPanY = 0;
 let isMapDragging = false;
+let hasJustDraggedMap = false;
 let mapDragStartX = 0;
 let mapDragStartY = 0;
+let backdropMouseDownTarget = null;
+
+function handleBackdropMouseDown(e) {
+  backdropMouseDownTarget = e.target;
+}
+
+function handleBackdropClick(e) {
+  // Se acabou de arrastar ou está arrastando o mapa, não fecha!
+  if (hasJustDraggedMap || isMapDragging) {
+    backdropMouseDownTarget = null;
+    return;
+  }
+  // Só fecha se o clique começou e terminou estritamente no backdrop escuro
+  if (backdropMouseDownTarget === e.target && e.target.classList.contains('item-popover-backdrop')) {
+    closeItemDropModal();
+  }
+  backdropMouseDownTarget = null;
+}
 
 function handleMapWheel(e) {
   e.preventDefault();
@@ -382,15 +402,23 @@ function applyMapTransform() {
 
 function handleMapMouseDown(e) {
   if (e.target.closest('.map-zoom-controls')) return;
+  e.stopPropagation();
   isMapDragging = true;
   mapDragStartX = e.clientX - mapPanX;
   mapDragStartY = e.clientY - mapPanY;
+
+  const startClientX = e.clientX;
+  const startClientY = e.clientY;
 
   const img = document.getElementById('mapZoomImage');
   if (img) img.classList.add('is-dragging');
 
   const onMouseMove = (moveEvent) => {
     if (!isMapDragging) return;
+    const dist = Math.hypot(moveEvent.clientX - startClientX, moveEvent.clientY - startClientY);
+    if (dist > 4) {
+      hasJustDraggedMap = true;
+    }
     mapPanX = moveEvent.clientX - mapDragStartX;
     mapPanY = moveEvent.clientY - mapDragStartY;
     applyMapTransform();
@@ -401,22 +429,27 @@ function handleMapMouseDown(e) {
     if (img) img.classList.remove('is-dragging');
     window.removeEventListener('mousemove', onMouseMove);
     window.removeEventListener('mouseup', onMouseUp);
+
+    if (hasJustDraggedMap) {
+      setTimeout(() => {
+        hasJustDraggedMap = false;
+      }, 150);
+    }
   };
 
   window.addEventListener('mousemove', onMouseMove);
   window.addEventListener('mouseup', onMouseUp);
 }
 
-function closeItemDropModal(e) {
-  if (e && e.target && !e.target.classList.contains('item-popover-backdrop') && !e.target.classList.contains('item-popover-close')) {
-    return;
-  }
+function closeItemDropModal() {
   const container = document.getElementById('itemModalContainer');
   if (container) container.innerHTML = '';
   mapZoomScale = 1.0;
   mapPanX = 0;
   mapPanY = 0;
   isMapDragging = false;
+  hasJustDraggedMap = false;
+  backdropMouseDownTarget = null;
 }
 
 window.addEventListener('keydown', (e) => {
