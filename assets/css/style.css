@@ -2657,6 +2657,12 @@ img.brand-img,
    GAMEPLAY BACKGROUND LAYER (Página Inicial com Blur da Guilda)
    ========================================================================== */
 
+body.home-page {
+  background-color: #06070a;
+  background-image: none; /* Deixa a camada de gameplay ser visível */
+  position: relative;
+}
+
 .gameplay-bg-layer {
   position: fixed;
   top: 0;
@@ -2664,22 +2670,22 @@ img.brand-img,
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0; /* Renderizado acima do fundo base e atrás do conteúdo */
   overflow: hidden;
 }
 
 .gameplay-bg-img {
   position: absolute;
-  top: -24px;
-  left: -24px;
-  right: -24px;
-  bottom: -24px;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
   background-image: url('../img/bg_gameplay.webp');
   background-size: cover;
-  background-position: center center;
+  background-position: center 25%;
   background-repeat: no-repeat;
-  filter: blur(3px) brightness(0.48) saturate(1.15);
-  transform: scale(1.05);
+  filter: blur(2px) brightness(0.68) saturate(1.2);
+  transform: scale(1.04);
 }
 
 .gameplay-bg-overlay {
@@ -2687,11 +2693,18 @@ img.brand-img,
   inset: 0;
   background-image:
     /* Luz amarela/dourada nobre da guilda no topo */
-    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(249, 191, 0, 0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 75% 45% at 50% -5%, rgba(249, 191, 0, 0.25) 0%, transparent 65%),
     /* Luz azul-safira da guilda nas laterais */
-    radial-gradient(ellipse 65% 55% at 0% 45%, rgba(37, 99, 235, 0.22) 0%, transparent 60%),
-    radial-gradient(ellipse 65% 55% at 100% 65%, rgba(37, 99, 235, 0.20) 0%, transparent 60%),
-    /* Base preta sólida para manter o resto preto com alto contraste */
-    linear-gradient(180deg, rgba(6, 7, 10, 0.65) 0%, rgba(6, 7, 10, 0.82) 50%, rgba(4, 5, 7, 0.94) 100%);
+    radial-gradient(ellipse 65% 55% at 0% 45%, rgba(37, 99, 235, 0.26) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 55% at 100% 65%, rgba(37, 99, 235, 0.24) 0%, transparent 60%),
+    /* Véu escuro equilibrado para manter leitura nítida e alto contraste */
+    linear-gradient(180deg, rgba(6, 7, 10, 0.42) 0%, rgba(6, 7, 10, 0.62) 50%, rgba(4, 5, 7, 0.85) 100%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+}
+
+.navbar,
+main.container,
+.footer {
+  position: relative;
+  z-index: 10;
 }
