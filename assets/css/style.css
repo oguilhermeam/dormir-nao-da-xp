@@ -2318,77 +2318,7 @@ img.brand-img,
 }
 .npc-card#card-13 .npc-name { color: #a5b4fc !important; }
 
-/* Barra de Filtro de Tipos na Equipe Rocket */
-.rocket-type-filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 16px;
-  padding: 8px 12px;
-  background-color: var(--black);
-  border: 2px solid var(--bg-2);
-  border-radius: var(--radius);
-}
 
-.type-filter-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
-  background-color: var(--bg-1);
-  border: 1px solid var(--bg-2);
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: all 120ms ease;
-  user-select: none;
-}
-
-.type-filter-btn:hover {
-  color: #ffffff;
-  background-color: var(--bg-hover);
-}
-
-.type-filter-btn.active[data-type="water"] {
-  border-color: #2563eb !important;
-  background-color: rgba(37, 99, 235, 0.2) !important;
-  color: #38bdf8 !important;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.35);
-}
-
-.type-filter-btn.active[data-type="bug"] {
-  border-color: #84cc16 !important;
-  background-color: rgba(132, 204, 22, 0.2) !important;
-  color: #a3e635 !important;
-  box-shadow: 0 0 10px rgba(132, 204, 22, 0.35);
-}
-
-.type-filter-btn.active[data-type="fire"] {
-  border-color: #ef4444 !important;
-  background-color: rgba(239, 68, 68, 0.2) !important;
-  color: #f87171 !important;
-}
-
-.type-filter-btn.active[data-type="electric"] {
-  border-color: #eab308 !important;
-  background-color: rgba(234, 179, 8, 0.2) !important;
-  color: #facc15 !important;
-}
-
-.type-filter-btn.active[data-type="grass"] {
-  border-color: #22c55e !important;
-  background-color: rgba(34, 197, 94, 0.2) !important;
-  color: #4ade80 !important;
-}
-
-.type-filter-btn.active[data-type="all"] {
-  border-color: var(--teal) !important;
-  background-color: rgba(20, 184, 166, 0.2) !important;
-  color: #ffffff !important;
-}
 
 /* ==========================================================================
    TEAM BUILDER PARA HOENN
