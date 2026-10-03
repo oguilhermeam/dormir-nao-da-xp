@@ -13,6 +13,42 @@ function getTalentsData() {
   return null;
 }
 
+// Persistência de talentos aprendidos no navegador
+function getUnlockedTalents() {
+  try {
+    const raw = localStorage.getItem('pa_unlocked_talents');
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function setTalentUnlocked(talentId, state) {
+  try {
+    const unlocked = getUnlockedTalents();
+    if (state) {
+      unlocked[talentId] = true;
+    } else {
+      delete unlocked[talentId];
+    }
+    localStorage.setItem('pa_unlocked_talents', JSON.stringify(unlocked));
+  } catch (e) {
+    console.error('[Talentos] Erro ao salvar status no localStorage:', e);
+  }
+}
+
+function toggleTalentUnlocked(talentId, event) {
+  if (event && event.target && event.target.closest('.talent-item-pill')) {
+    return;
+  }
+  const unlocked = getUnlockedTalents();
+  const newState = !unlocked[talentId];
+  setTalentUnlocked(talentId, newState);
+
+  renderTalents();
+  renderTalentCategories();
+}
+
 function initTalentsPage() {
   renderTalentCategories();
   renderTalents();
@@ -30,15 +66,26 @@ function renderTalentCategories() {
   const data = getTalentsData();
   if (!container || !data || !data.categories) return;
 
+  const unlockedMap = getUnlockedTalents();
+
   container.innerHTML = data.categories.map(cat => {
     const isActive = cat.id === activeTalentCategory;
+    const catTalents = (data.talents || []).filter(t => t.category === cat.id);
+    const total = cat.total || catTalents.length;
+    const unlockedCount = catTalents.filter(t => unlockedMap[t.id]).length;
+
+    let countText = 'Em breve';
+    if (total > 0) {
+      countText = `${unlockedCount} / ${total}`;
+    }
+
     return `
       <button type="button" class="talents-cat-btn ${isActive ? 'active' : ''}" onclick="selectTalentCategory('${cat.id}')">
         <div class="talents-cat-left">
           <img src="${cat.icon}" alt="${cat.name}" class="talents-cat-icon" onerror="this.src='assets/img/logo.webp'">
           <span>${cat.name}</span>
         </div>
-        <span class="talents-cat-count">${cat.count}</span>
+        <span class="talents-cat-count">${countText}</span>
       </button>
     `;
   }).join('');
@@ -70,17 +117,26 @@ function renderTalents() {
   if (!listEl || !data) return;
 
   const currentCat = data.categories.find(c => c.id === activeTalentCategory) || data.categories[0];
+  const unlockedMap = getUnlockedTalents();
+  const catTalents = (data.talents || []).filter(t => t.category === activeTalentCategory);
+  const total = currentCat.total || catTalents.length;
+  const unlockedCount = catTalents.filter(t => unlockedMap[t.id]).length;
+
   if (headerIcon) headerIcon.src = currentCat.icon;
   if (headerTitle) headerTitle.textContent = currentCat.name;
+
   if (progressText) {
-    progressText.textContent = currentCat.count.includes('/') ? currentCat.count + ' desbloqueados' : currentCat.count;
+    if (total > 0) {
+      progressText.textContent = `${unlockedCount} / ${total} talentos`;
+    } else {
+      progressText.textContent = '0 / 0 talentos';
+    }
   }
+
   if (progressFill) {
-    if (currentCat.count.includes('/')) {
-      const parts = currentCat.count.split('/').map(s => parseInt(s.trim(), 10));
-      if (parts.length === 2 && parts[1] > 0) {
-        progressFill.style.width = Math.min(100, Math.round((parts[0] / parts[1]) * 100)) + '%';
-      }
+    if (total > 0) {
+      const pct = Math.min(100, Math.round((unlockedCount / total) * 100));
+      progressFill.style.width = pct + '%';
     } else {
       progressFill.style.width = '0%';
     }
@@ -118,10 +174,11 @@ function renderTalents() {
     const mainDesc = showPortugueseAlways ? t.desc_pt : t.desc_en;
     const subDesc = showPortugueseAlways ? t.desc_en : t.desc_pt;
     const subBadge = showPortugueseAlways ? 'EN' : 'PT';
+    const isUnlocked = !!unlockedMap[t.id];
 
     const itemsHtml = (t.items || []).map(it => {
       return `
-        <div class="talent-item-pill" onclick="openItemDropModal('${it.id}')" title="${it.name_pt} (${it.name}) • Clique para ver drop e local">
+        <div class="talent-item-pill" onclick="event.stopPropagation(); openItemDropModal('${it.id}')" title="${it.name_pt} (${it.name}) • Clique para ver drop e local">
           <img src="${it.icon}" alt="${it.name}" class="talent-item-img" onerror="this.src='assets/img/logo.webp'">
           <span class="talent-item-qty">${it.qty > 1 ? it.qty : ''}</span>
         </div>
@@ -129,7 +186,7 @@ function renderTalents() {
     }).join('');
 
     return `
-      <div class="talent-card" id="${t.id}">
+      <div class="talent-card ${isUnlocked ? 'is-unlocked' : ''}" id="${t.id}" onclick="toggleTalentUnlocked('${t.id}', event)" title="Clique no card para marcar/desmarcar como obtido">
         <div class="talent-icon-wrap">
           <img src="${t.icon}" alt="Ícone de Talento" class="talent-icon-img" onerror="this.src='assets/img/logo.webp'">
         </div>
@@ -138,6 +195,12 @@ function renderTalents() {
           <div class="talent-desc-pt">
             <span class="talent-desc-pt-badge">${subBadge}</span>
             <span>${subDesc}</span>
+          </div>
+          <div class="talent-status-row">
+            <span class="talent-check-badge">
+              <span class="talent-check-box">${isUnlocked ? '✓' : ''}</span>
+              <span>${isUnlocked ? 'Desbloqueado' : 'Clique para marcar como obtido'}</span>
+            </span>
           </div>
         </div>
         <div class="talent-items-wrap">

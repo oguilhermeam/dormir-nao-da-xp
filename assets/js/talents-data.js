@@ -5,26 +5,26 @@
 
 var TALENTS_DATA = {
   categories: [
-    { id: 'personagem', name: 'Personagem', icon: 'assets/img/talents/cat_personagem.png', count: '5 / 18' },
-    { id: 'pokemon', name: 'Pokémon', icon: 'assets/img/talents/cat_pokemon.png', count: 'Em breve' },
-    { id: 'inseto', name: 'Inseto', icon: 'assets/img/talents/cat_inseto.png', count: 'Em breve' },
-    { id: 'sombrio', name: 'Sombrio', icon: 'assets/img/talents/cat_sombrio.png', count: 'Em breve' },
-    { id: 'dragao', name: 'Dragão', icon: 'assets/img/talents/cat_dragao.png', count: 'Em breve' },
-    { id: 'eletrico', name: 'Elétrico', icon: 'assets/img/talents/cat_eletrico.png', count: 'Em breve' },
-    { id: 'fada', name: 'Fada', icon: 'assets/img/talents/cat_fada.png', count: 'Em breve' },
-    { id: 'lutador', name: 'Lutador', icon: 'assets/img/talents/cat_lutador.png', count: 'Em breve' },
-    { id: 'fogo', name: 'Fogo', icon: 'assets/img/talents/cat_fogo.png', count: 'Em breve' },
-    { id: 'voador', name: 'Voador', icon: 'assets/img/talents/cat_voador.png', count: 'Em breve' },
-    { id: 'fantasma', name: 'Fantasma', icon: 'assets/img/talents/cat_fantasma.png', count: 'Em breve' },
-    { id: 'planta', name: 'Planta', icon: 'assets/img/talents/cat_inseto.png', count: 'Em breve' },
-    { id: 'terra', name: 'Terra', icon: 'assets/img/talents/cat_lutador.png', count: 'Em breve' },
-    { id: 'gelo', name: 'Gelo', icon: 'assets/img/talents/cat_dragao.png', count: 'Em breve' },
-    { id: 'normal', name: 'Normal', icon: 'assets/img/talents/cat_personagem.png', count: 'Em breve' },
-    { id: 'veneno', name: 'Veneno', icon: 'assets/img/talents/cat_fantasma.png', count: 'Em breve' },
-    { id: 'psiquico', name: 'Psíquico', icon: 'assets/img/talents/cat_fada.png', count: 'Em breve' },
-    { id: 'pedra', name: 'Pedra', icon: 'assets/img/talents/cat_lutador.png', count: 'Em breve' },
-    { id: 'aco', name: 'Aço', icon: 'assets/img/talents/cat_personagem.png', count: 'Em breve' },
-    { id: 'agua', name: 'Água', icon: 'assets/img/talents/cat_dragao.png', count: 'Em breve' }
+    { id: 'personagem', name: 'Personagem', icon: 'assets/img/talents/cat_personagem.png', total: 18 },
+    { id: 'pokemon', name: 'Pokémon', icon: 'assets/img/talents/cat_pokemon.png', total: 0 },
+    { id: 'inseto', name: 'Inseto', icon: 'assets/img/types/bug.png', total: 0 },
+    { id: 'sombrio', name: 'Sombrio', icon: 'assets/img/types/dark.png', total: 0 },
+    { id: 'dragao', name: 'Dragão', icon: 'assets/img/types/dragon.png', total: 0 },
+    { id: 'eletrico', name: 'Elétrico', icon: 'assets/img/types/electric.png', total: 0 },
+    { id: 'fada', name: 'Fada', icon: 'assets/img/types/fairy.png', total: 0 },
+    { id: 'lutador', name: 'Lutador', icon: 'assets/img/types/fighting.png', total: 0 },
+    { id: 'fogo', name: 'Fogo', icon: 'assets/img/types/fire.png', total: 0 },
+    { id: 'voador', name: 'Voador', icon: 'assets/img/types/flying.png', total: 0 },
+    { id: 'fantasma', name: 'Fantasma', icon: 'assets/img/types/ghost.png', total: 0 },
+    { id: 'planta', name: 'Planta', icon: 'assets/img/types/grass.png', total: 0 },
+    { id: 'terra', name: 'Terra', icon: 'assets/img/types/ground.png', total: 0 },
+    { id: 'gelo', name: 'Gelo', icon: 'assets/img/types/ice.png', total: 0 },
+    { id: 'normal', name: 'Normal', icon: 'assets/img/types/normal.png', total: 0 },
+    { id: 'veneno', name: 'Veneno', icon: 'assets/img/types/poison.png', total: 0 },
+    { id: 'psiquico', name: 'Psíquico', icon: 'assets/img/types/psychic.png', total: 0 },
+    { id: 'pedra', name: 'Pedra', icon: 'assets/img/types/rock.png', total: 0 },
+    { id: 'aco', name: 'Aço', icon: 'assets/img/types/steel.png', total: 0 },
+    { id: 'agua', name: 'Água', icon: 'assets/img/types/water.png', total: 0 }
   ],
 
   talents: [
@@ -59,7 +59,7 @@ var TALENTS_DATA = {
           icon: 'assets/img/talents/items/item_horn_pink.png',
           dropper: {
             name: 'Nidorina',
-            sprite: 'assets/img/pokemon/nidoran_f.png',
+            sprite: 'assets/img/pokemon/nidoqueen.png',
             chance: '0.9%',
             rarity: 'Médio',
             locations: ['Rota 9 (Leste de Cerulean)', 'Safari Zone']
@@ -249,7 +249,7 @@ var TALENTS_DATA = {
             sprite: 'assets/img/pokemon/starmie.png',
             chance: '3.5%',
             rarity: 'Comum',
-            locations: ['Cerulean Cape', 'Vermilion Coast']
+            locations: ['Rota 19 (Mar)', 'Seafoam Islands']
           }
         }
       ]
@@ -264,67 +264,67 @@ var TALENTS_DATA = {
       desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
       items: [
         {
-          id: 'item_fire_flower',
-          name: 'Fire Flower',
-          name_pt: 'Flor de Fogo',
+          id: 'item_ruby_fire',
+          name: 'Flaming Ruby',
+          name_pt: 'Rubi Flamejante',
           qty: 1,
-          icon: 'assets/img/talents/items/item_fire_flower.png',
+          icon: 'assets/img/talents/items/item_ruby_fire.png',
           dropper: {
-            name: 'Charizard',
+            name: 'Magmar',
             sprite: 'assets/img/pokemon/charizard.png',
             chance: '0.6%',
             rarity: 'Raro',
-            locations: ['Cinnabar Volcano', 'Mt. Ember']
+            locations: ['Pokémon Mansion (Cinnabar)', 'Mt. Ember']
           }
         },
         {
-          id: 'item_bat_wing',
-          name: 'Bat Wing',
-          name_pt: 'Asa de Morcego',
+          id: 'item_wing_dragon',
+          name: 'Dragon Wing',
+          name_pt: 'Asa de Dragão',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_bat_wing.png',
+          icon: 'assets/img/talents/items/item_wing_dragon.png',
           dropper: {
-            name: 'Golbat',
-            sprite: 'assets/img/pokemon/golbat.png',
-            chance: '6.0%',
-            rarity: 'Muito Comum',
-            locations: ['Mt. Moon (B1/B2)', 'Rock Tunnel']
-          }
-        },
-        {
-          id: 'item_golden_orb',
-          name: 'Golden Orb',
-          name_pt: 'Orbe Dourado',
-          qty: 1500,
-          icon: 'assets/img/talents/items/item_golden_orb.png',
-          dropper: {
-            name: 'Alakazam',
-            sprite: 'assets/img/pokemon/alakazam.png',
-            chance: '4.5%',
+            name: 'Charizard',
+            sprite: 'assets/img/pokemon/charizard.png',
+            chance: '3.5%',
             rarity: 'Comum',
-            locations: ['Saffron Psychic House', 'Rota 11']
+            locations: ['Cinnabar Volcano', 'Victory Road']
           }
         },
         {
-          id: 'item_yellow_seed',
-          name: 'Yellow Seed',
-          name_pt: 'Semente Amarela',
+          id: 'item_coin_gold',
+          name: 'Golden Coin',
+          name_pt: 'Moeda de Ouro',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_coin_gold.png',
+          dropper: {
+            name: 'Persian',
+            sprite: 'assets/img/pokemon/persian.png',
+            chance: '4.0%',
+            rarity: 'Comum',
+            locations: ['Rota 7', 'Rota 8']
+          }
+        },
+        {
+          id: 'item_fur_yellow',
+          name: 'Yellow Fur',
+          name_pt: 'Pelo Amarelo',
           qty: 1100,
-          icon: 'assets/img/talents/items/item_yellow_seed.png',
+          icon: 'assets/img/talents/items/item_fur_yellow.png',
           dropper: {
-            name: 'Venusaur',
-            sprite: 'assets/img/pokemon/venusaur.png',
-            chance: '3.8%',
-            rarity: 'Comum',
-            locations: ['Celadon Suburbs', 'Rota 21']
+            name: 'Ninetales',
+            sprite: 'assets/img/pokemon/ninetales.png',
+            chance: '2.5%',
+            rarity: 'Incomum',
+            locations: ['Pokémon Mansion', 'Rota 8']
           }
         },
         {
-          id: 'item_dark_armor',
-          name: 'Dark Armor',
-          name_pt: 'Armadura Sombria',
+          id: 'item_armor_metal',
+          name: 'Metal Carapace',
+          name_pt: 'Carapaça de Metal',
           qty: 900,
-          icon: 'assets/img/talents/items/item_dark_armor.png',
+          icon: 'assets/img/talents/items/item_armor_metal.png',
           dropper: {
             name: 'Tyranitar',
             sprite: 'assets/img/pokemon/tyranitar.png',
@@ -345,6 +345,523 @@ var TALENTS_DATA = {
             chance: '2.8%',
             rarity: 'Comum',
             locations: ['Cinnabar Island', 'Rota 7']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-cd-3',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_cooldown.png',
+      name_en: 'Bag Cooldown Acceleration III',
+      name_pt: 'Aceleração de Cooldown na Bag III',
+      desc_en: 'Accelerates the regeneration of 1 second cooldown of the spells of Pokémon stored in the bag (Pokémon that remain inside the Poké Balls).',
+      desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
+      items: [
+        {
+          id: 'item_stone_grey',
+          name: 'Diamond Core',
+          name_pt: 'Núcleo de Diamante',
+          qty: 1,
+          icon: 'assets/img/talents/items/item_stone_grey.png',
+          dropper: {
+            name: 'Aerodactyl',
+            sprite: 'assets/img/pokemon/skarmory.png',
+            chance: '0.8%',
+            rarity: 'Raro',
+            locations: ['Cerulean Cave', 'Rock Tunnel B2']
+          }
+        },
+        {
+          id: 'item_rocks',
+          name: 'Hard Stone',
+          name_pt: 'Rocha Sólida',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_rocks.png',
+          dropper: {
+            name: 'Golem',
+            sprite: 'assets/img/pokemon/golem.png',
+            chance: '4.5%',
+            rarity: 'Muito Comum',
+            locations: ['Rock Tunnel', 'Mt. Moon B1']
+          }
+        },
+        {
+          id: 'item_fossil_helix',
+          name: 'Helix Fossil',
+          name_pt: 'Fóssil Helix',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_fossil_helix.png',
+          dropper: {
+            name: 'Omanyte',
+            sprite: 'assets/img/pokemon/omastar.png',
+            chance: '3.8%',
+            rarity: 'Comum',
+            locations: ['Seafoam Islands', 'Cinnabar Coast']
+          }
+        },
+        {
+          id: 'item_bone_long',
+          name: 'Thick Club',
+          name_pt: 'Osso Rígido',
+          qty: 1100,
+          icon: 'assets/img/talents/items/item_bone_long.png',
+          dropper: {
+            name: 'Marowak',
+            sprite: 'assets/img/pokemon/marowak.png',
+            chance: '3.2%',
+            rarity: 'Comum',
+            locations: ['Pokémon Tower (Lavender)']
+          }
+        },
+        {
+          id: 'item_drill_grey',
+          name: 'Horn Drill',
+          name_pt: 'Broca de Chifre',
+          qty: 900,
+          icon: 'assets/img/talents/items/item_drill_grey.png',
+          dropper: {
+            name: 'Rhydon',
+            sprite: 'assets/img/pokemon/rhydon.png',
+            chance: '2.1%',
+            rarity: 'Incomum',
+            locations: ['Safari Zone', 'Cerulean Cave']
+          }
+        },
+        {
+          id: 'item_scale_green',
+          name: 'Dragon Scale',
+          name_pt: 'Escama de Dragão',
+          qty: 500,
+          icon: 'assets/img/talents/items/item_scale_green.png',
+          dropper: {
+            name: 'Dragonair',
+            sprite: 'assets/img/pokemon/dragonair.png',
+            chance: '1.5%',
+            rarity: 'Incomum',
+            locations: ['Safari Zone (Lago)', 'Dragon Den']
+          }
+        },
+        {
+          id: 'item_shell_brown',
+          name: 'Dome Fossil',
+          name_pt: 'Casca Fóssil',
+          qty: 500,
+          icon: 'assets/img/talents/items/item_shell_brown.png',
+          dropper: {
+            name: 'Kabuto',
+            sprite: 'assets/img/pokemon/kabutops.png',
+            chance: '1.8%',
+            rarity: 'Incomum',
+            locations: ['Seafoam Islands', 'Cinnabar Coast']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-cd-4',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_cooldown.png',
+      name_en: 'Bag Cooldown Acceleration IV',
+      name_pt: 'Aceleração de Cooldown na Bag IV',
+      desc_en: 'Accelerates the regeneration of 1 second cooldown of the spells of Pokémon stored in the bag (Pokémon that remain inside the Poké Balls).',
+      desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
+      items: [
+        {
+          id: 'item_water_drop',
+          name: 'Mystic Water',
+          name_pt: 'Gota Mística',
+          qty: 1,
+          icon: 'assets/img/talents/items/item_water_drop.png',
+          dropper: {
+            name: 'Lapras',
+            sprite: 'assets/img/pokemon/sh_lapras.png',
+            chance: '0.6%',
+            rarity: 'Raro',
+            locations: ['Seafoam Islands (Fim)', 'Rota 20']
+          }
+        },
+        {
+          id: 'item_claw_darkblue',
+          name: 'Dark Blue Claw',
+          name_pt: 'Garra Marinha',
+          qty: 900,
+          icon: 'assets/img/talents/items/item_claw_darkblue.png',
+          dropper: {
+            name: 'Golduck',
+            sprite: 'assets/img/pokemon/blastoise.png',
+            chance: '2.5%',
+            rarity: 'Incomum',
+            locations: ['Rota 6 (Lago)', 'Cerulean Cape']
+          }
+        },
+        {
+          id: 'item_feather_blue_crest',
+          name: 'Ocean Crest',
+          name_pt: 'Penacho Glacial',
+          qty: 1100,
+          icon: 'assets/img/talents/items/item_feather_blue_crest.png',
+          dropper: {
+            name: 'Articuno',
+            sprite: 'assets/img/pokemon/pidgeot.png',
+            chance: '2.2%',
+            rarity: 'Incomum',
+            locations: ['Seafoam Islands B4']
+          }
+        },
+        {
+          id: 'item_fin_blue',
+          name: 'Sea Fin',
+          name_pt: 'Barbatana Azul',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_fin_blue.png',
+          dropper: {
+            name: 'Gyarados',
+            sprite: 'assets/img/pokemon/gyarados.png',
+            chance: '4.0%',
+            rarity: 'Comum',
+            locations: ['Rota 12', 'Fuchsia Lake']
+          }
+        },
+        {
+          id: 'item_cannon_water',
+          name: 'Hydro Cannon',
+          name_pt: 'Canhão Hidráulico',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_cannon_water.png',
+          dropper: {
+            name: 'Blastoise',
+            sprite: 'assets/img/pokemon/blastoise.png',
+            chance: '3.5%',
+            rarity: 'Comum',
+            locations: ['Ilhas Cinnabar', 'Vermilion Sea']
+          }
+        },
+        {
+          id: 'item_crystal_ice',
+          name: 'Ice Crystal',
+          name_pt: 'Cristal de Gelo',
+          qty: 500,
+          icon: 'assets/img/talents/items/item_crystal_ice.png',
+          dropper: {
+            name: 'Cloyster',
+            sprite: 'assets/img/pokemon/omastar.png',
+            chance: '2.0%',
+            rarity: 'Incomum',
+            locations: ['Seafoam Islands B3']
+          }
+        },
+        {
+          id: 'item_gem_emerald',
+          name: 'Emerald Gem',
+          name_pt: 'Gema Esmeralda',
+          qty: 500,
+          icon: 'assets/img/talents/items/item_gem_emerald.png',
+          dropper: {
+            name: 'Kingdra',
+            sprite: 'assets/img/pokemon/kingdra.png',
+            chance: '1.6%',
+            rarity: 'Incomum',
+            locations: ['Whirl Islands', 'Cerulean Cave (Água)']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-cd-5',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_cooldown.png',
+      name_en: 'Bag Cooldown Acceleration V',
+      name_pt: 'Aceleração de Cooldown na Bag V',
+      desc_en: 'Accelerates the regeneration of 1 second cooldown of the spells of Pokémon stored in the bag (Pokémon that remain inside the Poké Balls).',
+      desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
+      items: [
+        {
+          id: 'item_core_electric',
+          name: 'Thunder Core',
+          name_pt: 'Núcleo Elétrico',
+          qty: 1,
+          icon: 'assets/img/talents/items/item_core_electric.png',
+          dropper: {
+            name: 'Zapdos',
+            sprite: 'assets/img/pokemon/electabuzz.png',
+            chance: '0.5%',
+            rarity: 'Raro',
+            locations: ['Power Plant (Usina Elétrica)']
+          }
+        },
+        {
+          id: 'item_connector_electric',
+          name: 'Spark Connector',
+          name_pt: 'Conector de Alta Voltagem',
+          qty: 1100,
+          icon: 'assets/img/talents/items/item_connector_electric.png',
+          dropper: {
+            name: 'Magneton',
+            sprite: 'assets/img/pokemon/magneton.png',
+            chance: '2.8%',
+            rarity: 'Comum',
+            locations: ['Power Plant']
+          }
+        },
+        {
+          id: 'item_ring_electric',
+          name: 'Thunder Ring',
+          name_pt: 'Anel do Trovão',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_ring_electric.png',
+          dropper: {
+            name: 'Ampharos',
+            sprite: 'assets/img/pokemon/ampharos.png',
+            chance: '3.8%',
+            rarity: 'Comum',
+            locations: ['Power Plant (Área dos Fundos)']
+          }
+        },
+        {
+          id: 'item_horn_gold',
+          name: 'Lightning Horn',
+          name_pt: 'Chifre de Relâmpago',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_horn_gold.png',
+          dropper: {
+            name: 'Raichu',
+            sprite: 'assets/img/pokemon/raichu.png',
+            chance: '3.6%',
+            rarity: 'Comum',
+            locations: ['Power Plant', 'Rota 10']
+          }
+        },
+        {
+          id: 'item_fur_electric',
+          name: 'Static Mane',
+          name_pt: 'Juba Estática',
+          qty: 900,
+          icon: 'assets/img/talents/items/item_fur_electric.png',
+          dropper: {
+            name: 'Jolteon',
+            sprite: 'assets/img/pokemon/sh_jolteon.png',
+            chance: '2.2%',
+            rarity: 'Incomum',
+            locations: ['Rota 10 (Norte)']
+          }
+        },
+        {
+          id: 'item_stone_thunder',
+          name: 'Thunder Shard',
+          name_pt: 'Fragmento de Pedra do Trovão',
+          qty: 1000,
+          icon: 'assets/img/talents/items/item_stone_thunder.png',
+          dropper: {
+            name: 'Electabuzz',
+            sprite: 'assets/img/pokemon/electabuzz.png',
+            chance: '3.0%',
+            rarity: 'Comum',
+            locations: ['Power Plant']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-cd-6',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_cooldown.png',
+      name_en: 'Bag Cooldown Acceleration VI',
+      name_pt: 'Aceleração de Cooldown na Bag VI',
+      desc_en: 'Accelerates the regeneration of 1 second cooldown of the spells of Pokémon stored in the bag (Pokémon that remain inside the Poké Balls).',
+      desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
+      items: [
+        {
+          id: 'item_flower_rainbow',
+          name: 'Rainbow Bloom',
+          name_pt: 'Flor Prismática',
+          qty: 1,
+          icon: 'assets/img/talents/items/item_flower_rainbow.png',
+          dropper: {
+            name: 'Vileplume',
+            sprite: 'assets/img/pokemon/venusaur.png',
+            chance: '0.5%',
+            rarity: 'Raro',
+            locations: ['Celadon Gym Garden', 'Rota 15']
+          }
+        },
+        {
+          id: 'item_bulb_pink',
+          name: 'Flower Bulb',
+          name_pt: 'Bulbo Floral',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_bulb_pink.png',
+          dropper: {
+            name: 'Venusaur',
+            sprite: 'assets/img/pokemon/venusaur.png',
+            chance: '3.8%',
+            rarity: 'Comum',
+            locations: ['Viridian Forest (Fundo)']
+          }
+        },
+        {
+          id: 'item_flower_red',
+          name: 'Red Petal',
+          name_pt: 'Pétala Rubra',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_flower_red.png',
+          dropper: {
+            name: 'Gloom',
+            sprite: 'assets/img/pokemon/venusaur.png',
+            chance: '4.0%',
+            rarity: 'Comum',
+            locations: ['Rota 24', 'Rota 25']
+          }
+        },
+        {
+          id: 'item_leaves_grass',
+          name: 'Razor Grass',
+          name_pt: 'Lâminas de Relva',
+          qty: 1100,
+          icon: 'assets/img/talents/items/item_leaves_grass.png',
+          dropper: {
+            name: 'Victreebel',
+            sprite: 'assets/img/pokemon/sh_victreebel.png',
+            chance: '2.9%',
+            rarity: 'Incomum',
+            locations: ['Rota 21 (Sul de Pallet)']
+          }
+        },
+        {
+          id: 'item_vine_blue',
+          name: 'Blue Vine',
+          name_pt: 'Cipó Azul',
+          qty: 900,
+          icon: 'assets/img/talents/items/item_vine_blue.png',
+          dropper: {
+            name: 'Tangela',
+            sprite: 'assets/img/pokemon/sh_tangela.png',
+            chance: '2.4%',
+            rarity: 'Incomum',
+            locations: ['Rota 21']
+          }
+        },
+        {
+          id: 'item_seed_green',
+          name: 'Miracle Seed',
+          name_pt: 'Semente Milagrosa',
+          qty: 500,
+          icon: 'assets/img/talents/items/item_seed_green.png',
+          dropper: {
+            name: 'Exeggcute',
+            sprite: 'assets/img/pokemon/sh_exeggutor.png',
+            chance: '1.8%',
+            rarity: 'Incomum',
+            locations: ['Safari Zone']
+          }
+        },
+        {
+          id: 'item_leaf_green',
+          name: 'Jungle Leaf',
+          name_pt: 'Folha da Selva',
+          qty: 500,
+          icon: 'assets/img/talents/items/item_leaf_green.png',
+          dropper: {
+            name: 'Bellsprout',
+            sprite: 'assets/img/pokemon/sh_bellossom.png',
+            chance: '2.0%',
+            rarity: 'Incomum',
+            locations: ['Rota 5', 'Rota 6']
+          }
+        }
+      ]
+    },
+    {
+      id: 'talent-cd-7',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_cooldown.png',
+      name_en: 'Bag Cooldown Acceleration VII',
+      name_pt: 'Aceleração de Cooldown na Bag VII',
+      desc_en: 'Accelerates the regeneration of 1 second cooldown of the spells of Pokémon stored in the bag (Pokémon that remain inside the Poké Balls).',
+      desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
+      items: [
+        {
+          id: 'item_heart_pink',
+          name: 'Mystic Heart',
+          name_pt: 'Coração Místico',
+          qty: 1,
+          icon: 'assets/img/talents/items/item_heart_pink.png',
+          dropper: {
+            name: 'Clefable',
+            sprite: 'assets/img/pokemon/clefable.png',
+            chance: '0.5%',
+            rarity: 'Raro',
+            locations: ['Mt. Moon (Pico da Montanha)']
+          }
+        },
+        {
+          id: 'item_wing_bat_cyan',
+          name: 'Bat Wing',
+          name_pt: 'Asa de Quiróptero',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_wing_bat_cyan.png',
+          dropper: {
+            name: 'Crobat',
+            sprite: 'assets/img/pokemon/crobat.png',
+            chance: '3.9%',
+            rarity: 'Comum',
+            locations: ['Rock Tunnel', 'Mt. Moon B2']
+          }
+        },
+        {
+          id: 'item_pincer_purple',
+          name: 'Shadow Pincer',
+          name_pt: 'Pinça Sombria',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_pincer_purple.png',
+          dropper: {
+            name: 'Haunter',
+            sprite: 'assets/img/pokemon/haunter.png',
+            chance: '3.7%',
+            rarity: 'Comum',
+            locations: ['Pokémon Tower (Lavender)']
+          }
+        },
+        {
+          id: 'item_scythe_purple',
+          name: 'Night Scythe',
+          name_pt: 'Foice da Meia-Noite',
+          qty: 1100,
+          icon: 'assets/img/talents/items/item_scythe_purple.png',
+          dropper: {
+            name: 'Nidoking',
+            sprite: 'assets/img/pokemon/nidoking.png',
+            chance: '2.6%',
+            rarity: 'Incomum',
+            locations: ['Safari Zone']
+          }
+        },
+        {
+          id: 'item_tongue_pink',
+          name: 'Ghost Tongue',
+          name_pt: 'Língua Espectral',
+          qty: 900,
+          icon: 'assets/img/talents/items/item_tongue_pink.png',
+          dropper: {
+            name: 'Gengar',
+            sprite: 'assets/img/pokemon/gengar.png',
+            chance: '2.2%',
+            rarity: 'Incomum',
+            locations: ['Pokémon Tower B2']
+          }
+        },
+        {
+          id: 'item_crystal_dusk',
+          name: 'Dusk Stone Shard',
+          name_pt: 'Fragmento da Noite',
+          qty: 1000,
+          icon: 'assets/img/talents/items/item_crystal_dusk.png',
+          dropper: {
+            name: 'Gengar',
+            sprite: 'assets/img/pokemon/gengar.png',
+            chance: '2.8%',
+            rarity: 'Comum',
+            locations: ['Pokémon Tower (Topo)']
           }
         }
       ]

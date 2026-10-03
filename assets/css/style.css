@@ -3074,8 +3074,76 @@ html.mode-lite .table-responsive {
   }
 }
 
+.talent-card {
+  cursor: pointer;
+}
+
 .talent-card:hover {
   border-color: var(--teal);
+}
+
+.talent-card.is-unlocked {
+  border-color: var(--status-resist) !important;
+  background-color: rgba(16, 185, 129, 0.08) !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.2);
+}
+
+.talent-card.is-unlocked:hover {
+  border-color: #34d399 !important;
+}
+
+.talent-status-row {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.talent-check-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  background-color: var(--black);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 3px 8px;
+  transition: all 120ms ease;
+}
+
+.talent-check-box {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--text-dim);
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--status-resist);
+  background-color: var(--bg-0);
+}
+
+.talent-card:hover .talent-check-badge {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+
+.talent-card.is-unlocked .talent-check-badge {
+  border-color: var(--status-resist);
+  background-color: rgba(16, 185, 129, 0.16);
+  color: #a7f3d0;
+  font-weight: 700;
+}
+
+.talent-card.is-unlocked .talent-check-box {
+  border-color: var(--status-resist);
+  background-color: var(--status-resist);
+  color: #0b0e14;
+  font-weight: 900;
 }
 
 .talent-icon-wrap {
