@@ -1199,6 +1199,8 @@ img.brand-img,
 }
 
 .npc-card {
+  display: block;
+  flex-direction: column;
   background-color: var(--bg-1);
   border: 2px solid var(--bg-2);
   box-shadow: var(--shadow-hard);
