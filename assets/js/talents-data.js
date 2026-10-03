@@ -161,33 +161,33 @@ var TALENTS_DATA = {
       desc_pt: 'Seu personagem terá um aumento de 300 pontos de vida na sua vida máxima.',
       items: [
         {
-          id: 'item_tail_rainbow',
-          name: 'Prismatic Tail',
-          name_pt: 'Cauda Prismática',
+          id: 'item_magikarp_fin',
+          name: 'Magikarp Fin',
           qty: 10,
-          icon: 'assets/img/talents/items/item_tail_rainbow.png',
+          icon: 'assets/img/talents/items/item_magikarp_fin.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Magikarp',
+            sprite: 'assets/img/pokemon/magikarp.png',
+            chance: '70%',
+            locations: [
+              'Entre Saffron e Celadon (pequena ilha no lago entre as duas cidades)'
+            ],
+            map_image: 'assets/img/talents/maps/map_magikarp.png'
           }
         },
         {
-          id: 'item_scepter_purple',
-          name: 'Shadow Scepter',
-          name_pt: 'Cetro Sombrio',
+          id: 'item_mouse_tail',
+          name: 'Mouse Tail',
           qty: 30,
-          icon: 'assets/img/talents/items/item_scepter_purple.png',
+          icon: 'assets/img/talents/items/item_mouse_tail.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Rattata',
+            sprite: 'assets/img/pokemon/rattata.png',
+            chance: '70%',
+            locations: [
+              'Saffron (bueiro na rua em frente ao Centro Pokémon)'
+            ],
+            map_image: 'assets/img/talents/maps/map_rattata.png'
           }
         }
       ]
