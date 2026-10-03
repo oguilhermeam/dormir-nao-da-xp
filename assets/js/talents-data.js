@@ -202,108 +202,107 @@ var TALENTS_DATA = {
       desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
       items: [
         {
-          id: 'item_syringe_green',
-          name: 'Green Syringe',
-          name_pt: 'Seringa Verde',
+          id: 'item_earth_badge',
+          name: 'Earth Badge',
           qty: 1,
-          icon: 'assets/img/talents/items/item_syringe_green.png',
+          icon: 'assets/img/talents/items/item_earth_badge.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ginásio de Viridian (Giovanni)',
+            sprite: 'assets/img/talents/items/item_earth_badge.png',
+            chance: '100%',
+            locations: [
+              'Viridian (recompensa por derrotar o líder Giovanni no Ginásio de Viridian)'
+            ]
           }
         },
         {
-          id: 'item_bone',
-          name: 'Bone Fragment',
-          name_pt: 'Fragmento de Osso',
+          id: 'item_snorlax_paw',
+          name: 'Snorlax Paw',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_bone.png',
+          icon: 'assets/img/talents/items/item_snorlax_paw.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Snorlax',
+            sprite: 'assets/img/pokemon/snorlax.png',
+            chance: '45.0%',
+            locations: [
+              'Fuchsia (caverna a oeste da cidade, andar inferior na área sudeste)'
+            ],
+            map_image: 'assets/img/talents/maps/map_snorlax.png'
           }
         },
         {
-          id: 'item_shell_gold',
-          name: 'Golden Shell',
-          name_pt: 'Concha Dourada',
+          id: 'item_bear_claw',
+          name: 'Bear Claw',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_shell_gold.png',
+          icon: 'assets/img/talents/items/item_bear_claw.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ursaring',
+            sprite: 'assets/img/pokemon/ursaring.png',
+            chance: '45.0%',
+            locations: [
+              'Viridian (caverna a oeste, 6 andares abaixo da superfície / Viridian subsolo)'
+            ],
+            map_image: 'assets/img/talents/maps/map_ursaring.png'
           }
         },
         {
-          id: 'item_mace_dark',
-          name: 'Dark Mace',
-          name_pt: 'Maça Sombria',
+          id: 'item_cow_tail',
+          name: 'Cow Tail',
           qty: 1100,
-          icon: 'assets/img/talents/items/item_mace_dark.png',
+          icon: 'assets/img/talents/items/item_cow_tail.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Miltank',
+            sprite: 'assets/img/pokemon/miltank.png',
+            chance: '45.0%',
+            locations: [
+              'Shamouti Island (ilha ao noroeste de Shamouti, no topo da montanha/Wildscape)'
+            ],
+            map_image: 'assets/img/talents/maps/map_miltank.png'
           }
         },
         {
-          id: 'item_fang_dark',
-          name: 'Dark Fang',
-          name_pt: 'Presa Sombria',
+          id: 'item_wigglytuff_ear',
+          name: 'Wigglytuff Ear',
           qty: 450,
-          icon: 'assets/img/talents/items/item_fang_dark.png',
+          icon: 'assets/img/talents/items/item_wigglytuff_ear.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Wigglytuff',
+            sprite: 'assets/img/pokemon/wigglytuff.png',
+            chance: '54.0%',
+            locations: [
+              'Ilha ao norte de Tangelo Island (seguindo reto ao norte pelo mar)'
+            ],
+            map_image: 'assets/img/talents/maps/map_shiny_wigglytuff.png'
           }
         },
         {
-          id: 'item_wing_pink',
-          name: 'Pink Wing',
-          name_pt: 'Asa Rosa',
+          id: 'item_pink_wings',
+          name: 'Pink Wings',
           qty: 450,
-          icon: 'assets/img/talents/items/item_wing_pink.png',
+          icon: 'assets/img/talents/items/item_pink_wings.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Clefable',
+            sprite: 'assets/img/pokemon/clefable.png',
+            chance: '54.0%',
+            locations: [
+              'Ilha ao norte de Tangelo Island (subindo de Tangelo)'
+            ],
+            map_image: 'assets/img/talents/maps/map_shiny_clefable.png'
           }
         },
         {
-          id: 'item_crystal_pink',
-          name: 'Pink Crystal',
-          name_pt: 'Cristal Rosa',
+          id: 'item_heart_stone',
+          name: 'Heart Stone',
           qty: 1000,
-          icon: 'assets/img/talents/items/item_crystal_pink.png',
+          icon: 'assets/img/talents/items/item_heart_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Normal)',
+            sprite: 'assets/img/types/normal.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Normal: Aipom, Audino, Azumarill, Chansey, Dodrio, Miltank, Noctowl, Pidgeot, Eevee, Smeargles, Snorlax, Tauros, etc.',
+              'Hunts em Kanto, Johto e Ilhas Laranja'
+            ]
           }
         }
       ]
