@@ -2653,9 +2653,45 @@ img.brand-img,
   white-space: nowrap;
 }
 
+/* ==========================================================================
+   GAMEPLAY BACKGROUND LAYER (Página Inicial com Blur da Guilda)
+   ========================================================================== */
 
+.gameplay-bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
 
+.gameplay-bg-img {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  right: -24px;
+  bottom: -24px;
+  background-image: url('../img/bg_gameplay.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: blur(3px) brightness(0.48) saturate(1.15);
+  transform: scale(1.05);
+}
 
-
-
-
+.gameplay-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Luz amarela/dourada nobre da guilda no topo */
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(249, 191, 0, 0.22) 0%, transparent 65%),
+    /* Luz azul-safira da guilda nas laterais */
+    radial-gradient(ellipse 65% 55% at 0% 45%, rgba(37, 99, 235, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 55% at 100% 65%, rgba(37, 99, 235, 0.20) 0%, transparent 60%),
+    /* Base preta sólida para manter o resto preto com alto contraste */
+    linear-gradient(180deg, rgba(6, 7, 10, 0.65) 0%, rgba(6, 7, 10, 0.82) 50%, rgba(4, 5, 7, 0.94) 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+}
