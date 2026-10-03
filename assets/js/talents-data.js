@@ -3,7 +3,7 @@
 // Dados estruturados de categorias, talentos, itens de craft, drops e hunts
 // ==========================================================================
 
-const TALENTS_DATA = {
+var TALENTS_DATA = {
   categories: [
     { id: 'personagem', name: 'Personagem', icon: 'assets/img/talents/cat_personagem.png', count: '5 / 18' },
     { id: 'pokemon', name: 'Pokémon', icon: 'assets/img/talents/cat_pokemon.png', count: 'Em breve' },
@@ -351,3 +351,10 @@ const TALENTS_DATA = {
     }
   ]
 };
+
+if (typeof window !== 'undefined') {
+  window.TALENTS_DATA = TALENTS_DATA;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = TALENTS_DATA;
+}

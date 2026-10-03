@@ -6,22 +6,36 @@ let activeTalentCategory = 'personagem';
 let talentSearchQuery = '';
 let showPortugueseAlways = false;
 
-document.addEventListener('DOMContentLoaded', () => {
+function getTalentsData() {
+  if (typeof window !== 'undefined' && window.TALENTS_DATA) return window.TALENTS_DATA;
+  if (typeof TALENTS_DATA !== 'undefined') return TALENTS_DATA;
+  console.warn('[Talentos] TALENTS_DATA não encontrado.');
+  return null;
+}
+
+function initTalentsPage() {
   renderTalentCategories();
   renderTalents();
   initTalentSearch();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTalentsPage);
+} else {
+  initTalentsPage();
+}
 
 function renderTalentCategories() {
   const container = document.getElementById('talentsCatList');
-  if (!container || !window.TALENTS_DATA) return;
+  const data = getTalentsData();
+  if (!container || !data || !data.categories) return;
 
-  container.innerHTML = TALENTS_DATA.categories.map(cat => {
+  container.innerHTML = data.categories.map(cat => {
     const isActive = cat.id === activeTalentCategory;
     return `
       <button type="button" class="talents-cat-btn ${isActive ? 'active' : ''}" onclick="selectTalentCategory('${cat.id}')">
         <div class="talents-cat-left">
-          <img src="${cat.icon}" alt="${cat.name}" class="talents-cat-icon">
+          <img src="${cat.icon}" alt="${cat.name}" class="talents-cat-icon" onerror="this.src='assets/img/logo.webp'">
           <span>${cat.name}</span>
         </div>
         <span class="talents-cat-count">${cat.count}</span>
@@ -51,26 +65,39 @@ function renderTalents() {
   const headerTitle = document.getElementById('currentCatTitle');
   const progressText = document.getElementById('currentCatProgress');
   const progressFill = document.getElementById('currentCatFill');
+  const data = getTalentsData();
 
-  if (!listEl || !window.TALENTS_DATA) return;
+  if (!listEl || !data) return;
 
-  const currentCat = TALENTS_DATA.categories.find(c => c.id === activeTalentCategory) || TALENTS_DATA.categories[0];
+  const currentCat = data.categories.find(c => c.id === activeTalentCategory) || data.categories[0];
   if (headerIcon) headerIcon.src = currentCat.icon;
   if (headerTitle) headerTitle.textContent = currentCat.name;
-  if (progressText) progressText.textContent = currentCat.count + ' desbloqueados';
+  if (progressText) {
+    progressText.textContent = currentCat.count.includes('/') ? currentCat.count + ' desbloqueados' : currentCat.count;
+  }
+  if (progressFill) {
+    if (currentCat.count.includes('/')) {
+      const parts = currentCat.count.split('/').map(s => parseInt(s.trim(), 10));
+      if (parts.length === 2 && parts[1] > 0) {
+        progressFill.style.width = Math.min(100, Math.round((parts[0] / parts[1]) * 100)) + '%';
+      }
+    } else {
+      progressFill.style.width = '0%';
+    }
+  }
 
   // Filtra talentos pela categoria ou busca textual
-  let filtered = TALENTS_DATA.talents.filter(t => {
+  let filtered = (data.talents || []).filter(t => {
     if (talentSearchQuery) {
       const q = talentSearchQuery.toLowerCase();
-      const matchDescEn = t.desc_en.toLowerCase().includes(q);
-      const matchDescPt = t.desc_pt.toLowerCase().includes(q);
-      const matchNameEn = t.name_en.toLowerCase().includes(q);
-      const matchNamePt = t.name_pt.toLowerCase().includes(q);
-      const matchItem = t.items.some(it => 
-        it.name.toLowerCase().includes(q) || 
-        it.name_pt.toLowerCase().includes(q) ||
-        (it.dropper && it.dropper.name.toLowerCase().includes(q))
+      const matchDescEn = (t.desc_en || '').toLowerCase().includes(q);
+      const matchDescPt = (t.desc_pt || '').toLowerCase().includes(q);
+      const matchNameEn = (t.name_en || '').toLowerCase().includes(q);
+      const matchNamePt = (t.name_pt || '').toLowerCase().includes(q);
+      const matchItem = (t.items || []).some(it => 
+        (it.name || '').toLowerCase().includes(q) || 
+        (it.name_pt || '').toLowerCase().includes(q) ||
+        (it.dropper && (it.dropper.name || '').toLowerCase().includes(q))
       );
       return matchDescEn || matchDescPt || matchNameEn || matchNamePt || matchItem;
     }
@@ -92,12 +119,10 @@ function renderTalents() {
     const subDesc = showPortugueseAlways ? t.desc_en : t.desc_pt;
     const subBadge = showPortugueseAlways ? 'EN' : 'PT';
 
-    const itemsHtml = t.items.map(it => {
-      // JSON stringified for safe click handler
-      const itData = encodeURIComponent(JSON.stringify(it));
+    const itemsHtml = (t.items || []).map(it => {
       return `
-        <div class="talent-item-pill" onclick="openItemDropModal('${itData}')" title="${it.name_pt} (${it.name}) • Clique para ver drop e local">
-          <img src="${it.icon}" alt="${it.name}" class="talent-item-img">
+        <div class="talent-item-pill" onclick="openItemDropModal('${it.id}')" title="${it.name_pt} (${it.name}) • Clique para ver drop e local">
+          <img src="${it.icon}" alt="${it.name}" class="talent-item-img" onerror="this.src='assets/img/logo.webp'">
           <span class="talent-item-qty">${it.qty > 1 ? it.qty : ''}</span>
         </div>
       `;
@@ -106,7 +131,7 @@ function renderTalents() {
     return `
       <div class="talent-card" id="${t.id}">
         <div class="talent-icon-wrap">
-          <img src="${t.icon}" alt="Ícone de Talento" class="talent-icon-img">
+          <img src="${t.icon}" alt="Ícone de Talento" class="talent-icon-img" onerror="this.src='assets/img/logo.webp'">
         </div>
         <div class="talent-desc-wrap">
           <div class="talent-desc-en">${mainDesc}</div>
@@ -133,10 +158,25 @@ function initTalentSearch() {
   });
 }
 
+function findItemById(itemId) {
+  const data = getTalentsData();
+  if (!data || !data.talents) return null;
+  for (const t of data.talents) {
+    if (!t.items) continue;
+    const found = t.items.find(it => it.id === itemId);
+    if (found) return found;
+  }
+  return null;
+}
+
 // Modal Popover de Onde Dropar e Localização
-function openItemDropModal(encodedItemData) {
+function openItemDropModal(itemId) {
   try {
-    const item = JSON.parse(decodeURIComponent(encodedItemData));
+    const item = findItemById(itemId);
+    if (!item) {
+      console.warn('[Talentos] Item não encontrado:', itemId);
+      return;
+    }
     const container = document.getElementById('itemModalContainer');
     if (!container) return;
 
@@ -148,7 +188,7 @@ function openItemDropModal(encodedItemData) {
       locations: ['Em catalogação']
     };
 
-    const locationsHtml = dropper.locations.map(loc => `
+    const locationsHtml = (dropper.locations || []).map(loc => `
       <div class="item-location-pill">
         <span>📍</span>
         <span>${loc}</span>
@@ -160,7 +200,7 @@ function openItemDropModal(encodedItemData) {
         <div class="item-popover" onclick="event.stopPropagation()">
           <div class="item-popover-header">
             <div class="item-popover-title-wrap">
-              <img src="${item.icon}" alt="${item.name}" class="item-popover-icon">
+              <img src="${item.icon}" alt="${item.name}" class="item-popover-icon" onerror="this.src='assets/img/logo.webp'">
               <div>
                 <div class="item-popover-name">${item.name_pt}</div>
                 <div class="item-popover-subname">${item.name} • Requerido: ${item.qty}x</div>
