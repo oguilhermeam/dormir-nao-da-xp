@@ -3365,6 +3365,15 @@
           <button type="button" class="btn btn-hoenn" onclick="builderCopyTeam()" id="btnCopyTeam" style="font-size: 0.78rem; padding: 6px 14px;">
             Copiar Formação
           </button>
+          <button type="button" class="btn btn-teal" onclick="builderExportImage()" id="btnExportImage" style="font-size: 0.78rem; padding: 6px 14px; gap: 6px; display: inline-flex; align-items: center;" title="Gerar e baixar imagem do time para compartilhar no Discord/WhatsApp">
+            <svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+              <rect x="2" y="4" width="12" height="10"/>
+              <rect x="5" y="2" width="6" height="2"/>
+              <rect x="7" y="6" width="2" height="2" fill="var(--black)"/>
+              <rect x="6" y="8" width="4" height="4" fill="var(--black)"/>
+            </svg>
+            <span>📸 Baixar Print do Time</span>
+          </button>
         </div>
       </div>
 
@@ -3699,6 +3708,342 @@
       renderBuilderSlots();
       renderBuilderPool('all');
     });
+  
+    // ==========================================================================
+    // EXPORTAR PRINT DO TIME (CARD HD PARA DISCORD / WHATSAPP)
+    // ==========================================================================
+    function builderExportImage() {
+      const filled = builderTeam.filter(Boolean);
+      if (!filled.length) {
+        alert('Seu time está vazio! Adicione pelo menos um Pokémon antes de baixar a print.');
+        return;
+      }
+
+      const btn = document.getElementById('btnExportImage');
+      const originalText = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.innerHTML = '<span>⏳ Gerando Print...</span>';
+        btn.disabled = true;
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 1200;
+      canvas.height = 640;
+      const ctx = canvas.getContext('2d');
+
+      function loadImage(src) {
+        return new Promise((resolve) => {
+          if (!src) return resolve(null);
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => resolve(img);
+          img.onerror = () => resolve(null);
+          img.src = src;
+        });
+      }
+
+      // Carrega o logo e os sprites dos 6 slots em paralelo
+      const imagePromises = [
+        loadImage('assets/img/logo.webp'),
+        ...builderTeam.map(p => p ? loadImage(p.sprite) : Promise.resolve(null))
+      ];
+
+      Promise.all(imagePromises).then(([logoImg, ...pokeImages]) => {
+        // 1. Fundo Base e Ambientação
+        ctx.fillStyle = '#06080e';
+        ctx.fillRect(0, 0, 1200, 640);
+
+        // Gradiente profundo da guilda
+        const grad = ctx.createLinearGradient(0, 0, 1200, 640);
+        grad.addColorStop(0, '#0c101c');
+        grad.addColorStop(0.5, '#06080e');
+        grad.addColorStop(1, '#040508');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1200, 640);
+
+        // Luz de aura dourada no topo
+        const goldAura = ctx.createRadialGradient(600, 0, 50, 600, 0, 450);
+        goldAura.addColorStop(0, 'rgba(249, 191, 0, 0.18)');
+        goldAura.addColorStop(1, 'transparent');
+        ctx.fillStyle = goldAura;
+        ctx.fillRect(0, 0, 1200, 450);
+
+        // Faixa de destaque dourada no topo
+        ctx.fillStyle = '#f9bf00';
+        ctx.fillRect(0, 0, 1200, 5);
+
+        // 2. Cabeçalho com Logo e Nome da Guilda
+        if (logoImg) {
+          ctx.drawImage(logoImg, 45, 24, 56, 56);
+        }
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 24px "Pixelify Sans", monospace, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('DORMIR NÃO DÁ XP', 115, 46);
+
+        ctx.fillStyle = '#0eaf9b';
+        ctx.font = '14px "Atkinson Hyperlegible", sans-serif';
+        ctx.fillText('PokeAlliance • Formação Tática para Hunts de Hoenn', 115, 68);
+
+        // Badge com Data e Quantidade de Pokémon
+        const filledCount = builderTeam.filter(Boolean).length;
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('pt-BR');
+
+        ctx.fillStyle = '#0d111a';
+        ctx.strokeStyle = '#1e2638';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(960, 24, 195, 54, 4);
+        else ctx.rect(960, 24, 195, 54);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#f9bf00';
+        ctx.font = 'bold 15px monospace, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${filledCount}/6 POKÉMONS`, 1057, 47);
+
+        ctx.fillStyle = '#9babb2';
+        ctx.font = '11px monospace, sans-serif';
+        ctx.fillText(dateStr + ' • PokeAlliance', 1057, 65);
+
+        // 3. Os 6 Cards de Slots
+        const cardWidth = 168;
+        const cardHeight = 330;
+        const gap = 18;
+        const startX = 51;
+        const startY = 100;
+
+        for (let i = 0; i < 6; i++) {
+          const p = builderTeam[i];
+          const pImg = pokeImages[i];
+          const cx = startX + i * (cardWidth + gap);
+          const cy = startY;
+
+          if (p) {
+            // Card preenchido com borda azul da guilda
+            ctx.fillStyle = '#0c0f17';
+            ctx.strokeStyle = '#2563eb';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            if (ctx.roundRect) ctx.roundRect(cx, cy, cardWidth, cardHeight, 4);
+            else ctx.rect(cx, cy, cardWidth, cardHeight);
+            ctx.fill();
+            ctx.stroke();
+
+            // Faixa superior do Slot
+            ctx.fillStyle = '#07090f';
+            ctx.fillRect(cx, cy, cardWidth, 28);
+            ctx.fillStyle = '#9babb2';
+            ctx.font = 'bold 11px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(`SLOT 0${i + 1}`, cx + cardWidth / 2, cy + 18);
+
+            // Sprite do Pokémon em pixel art nítido
+            if (pImg) {
+              ctx.imageSmoothingEnabled = false;
+              const sprSize = 84;
+              ctx.drawImage(pImg, cx + (cardWidth - sprSize) / 2, cy + 36, sprSize, sprSize);
+            }
+
+            // Tag de Offtank se aplicável
+            if (p.is_offtank) {
+              ctx.fillStyle = 'rgba(249, 191, 0, 0.15)';
+              ctx.strokeStyle = '#f9bf00';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              if (ctx.roundRect) ctx.roundRect(cx + (cardWidth - 84) / 2, cy + 128, 84, 20, 2);
+              else ctx.rect(cx + (cardWidth - 84) / 2, cy + 128, 84, 20);
+              ctx.fill();
+              ctx.stroke();
+              ctx.fillStyle = '#f9bf00';
+              ctx.font = 'bold 10px monospace';
+              ctx.textAlign = 'center';
+              ctx.fillText('🛡️ OFFTANK', cx + cardWidth / 2, cy + 142);
+            }
+
+            // Nome do Pokémon
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 14px "Atkinson Hyperlegible", sans-serif';
+            ctx.textAlign = 'center';
+            let displayName = p.name;
+            if (displayName.length > 17) displayName = displayName.substring(0, 16) + '…';
+            ctx.fillText(displayName, cx + cardWidth / 2, cy + 172);
+
+            // Tier Badge (T1, T2, SR)
+            let tierColor = '#f9c22b';
+            if (p.tier === 'T2') tierColor = '#1ebc73';
+            if (p.tier === 'SR') tierColor = '#c32454';
+
+            ctx.fillStyle = '#101420';
+            ctx.strokeStyle = tierColor;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            if (ctx.roundRect) ctx.roundRect(cx + (cardWidth - 64) / 2, cy + 192, 64, 24, 2);
+            else ctx.rect(cx + (cardWidth - 64) / 2, cy + 192, 64, 24);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = tierColor;
+            ctx.font = 'bold 12px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(`[ ${p.tier} ]`, cx + cardWidth / 2, cy + 208);
+
+            // Elemento
+            ctx.fillStyle = '#9babb2';
+            ctx.font = '12px monospace';
+            ctx.textAlign = 'center';
+            const elName = p.element ? p.element.toUpperCase() : 'HOENN';
+            ctx.fillText(elName, cx + cardWidth / 2, cy + 242);
+
+            // Linha tática de status no fundo do card
+            ctx.fillStyle = '#10b981';
+            ctx.fillRect(cx + 12, cy + cardHeight - 8, cardWidth - 24, 3);
+
+          } else {
+            // Slot Vazio
+            ctx.fillStyle = '#07090e';
+            ctx.strokeStyle = '#1a2233';
+            ctx.lineWidth = 1.5;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            if (ctx.roundRect) ctx.roundRect(cx, cy, cardWidth, cardHeight, 4);
+            else ctx.rect(cx, cy, cardWidth, cardHeight);
+            ctx.fill();
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Cabeçalho do Slot Vazio
+            ctx.fillStyle = '#556270';
+            ctx.font = 'bold 11px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(`SLOT 0${i + 1}`, cx + cardWidth / 2, cy + 22);
+
+            // Ícone +
+            ctx.fillStyle = '#222d42';
+            ctx.font = '36px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('+', cx + cardWidth / 2, cy + 155);
+
+            ctx.fillStyle = '#556270';
+            ctx.font = '12px sans-serif';
+            ctx.fillText('Slot Vazio', cx + cardWidth / 2, cy + 190);
+          }
+        }
+
+        // 4. Barra de Resumo e Estatísticas
+        ctx.fillStyle = '#0a0d16';
+        ctx.strokeStyle = '#1c2438';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(startX, 455, 1098, 68, 4);
+        else ctx.rect(startX, 455, 1098, 68);
+        ctx.fill();
+        ctx.stroke();
+
+        // Elementos presentes
+        const presentElements = [...new Set(builderTeam.filter(Boolean).map(p => p.element))];
+        ctx.fillStyle = '#f9bf00';
+        ctx.font = 'bold 11px monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText('COBERTURA ELEMENTAL:', startX + 24, 484);
+
+        ctx.fillStyle = '#c7dcd0';
+        ctx.font = '13px sans-serif';
+        const elList = presentElements.length ? presentElements.map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(' • ') : 'Nenhum';
+        ctx.fillText(elList, startX + 24, 506);
+
+        // Contagem de Tiers
+        const tierCounts = {};
+        builderTeam.filter(Boolean).forEach(p => {
+          tierCounts[p.tier] = (tierCounts[p.tier] || 0) + 1;
+        });
+        const tierSummary = Object.entries(tierCounts).map(([t, c]) => `${c}x ${t}`).join('  |  ') || 'Time Vazio';
+
+        ctx.fillStyle = '#0eaf9b';
+        ctx.font = 'bold 11px monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText('DISTRIBUIÇÃO DE TIERS:', startX + 1098 - 24, 484);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 13px monospace';
+        ctx.fillText(tierSummary, startX + 1098 - 24, 506);
+
+        // 5. Rodapé da Print
+        ctx.fillStyle = '#556270';
+        ctx.font = '12px monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText('⚔️ Dormir Não Dá XP • Compêndio Tático de PokéTibia (PokeAlliance)', startX, 580);
+
+        ctx.fillStyle = '#0eaf9b';
+        ctx.font = 'bold 12px monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText('dormir-nao-da-xp.vercel.app', startX + 1098, 580);
+
+        // 6. Exportação do Arquivo PNG
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            alert('Erro ao gerar imagem.');
+            if (btn) { btn.innerHTML = originalText; btn.disabled = false; }
+            return;
+          }
+
+          // Download automático do PNG
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.download = `time-hoenn-dormir-nao-da-xp-${Date.now().toString().slice(-4)}.png`;
+          a.href = url;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          // Tenta copiar também para a área de transferência
+          if (navigator.clipboard && window.ClipboardItem) {
+            navigator.clipboard.write([
+              new ClipboardItem({ 'image/png': blob })
+            ]).then(() => {
+              if (btn) {
+                btn.innerHTML = '<span>📸 Print Baixada & Copiada!</span>';
+                btn.style.backgroundColor = '#10b981';
+                setTimeout(() => {
+                  btn.innerHTML = originalText;
+                  btn.style.backgroundColor = '';
+                  btn.disabled = false;
+                }, 2500);
+              }
+            }).catch(() => {
+              if (btn) {
+                btn.innerHTML = '<span>📸 Print Baixada!</span>';
+                btn.style.backgroundColor = '#10b981';
+                setTimeout(() => {
+                  btn.innerHTML = originalText;
+                  btn.style.backgroundColor = '';
+                  btn.disabled = false;
+                }, 2500);
+              }
+            });
+          } else {
+            if (btn) {
+              btn.innerHTML = '<span>📸 Print Baixada!</span>';
+              btn.style.backgroundColor = '#10b981';
+              setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.backgroundColor = '';
+                btn.disabled = false;
+              }, 2500);
+            }
+          }
+        }, 'image/png');
+      }).catch((err) => {
+        console.error('Erro ao renderizar print do time:', err);
+        alert('Erro ao carregar imagens para a print.');
+        if (btn) { btn.innerHTML = originalText; btn.disabled = false; }
+      });
+    }
+
   </script>
 
 </body>
