@@ -2840,10 +2840,17 @@ html.mode-lite .table-responsive {
    PÁGINA DE TALENTOS DO JOGADOR (TALENTOS.HTML)
    ========================================================================== */
 
+.talents-page-main {
+  zoom: 1.08;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 .talents-layout {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 20px;
+  grid-template-columns: 250px 1fr;
+  gap: 22px;
   align-items: start;
 }
 
@@ -2928,9 +2935,9 @@ html.mode-lite .table-responsive {
 }
 
 .talents-cat-icon {
-  width: 24px;
-  height: 24px;
-  image-rendering: pixelated;
+  width: 26px;
+  height: 26px;
+  image-rendering: auto;
   flex-shrink: 0;
 }
 
@@ -2976,9 +2983,9 @@ html.mode-lite .table-responsive {
 }
 
 .talents-header-icon {
-  width: 28px;
-  height: 28px;
-  image-rendering: pixelated;
+  width: 30px;
+  height: 30px;
+  image-rendering: auto;
 }
 
 .talents-header-title {
@@ -3147,8 +3154,8 @@ html.mode-lite .table-responsive {
 }
 
 .talent-icon-wrap {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   background-color: var(--black);
   border: 1px solid var(--bg-2);
   border-radius: var(--radius);
@@ -3161,10 +3168,10 @@ html.mode-lite .table-responsive {
 }
 
 .talent-icon-img {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
-  image-rendering: pixelated;
+  image-rendering: auto;
   display: block;
 }
 
@@ -3176,7 +3183,7 @@ html.mode-lite .table-responsive {
 
 .talent-desc-en {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.4;
@@ -3184,7 +3191,7 @@ html.mode-lite .table-responsive {
 
 .talent-desc-pt {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--teal);
   line-height: 1.35;
   display: flex;
@@ -3209,18 +3216,18 @@ html.mode-lite .table-responsive {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: flex-end;
-  max-width: 320px;
+  max-width: 340px;
 }
 
 .talent-item-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   background-color: var(--black);
   border: 1px solid var(--bg-2);
   border-radius: var(--radius);
-  padding: 2px 8px;
-  height: 32px;
+  padding: 2px 9px;
+  height: 34px;
   cursor: pointer;
   transition: all 120ms ease;
   position: relative;
@@ -3228,23 +3235,23 @@ html.mode-lite .table-responsive {
 }
 
 .talent-item-pill:hover {
-  border-color: var(--guild-gold);
+  border-color: var(--teal);
   background-color: #121622;
   transform: translateY(-1px);
 }
 
 .talent-item-img {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
-  image-rendering: pixelated;
+  image-rendering: auto;
   flex-shrink: 0;
   display: block;
 }
 
 .talent-item-qty {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--text);
 }
@@ -3372,7 +3379,7 @@ html.mode-lite .table-responsive {
 .item-popover-icon {
   width: 32px;
   height: 32px;
-  image-rendering: pixelated;
+  image-rendering: auto;
 }
 
 .item-popover-name {
@@ -3741,7 +3748,7 @@ html.mode-lite .table-responsive {
   width: 32px;
   height: 32px;
   object-fit: contain;
-  image-rendering: pixelated;
+  image-rendering: auto;
   flex-shrink: 0;
 }
 
