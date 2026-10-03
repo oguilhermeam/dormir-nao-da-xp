@@ -120,33 +120,33 @@ var TALENTS_DATA = {
       desc_pt: 'Seu personagem terá um aumento de 300 pontos de vida na sua vida máxima.',
       items: [
         {
-          id: 'item_skull_brown',
-          name: 'Brown Skull',
-          name_pt: 'Crânio Marrom',
+          id: 'item_snorlax_paw',
+          name: 'Snorlax Paw',
           qty: 400,
-          icon: 'assets/img/talents/items/item_skull_brown.png',
+          icon: 'assets/img/talents/items/item_snorlax_paw.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Snorlax',
+            sprite: 'assets/img/pokemon/snorlax.png',
+            chance: '45.0%',
+            locations: [
+              'Fuchsia (caverna a oeste da cidade, andar inferior na área sudeste)'
+            ],
+            map_image: 'assets/img/talents/maps/map_snorlax.png'
           }
         },
         {
-          id: 'item_claw_gold',
-          name: 'Golden Claw',
-          name_pt: 'Garra Dourada',
+          id: 'item_bear_claw',
+          name: 'Bear Claw',
           qty: 400,
-          icon: 'assets/img/talents/items/item_claw_gold.png',
+          icon: 'assets/img/talents/items/item_bear_claw.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ursaring',
+            sprite: 'assets/img/pokemon/ursaring.png',
+            chance: '45.0%',
+            locations: [
+              'Viridian (caverna a oeste, 6 andares abaixo da superfície / Viridian subsolo)'
+            ],
+            map_image: 'assets/img/talents/maps/map_ursaring.png'
           }
         }
       ]
