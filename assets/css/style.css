@@ -2654,3 +2654,44 @@ img.brand-img,
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+
+/* ==========================================================================
+   GAMEPLAY BACKGROUND LAYER (Página Inicial com Blur da Guilda)
+   ========================================================================== */
+
+.gameplay-bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.gameplay-bg-img {
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  right: -24px;
+  bottom: -24px;
+  background-image: url('../img/bg_gameplay.webp');
+  background-size: cover;
+  background-position: center 35%;
+  filter: blur(8px) brightness(0.28) saturate(1.15);
+  transform: scale(1.06);
+}
+
+.gameplay-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(249, 191, 0, 0.05) 1px, transparent 1px),
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(249, 191, 0, 0.16) 0%, transparent 65%),
+    radial-gradient(ellipse 65% 55% at 0% 50%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 55% at 100% 60%, rgba(59, 130, 246, 0.14) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(6, 9, 34, 0.72) 0%, rgba(6, 9, 34, 0.88) 50%, rgba(4, 5, 22, 0.97) 100%);
+  background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+}
