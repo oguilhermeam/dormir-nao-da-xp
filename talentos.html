@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talentos do Jogador — Dormir Não Dá XP</title>
+  <meta name="description" content="Guia de talentos, materiais de craft, drops e localizações dos Pokémon no PokeAlliance.">
+  <link rel="icon" type="image/webp" href="assets/img/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=1.8">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo.webp" alt="Logo" class="brand-img">
+        <span>Dormir Não Dá XP</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a href="index.html" class="nav-link">
+              <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="7" y="1" width="2" height="2"/><rect x="5" y="3" width="6" height="2"/><rect x="3" y="5" width="10" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="2" y="9" width="12" height="6"/><rect x="6" y="10" width="4" height="5" fill="var(--black)"/>
+              </svg>
+              <span>Início</span>
+            </a>
+          </li>
+          <li>
+            <a href="equipe-rocket.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-rocket" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="3" y="1" width="7" height="2"/><rect x="3" y="3" width="9" height="4"/><rect x="6" y="3" width="3" height="2" fill="var(--black)"/><rect x="3" y="7" width="7" height="2"/><rect x="3" y="9" width="3" height="6"/><rect x="7" y="9" width="3" height="3"/><rect x="10" y="12" width="3" height="3"/>
+              </svg>
+              <span>Equipe Rocket</span>
+            </a>
+          </li>
+          <li>
+            <a href="times-hoenn.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-hoenn" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="5" y="5" width="6" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="6" y="11" width="4" height="2"/><rect x="7" y="13" width="2" height="2"/><rect x="7" y="7" width="2" height="2" fill="var(--black)"/>
+              </svg>
+              <span>Times Hoenn</span>
+            </a>
+          </li>
+          <li>
+            <a href="talentos.html" class="nav-link active">
+              <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="6" y="1" width="4" height="2"/><rect x="4" y="3" width="8" height="2"/><rect x="2" y="5" width="12" height="6"/><rect x="4" y="11" width="8" height="2"/><rect x="6" y="13" width="4" height="2"/>
+              </svg>
+              <span>Talentos</span>
+            </a>
+          </li>
+          <li>
+            <a href="guias.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="2" y="2" width="11" height="12"/><rect x="4" y="4" width="7" height="8" fill="var(--black)"/><rect x="6" y="5" width="3" height="4" fill="var(--teal)"/><rect x="13" y="3" width="1" height="10" fill="var(--text-dim)"/>
+              </svg>
+              <span>Compêndio</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 20px; padding-bottom: 48px;">
+
+    <!-- Cabeçalho da Página com Barra de Busca -->
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--bg-2);">
+      <div>
+        <h1 style="font-size: 1.85rem; color: #ffffff; display: flex; align-items: center; gap: 10px;">
+          <span>Talentos do Jogador</span>
+        </h1>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin-top: 4px;">
+          Guia de materiais, itens requeridos, porcentagens de drop e localização dos Pokémon.
+        </p>
+      </div>
+
+      <!-- Campo de Busca em Tempo Real -->
+      <div style="position: relative; min-width: 280px;">
+        <input 
+          type="text" 
+          id="talentSearchInput" 
+          placeholder="Buscar talento, efeito, item ou drop..." 
+          style="width: 100%; padding: 8px 12px; background-color: var(--black); border: 2px solid var(--bg-2); border-radius: var(--radius); color: var(--text); font-family: var(--font-body); font-size: 0.88rem; outline: none; transition: border-color 120ms ease;"
+          onfocus="this.style.borderColor='var(--teal)'"
+          onblur="this.style.borderColor='var(--bg-2)'"
+        >
+      </div>
+    </div>
+
+    <!-- Layout Dividido em Duas Colunas (Sidebar de Categorias + Lista de Talentos) -->
+    <div class="talents-layout">
+
+      <!-- Coluna da Esquerda: Categorias -->
+      <aside class="talents-sidebar">
+        <div style="padding: 4px 8px 8px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase;">
+          Categorias
+        </div>
+        <div class="talents-cat-list" id="talentsCatList">
+          <!-- Gerado dinamicamente via talents.js -->
+        </div>
+      </aside>
+
+      <!-- Coluna da Direita: Área de Talentos -->
+      <section class="talents-content-area">
+
+        <!-- Barra Superior da Categoria Selecionada -->
+        <div class="talents-content-header">
+          <div class="talents-header-left">
+            <img src="assets/img/talents/cat_personagem.png" alt="Categoria" class="talents-header-icon" id="currentCatIcon">
+            <span class="talents-header-title" id="currentCatTitle">Personagem</span>
+          </div>
+
+          <div class="talents-header-right">
+            <button type="button" class="btn-lang-toggle" onclick="toggleLanguageMode()" id="btnLangToggle" title="Alternar idioma principal entre Inglês e Português">
+              🌐 Modo: <strong>Inglês (Original)</strong>
+            </button>
+            <div class="talents-progress-wrap">
+              <div class="talents-progress-bar">
+                <div class="talents-progress-fill" style="width: 38%;" id="currentCatFill"></div>
+              </div>
+              <span class="talents-progress-text" id="currentCatProgress">5 / 18 desbloqueados</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de Cards de Talentos -->
+        <div class="talents-list" id="talentsList">
+          <!-- Gerado dinamicamente via talents.js -->
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Container para o Modal Popover de Drop -->
+  <div id="itemModalContainer"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Dormir Não Dá XP</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="equipe-rocket.html">Equipe Rocket</a></li>
+        <li><a href="times-hoenn.html">Times Hoenn</a></li>
+        <li><a href="talentos.html">Talentos</a></li>
+        <li><a href="guias.html">Compêndio</a></li>
+      </ul>
+      <div class="footer-actions" style="margin-top: 6px;">
+        <button type="button" class="btn-lite-toggle" onclick="toggleLiteMode()" id="btnLiteToggle" title="Ativar/Desativar otimizações de FPS para PCs mais lentos">
+          <span class="lite-icon">⚡</span>
+          <span class="lite-text">Modo Leve: Desativado</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/talents-data.js"></script>
+  <script src="assets/js/talents.js"></script>
+  <script src="assets/js/main.js?v=1.5" defer></script>
+</body>
+</html>
