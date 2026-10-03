@@ -499,7 +499,6 @@ function toggleFarmItemCheck(itemId, isChecked) {
 }
 
 function clearFarmedMaterials() {
-  if (!confirm('Deseja desmarcar todos os itens coletados desta lista?')) return;
   try {
     localStorage.removeItem('pa_farmed_materials');
     const checkboxes = document.querySelectorAll('.material-checkbox');
@@ -581,6 +580,13 @@ function openMaterialsModal(overrideMode) {
   });
 
   const consolidatedItems = Array.from(itemMap.values());
+  // Ordena da maior quantidade para a menor (se empatar, ordem alfabética)
+  consolidatedItems.sort((a, b) => {
+    if (b.totalQty !== a.totalQty) {
+      return b.totalQty - a.totalQty;
+    }
+    return (a.name || '').localeCompare(b.name || '');
+  });
   currentMaterialsData = consolidatedItems;
 
   const farmedMap = getFarmedMaterials();
@@ -767,7 +773,12 @@ function copyMaterialsToClipboard() {
       setTimeout(() => { btn.innerHTML = orig; }, 2000);
     }
   }).catch(() => {
-    alert('Não foi possível copiar automaticamente para a área de transferência.');
+    const btn = document.getElementById('btnCopyMaterials');
+    if (btn) {
+      const orig = btn.innerHTML;
+      btn.innerHTML = `<span style="color: #f87171; font-weight: 700;">Erro ao copiar</span>`;
+      setTimeout(() => { btn.innerHTML = orig; }, 2000);
+    }
   });
 }
 
