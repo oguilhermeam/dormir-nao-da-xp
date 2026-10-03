@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Top Navigation com Ícones Pixel Art -->
   <header class="navbar">
     <div class="container nav-container">
       <a href="index.html" class="brand">
@@ -23,10 +23,30 @@
 
       <nav>
         <ul class="nav-links">
-          <li><a href="index.html" class="nav-link">Início</a></li>
-          <li><a href="equipe-rocket.html" class="nav-link">Equipe Rocket</a></li>
-          <li><a href="times-hoenn.html" class="nav-link">Times Hoenn</a></li>
-          <li><a href="guias.html" class="nav-link active">Compêndio</a></li>
+          <li>
+            <a href="index.html" class="nav-link">
+              <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="7" y="1" width="2" height="2"/><rect x="5" y="3" width="6" height="2"/><rect x="3" y="5" width="10" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="2" y="9" width="12" height="6"/><rect x="6" y="10" width="4" height="5" fill="var(--black)"/></svg>
+              <span>Início</span>
+            </a>
+          </li>
+          <li>
+            <a href="equipe-rocket.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-rocket" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="3" y="1" width="7" height="2"/><rect x="3" y="3" width="9" height="4"/><rect x="6" y="3" width="3" height="2" fill="var(--black)"/><rect x="3" y="7" width="7" height="2"/><rect x="3" y="9" width="3" height="6"/><rect x="7" y="9" width="3" height="3"/><rect x="10" y="12" width="3" height="3"/></svg>
+              <span>Equipe Rocket</span>
+            </a>
+          </li>
+          <li>
+            <a href="times-hoenn.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-hoenn" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="5" y="5" width="6" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="6" y="11" width="4" height="2"/><rect x="7" y="13" width="2" height="2"/><rect x="7" y="7" width="2" height="2" fill="var(--black)"/></svg>
+              <span>Times Hoenn</span>
+            </a>
+          </li>
+          <li>
+            <a href="guias.html" class="nav-link active">
+              <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="2" y="2" width="11" height="12"/><rect x="4" y="4" width="7" height="8" fill="var(--black)"/><rect x="6" y="5" width="3" height="4" fill="var(--teal)"/><rect x="13" y="3" width="1" height="10" fill="var(--text-dim)"/></svg>
+              <span>Compêndio</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -41,8 +61,9 @@
       </p>
     </div>
 
-    <!-- Barra de Busca -->
+    <!-- Barra de Busca com Ícone Pixel Art -->
     <div class="search-wrapper">
+      <svg class="pixel-icon search-pixel-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="4" y="2" width="5" height="2"/><rect x="2" y="4" width="2" height="5"/><rect x="9" y="4" width="2" height="5"/><rect x="4" y="9" width="5" height="2"/><rect x="9" y="9" width="2" height="2"/><rect x="11" y="11" width="3" height="3"/></svg>
       <input type="text" id="guideSearch" class="search-input" placeholder="Buscar por Rocket, Hoenn, elemento, NPC, boss ou termo chave (Atalho: / ou Ctrl+K)...">
     </div>
 
@@ -52,8 +73,8 @@
       <!-- Guia 1: Equipe Rocket -->
       <a href="equipe-rocket.html" class="card guide-card-item" data-category="rocket" data-title="Equipe Rocket Guia e Counters 13 NPCs" data-desc="Tabela com todos os 13 NPCs da Rocket, Giovanni, sprites e estratégia de time econômico barato." data-tags="rocket giovanni tokens shadow frost thorn cipher phoenix scythe mirage zephyr obsidian vortex tempest eclipse">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span class="tag tag-rocket">Equipe Rocket</span>
-          <span class="font-mono" style="color: var(--hoenn);">50 Gold Token</span>
+          <span class="tag tag-rocket"><svg class="pixel-icon pixel-icon-rocket" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="3" y="1" width="7" height="2"/><rect x="3" y="3" width="9" height="4"/><rect x="6" y="3" width="3" height="2" fill="var(--black)"/><rect x="3" y="7" width="7" height="2"/><rect x="3" y="9" width="3" height="6"/><rect x="7" y="9" width="3" height="3"/><rect x="10" y="12" width="3" height="3"/></svg> Equipe Rocket</span>
+          <span class="font-mono" style="color: var(--hoenn); display: inline-flex; align-items: center; gap: 4px;"><svg class="pixel-icon" width="13" height="13" viewBox="0 0 14 14" fill="currentColor" shape-rendering="crispEdges"><rect x="4" y="1" width="6" height="12"/><rect x="2" y="3" width="10" height="8"/><rect x="1" y="4" width="12" height="6"/><rect x="6" y="4" width="2" height="6" fill="var(--black)"/></svg> 50 Gold Token</span>
         </div>
         <h3 class="card-title">Equipe Rocket (13 NPCs + Giovanni)</h3>
         <p class="card-desc">Tabela completa de counters 1v1 com sprites individuais de cada pokémon e a build barata da guilda.</p>
@@ -66,7 +87,7 @@
       <!-- Guia 2: Times de Hoenn -->
       <a href="times-hoenn.html" class="card guide-card-item" data-category="hoenn" data-title="Times para Caçar em Hoenn Iniciantes Mono Elemento" data-desc="Sugestões de times mono-elemento baratos para iniciar Hoenn com Tiers, Offtanks, Upgrades de SR e Prós/Contras." data-tags="hoenn hunt times rotação elemento dark ghost electric fairy fighting fire flying grass ground ice poison psychic rock steel water bug dragon smeargle hitmonchan">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span class="tag tag-quest">Times Hoenn</span>
+          <span class="tag tag-quest"><svg class="pixel-icon pixel-icon-hoenn" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="5" y="5" width="6" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="6" y="11" width="4" height="2"/><rect x="7" y="13" width="2" height="2"/><rect x="7" y="7" width="2" height="2" fill="var(--black)"/></svg> Times Hoenn</span>
           <span class="font-mono" style="color: var(--status-resist);">Level 350</span>
         </div>
         <h3 class="card-title">Times para Caçar em Hoenn</h3>
