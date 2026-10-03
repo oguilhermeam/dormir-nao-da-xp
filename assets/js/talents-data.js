@@ -38,17 +38,21 @@ var TALENTS_DATA = {
       desc_pt: 'Seu personagem terá um aumento de 500 pontos de vida na sua vida máxima.',
       items: [
         {
-          id: 'item_feather_blue',
-          name: 'Blue Feather',
-          name_pt: 'Pena Azul',
+          id: 'item_blue_wings',
+          name: 'Blue Wings',
+          name_pt: 'Asas Azuis',
           qty: 1,
-          icon: 'assets/img/talents/items/item_feather_blue.png',
+          icon: 'assets/img/talents/items/item_blue_wings.png',
           dropper: {
-            name: 'Pidgeot',
-            sprite: 'assets/img/pokemon/pidgeot.png',
-            chance: '1.2%',
-            rarity: 'Incomum',
-            locations: ['Rota 16 (Noroeste de Celadon)', 'Viridian Forest (Área Alta)']
+            name: 'Shiny Clefable',
+            sprite: 'assets/img/pokemon/sh_clefable.png',
+            chance: '4.0%',
+            rarity: 'Shiny',
+            locations: [
+              'Ilha ao norte de Tangelo Island (subindo de Tangelo)',
+              'Orange Archipelago'
+            ],
+            map_image: 'assets/img/talents/maps/map_shiny_clefable.png'
           }
         },
         {
@@ -58,11 +62,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_horn_pink.png',
           dropper: {
-            name: 'Nidorina',
-            sprite: 'assets/img/pokemon/nidoqueen.png',
-            chance: '0.9%',
-            rarity: 'Médio',
-            locations: ['Rota 9 (Leste de Cerulean)', 'Safari Zone']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -83,11 +88,12 @@ var TALENTS_DATA = {
           qty: 250,
           icon: 'assets/img/talents/items/item_claws_pink.png',
           dropper: {
-            name: 'Golbat',
-            sprite: 'assets/img/pokemon/golbat.png',
-            chance: '2.5%',
-            rarity: 'Comum',
-            locations: ['Mt. Moon (Subsolo B2)', 'Rock Tunnel']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -97,11 +103,12 @@ var TALENTS_DATA = {
           qty: 250,
           icon: 'assets/img/talents/items/item_spike_pink.png',
           dropper: {
-            name: 'Ariados',
-            sprite: 'assets/img/pokemon/ariados.png',
-            chance: '2.0%',
-            rarity: 'Comum',
-            locations: ['Viridian Forest (Noite)', 'Safari Zone']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -122,11 +129,12 @@ var TALENTS_DATA = {
           qty: 400,
           icon: 'assets/img/talents/items/item_skull_brown.png',
           dropper: {
-            name: 'Marowak',
-            sprite: 'assets/img/pokemon/marowak.png',
-            chance: '1.8%',
-            rarity: 'Comum',
-            locations: ['Pokémon Tower (Lavender)', 'Rock Tunnel']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -136,11 +144,12 @@ var TALENTS_DATA = {
           qty: 400,
           icon: 'assets/img/talents/items/item_claw_gold.png',
           dropper: {
-            name: 'Sandslash',
-            sprite: 'assets/img/pokemon/sandslash.png',
-            chance: '1.5%',
-            rarity: 'Incomum',
-            locations: ['Rota 4 (Deserto)', 'Viridian Caves']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -161,11 +170,12 @@ var TALENTS_DATA = {
           qty: 10,
           icon: 'assets/img/talents/items/item_tail_rainbow.png',
           dropper: {
-            name: 'Dragonite',
-            sprite: 'assets/img/pokemon/dragonite.png',
-            chance: '1.5%',
-            rarity: 'Raro',
-            locations: ['Dragon Den', 'Safari Zone (Água)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -175,11 +185,12 @@ var TALENTS_DATA = {
           qty: 30,
           icon: 'assets/img/talents/items/item_scepter_purple.png',
           dropper: {
-            name: 'Gengar',
-            sprite: 'assets/img/pokemon/gengar.png',
-            chance: '2.8%',
-            rarity: 'Comum',
-            locations: ['Pokémon Tower (Lavender Topo)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -200,11 +211,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_syringe_green.png',
           dropper: {
-            name: 'Weezing',
-            sprite: 'assets/img/pokemon/weezing.png',
-            chance: '0.5%',
-            rarity: 'Raro',
-            locations: ['Pokémon Mansion (Cinnabar B1)', 'Power Plant']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -214,11 +226,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_bone.png',
           dropper: {
-            name: 'Cubone',
-            sprite: 'assets/img/pokemon/marowak.png',
-            chance: '5.0%',
-            rarity: 'Muito Comum',
-            locations: ['Pokémon Tower (Lavender)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -228,11 +241,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_shell_gold.png',
           dropper: {
-            name: 'Omastar',
-            sprite: 'assets/img/pokemon/blastoise.png',
-            chance: '4.2%',
-            rarity: 'Comum',
-            locations: ['Seafoam Islands', 'Cinnabar Coast']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -242,11 +256,12 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_mace_dark.png',
           dropper: {
-            name: 'Steelix',
-            sprite: 'assets/img/pokemon/steelix.png',
-            chance: '3.0%',
-            rarity: 'Comum',
-            locations: ['Rock Tunnel', 'Victory Road']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -256,11 +271,12 @@ var TALENTS_DATA = {
           qty: 450,
           icon: 'assets/img/talents/items/item_fang_dark.png',
           dropper: {
-            name: 'Arbok',
-            sprite: 'assets/img/pokemon/arbok.png',
-            chance: '2.4%',
-            rarity: 'Incomum',
-            locations: ['Rota 8 (Leste de Celadon)', 'Safari Zone']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -270,11 +286,12 @@ var TALENTS_DATA = {
           qty: 450,
           icon: 'assets/img/talents/items/item_wing_pink.png',
           dropper: {
-            name: 'Venomoth',
-            sprite: 'assets/img/pokemon/scyther.png',
-            chance: '2.0%',
-            rarity: 'Incomum',
-            locations: ['Rota 15', 'Viridian Forest']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -284,11 +301,12 @@ var TALENTS_DATA = {
           qty: 1000,
           icon: 'assets/img/talents/items/item_crystal_pink.png',
           dropper: {
-            name: 'Starmie',
-            sprite: 'assets/img/pokemon/starmie.png',
-            chance: '3.5%',
-            rarity: 'Comum',
-            locations: ['Rota 19 (Mar)', 'Seafoam Islands']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -309,11 +327,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_ruby_fire.png',
           dropper: {
-            name: 'Magmar',
-            sprite: 'assets/img/pokemon/charizard.png',
-            chance: '0.6%',
-            rarity: 'Raro',
-            locations: ['Pokémon Mansion (Cinnabar)', 'Mt. Ember']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -323,11 +342,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_wing_dragon.png',
           dropper: {
-            name: 'Charizard',
-            sprite: 'assets/img/pokemon/charizard.png',
-            chance: '3.5%',
-            rarity: 'Comum',
-            locations: ['Cinnabar Volcano', 'Victory Road']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -337,11 +357,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_coin_gold.png',
           dropper: {
-            name: 'Persian',
-            sprite: 'assets/img/pokemon/persian.png',
-            chance: '4.0%',
-            rarity: 'Comum',
-            locations: ['Rota 7', 'Rota 8']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -351,11 +372,12 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_fur_yellow.png',
           dropper: {
-            name: 'Ninetales',
-            sprite: 'assets/img/pokemon/ninetales.png',
-            chance: '2.5%',
-            rarity: 'Incomum',
-            locations: ['Pokémon Mansion', 'Rota 8']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -365,11 +387,12 @@ var TALENTS_DATA = {
           qty: 900,
           icon: 'assets/img/talents/items/item_armor_metal.png',
           dropper: {
-            name: 'Tyranitar',
-            sprite: 'assets/img/pokemon/tyranitar.png',
-            chance: '1.8%',
-            rarity: 'Incomum',
-            locations: ['Cerulean Cave', 'Victory Road']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -379,11 +402,12 @@ var TALENTS_DATA = {
           qty: 1000,
           icon: 'assets/img/talents/items/item_ruby.png',
           dropper: {
-            name: 'Arcanine',
-            sprite: 'assets/img/pokemon/arcanine.png',
-            chance: '2.8%',
-            rarity: 'Comum',
-            locations: ['Cinnabar Island', 'Rota 7']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -404,11 +428,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_stone_grey.png',
           dropper: {
-            name: 'Aerodactyl',
-            sprite: 'assets/img/pokemon/skarmory.png',
-            chance: '0.8%',
-            rarity: 'Raro',
-            locations: ['Cerulean Cave', 'Rock Tunnel B2']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -418,11 +443,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_rocks.png',
           dropper: {
-            name: 'Golem',
-            sprite: 'assets/img/pokemon/golem.png',
-            chance: '4.5%',
-            rarity: 'Muito Comum',
-            locations: ['Rock Tunnel', 'Mt. Moon B1']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -432,11 +458,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_fossil_helix.png',
           dropper: {
-            name: 'Omanyte',
-            sprite: 'assets/img/pokemon/omastar.png',
-            chance: '3.8%',
-            rarity: 'Comum',
-            locations: ['Seafoam Islands', 'Cinnabar Coast']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -446,11 +473,12 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_bone_long.png',
           dropper: {
-            name: 'Marowak',
-            sprite: 'assets/img/pokemon/marowak.png',
-            chance: '3.2%',
-            rarity: 'Comum',
-            locations: ['Pokémon Tower (Lavender)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -460,11 +488,12 @@ var TALENTS_DATA = {
           qty: 900,
           icon: 'assets/img/talents/items/item_drill_grey.png',
           dropper: {
-            name: 'Rhydon',
-            sprite: 'assets/img/pokemon/rhydon.png',
-            chance: '2.1%',
-            rarity: 'Incomum',
-            locations: ['Safari Zone', 'Cerulean Cave']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -474,11 +503,12 @@ var TALENTS_DATA = {
           qty: 500,
           icon: 'assets/img/talents/items/item_scale_green.png',
           dropper: {
-            name: 'Dragonair',
-            sprite: 'assets/img/pokemon/dragonair.png',
-            chance: '1.5%',
-            rarity: 'Incomum',
-            locations: ['Safari Zone (Lago)', 'Dragon Den']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -488,11 +518,12 @@ var TALENTS_DATA = {
           qty: 500,
           icon: 'assets/img/talents/items/item_shell_brown.png',
           dropper: {
-            name: 'Kabuto',
-            sprite: 'assets/img/pokemon/kabutops.png',
-            chance: '1.8%',
-            rarity: 'Incomum',
-            locations: ['Seafoam Islands', 'Cinnabar Coast']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -513,11 +544,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_water_drop.png',
           dropper: {
-            name: 'Lapras',
-            sprite: 'assets/img/pokemon/sh_lapras.png',
-            chance: '0.6%',
-            rarity: 'Raro',
-            locations: ['Seafoam Islands (Fim)', 'Rota 20']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -527,11 +559,12 @@ var TALENTS_DATA = {
           qty: 900,
           icon: 'assets/img/talents/items/item_claw_darkblue.png',
           dropper: {
-            name: 'Golduck',
-            sprite: 'assets/img/pokemon/blastoise.png',
-            chance: '2.5%',
-            rarity: 'Incomum',
-            locations: ['Rota 6 (Lago)', 'Cerulean Cape']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -541,11 +574,12 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_feather_blue_crest.png',
           dropper: {
-            name: 'Articuno',
-            sprite: 'assets/img/pokemon/pidgeot.png',
-            chance: '2.2%',
-            rarity: 'Incomum',
-            locations: ['Seafoam Islands B4']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -555,11 +589,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_fin_blue.png',
           dropper: {
-            name: 'Gyarados',
-            sprite: 'assets/img/pokemon/gyarados.png',
-            chance: '4.0%',
-            rarity: 'Comum',
-            locations: ['Rota 12', 'Fuchsia Lake']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -569,11 +604,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_cannon_water.png',
           dropper: {
-            name: 'Blastoise',
-            sprite: 'assets/img/pokemon/blastoise.png',
-            chance: '3.5%',
-            rarity: 'Comum',
-            locations: ['Ilhas Cinnabar', 'Vermilion Sea']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -583,11 +619,12 @@ var TALENTS_DATA = {
           qty: 500,
           icon: 'assets/img/talents/items/item_crystal_ice.png',
           dropper: {
-            name: 'Cloyster',
-            sprite: 'assets/img/pokemon/omastar.png',
-            chance: '2.0%',
-            rarity: 'Incomum',
-            locations: ['Seafoam Islands B3']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -597,11 +634,12 @@ var TALENTS_DATA = {
           qty: 500,
           icon: 'assets/img/talents/items/item_gem_emerald.png',
           dropper: {
-            name: 'Kingdra',
-            sprite: 'assets/img/pokemon/kingdra.png',
-            chance: '1.6%',
-            rarity: 'Incomum',
-            locations: ['Whirl Islands', 'Cerulean Cave (Água)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -622,11 +660,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_core_electric.png',
           dropper: {
-            name: 'Zapdos',
-            sprite: 'assets/img/pokemon/electabuzz.png',
-            chance: '0.5%',
-            rarity: 'Raro',
-            locations: ['Power Plant (Usina Elétrica)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -636,11 +675,12 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_connector_electric.png',
           dropper: {
-            name: 'Magneton',
-            sprite: 'assets/img/pokemon/magneton.png',
-            chance: '2.8%',
-            rarity: 'Comum',
-            locations: ['Power Plant']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -650,11 +690,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_ring_electric.png',
           dropper: {
-            name: 'Ampharos',
-            sprite: 'assets/img/pokemon/ampharos.png',
-            chance: '3.8%',
-            rarity: 'Comum',
-            locations: ['Power Plant (Área dos Fundos)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -664,11 +705,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_horn_gold.png',
           dropper: {
-            name: 'Raichu',
-            sprite: 'assets/img/pokemon/raichu.png',
-            chance: '3.6%',
-            rarity: 'Comum',
-            locations: ['Power Plant', 'Rota 10']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -678,11 +720,12 @@ var TALENTS_DATA = {
           qty: 900,
           icon: 'assets/img/talents/items/item_fur_electric.png',
           dropper: {
-            name: 'Jolteon',
-            sprite: 'assets/img/pokemon/sh_jolteon.png',
-            chance: '2.2%',
-            rarity: 'Incomum',
-            locations: ['Rota 10 (Norte)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -692,11 +735,12 @@ var TALENTS_DATA = {
           qty: 1000,
           icon: 'assets/img/talents/items/item_stone_thunder.png',
           dropper: {
-            name: 'Electabuzz',
-            sprite: 'assets/img/pokemon/electabuzz.png',
-            chance: '3.0%',
-            rarity: 'Comum',
-            locations: ['Power Plant']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -717,11 +761,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_flower_rainbow.png',
           dropper: {
-            name: 'Vileplume',
-            sprite: 'assets/img/pokemon/venusaur.png',
-            chance: '0.5%',
-            rarity: 'Raro',
-            locations: ['Celadon Gym Garden', 'Rota 15']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -731,11 +776,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_bulb_pink.png',
           dropper: {
-            name: 'Venusaur',
-            sprite: 'assets/img/pokemon/venusaur.png',
-            chance: '3.8%',
-            rarity: 'Comum',
-            locations: ['Viridian Forest (Fundo)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -745,11 +791,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_flower_red.png',
           dropper: {
-            name: 'Gloom',
-            sprite: 'assets/img/pokemon/venusaur.png',
-            chance: '4.0%',
-            rarity: 'Comum',
-            locations: ['Rota 24', 'Rota 25']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -759,11 +806,12 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_leaves_grass.png',
           dropper: {
-            name: 'Victreebel',
-            sprite: 'assets/img/pokemon/sh_victreebel.png',
-            chance: '2.9%',
-            rarity: 'Incomum',
-            locations: ['Rota 21 (Sul de Pallet)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -773,11 +821,12 @@ var TALENTS_DATA = {
           qty: 900,
           icon: 'assets/img/talents/items/item_vine_blue.png',
           dropper: {
-            name: 'Tangela',
-            sprite: 'assets/img/pokemon/sh_tangela.png',
-            chance: '2.4%',
-            rarity: 'Incomum',
-            locations: ['Rota 21']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -787,11 +836,12 @@ var TALENTS_DATA = {
           qty: 500,
           icon: 'assets/img/talents/items/item_seed_green.png',
           dropper: {
-            name: 'Exeggcute',
-            sprite: 'assets/img/pokemon/sh_exeggutor.png',
-            chance: '1.8%',
-            rarity: 'Incomum',
-            locations: ['Safari Zone']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -801,11 +851,12 @@ var TALENTS_DATA = {
           qty: 500,
           icon: 'assets/img/talents/items/item_leaf_green.png',
           dropper: {
-            name: 'Bellsprout',
-            sprite: 'assets/img/pokemon/sh_bellossom.png',
-            chance: '2.0%',
-            rarity: 'Incomum',
-            locations: ['Rota 5', 'Rota 6']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -826,11 +877,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_heart_pink.png',
           dropper: {
-            name: 'Clefable',
-            sprite: 'assets/img/pokemon/clefable.png',
-            chance: '0.5%',
-            rarity: 'Raro',
-            locations: ['Mt. Moon (Pico da Montanha)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -840,11 +892,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_wing_bat_cyan.png',
           dropper: {
-            name: 'Crobat',
-            sprite: 'assets/img/pokemon/crobat.png',
-            chance: '3.9%',
-            rarity: 'Comum',
-            locations: ['Rock Tunnel', 'Mt. Moon B2']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -854,11 +907,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_pincer_purple.png',
           dropper: {
-            name: 'Haunter',
-            sprite: 'assets/img/pokemon/haunter.png',
-            chance: '3.7%',
-            rarity: 'Comum',
-            locations: ['Pokémon Tower (Lavender)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -868,11 +922,12 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_scythe_purple.png',
           dropper: {
-            name: 'Nidoking',
-            sprite: 'assets/img/pokemon/nidoking.png',
-            chance: '2.6%',
-            rarity: 'Incomum',
-            locations: ['Safari Zone']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -882,11 +937,12 @@ var TALENTS_DATA = {
           qty: 900,
           icon: 'assets/img/talents/items/item_tongue_pink.png',
           dropper: {
-            name: 'Gengar',
-            sprite: 'assets/img/pokemon/gengar.png',
-            chance: '2.2%',
-            rarity: 'Incomum',
-            locations: ['Pokémon Tower B2']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -896,11 +952,12 @@ var TALENTS_DATA = {
           qty: 1000,
           icon: 'assets/img/talents/items/item_crystal_dusk.png',
           dropper: {
-            name: 'Gengar',
-            sprite: 'assets/img/pokemon/gengar.png',
-            chance: '2.8%',
-            rarity: 'Comum',
-            locations: ['Pokémon Tower (Topo)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -922,11 +979,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_medal_gold.png',
           dropper: {
-            name: 'Persian',
-            sprite: 'assets/img/pokemon/persian.png',
-            chance: '0.5%',
-            rarity: 'Raro',
-            locations: ['Rota 7', 'Rota 8']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -936,11 +994,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_horn_yellow.png',
           dropper: {
-            name: 'Rapidash',
-            sprite: 'assets/img/pokemon/arcanine.png',
-            chance: '3.8%',
-            rarity: 'Comum',
-            locations: ['Rota 17 (Ciclovia)', 'Cinnabar Island']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -950,11 +1009,12 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_skull_white.png',
           dropper: {
-            name: 'Marowak',
-            sprite: 'assets/img/pokemon/marowak.png',
-            chance: '4.0%',
-            rarity: 'Comum',
-            locations: ['Pokémon Tower (Lavender)']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -964,11 +1024,12 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_tail_redwhite.png',
           dropper: {
-            name: 'Ninetales',
-            sprite: 'assets/img/pokemon/ninetales.png',
-            chance: '2.5%',
-            rarity: 'Incomum',
-            locations: ['Pokémon Mansion', 'Rota 8']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -978,11 +1039,12 @@ var TALENTS_DATA = {
           qty: 900,
           icon: 'assets/img/talents/items/item_pins_metal.png',
           dropper: {
-            name: 'Steelix',
-            sprite: 'assets/img/pokemon/steelix.png',
-            chance: '2.2%',
-            rarity: 'Incomum',
-            locations: ['Rock Tunnel', 'Victory Road']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -992,11 +1054,12 @@ var TALENTS_DATA = {
           qty: 1000,
           icon: 'assets/img/talents/items/item_crystal_lightpink.png',
           dropper: {
-            name: 'Chansey',
-            sprite: 'assets/img/pokemon/clefable.png',
-            chance: '2.8%',
-            rarity: 'Comum',
-            locations: ['Safari Zone (Área 2)', 'Cerulean Cave']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -1017,11 +1080,12 @@ var TALENTS_DATA = {
           qty: 80,
           icon: 'assets/img/talents/items/item_cape_orange.png',
           dropper: {
-            name: 'Charmeleon',
-            sprite: 'assets/img/pokemon/charizard.png',
-            chance: '1.8%',
-            rarity: 'Incomum',
-            locations: ['Mt. Ember', 'Cinnabar Volcano']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -1031,11 +1095,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_cape_blue.png',
           dropper: {
-            name: 'Wartortle',
-            sprite: 'assets/img/pokemon/blastoise.png',
-            chance: '1.0%',
-            rarity: 'Raro',
-            locations: ['Seafoam Islands', 'Vermilion Coast']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -1056,11 +1121,12 @@ var TALENTS_DATA = {
           qty: 100,
           icon: 'assets/img/talents/items/item_fire_feather.png',
           dropper: {
-            name: 'Magmar',
-            sprite: 'assets/img/pokemon/charizard.png',
-            chance: '2.0%',
-            rarity: 'Incomum',
-            locations: ['Pokémon Mansion (Cinnabar)', 'Mt. Ember']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -1070,11 +1136,12 @@ var TALENTS_DATA = {
           qty: 100,
           icon: 'assets/img/talents/items/item_comet_spark.png',
           dropper: {
-            name: 'Raichu',
-            sprite: 'assets/img/pokemon/raichu.png',
-            chance: '2.0%',
-            rarity: 'Incomum',
-            locations: ['Power Plant', 'Rota 10']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -1095,11 +1162,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_claws_yellow.png',
           dropper: {
-            name: 'Sandslash',
-            sprite: 'assets/img/pokemon/sandslash.png',
-            chance: '1.5%',
-            rarity: 'Raro',
-            locations: ['Rota 4 (Deserto)', 'Viridian Caves']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -1109,11 +1177,12 @@ var TALENTS_DATA = {
           qty: 1,
           icon: 'assets/img/talents/items/item_capsule_red.png',
           dropper: {
-            name: 'Electrode',
-            sprite: 'assets/img/pokemon/electrode.png',
-            chance: '1.5%',
-            rarity: 'Raro',
-            locations: ['Power Plant']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -1134,11 +1203,12 @@ var TALENTS_DATA = {
           qty: 5,
           icon: 'assets/img/talents/items/item_capsule_red_5.png',
           dropper: {
-            name: 'Voltorb',
-            sprite: 'assets/img/pokemon/electrode.png',
-            chance: '2.5%',
-            rarity: 'Incomum',
-            locations: ['Power Plant', 'Rota 10']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -1148,11 +1218,12 @@ var TALENTS_DATA = {
           qty: 5,
           icon: 'assets/img/talents/items/item_claws_yellow_5.png',
           dropper: {
-            name: 'Sandshrew',
-            sprite: 'assets/img/pokemon/sandslash.png',
-            chance: '2.5%',
-            rarity: 'Incomum',
-            locations: ['Rota 4 (Deserto)', 'Mt. Moon']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -1173,11 +1244,12 @@ var TALENTS_DATA = {
           qty: 25,
           icon: 'assets/img/talents/items/item_shell_gold_crit.png',
           dropper: {
-            name: 'Omastar',
-            sprite: 'assets/img/pokemon/omastar.png',
-            chance: '2.2%',
-            rarity: 'Incomum',
-            locations: ['Seafoam Islands', 'Cinnabar Coast']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -1187,11 +1259,12 @@ var TALENTS_DATA = {
           qty: 25,
           icon: 'assets/img/talents/items/item_fossil_paw.png',
           dropper: {
-            name: 'Kabutops',
-            sprite: 'assets/img/pokemon/kabutops.png',
-            chance: '2.2%',
-            rarity: 'Incomum',
-            locations: ['Seafoam Islands', 'Cerulean Cave']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]
@@ -1212,11 +1285,12 @@ var TALENTS_DATA = {
           qty: 25,
           icon: 'assets/img/talents/items/item_lens_green.png',
           dropper: {
-            name: 'Alakazam',
-            sprite: 'assets/img/pokemon/alakazam.png',
-            chance: '2.5%',
-            rarity: 'Incomum',
-            locations: ['Rota 8', 'Cerulean Cave']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         },
         {
@@ -1226,11 +1300,12 @@ var TALENTS_DATA = {
           qty: 25,
           icon: 'assets/img/talents/items/item_ribbon_redwhite.png',
           dropper: {
-            name: 'Machamp',
-            sprite: 'assets/img/pokemon/conkeldurr.png',
-            chance: '2.5%',
-            rarity: 'Incomum',
-            locations: ['Victory Road', 'Rock Tunnel']
+            name: 'Em catalogação',
+            sprite: 'assets/img/logo.webp',
+            chance: '—',
+            rarity: 'Aguardando dados',
+            locations: ['Localização sendo mapeada pela guilda'],
+            is_placeholder: true
           }
         }
       ]

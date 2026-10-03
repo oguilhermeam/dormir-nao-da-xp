@@ -244,12 +244,15 @@ function openItemDropModal(itemId) {
     if (!container) return;
 
     const dropper = item.dropper || {
-      name: 'Desconhecido',
-      sprite: 'assets/img/pokemon/unown.png',
+      name: 'Em catalogação',
+      sprite: 'assets/img/logo.webp',
       chance: '—',
-      rarity: 'Comum',
-      locations: ['Em catalogação']
+      rarity: 'Aguardando dados',
+      locations: ['Localização sendo mapeada pela guilda'],
+      is_placeholder: true
     };
+
+    const isPlaceholder = dropper.is_placeholder || dropper.name === 'Em catalogação';
 
     const locationsHtml = (dropper.locations || []).map(loc => `
       <div class="item-location-pill">
@@ -257,6 +260,22 @@ function openItemDropModal(itemId) {
         <span>${loc}</span>
       </div>
     `).join('');
+
+    const mapHtml = dropper.map_image ? `
+      <div class="item-map-box" style="margin-top: 10px;">
+        <span class="item-locations-title" style="margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">🗺️ Mapa / Como Chegar:</span>
+        <div style="border: 2px solid var(--bg-2); border-radius: var(--radius); overflow: hidden; background: #000; text-align: center; box-shadow: var(--shadow-hard-sm);">
+          <img src="${dropper.map_image}" alt="Mapa de ${dropper.name}" style="width: 100%; height: auto; max-height: 280px; object-fit: contain; display: block;" onerror="this.style.display='none'">
+        </div>
+      </div>
+    ` : '';
+
+    const placeholderNotice = isPlaceholder ? `
+      <div style="background: rgba(234, 179, 8, 0.08); border: 1px dashed var(--guild-gold); border-radius: var(--radius); padding: 8px 10px; font-size: 0.76rem; color: #fde047; display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+        <span>ℹ️</span>
+        <span>Drop em catalogação pela guilda. Envie seu print com drop e localização para adicionarmos aqui!</span>
+      </div>
+    ` : '';
 
     container.innerHTML = `
       <div class="item-popover-backdrop" onclick="closeItemDropModal(event)">
@@ -288,11 +307,14 @@ function openItemDropModal(itemId) {
             </div>
 
             <div class="item-locations-box">
-              <span class="item-locations-title">🗺️ Onde Encontrar / Melhores Hunts:</span>
+              <span class="item-locations-title">📍 Onde Encontrar / Melhores Hunts:</span>
               <div class="item-locations-list">
                 ${locationsHtml}
               </div>
             </div>
+
+            ${mapHtml}
+            ${placeholderNotice}
           </div>
         </div>
       </div>
