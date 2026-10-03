@@ -4,7 +4,6 @@
 
 let activeTalentCategory = 'personagem';
 let talentSearchQuery = '';
-let showPortugueseAlways = false;
 
 function getTalentsData() {
   if (typeof window !== 'undefined' && window.TALENTS_DATA) return window.TALENTS_DATA;
@@ -97,15 +96,6 @@ function selectTalentCategory(catId) {
   renderTalents();
 }
 
-function toggleLanguageMode() {
-  showPortugueseAlways = !showPortugueseAlways;
-  const btn = document.getElementById('btnLangToggle');
-  if (btn) {
-    btn.innerHTML = showPortugueseAlways ? '🌐 Modo: <strong>Português</strong>' : '🌐 Modo: <strong>Inglês (Original)</strong>';
-  }
-  renderTalents();
-}
-
 function renderTalents() {
   const listEl = document.getElementById('talentsList');
   const headerIcon = document.getElementById('currentCatIcon');
@@ -171,14 +161,13 @@ function renderTalents() {
   }
 
   listEl.innerHTML = filtered.map(t => {
-    const mainDesc = showPortugueseAlways ? t.desc_pt : t.desc_en;
-    const subDesc = showPortugueseAlways ? t.desc_en : t.desc_pt;
-    const subBadge = showPortugueseAlways ? 'EN' : 'PT';
+    const mainDesc = t.desc_en;
+    const subDesc = t.desc_pt;
     const isUnlocked = !!unlockedMap[t.id];
 
     const itemsHtml = (t.items || []).map(it => {
       return `
-        <div class="talent-item-pill" onclick="event.stopPropagation(); openItemDropModal('${it.id}')" title="${it.name_pt} (${it.name}) • Clique para ver drop e local">
+        <div class="talent-item-pill" onclick="event.stopPropagation(); openItemDropModal('${it.id}')" title="${it.name} • Requerido: ${it.qty != null ? it.qty : 1}x">
           <img src="${it.icon}" alt="${it.name}" class="talent-item-img" onerror="this.src='assets/img/logo.webp'">
           <span class="talent-item-qty">${it.qty != null ? it.qty : 1}</span>
         </div>
@@ -193,7 +182,7 @@ function renderTalents() {
         <div class="talent-desc-wrap">
           <div class="talent-desc-en">${mainDesc}</div>
           <div class="talent-desc-pt">
-            <span class="talent-desc-pt-badge">${subBadge}</span>
+            <span class="talent-desc-pt-badge">PT</span>
             <span>${subDesc}</span>
           </div>
           <div class="talent-status-row">
@@ -291,8 +280,8 @@ function openItemDropModal(itemId) {
             <div class="item-popover-title-wrap">
               <img src="${item.icon}" alt="${item.name}" class="item-popover-icon" onerror="this.src='assets/img/logo.webp'">
               <div>
-                <div class="item-popover-name">${item.name_pt}</div>
-                <div class="item-popover-subname">${item.name} • Requerido: ${item.qty}x</div>
+                <div class="item-popover-name">${item.name}</div>
+                <div class="item-popover-subname">Requerido: ${item.qty != null ? item.qty : 1}x</div>
               </div>
             </div>
             <button class="item-popover-close" onclick="closeItemDropModal()">&times;</button>
