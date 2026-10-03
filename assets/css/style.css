@@ -84,7 +84,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 14px;
   scroll-behavior: smooth;
   background-color: var(--bg-0);
   color: var(--text);
@@ -183,7 +183,7 @@ img.brand-img,
 /* Container */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -247,8 +247,8 @@ img.brand-img,
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 0.95rem;
-  padding: 12px 14px;
+  font-size: 0.88rem;
+  padding: 10px 12px;
   border-bottom: 3px solid transparent;
   display: inline-flex;
   align-items: center;
@@ -362,13 +362,13 @@ img.brand-img,
    ========================================================================== */
 
 .hero-compact {
-  padding: 16px 0 16px;
+  padding: 10px 0 14px;
   border-bottom: 2px solid var(--bg-2);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .hero-title {
-  font-size: 2.2rem;
+  font-size: 1.85rem;
   margin-bottom: 0;
   color: #ffffff;
   display: flex;
@@ -442,7 +442,7 @@ img.brand-img,
 }
 
 .wiki-table th {
-  padding: 11px 14px;
+  padding: 8px 12px;
   font-family: var(--font-mono);
   font-size: 0.82rem;
   text-transform: uppercase;
@@ -470,7 +470,7 @@ img.brand-img,
 }
 
 .wiki-table td {
-  padding: 12px 14px;
+  padding: 8px 12px;
   color: var(--text);
   border-right: 1px solid var(--bg-2);
   vertical-align: middle;
@@ -552,7 +552,7 @@ img.brand-img,
   border: 2px solid var(--bg-2);
   box-shadow: var(--shadow-hard);
   border-radius: var(--radius);
-  padding: 22px;
+  padding: 16px 18px;
   text-decoration: none;
   color: var(--text);
   position: relative;
