@@ -317,93 +317,92 @@ var TALENTS_DATA = {
       desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
       items: [
         {
-          id: 'item_ruby_fire',
-          name: 'Flaming Ruby',
-          name_pt: 'Rubi Flamejante',
+          id: 'item_volcano_badge',
+          name: 'Volcano Badge',
           qty: 1,
-          icon: 'assets/img/talents/items/item_ruby_fire.png',
+          icon: 'assets/img/talents/items/item_volcano_badge.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ginásio de Cinnabar (Blaine)',
+            sprite: 'assets/img/talents/items/item_volcano_badge.png',
+            chance: '100%',
+            locations: [
+              'Cinnabar Island (recompensa por derrotar o líder Blaine no Ginásio de Cinnabar)'
+            ]
           }
         },
         {
-          id: 'item_wing_dragon',
-          name: 'Dragon Wing',
-          name_pt: 'Asa de Dragão',
+          id: 'item_fire_wing',
+          name: 'Fire Wing',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_wing_dragon.png',
+          icon: 'assets/img/talents/items/item_fire_wing.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Charizard',
+            sprite: 'assets/img/pokemon/charizard.png',
+            chance: '45.0%',
+            locations: [
+              'Cinnabar (ilha vulcânica ao sudoeste de Cinnabar Island)'
+            ],
+            map_image: 'assets/img/talents/maps/map_charizard.png'
           }
         },
         {
-          id: 'item_coin_gold',
-          name: 'Golden Coin',
-          name_pt: 'Moeda de Ouro',
+          id: 'item_magma_foot',
+          name: 'Magma Foot',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_coin_gold.png',
+          icon: 'assets/img/talents/items/item_magma_foot.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Magmar',
+            sprite: 'assets/img/pokemon/magmar.png',
+            chance: '45.0%',
+            locations: [
+              'Navel Island (ilha ao sudoeste de Navel Island)'
+            ],
+            map_image: 'assets/img/talents/maps/map_magmar.png'
           }
         },
         {
-          id: 'item_fur_yellow',
-          name: 'Yellow Fur',
-          name_pt: 'Pelo Amarelo',
+          id: 'item_giant_piece_of_fur',
+          name: 'Giant Piece of Fur',
           qty: 1100,
-          icon: 'assets/img/talents/items/item_fur_yellow.png',
+          icon: 'assets/img/talents/items/item_giant_piece_of_fur.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Arcanine',
+            sprite: 'assets/img/pokemon/arcanine.png',
+            chance: '45.0%',
+            locations: [
+              'Cinnabar (vulcão no subsolo, 5 andares abaixo da superfície)'
+            ],
+            map_image: 'assets/img/talents/maps/map_arcanine.png'
           }
         },
         {
-          id: 'item_armor_metal',
-          name: 'Metal Carapace',
-          name_pt: 'Carapaça de Metal',
+          id: 'item_magma_shell',
+          name: 'Magma Shell',
           qty: 900,
-          icon: 'assets/img/talents/items/item_armor_metal.png',
+          icon: 'assets/img/talents/items/item_magma_shell.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Magcargo',
+            sprite: 'assets/img/pokemon/magcargo.png',
+            chance: '45.0%',
+            locations: [
+              'Ecruteak City (bueiro no noroeste da cidade - empurrar caixa para descer aos andares de magma)'
+            ],
+            map_image: 'assets/img/talents/maps/map_magcargo.png'
           }
         },
         {
-          id: 'item_ruby',
-          name: 'Ruby Gem',
-          name_pt: 'Gema de Rubi',
+          id: 'item_fire_stone',
+          name: 'Fire Stone',
           qty: 1000,
-          icon: 'assets/img/talents/items/item_ruby.png',
+          icon: 'assets/img/talents/items/item_fire_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Fogo)',
+            sprite: 'assets/img/types/fire.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Fogo: Arcanine, Blaziken, Charizard, Flareon, Infernape, Magcargo, Ninetales, Magmar, Typhlosion, Rapidash, etc.',
+              'Hunts vulcânicas em Cinnabar, Navel Island, Ecruteak e Ilhas Laranja'
+            ]
           }
         }
       ]
