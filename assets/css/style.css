@@ -1357,8 +1357,8 @@ img.brand-img,
 .npc-duels {
   padding: 8px 12px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 6px 10px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 14px;
 }
 
 .npc-duels.npc-duels-mode {
@@ -1367,8 +1367,15 @@ img.brand-img,
 
 .npc-duels.npc-duels-mode.active {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 6px 10px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 14px;
+}
+
+@media (max-width: 768px) {
+  .npc-duels,
+  .npc-duels.npc-duels-mode.active {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 .duel-row {
