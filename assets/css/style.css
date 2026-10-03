@@ -3215,11 +3215,12 @@ html.mode-lite .table-responsive {
 .talent-item-pill {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   background-color: var(--black);
   border: 1px solid var(--bg-2);
   border-radius: var(--radius);
-  padding: 4px 8px;
+  padding: 2px 8px;
+  height: 32px;
   cursor: pointer;
   transition: all 120ms ease;
   position: relative;
@@ -3233,10 +3234,12 @@ html.mode-lite .table-responsive {
 }
 
 .talent-item-img {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
   image-rendering: pixelated;
   flex-shrink: 0;
+  display: block;
 }
 
 .talent-item-qty {
