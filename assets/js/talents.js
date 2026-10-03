@@ -262,10 +262,18 @@ function openItemDropModal(itemId) {
     `).join('');
 
     const mapHtml = dropper.map_image ? `
-      <div class="item-map-box" style="margin-top: 10px;">
-        <span class="item-locations-title" style="margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">🗺️ Mapa / Como Chegar:</span>
-        <div style="border: 2px solid var(--bg-2); border-radius: var(--radius); overflow: hidden; background: #000; text-align: center; box-shadow: var(--shadow-hard-sm);">
-          <img src="${dropper.map_image}" alt="Mapa de ${dropper.name}" style="width: 100%; height: auto; max-height: 280px; object-fit: contain; display: block;" onerror="this.style.display='none'">
+      <div class="item-map-box" style="margin-top: 14px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+          <span class="item-locations-title" style="margin: 0; display: flex; align-items: center; gap: 6px;">🗺️ Mapa / Como Chegar:</span>
+          <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim);">Scroll para Zoom • Arraste</span>
+        </div>
+        <div class="map-zoom-viewport" id="mapViewport" onwheel="handleMapWheel(event)" onmousedown="handleMapMouseDown(event)">
+          <div class="map-zoom-controls">
+            <button type="button" class="btn-map-control" onclick="zoomMap(0.3)" title="Aumentar zoom">+</button>
+            <button type="button" class="btn-map-control" onclick="zoomMap(-0.3)" title="Diminuir zoom">&minus;</button>
+            <button type="button" class="btn-map-control" onclick="resetMapZoom()" title="Resetar zoom">↺</button>
+          </div>
+          <img id="mapZoomImage" src="${dropper.map_image}" alt="Mapa de ${dropper.name}" class="map-zoom-img" draggable="false">
         </div>
       </div>
     ` : '';
@@ -297,7 +305,6 @@ function openItemDropModal(itemId) {
                 <img src="${dropper.sprite}" alt="${dropper.name}" class="item-dropper-sprite" onerror="this.src='assets/img/logo.webp'">
                 <div>
                   <div class="item-dropper-name">${dropper.name}</div>
-                  <div class="item-dropper-sub">Raridade: <strong>${dropper.rarity}</strong></div>
                 </div>
               </div>
               <div class="item-dropper-chance">
@@ -319,9 +326,85 @@ function openItemDropModal(itemId) {
         </div>
       </div>
     `;
+
+    // Reseta estado do zoom ao abrir novo modal
+    mapZoomScale = 1.0;
+    mapPanX = 0;
+    mapPanY = 0;
+    isMapDragging = false;
   } catch (err) {
     console.error('Erro ao abrir popover de item:', err);
   }
+}
+
+// Controle interativo de Zoom e Pan no mapa
+let mapZoomScale = 1.0;
+let mapPanX = 0;
+let mapPanY = 0;
+let isMapDragging = false;
+let mapDragStartX = 0;
+let mapDragStartY = 0;
+
+function handleMapWheel(e) {
+  e.preventDefault();
+  const delta = e.deltaY < 0 ? 0.3 : -0.3;
+  zoomMap(delta);
+}
+
+function zoomMap(delta) {
+  mapZoomScale = Math.max(1.0, Math.min(4.5, +(mapZoomScale + delta).toFixed(2)));
+  if (mapZoomScale === 1.0) {
+    mapPanX = 0;
+    mapPanY = 0;
+  }
+  applyMapTransform();
+}
+
+function resetMapZoom() {
+  mapZoomScale = 1.0;
+  mapPanX = 0;
+  mapPanY = 0;
+  applyMapTransform();
+}
+
+function applyMapTransform() {
+  const img = document.getElementById('mapZoomImage');
+  if (!img) return;
+
+  if (mapZoomScale > 1.0) {
+    img.classList.add('is-zoomed');
+  } else {
+    img.classList.remove('is-zoomed');
+  }
+
+  img.style.transform = `translate(${mapPanX}px, ${mapPanY}px) scale(${mapZoomScale})`;
+}
+
+function handleMapMouseDown(e) {
+  if (e.target.closest('.map-zoom-controls')) return;
+  isMapDragging = true;
+  mapDragStartX = e.clientX - mapPanX;
+  mapDragStartY = e.clientY - mapPanY;
+
+  const img = document.getElementById('mapZoomImage');
+  if (img) img.classList.add('is-dragging');
+
+  const onMouseMove = (moveEvent) => {
+    if (!isMapDragging) return;
+    mapPanX = moveEvent.clientX - mapDragStartX;
+    mapPanY = moveEvent.clientY - mapDragStartY;
+    applyMapTransform();
+  };
+
+  const onMouseUp = () => {
+    isMapDragging = false;
+    if (img) img.classList.remove('is-dragging');
+    window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('mouseup', onMouseUp);
+  };
+
+  window.addEventListener('mousemove', onMouseMove);
+  window.addEventListener('mouseup', onMouseUp);
 }
 
 function closeItemDropModal(e) {
@@ -330,6 +413,10 @@ function closeItemDropModal(e) {
   }
   const container = document.getElementById('itemModalContainer');
   if (container) container.innerHTML = '';
+  mapZoomScale = 1.0;
+  mapPanX = 0;
+  mapPanY = 0;
+  isMapDragging = false;
 }
 
 window.addEventListener('keydown', (e) => {

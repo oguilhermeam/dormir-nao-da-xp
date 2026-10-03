@@ -47,10 +47,8 @@ var TALENTS_DATA = {
             name: 'Shiny Clefable',
             sprite: 'assets/img/pokemon/sh_clefable.png',
             chance: '4.0%',
-            rarity: 'Shiny',
             locations: [
-              'Ilha ao norte de Tangelo Island (subindo de Tangelo)',
-              'Orange Archipelago'
+              'Ilha ao norte de Tangelo Island (subindo de Tangelo)'
             ],
             map_image: 'assets/img/talents/maps/map_shiny_clefable.png'
           }
