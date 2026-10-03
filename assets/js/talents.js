@@ -132,6 +132,19 @@ function renderTalents() {
     }
   }
 
+  // Atualiza botão e badge da Lista de Farm / Materiais
+  const btnFarmList = document.getElementById('btnFarmList');
+  const farmListBadge = document.getElementById('farmListBadge');
+  if (btnFarmList && farmListBadge) {
+    if (unlockedCount > 0) {
+      btnFarmList.classList.add('has-selection');
+      farmListBadge.textContent = `(${unlockedCount} marcados)`;
+    } else {
+      btnFarmList.classList.remove('has-selection');
+      farmListBadge.textContent = `(Todos)`;
+    }
+  }
+
   // Filtra talentos pela categoria ou busca textual
   let filtered = (data.talents || []).filter(t => {
     if (talentSearchQuery) {
@@ -440,8 +453,337 @@ function closeItemDropModal() {
   backdropMouseDownTarget = null;
 }
 
+// ==========================================================================
+// CALCULADORA DE MATERIAIS & CHECKLIST DE FARM
+// ==========================================================================
+
+let currentMaterialsData = [];
+let currentMaterialsCategory = '';
+let currentMaterialsModeTitle = '';
+let materialsBackdropMouseDownTarget = null;
+
+function getFarmedMaterials() {
+  try {
+    const raw = localStorage.getItem('pa_farmed_materials');
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function setMaterialFarmed(itemId, state) {
+  try {
+    const farmed = getFarmedMaterials();
+    if (state) {
+      farmed[itemId] = true;
+    } else {
+      delete farmed[itemId];
+    }
+    localStorage.setItem('pa_farmed_materials', JSON.stringify(farmed));
+  } catch (e) {
+    console.error('[Talentos] Erro ao salvar farm de material:', e);
+  }
+}
+
+function toggleFarmItemCheck(itemId, isChecked) {
+  setMaterialFarmed(itemId, isChecked);
+  const row = document.getElementById(`farmRow-${itemId}`);
+  if (row) {
+    if (isChecked) {
+      row.classList.add('is-farmed');
+    } else {
+      row.classList.remove('is-farmed');
+    }
+  }
+  updateFarmStats();
+}
+
+function clearFarmedMaterials() {
+  if (!confirm('Deseja desmarcar todos os itens coletados desta lista?')) return;
+  try {
+    localStorage.removeItem('pa_farmed_materials');
+    const checkboxes = document.querySelectorAll('.material-checkbox');
+    checkboxes.forEach(cb => {
+      cb.checked = false;
+      const row = cb.closest('.material-item-row');
+      if (row) row.classList.remove('is-farmed');
+    });
+    updateFarmStats();
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function updateFarmStats() {
+  const checkboxes = document.querySelectorAll('.material-checkbox');
+  let doneCount = 0;
+  checkboxes.forEach(cb => {
+    if (cb.checked) doneCount++;
+  });
+  const totalItems = checkboxes.length;
+  const progressText = document.getElementById('farmProgressText');
+  if (progressText) {
+    progressText.textContent = `${doneCount} / ${totalItems} itens concluídos`;
+  }
+}
+
+function openMaterialsModal(overrideMode) {
+  const container = document.getElementById('materialsModalContainer');
+  const data = getTalentsData();
+  if (!container || !data) return;
+
+  const currentCat = data.categories.find(c => c.id === activeTalentCategory) || data.categories[0];
+  const unlockedMap = getUnlockedTalents();
+  const catTalents = (data.talents || []).filter(t => t.category === activeTalentCategory);
+  const unlockedCount = catTalents.filter(t => unlockedMap[t.id]).length;
+  const totalCount = catTalents.length;
+
+  let mode = overrideMode;
+  if (!mode) {
+    mode = unlockedCount > 0 ? 'checked' : 'all';
+  }
+
+  let selectedTalents = [];
+  if (mode === 'checked') {
+    selectedTalents = catTalents.filter(t => unlockedMap[t.id]);
+    currentMaterialsModeTitle = `${unlockedCount} Talentos Selecionados`;
+  } else {
+    selectedTalents = catTalents;
+    currentMaterialsModeTitle = `Todos os ${totalCount} Talentos da Categoria`;
+  }
+
+  currentMaterialsCategory = currentCat.name;
+
+  // Agrupa e consolida itens por ID somando as quantidades
+  const itemMap = new Map();
+  selectedTalents.forEach(t => {
+    const tLabel = t.desc_en || t.desc_pt || t.id;
+    (t.items || []).forEach(it => {
+      const qty = it.qty != null ? it.qty : 1;
+      const existing = itemMap.get(it.id);
+      if (existing) {
+        existing.totalQty += qty;
+        if (!existing.talents.includes(tLabel)) {
+          existing.talents.push(tLabel);
+        }
+      } else {
+        itemMap.set(it.id, {
+          id: it.id,
+          name: it.name,
+          name_pt: it.name_pt,
+          icon: it.icon,
+          totalQty: qty,
+          dropper: it.dropper,
+          talents: [tLabel]
+        });
+      }
+    });
+  });
+
+  const consolidatedItems = Array.from(itemMap.values());
+  currentMaterialsData = consolidatedItems;
+
+  const farmedMap = getFarmedMaterials();
+  const completedCount = consolidatedItems.filter(it => farmedMap[it.id]).length;
+
+  let contentBody = '';
+
+  if (mode === 'checked' && unlockedCount === 0) {
+    contentBody = `
+      <div style="background: var(--bg-0); border: 2px dashed var(--bg-2); border-radius: var(--radius); padding: 36px 20px; text-align: center; color: var(--text-dim);">
+        <p style="font-size: 1.15rem; color: #ffffff; margin-bottom: 8px;">Nenhum talento marcado nesta categoria ainda!</p>
+        <p style="font-size: 0.88rem; max-width: 480px; margin: 0 auto 16px;">
+          Clique nos cards de talentos na página para marcá-los com o check verde (✓), ou clique no botão abaixo para calcular os materiais de todos os talentos cadastrados em <strong>${currentCat.name}</strong>.
+        </p>
+        <button type="button" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="openMaterialsModal('all')">
+          📦 Calcular Todos os ${totalCount} Talentos
+        </button>
+      </div>
+    `;
+  } else if (consolidatedItems.length === 0) {
+    contentBody = `
+      <div style="background: var(--bg-0); border: 2px dashed var(--bg-2); border-radius: var(--radius); padding: 36px 20px; text-align: center; color: var(--text-dim);">
+        <p style="font-size: 1.1rem; color: #ffffff; margin-bottom: 6px;">Nenhum material encontrado para a seleção atual.</p>
+        <p style="font-size: 0.85rem;">Estamos catalogando os próximos talentos desta categoria.</p>
+      </div>
+    `;
+  } else {
+    const rowsHtml = consolidatedItems.map(it => {
+      const isFarmed = !!farmedMap[it.id];
+      const dropper = it.dropper;
+      let dropInfoHtml = '';
+
+      if (dropper && dropper.name && dropper.name !== 'Em catalogação') {
+        dropInfoHtml = `
+          <div class="material-dropper-tag" title="Dropado por: ${dropper.name} (${dropper.chance || '—'})">
+            <img src="${dropper.sprite || 'assets/img/logo.webp'}" alt="${dropper.name}" class="material-dropper-sprite" onerror="this.src='assets/img/logo.webp'">
+            <span style="color: #ffffff; font-weight: 600;">${dropper.name}</span>
+            <span class="material-dropper-chance">${dropper.chance || '—'}</span>
+          </div>
+        `;
+      }
+
+      const hasMap = dropper && (dropper.imgur_map || (dropper.locations && dropper.locations.length > 0));
+      const mapBtnHtml = hasMap ? `
+        <button type="button" class="btn-material-map" onclick="openItemDropModal('${it.id}')" title="Ver mapa da hunt e localização">
+          <span>🗺️ Ver Mapa</span>
+        </button>
+      ` : '';
+
+      const talentChipsHtml = it.talents.map(tName => `
+        <span class="material-talent-chip" title="Requerido por: ${tName}">${tName}</span>
+      `).join('');
+
+      return `
+        <div class="material-item-row ${isFarmed ? 'is-farmed' : ''}" id="farmRow-${it.id}">
+          <div class="material-row-left">
+            <input 
+              type="checkbox" 
+              class="material-checkbox" 
+              id="chk-${it.id}" 
+              ${isFarmed ? 'checked' : ''} 
+              onchange="toggleFarmItemCheck('${it.id}', this.checked)"
+              title="Marcar como coletado/farmado"
+            >
+            <img src="${it.icon}" alt="${it.name}" class="material-item-icon" onerror="this.src='assets/img/logo.webp'">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="material-item-name">${it.name}</span>
+                <span class="material-item-qty">${it.totalQty.toLocaleString('pt-BR')}x</span>
+              </div>
+              <div class="materials-talents-tags">
+                ${talentChipsHtml}
+              </div>
+            </div>
+          </div>
+          <div class="material-row-right">
+            ${dropInfoHtml}
+            ${mapBtnHtml}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    contentBody = `
+      <div class="materials-stats-bar">
+        <div class="materials-stat-item">
+          <span>Progresso do Farm:</span>
+          <span class="materials-stat-val" id="farmProgressText">${completedCount} / ${consolidatedItems.length} itens concluídos</span>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <button type="button" class="btn-materials-copy" style="font-size: 0.72rem; padding: 3px 8px;" onclick="clearFarmedMaterials()" title="Desmarcar todos os itens">
+            <span>↺ Limpar Checks</span>
+          </button>
+          <div class="materials-stat-item" style="color: var(--text-dim); font-size: 0.76rem;">
+            Total de Itens: <strong style="color: #ffffff;">${consolidatedItems.length}</strong>
+          </div>
+        </div>
+      </div>
+      <div class="materials-cards-grid">
+        ${rowsHtml}
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="materials-modal-backdrop" onmousedown="handleMaterialsBackdropMouseDown(event)" onmouseup="handleMaterialsBackdropMouseUp(event)">
+      <div class="materials-modal">
+        <div class="materials-modal-header">
+          <div>
+            <h2 class="materials-modal-title">
+              <span>📦 Lista de Farm & Materiais</span>
+              <span style="font-size: 0.8rem; color: var(--teal); font-family: var(--font-mono); font-weight: 400;">(${currentCat.name})</span>
+            </h2>
+            <div class="materials-modal-subtitle">
+              ${currentMaterialsModeTitle} • Materiais unificados para planejar seus drops
+            </div>
+          </div>
+          <div class="materials-modal-actions">
+            <div class="materials-mode-toggles">
+              <button type="button" class="materials-mode-btn ${mode === 'checked' ? 'active' : ''}" onclick="openMaterialsModal('checked')" title="Calcular apenas os talentos marcados com check verde">
+                ✓ Marcados (${unlockedCount})
+              </button>
+              <button type="button" class="materials-mode-btn ${mode === 'all' ? 'active' : ''}" onclick="openMaterialsModal('all')" title="Calcular todos os talentos cadastrados nesta categoria">
+                Todos (${totalCount})
+              </button>
+            </div>
+            <button type="button" class="btn-materials-copy" id="btnCopyMaterials" onclick="copyMaterialsToClipboard()" title="Copiar resumo formatado para Discord ou Bloco de Notas">
+              <span>📋 Copiar Lista</span>
+            </button>
+            <button type="button" class="item-popover-close" onclick="closeMaterialsModal()" title="Fechar (Esc)">✕</button>
+          </div>
+        </div>
+        <div class="materials-modal-body">
+          ${contentBody}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function closeMaterialsModal() {
+  const container = document.getElementById('materialsModalContainer');
+  if (container) container.innerHTML = '';
+  materialsBackdropMouseDownTarget = null;
+}
+
+function handleMaterialsBackdropMouseDown(e) {
+  materialsBackdropMouseDownTarget = e.target;
+}
+
+function handleMaterialsBackdropMouseUp(e) {
+  if (materialsBackdropMouseDownTarget === e.target && e.target.classList.contains('materials-modal-backdrop')) {
+    closeMaterialsModal();
+  }
+  materialsBackdropMouseDownTarget = null;
+}
+
+function copyMaterialsToClipboard() {
+  const items = currentMaterialsData || [];
+  if (!items.length) return;
+  const farmedMap = getFarmedMaterials();
+
+  let text = `📦 LISTA DE MATERIAIS PARA FARM — DORMIR NÃO DÁ XP\n`;
+  text += `Categoria: ${currentMaterialsCategory}\n`;
+  text += `Filtro: ${currentMaterialsModeTitle}\n`;
+  text += `--------------------------------------------------\n`;
+
+  items.forEach(it => {
+    const isFarmed = !!farmedMap[it.id];
+    const status = isFarmed ? '[✓ CONCLUÍDO]' : '[ ] PENDENTE ';
+    const dropInfo = (it.dropper && it.dropper.name && it.dropper.name !== 'Em catalogação') 
+      ? ` • Drop: ${it.dropper.name} (${it.dropper.chance || '—'})` 
+      : '';
+    text += `${status} ${it.name} x${it.totalQty.toLocaleString('pt-BR')}${dropInfo}\n`;
+  });
+  text += `--------------------------------------------------\n`;
+  text += `Gerado no Compêndio da Guilda: https://dormirnaodaxppka.vercel.app/talentos.html`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('btnCopyMaterials');
+    if (btn) {
+      const orig = btn.innerHTML;
+      btn.innerHTML = `<span style="color: #4ade80; font-weight: 700;">✓ Copiado!</span>`;
+      setTimeout(() => { btn.innerHTML = orig; }, 2000);
+    }
+  }).catch(() => {
+    alert('Não foi possível copiar automaticamente para a área de transferência.');
+  });
+}
+
+// Fechamento com tecla Escape
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    closeItemDropModal();
+    const itemContainer = document.getElementById('itemModalContainer');
+    if (itemContainer && itemContainer.children.length > 0) {
+      closeItemDropModal();
+      return;
+    }
+    const matContainer = document.getElementById('materialsModalContainer');
+    if (matContainer && matContainer.children.length > 0) {
+      closeMaterialsModal();
+      return;
+    }
   }
 });
+

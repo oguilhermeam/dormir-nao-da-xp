@@ -3495,3 +3495,346 @@ html.mode-lite .table-responsive {
   align-items: center;
   gap: 6px;
 }
+
+/* ==========================================================================
+   Botão e Modal de Lista de Materiais de Farm
+   ========================================================================== */
+
+.btn-farm-list {
+  background: linear-gradient(135deg, rgba(249, 191, 0, 0.12), rgba(0, 229, 255, 0.08));
+  border: 1px solid var(--guild-gold);
+  color: #ffffff;
+  font-family: var(--font-pixel);
+  font-size: 0.82rem;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 160ms ease;
+  box-shadow: 0 0 10px rgba(249, 191, 0, 0.15);
+}
+
+.btn-farm-list:hover {
+  background: linear-gradient(135deg, rgba(249, 191, 0, 0.25), rgba(0, 229, 255, 0.18));
+  border-color: #fde047;
+  box-shadow: 0 0 16px rgba(249, 191, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-farm-list.has-selection {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(0, 229, 255, 0.12));
+  border-color: #4ade80;
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.3);
+}
+
+.badge-farm-count {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--guild-gold);
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(249, 191, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.btn-farm-list.has-selection .badge-farm-count {
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.4);
+}
+
+/* Modal de Lista de Materiais Consolidada */
+.materials-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.82);
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 150ms ease-out;
+}
+
+.materials-modal {
+  background-color: var(--bg-1);
+  border: 2px solid var(--guild-gold);
+  border-radius: var(--radius);
+  box-shadow: 6px 6px 0 #000, 0 16px 40px rgba(0, 0, 0, 0.95);
+  max-width: 820px;
+  width: 100%;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: popoverScale 180ms ease-out;
+}
+
+.materials-modal-header {
+  padding: 14px 18px;
+  background-color: var(--black);
+  border-bottom: 1px solid var(--bg-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.materials-modal-title {
+  font-family: var(--font-pixel);
+  font-size: 1.15rem;
+  color: var(--guild-gold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.materials-modal-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.materials-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.materials-mode-toggles {
+  display: inline-flex;
+  background-color: var(--black);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 2px;
+  gap: 2px;
+}
+
+.materials-mode-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 120ms ease;
+  white-space: nowrap;
+}
+
+.materials-mode-btn:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.materials-mode-btn.active {
+  background-color: var(--bg-2);
+  color: var(--guild-gold);
+  font-weight: 700;
+  box-shadow: 0 0 8px rgba(249, 191, 0, 0.2);
+}
+
+.btn-materials-copy {
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 120ms ease;
+}
+
+.btn-materials-copy:hover {
+  border-color: var(--teal);
+  color: #ffffff;
+  background-color: var(--bg-2);
+}
+
+.materials-modal-body {
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.materials-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: var(--bg-0);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+}
+
+.materials-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.materials-stat-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--guild-gold);
+}
+
+.materials-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.material-item-row {
+  background-color: var(--black);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: all 120ms ease;
+}
+
+.material-item-row:hover {
+  border-color: var(--guild-blue);
+  background-color: #0e121d;
+}
+
+.material-item-row.is-farmed {
+  opacity: 0.45;
+  border-color: #22c55e;
+  background-color: rgba(34, 197, 94, 0.05);
+}
+
+.material-item-row.is-farmed .material-item-name {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.material-row-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.material-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--guild-green);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.material-item-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.material-item-name {
+  font-family: var(--font-pixel);
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.material-item-qty {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--guild-gold);
+  background: rgba(249, 191, 0, 0.1);
+  border: 1px solid rgba(249, 191, 0, 0.3);
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.material-row-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.material-dropper-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  padding: 3px 8px;
+  border-radius: var(--radius);
+  font-size: 0.76rem;
+}
+
+.material-dropper-sprite {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.material-dropper-chance {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #4ade80;
+  font-weight: 700;
+}
+
+.btn-material-map {
+  background-color: var(--bg-1);
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 120ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-material-map:hover {
+  background-color: var(--teal);
+  color: #000000;
+  font-weight: 700;
+}
+
+.materials-talents-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.material-talent-chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--bg-2);
+  color: var(--text-dim);
+  padding: 1px 5px;
+  border-radius: 3px;
+}

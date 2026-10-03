@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=2.4">
+  <link rel="stylesheet" href="assets/css/style.css?v=2.6">
 </head>
 <body>
 
@@ -119,6 +119,10 @@
           </div>
 
           <div class="talents-header-right">
+            <button type="button" class="btn-farm-list" id="btnFarmList" onclick="openMaterialsModal()" title="Ver lista consolidada de materiais e drops necessários">
+              <span>📦 Materiais Necessários</span>
+              <span class="badge-farm-count" id="farmListBadge">(Todos)</span>
+            </button>
             <div class="talents-progress-wrap">
               <div class="talents-progress-bar">
                 <div class="talents-progress-fill" style="width: 0%;" id="currentCatFill"></div>
@@ -139,8 +143,9 @@
 
   </main>
 
-  <!-- Container para o Modal Popover de Drop -->
+  <!-- Container para o Modal Popover de Drop e de Materiais -->
   <div id="itemModalContainer"></div>
+  <div id="materialsModalContainer"></div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -163,7 +168,7 @@
   </footer>
 
   <script src="assets/js/talents-data.js?v=2.2"></script>
-  <script src="assets/js/talents.js?v=2.2"></script>
+  <script src="assets/js/talents.js?v=2.4"></script>
   <script src="assets/js/main.js?v=1.5" defer></script>
 </body>
 </html>
