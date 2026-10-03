@@ -146,6 +146,45 @@ var TALENTS_DATA = {
       ]
     },
     {
+      id: 'talent-hp-300-3',
+      category: 'personagem',
+      icon: 'assets/img/talents/talent_hp.png',
+      name_en: 'Health Boost (+300 HP)',
+      name_pt: 'Aumento de Vida (+300 HP)',
+      desc_en: 'Your character will have an increase of 300 hitpoints in their maximum health.',
+      desc_pt: 'Seu personagem terá um aumento de 300 pontos de vida na sua vida máxima.',
+      items: [
+        {
+          id: 'item_tail_rainbow',
+          name: 'Prismatic Tail',
+          name_pt: 'Cauda Prismática',
+          qty: 10,
+          icon: 'assets/img/talents/items/item_tail_rainbow.png',
+          dropper: {
+            name: 'Dragonite',
+            sprite: 'assets/img/pokemon/dragonite.png',
+            chance: '1.5%',
+            rarity: 'Raro',
+            locations: ['Dragon Den', 'Safari Zone (Água)']
+          }
+        },
+        {
+          id: 'item_scepter_purple',
+          name: 'Shadow Scepter',
+          name_pt: 'Cetro Sombrio',
+          qty: 30,
+          icon: 'assets/img/talents/items/item_scepter_purple.png',
+          dropper: {
+            name: 'Gengar',
+            sprite: 'assets/img/pokemon/gengar.png',
+            chance: '2.8%',
+            rarity: 'Comum',
+            locations: ['Pokémon Tower (Lavender Topo)']
+          }
+        }
+      ]
+    },
+{
       id: 'talent-cd-1',
       category: 'personagem',
       icon: 'assets/img/talents/talent_cooldown.png',
@@ -1195,47 +1234,8 @@ var TALENTS_DATA = {
           }
         }
       ]
-    },
-    {
-      id: 'talent-hp-300-3',
-      category: 'personagem',
-      icon: 'assets/img/talents/talent_hp.png',
-      name_en: 'Health Boost (+300 HP)',
-      name_pt: 'Aumento de Vida (+300 HP)',
-      desc_en: 'Your character will have an increase of 300 hitpoints in their maximum health.',
-      desc_pt: 'Seu personagem terá um aumento de 300 pontos de vida na sua vida máxima.',
-      items: [
-        {
-          id: 'item_tail_rainbow',
-          name: 'Prismatic Tail',
-          name_pt: 'Cauda Prismática',
-          qty: 10,
-          icon: 'assets/img/talents/items/item_tail_rainbow.png',
-          dropper: {
-            name: 'Dragonite',
-            sprite: 'assets/img/pokemon/dragonite.png',
-            chance: '1.5%',
-            rarity: 'Raro',
-            locations: ['Dragon Den', 'Safari Zone (Água)']
-          }
-        },
-        {
-          id: 'item_scepter_purple',
-          name: 'Shadow Scepter',
-          name_pt: 'Cetro Sombrio',
-          qty: 30,
-          icon: 'assets/img/talents/items/item_scepter_purple.png',
-          dropper: {
-            name: 'Gengar',
-            sprite: 'assets/img/pokemon/gengar.png',
-            chance: '2.8%',
-            rarity: 'Comum',
-            locations: ['Pokémon Tower (Lavender Topo)']
-          }
-        }
-      ]
     }
-  ]
+]
 };
 
 if (typeof window !== 'undefined') {
