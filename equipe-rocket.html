@@ -385,6 +385,20 @@
     </div>
 
     <!-- Toolbar de Acoes dos NPCs -->
+    
+    <!-- Filtro Rápido por Tipo Elemental (Water = Azul, Bug = Verde Limão, etc.) -->
+    <div class="rocket-type-filter-bar">
+      <span style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-dim); display: flex; align-items: center; margin-right: 6px;">Filtrar Tipo:</span>
+      <button type="button" class="type-filter-btn active" data-type="all" onclick="filterByRocketType('all')">Todos</button>
+      <button type="button" class="type-filter-btn" data-type="water" onclick="filterByRocketType('water')">Água (Water)</button>
+      <button type="button" class="type-filter-btn" data-type="bug" onclick="filterByRocketType('bug')">Inseto (Bug)</button>
+      <button type="button" class="type-filter-btn" data-type="fire" onclick="filterByRocketType('fire')">Fogo (Fire)</button>
+      <button type="button" class="type-filter-btn" data-type="electric" onclick="filterByRocketType('electric')">Elétrico (Electric)</button>
+      <button type="button" class="type-filter-btn" data-type="grass" onclick="filterByRocketType('grass')">Planta (Grass)</button>
+      <button type="button" class="type-filter-btn" data-type="ice" onclick="filterByRocketType('ice')">Gelo (Ice)</button>
+      <button type="button" class="type-filter-btn" data-type="dark" onclick="filterByRocketType('dark')">Dark / Ghost</button>
+    </div>
+
     <div class="npc-grid-toolbar">
       <div class="npc-toolbar-left">
         <span class="npc-toolbar-title">Membros da Equipe Rocket</span>

@@ -27,12 +27,15 @@
 }
 
 :root {
-  /* Base Dark Gamer */
-  --bg-0: #07090e;          /* fundo da página */
-  --bg-1: #0f131d;          /* cards, painéis, superfícies */
-  --bg-2: #1e2638;          /* bordas sólidas */
-  --bg-hover: #161c2a;      /* hover de linhas e cards */
-  --black: #05070a;         /* header, rodapé, tabelas */
+  /* Base Dormir Não Dá XP (Azul-Marinho Profundo da Guilda + Amarelo Ouro) */
+  --bg-0: #060922;          /* fundo azul-marinho profundo da logo */
+  --bg-1: #0b1132;          /* cards e painéis táticos */
+  --bg-2: #1a2558;          /* bordas sólidas azuladas */
+  --bg-hover: #141d4c;      /* hover de linhas e cards */
+  --black: #040618;         /* header, rodapé, tabelas escuras */
+
+  --guild-blue: #2563eb;
+  --guild-gold: #f9bf00;
 
   --text: #f0f2f7;          /* texto principal nítido */
   --text-dim: #949daf;      /* texto secundário */
@@ -92,18 +95,17 @@ body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #07090e;
+  background-color: #060922;
   background-image: 
-    /* Grade de mapa pixel sutil estilo retro RPG */
-    radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    /* Iluminação carmim suave da Rocket no topo esquerdo */
-    radial-gradient(ellipse 65% 50% at 0% 0%, rgba(234, 50, 60, 0.14) 0%, transparent 65%),
-    /* Iluminação dourada da Hoenn na lateral direita */
-    radial-gradient(ellipse 70% 55% at 100% 35%, rgba(245, 158, 11, 0.12) 0%, transparent 65%),
-    /* Atmosfera teal tática no rodapé */
-    radial-gradient(ellipse 70% 45% at 50% 100%, rgba(20, 184, 166, 0.09) 0%, transparent 65%),
-    /* Base em degradê azul-noite profundo */
-    linear-gradient(180deg, #0a0d15 0%, #07090e 45%, #05060a 100%);
+    /* Grade tática estilo MMO / Tibia em amarelo suave da guilda */
+    radial-gradient(circle, rgba(249, 191, 0, 0.06) 1px, transparent 1px),
+    /* Iluminação dourada nobre da logo no topo */
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(249, 191, 0, 0.18) 0%, transparent 65%),
+    /* Atmosfera azul-safira profunda da guilda nas laterais */
+    radial-gradient(ellipse 65% 55% at 0% 40%, rgba(37, 99, 235, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 55% at 100% 60%, rgba(59, 130, 246, 0.14) 0%, transparent 60%),
+    /* Base em degradê azul-marinho profundo oficial da guilda */
+    linear-gradient(180deg, #090e30 0%, #060922 45%, #040516 100%);
   background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
   background-attachment: fixed;
   color: var(--text);
@@ -2016,4 +2018,639 @@ img.brand-img,
   .poke-team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+
+/* ==========================================================================
+   CORES ELEMENTAIS ESPECÍFICAS (Water = Azul, Bug = Verde Limão, etc.)
+   ========================================================================== */
+
+/* Elementos em Hoenn */
+.hoenn-tab-btn[data-target="water"].active,
+.hoenn-element-panel#panel-water {
+  border-color: #2563eb !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(37, 99, 235, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="water"].active {
+  color: #38bdf8 !important;
+  background-color: rgba(37, 99, 235, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="bug"].active,
+.hoenn-element-panel#panel-bug {
+  border-color: #84cc16 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(132, 204, 22, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="bug"].active {
+  color: #a3e635 !important;
+  background-color: rgba(132, 204, 22, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="fire"].active,
+.hoenn-element-panel#panel-fire {
+  border-color: #ef4444 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(239, 68, 68, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="fire"].active {
+  color: #f87171 !important;
+  background-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="electric"].active,
+.hoenn-element-panel#panel-electric {
+  border-color: #eab308 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(234, 179, 8, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="electric"].active {
+  color: #facc15 !important;
+  background-color: rgba(234, 179, 8, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="grass"].active,
+.hoenn-element-panel#panel-grass {
+  border-color: #22c55e !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(34, 197, 94, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="grass"].active {
+  color: #4ade80 !important;
+  background-color: rgba(34, 197, 94, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="ice"].active,
+.hoenn-element-panel#panel-ice {
+  border-color: #06b6d4 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(6, 182, 212, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="ice"].active {
+  color: #22d3ee !important;
+  background-color: rgba(6, 182, 212, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="fighting"].active,
+.hoenn-element-panel#panel-fighting {
+  border-color: #dc2626 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(220, 38, 38, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="fighting"].active {
+  color: #ef4444 !important;
+  background-color: rgba(220, 38, 38, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="poison"].active,
+.hoenn-element-panel#panel-poison {
+  border-color: #9333ea !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(147, 51, 234, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="poison"].active {
+  color: #c084fc !important;
+  background-color: rgba(147, 51, 234, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="ground"].active,
+.hoenn-element-panel#panel-ground {
+  border-color: #d97706 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(217, 119, 6, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="ground"].active {
+  color: #fbbf24 !important;
+  background-color: rgba(217, 119, 6, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="flying"].active,
+.hoenn-element-panel#panel-flying {
+  border-color: #38bdf8 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(56, 189, 248, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="flying"].active {
+  color: #7dd3fc !important;
+  background-color: rgba(56, 189, 248, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="psychic"].active,
+.hoenn-element-panel#panel-psychic {
+  border-color: #ec4899 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(236, 72, 153, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="psychic"].active {
+  color: #f472b6 !important;
+  background-color: rgba(236, 72, 153, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="rock"].active,
+.hoenn-element-panel#panel-rock {
+  border-color: #a8a29e !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(168, 162, 158, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="rock"].active {
+  color: #e7e5e4 !important;
+  background-color: rgba(168, 162, 158, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="dark-ghost"].active,
+.hoenn-element-panel#panel-dark-ghost {
+  border-color: #8b5cf6 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(139, 92, 246, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="dark-ghost"].active {
+  color: #c4b5fd !important;
+  background-color: rgba(139, 92, 246, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="steel"].active,
+.hoenn-element-panel#panel-steel {
+  border-color: #94a3b8 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(148, 163, 184, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="steel"].active {
+  color: #cbd5e1 !important;
+  background-color: rgba(148, 163, 184, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="dragon"].active,
+.hoenn-element-panel#panel-dragon {
+  border-color: #4f46e5 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(79, 70, 229, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="dragon"].active {
+  color: #818cf8 !important;
+  background-color: rgba(79, 70, 229, 0.15) !important;
+}
+
+.hoenn-tab-btn[data-target="fairy"].active,
+.hoenn-element-panel#panel-fairy {
+  border-color: #f472b6 !important;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(244, 114, 182, 0.3) !important;
+}
+.hoenn-tab-btn[data-target="fairy"].active {
+  color: #fbcfe8 !important;
+  background-color: rgba(244, 114, 182, 0.15) !important;
+}
+
+/* Cores Específicas dos Cards da Equipe Rocket */
+/* 07 Scythe = Bug (Verde Limão) */
+.npc-card#card-07.open,
+.npc-card#card-07:hover {
+  border-color: #84cc16 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(132, 204, 22, 0.3) !important;
+}
+.npc-card#card-07 .npc-name { color: #a3e635 !important; }
+
+/* 11 Vortex = Water (Azul) */
+.npc-card#card-11.open,
+.npc-card#card-11:hover {
+  border-color: #2563eb !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(37, 99, 235, 0.3) !important;
+}
+.npc-card#card-11 .npc-name { color: #38bdf8 !important; }
+
+/* 01 Blaze = Fire (Vermelho Laranja) */
+.npc-card#card-01.open,
+.npc-card#card-01:hover {
+  border-color: #ef4444 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(239, 68, 68, 0.3) !important;
+}
+.npc-card#card-01 .npc-name { color: #f87171 !important; }
+
+/* 02 Frost = Ice (Ciano) */
+.npc-card#card-02.open,
+.npc-card#card-02:hover {
+  border-color: #06b6d4 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(6, 182, 212, 0.3) !important;
+}
+.npc-card#card-02 .npc-name { color: #22d3ee !important; }
+
+/* 03 Thorn = Grass (Verde) */
+.npc-card#card-03.open,
+.npc-card#card-03:hover {
+  border-color: #22c55e !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(34, 197, 94, 0.3) !important;
+}
+.npc-card#card-03 .npc-name { color: #4ade80 !important; }
+
+/* 04 Shadow = Dark/Ghost (Roxo) */
+.npc-card#card-04.open,
+.npc-card#card-04:hover {
+  border-color: #8b5cf6 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(139, 92, 246, 0.3) !important;
+}
+.npc-card#card-04 .npc-name { color: #c4b5fd !important; }
+
+/* 05 Cipher = Psychic (Rosa) */
+.npc-card#card-05.open,
+.npc-card#card-05:hover {
+  border-color: #ec4899 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(236, 72, 153, 0.3) !important;
+}
+.npc-card#card-05 .npc-name { color: #f472b6 !important; }
+
+/* 06 Phoenix = Fire (Vermelho) */
+.npc-card#card-06.open,
+.npc-card#card-06:hover {
+  border-color: #f97316 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(249, 115, 22, 0.3) !important;
+}
+.npc-card#card-06 .npc-name { color: #fb923c !important; }
+
+/* 08 Mirage = Ghost (Violeta) */
+.npc-card#card-08.open,
+.npc-card#card-08:hover {
+  border-color: #a855f7 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(168, 85, 247, 0.3) !important;
+}
+.npc-card#card-08 .npc-name { color: #c084fc !important; }
+
+/* 09 Zephyr = Flying (Azul Céu) */
+.npc-card#card-09.open,
+.npc-card#card-09:hover {
+  border-color: #38bdf8 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(56, 189, 248, 0.3) !important;
+}
+.npc-card#card-09 .npc-name { color: #7dd3fc !important; }
+
+/* 10 Obsidian = Rock (Mineral) */
+.npc-card#card-10.open,
+.npc-card#card-10:hover {
+  border-color: #d97706 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(217, 119, 6, 0.3) !important;
+}
+.npc-card#card-10 .npc-name { color: #fbbf24 !important; }
+
+/* 12 Tempest = Electric (Amarelo) */
+.npc-card#card-12.open,
+.npc-card#card-12:hover {
+  border-color: #eab308 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(234, 179, 8, 0.3) !important;
+}
+.npc-card#card-12 .npc-name { color: #facc15 !important; }
+
+/* 13 Eclipse = Dark (Índigo) */
+.npc-card#card-13.open,
+.npc-card#card-13:hover {
+  border-color: #6366f1 !important;
+  box-shadow: var(--shadow-hard), 0 0 18px rgba(99, 102, 241, 0.3) !important;
+}
+.npc-card#card-13 .npc-name { color: #a5b4fc !important; }
+
+/* Barra de Filtro de Tipos na Equipe Rocket */
+.rocket-type-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  background-color: var(--black);
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
+}
+
+.type-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 120ms ease;
+  user-select: none;
+}
+
+.type-filter-btn:hover {
+  color: #ffffff;
+  background-color: var(--bg-hover);
+}
+
+.type-filter-btn.active[data-type="water"] {
+  border-color: #2563eb !important;
+  background-color: rgba(37, 99, 235, 0.2) !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.35);
+}
+
+.type-filter-btn.active[data-type="bug"] {
+  border-color: #84cc16 !important;
+  background-color: rgba(132, 204, 22, 0.2) !important;
+  color: #a3e635 !important;
+  box-shadow: 0 0 10px rgba(132, 204, 22, 0.35);
+}
+
+.type-filter-btn.active[data-type="fire"] {
+  border-color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  color: #f87171 !important;
+}
+
+.type-filter-btn.active[data-type="electric"] {
+  border-color: #eab308 !important;
+  background-color: rgba(234, 179, 8, 0.2) !important;
+  color: #facc15 !important;
+}
+
+.type-filter-btn.active[data-type="grass"] {
+  border-color: #22c55e !important;
+  background-color: rgba(34, 197, 94, 0.2) !important;
+  color: #4ade80 !important;
+}
+
+.type-filter-btn.active[data-type="all"] {
+  border-color: var(--teal) !important;
+  background-color: rgba(20, 184, 166, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   TEAM BUILDER PARA HOENN
+   ========================================================================== */
+
+.hoenn-team-builder-section {
+  background-color: var(--bg-1);
+  border: 2px solid var(--hoenn);
+  border-top: 4px solid var(--hoenn);
+  box-shadow: var(--shadow-hard), 0 0 25px rgba(245, 158, 11, 0.2);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 48px;
+  margin-bottom: 32px;
+}
+
+.builder-header {
+  border-bottom: 2px solid var(--bg-2);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.builder-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.builder-title {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  color: var(--hoenn);
+}
+
+.builder-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+}
+
+/* Grid dos 6 Slots do Time */
+.builder-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 900px) {
+  .builder-slots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .builder-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.builder-slot {
+  background-color: var(--black);
+  border: 2px dashed var(--bg-2);
+  border-radius: var(--radius);
+  min-height: 140px;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  transition: all 140ms ease;
+  user-select: none;
+}
+
+.builder-slot.drag-over {
+  border-color: var(--hoenn);
+  background-color: rgba(245, 158, 11, 0.12);
+  transform: scale(1.03);
+}
+
+.builder-slot.filled {
+  border-style: solid;
+  border-color: var(--hoenn);
+  background-color: #0b1028;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.15);
+}
+
+.builder-slot-num {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.builder-slot-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+}
+
+.builder-slot-filled-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.builder-slot-sprite {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+.builder-slot-name {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.builder-slot-remove {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background: transparent;
+  border: none;
+  color: var(--status-weak);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--radius);
+  transition: all 120ms ease;
+}
+
+.builder-slot-remove:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ffffff;
+}
+
+/* Barra de Ações do Builder */
+.builder-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 14px;
+  background-color: var(--black);
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+}
+
+.builder-stats {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.builder-stats strong {
+  color: var(--hoenn);
+}
+
+.builder-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Pool de Pokémons Disponíveis para Escolha */
+.builder-pool-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.builder-pool-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.builder-element-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.builder-el-tab {
+  padding: 4px 10px;
+  background-color: var(--black);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 120ms ease;
+  user-select: none;
+}
+
+.builder-el-tab:hover {
+  background-color: var(--bg-hover);
+  color: #ffffff;
+}
+
+.builder-el-tab.active {
+  border-color: var(--hoenn);
+  background-color: rgba(245, 158, 11, 0.18);
+  color: var(--hoenn);
+}
+
+.builder-pool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 8px;
+  max-height: 290px;
+  overflow-y: auto;
+  padding: 8px;
+  background-color: var(--black);
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
+}
+
+.builder-pool-item {
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: grab;
+  user-select: none;
+  transition: all 120ms ease;
+}
+
+.builder-pool-item:active {
+  cursor: grabbing;
+}
+
+.builder-pool-item:hover {
+  border-color: var(--hoenn);
+  background-color: #12183a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.builder-pool-item .poke-sprite {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 4px;
+}
+
+.builder-pool-item .poke-name {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  max-width: 95px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

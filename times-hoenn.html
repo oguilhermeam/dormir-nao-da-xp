@@ -3332,6 +3332,79 @@
       </div>
     </section>
 
+  
+    <!-- MONTADOR DE TIME DE HOENN (TEAM BUILDER) -->
+    <section class="hoenn-team-builder-section" id="teamBuilderSection">
+      <div class="builder-header">
+        <div class="builder-title-group">
+          <svg class="pixel-icon pixel-icon-hoenn" width="22" height="22" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="5" y="5" width="6" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="6" y="11" width="4" height="2"/><rect x="7" y="13" width="2" height="2"/>
+          </svg>
+          <h2 class="builder-title">Montador de Time para Hoenn</h2>
+        </div>
+        <p class="builder-subtitle">
+          Arraste ou clique nos pokémons para montar o seu time de 6 para as hunts. A sua formação fica salva automaticamente.
+        </p>
+      </div>
+
+      <!-- 6 Slots do Time -->
+      <div class="builder-slots-grid" id="builderSlots">
+        <!-- Gerado dinamicamente via JS -->
+      </div>
+
+      <!-- Barra de Ações e Estatísticas do Time -->
+      <div class="builder-actions-bar">
+        <div class="builder-stats" id="builderStats">
+          <span>Pokémons no Time: <strong id="builderCount">0/6</strong></span>
+          <span id="builderTiersSummary" style="color: var(--text-dim);"></span>
+        </div>
+        <div class="builder-buttons">
+          <button type="button" class="btn btn-secondary" onclick="builderClearTeam()" style="font-size: 0.78rem; padding: 6px 12px;">
+            Limpar Time
+          </button>
+          <button type="button" class="btn btn-hoenn" onclick="builderCopyTeam()" id="btnCopyTeam" style="font-size: 0.78rem; padding: 6px 14px;">
+            Copiar Formação
+          </button>
+        </div>
+      </div>
+
+      <!-- Seletor de Elemento para o Pool -->
+      <div class="builder-pool-header">
+        <span class="builder-pool-title">
+          <svg class="pixel-icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+            <rect x="4" y="2" width="5" height="2"/><rect x="2" y="4" width="2" height="5"/><rect x="9" y="4" width="2" height="5"/><rect x="4" y="9" width="5" height="2"/><rect x="9" y="9" width="2" height="2"/><rect x="11" y="11" width="3" height="3"/>
+          </svg>
+          Escolha os Pokémons por Elemento:
+        </span>
+      </div>
+
+      <div class="builder-element-tabs" id="builderElTabs">
+        <button type="button" class="builder-el-tab active" data-el="all" onclick="builderFilterPool('all')">Todos</button>
+        <button type="button" class="builder-el-tab" data-el="dark-ghost" onclick="builderFilterPool('dark-ghost')">Dark / Ghost</button>
+        <button type="button" class="builder-el-tab" data-el="fire" onclick="builderFilterPool('fire')">Fogo</button>
+        <button type="button" class="builder-el-tab" data-el="water" onclick="builderFilterPool('water')">Água</button>
+        <button type="button" class="builder-el-tab" data-el="electric" onclick="builderFilterPool('electric')">Elétrico</button>
+        <button type="button" class="builder-el-tab" data-el="grass" onclick="builderFilterPool('grass')">Planta</button>
+        <button type="button" class="builder-el-tab" data-el="ice" onclick="builderFilterPool('ice')">Gelo</button>
+        <button type="button" class="builder-el-tab" data-el="fighting" onclick="builderFilterPool('fighting')">Lutador</button>
+        <button type="button" class="builder-el-tab" data-el="poison" onclick="builderFilterPool('poison')">Veneno</button>
+        <button type="button" class="builder-el-tab" data-el="ground" onclick="builderFilterPool('ground')">Terra</button>
+        <button type="button" class="builder-el-tab" data-el="flying" onclick="builderFilterPool('flying')">Voador</button>
+        <button type="button" class="builder-el-tab" data-el="psychic" onclick="builderFilterPool('psychic')">Psíquico</button>
+        <button type="button" class="builder-el-tab" data-el="rock" onclick="builderFilterPool('rock')">Pedra</button>
+        <button type="button" class="builder-el-tab" data-el="steel" onclick="builderFilterPool('steel')">Aço</button>
+        <button type="button" class="builder-el-tab" data-el="bug" onclick="builderFilterPool('bug')">Inseto</button>
+        <button type="button" class="builder-el-tab" data-el="dragon" onclick="builderFilterPool('dragon')">Dragão</button>
+        <button type="button" class="builder-el-tab" data-el="fairy" onclick="builderFilterPool('fairy')">Fada</button>
+        <button type="button" class="builder-el-tab" data-el="coringa" onclick="builderFilterPool('coringa')">Coringas</button>
+      </div>
+
+      <!-- Pool de Pokémons Arrastáveis -->
+      <div class="builder-pool-grid" id="builderPoolGrid">
+        <!-- Renderizado dinamicamente -->
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -3403,5 +3476,224 @@
       }
     }
   </script>
+
+  <script>
+    // ==========================================================================
+    // HOENN TEAM BUILDER LOGIC
+    // ==========================================================================
+    const HOENN_POKES_DATA = [{"element": "dark-ghost", "name": "Mightyena", "sprite": "assets/img/pokemon/mightyena.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "dark-ghost", "name": "Gengar", "sprite": "assets/img/pokemon/gengar.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "dark-ghost", "name": "Shiny Hitmonchan", "sprite": "assets/img/pokemon/sh_hitmonchan.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dark-ghost", "name": "Shiny Cacturne", "sprite": "assets/img/pokemon/sh_cacturne.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dark-ghost", "name": "Shiny Persian", "sprite": "assets/img/pokemon/sh_persian.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "dark-ghost", "name": "Shiny Umbreon", "sprite": "assets/img/pokemon/sh_umbreon.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dark-ghost", "name": "Dusknoir", "sprite": "assets/img/pokemon/dusknoir.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dark-ghost", "name": "Shiny Banette", "sprite": "assets/img/pokemon/sh_banette.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dark-ghost", "name": "Shiny Houndoom", "sprite": "assets/img/pokemon/sh_houndoom.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "dark-ghost", "name": "Shiny Tauros", "sprite": "assets/img/pokemon/sh_tauros.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "dark-ghost", "name": "Shiny Misdreavus", "sprite": "assets/img/pokemon/sh_misdreavus.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "dark-ghost", "name": "Shiny Hydreigon", "sprite": "assets/img/pokemon/sh_hydreigon.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "dark-ghost", "name": "Shiny Sableye", "sprite": "assets/img/pokemon/sh_sableye.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "dark-ghost", "name": "Shiny Shedinja", "sprite": "assets/img/pokemon/sh_shedinja.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dark-ghost", "name": "Mismagius", "sprite": "assets/img/pokemon/mismagius.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "electric", "name": "Luxray", "sprite": "assets/img/pokemon/luxray.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "electric", "name": "Pachirisu", "sprite": "assets/img/pokemon/pachirisu.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "electric", "name": "Shiny Raichu", "sprite": "assets/img/pokemon/sh_raichu.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "electric", "name": "Electabuzz", "sprite": "assets/img/pokemon/electabuzz.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "electric", "name": "Shiny Ampharos", "sprite": "assets/img/pokemon/sh_ampharos.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "electric", "name": "Shiny Jolteon", "sprite": "assets/img/pokemon/sh_jolteon.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "electric", "name": "Shiny Luxray", "sprite": "assets/img/pokemon/sh_luxray.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": true}, {"element": "electric", "name": "Shiny Pachirisu", "sprite": "assets/img/pokemon/sh_pachirisu.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "electric", "name": "Shiny Hitmonchan", "sprite": "assets/img/pokemon/sh_hitmonchan.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "electric", "name": "Shiny Castform (Elétrico)", "sprite": "assets/img/pokemon/sh_castform.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fairy", "name": "Mega Clefable", "sprite": "assets/img/pokemon/clefable.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "fairy", "name": "Mimikyu", "sprite": "assets/img/pokemon/mimikyu.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "fairy", "name": "Shiny Wigglytuff", "sprite": "assets/img/pokemon/sh_wigglytuff.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "fairy", "name": "Shiny Delcatty", "sprite": "assets/img/pokemon/sh_delcatty.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fairy", "name": "Shiny Granbull", "sprite": "assets/img/pokemon/sh_granbull.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "fairy", "name": "Sylveon", "sprite": "assets/img/pokemon/sylveon.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "fairy", "name": "Florges", "sprite": "assets/img/pokemon/florges.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": true}, {"element": "fairy", "name": "Shiny Mimikyu", "sprite": "assets/img/pokemon/sh_mimikyu.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": true}, {"element": "fairy", "name": "Shiny Florges", "sprite": "assets/img/pokemon/sh_florges.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "fighting", "name": "Shiny Hitmontop", "sprite": "assets/img/pokemon/sh_hitmontop.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "fighting", "name": "Shiny Hitmonlee", "sprite": "assets/img/pokemon/sh_hitmonlee.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fighting", "name": "Shiny Hitmonchan", "sprite": "assets/img/pokemon/sh_hitmonchan.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fighting", "name": "Shiny Poliwrath", "sprite": "assets/img/pokemon/sh_poliwrath.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "fighting", "name": "Shiny Heracross", "sprite": "assets/img/pokemon/sh_heracross.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "fighting", "name": "Shiny Ledian", "sprite": "assets/img/pokemon/sh_ledian.png", "tier": "T3", "tier_cls": "tier-t3", "is_offtank": false}, {"element": "fighting", "name": "Machamp", "sprite": "assets/img/pokemon/machamp.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "fighting", "name": "Shiny Machamp", "sprite": "assets/img/pokemon/sh_machamp.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "fighting", "name": "Shiny Kangaskhan", "sprite": "assets/img/pokemon/sh_kangaskhan.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "fighting", "name": "Shiny Hariyama", "sprite": "assets/img/pokemon/sh_hariyama.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "fighting", "name": "Shiny Medicham", "sprite": "assets/img/pokemon/sh_medicham.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fighting", "name": "Conkeldurr", "sprite": "assets/img/pokemon/conkeldurr.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fighting", "name": "Shiny Conkeldurr", "sprite": "assets/img/pokemon/sh_conkeldurr.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "fire", "name": "Arcanine", "sprite": "assets/img/pokemon/arcanine.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "fire", "name": "Infernape", "sprite": "assets/img/pokemon/infernape.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fire", "name": "Shiny Ninetales", "sprite": "assets/img/pokemon/sh_ninetales.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fire", "name": "Shiny Rapidash", "sprite": "assets/img/pokemon/sh_rapidash.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "fire", "name": "Shiny Typhlosion", "sprite": "assets/img/pokemon/sh_typhlosion.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "fire", "name": "Shiny Charizard", "sprite": "assets/img/pokemon/sh_charizard.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fire", "name": "Shiny Flareon", "sprite": "assets/img/pokemon/sh_flareon.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "fire", "name": "Shiny Infernape", "sprite": "assets/img/pokemon/sh_infernape.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "fire", "name": "Shiny Arcanine", "sprite": "assets/img/pokemon/sh_arcanine.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": true}, {"element": "flying", "name": "Shiny Pidgeot", "sprite": "assets/img/pokemon/sh_pidgeot.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "flying", "name": "Shiny Farfetch'd", "sprite": "assets/img/pokemon/sh_farfetchd.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "flying", "name": "Shiny Beautifly", "sprite": "assets/img/pokemon/sh_beautifly.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "flying", "name": "Shiny Mantine", "sprite": "assets/img/pokemon/sh_mantine.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "flying", "name": "Shiny Dodrio", "sprite": "assets/img/pokemon/sh_dodrio.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "flying", "name": "Gliscor", "sprite": "assets/img/pokemon/gliscor.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "flying", "name": "Shiny Swellow", "sprite": "assets/img/pokemon/sh_swellow.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "flying", "name": "Shiny Gliscor", "sprite": "assets/img/pokemon/sh_gliscor.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": true}, {"element": "flying", "name": "Staraptor", "sprite": "assets/img/pokemon/staraptor.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "flying", "name": "Ninjask", "sprite": "assets/img/pokemon/ninjask.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "flying", "name": "Masquerain", "sprite": "assets/img/pokemon/masquerain.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "grass", "name": "Tangrowth", "sprite": "assets/img/pokemon/tangrowth.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "grass", "name": "Gogoat", "sprite": "assets/img/pokemon/gogoat.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "grass", "name": "Shiny Victreebel", "sprite": "assets/img/pokemon/sh_victreebel.png", "tier": "T3", "tier_cls": "tier-t3", "is_offtank": false}, {"element": "grass", "name": "Shiny Tangela", "sprite": "assets/img/pokemon/sh_tangela.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "grass", "name": "Tropius", "sprite": "assets/img/pokemon/tropius.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "grass", "name": "Shiny Venusaur", "sprite": "assets/img/pokemon/sh_venusaur.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "grass", "name": "Shiny Meganium", "sprite": "assets/img/pokemon/sh_meganium.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "grass", "name": "Shiny Bellossom", "sprite": "assets/img/pokemon/sh_bellossom.png", "tier": "T3", "tier_cls": "tier-t3", "is_offtank": false}, {"element": "grass", "name": "Shiny Exeggutor", "sprite": "assets/img/pokemon/sh_exeggutor.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "grass", "name": "Shiny Tangrowth", "sprite": "assets/img/pokemon/sh_tangrowth.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": true}, {"element": "grass", "name": "Shiny Gogoat", "sprite": "assets/img/pokemon/sh_gogoat.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": true}, {"element": "grass", "name": "Shiny Cradily", "sprite": "assets/img/pokemon/sh_cradily.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "grass", "name": "Shiny Roselia", "sprite": "assets/img/pokemon/sh_roselia.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "grass", "name": "Shiny Shiftry", "sprite": "assets/img/pokemon/sh_shiftry.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ground", "name": "Shiny Steelix", "sprite": "assets/img/pokemon/sh_steelix.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "ground", "name": "Torterra", "sprite": "assets/img/pokemon/torterra.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ground", "name": "Shiny Rhydon", "sprite": "assets/img/pokemon/sh_rhydon.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "ground", "name": "Shiny Nidoqueen", "sprite": "assets/img/pokemon/sh_nidoqueen.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "ground", "name": "Shiny Marowak", "sprite": "assets/img/pokemon/sh_marowak.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ground", "name": "Shiny Ursaring", "sprite": "assets/img/pokemon/sh_ursaring.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ground", "name": "Shiny Piloswine", "sprite": "assets/img/pokemon/sh_piloswine.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "ground", "name": "Shiny Camerupt", "sprite": "assets/img/pokemon/sh_camerupt.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ground", "name": "Shiny Whiscash", "sprite": "assets/img/pokemon/sh_whiscash.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ground", "name": "Shiny Claydol", "sprite": "assets/img/pokemon/sh_claydol.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ground", "name": "Shiny Torterra", "sprite": "assets/img/pokemon/sh_torterra.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "ground", "name": "Shiny Pupitar", "sprite": "assets/img/pokemon/sh_pupitar.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "ground", "name": "Garchomp", "sprite": "assets/img/pokemon/garchomp.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ice", "name": "Shiny Lapras", "sprite": "assets/img/pokemon/sh_lapras.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "ice", "name": "Shiny Jynx", "sprite": "assets/img/pokemon/sh_jynx.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ice", "name": "Abomasnow", "sprite": "assets/img/pokemon/abomasnow.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "ice", "name": "Glaceon", "sprite": "assets/img/pokemon/glaceon.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "ice", "name": "Shiny Hitmonchan", "sprite": "assets/img/pokemon/sh_hitmonchan.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ice", "name": "Shiny Smeargle Ice", "sprite": "assets/img/pokemon/sh_smeargle.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "ice", "name": "Castform Snow", "sprite": "assets/img/pokemon/castform.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "ice", "name": "Shiny Castform Snow", "sprite": "assets/img/pokemon/sh_castform.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "ice", "name": "Shiny Abomasnow", "sprite": "assets/img/pokemon/sh_abomasnow.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "ice", "name": "Shiny Walrein", "sprite": "assets/img/pokemon/sh_walrein.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "ice", "name": "Shiny Smeargle (Ice)", "sprite": "assets/img/pokemon/sh_smeargle.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "poison", "name": "Shiny Muk", "sprite": "assets/img/pokemon/sh_muk.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "poison", "name": "Shiny Nidoking", "sprite": "assets/img/pokemon/sh_nidoking.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "poison", "name": "Shiny Qwilfish", "sprite": "assets/img/pokemon/sh_qwilfish.png", "tier": "T3", "tier_cls": "tier-t3", "is_offtank": true}, {"element": "poison", "name": "Swalot", "sprite": "assets/img/pokemon/swalot.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "poison", "name": "Shiny Tentacruel", "sprite": "assets/img/pokemon/sh_tentacruel.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "poison", "name": "Garbodor", "sprite": "assets/img/pokemon/garbodor.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "poison", "name": "Toxicroak", "sprite": "assets/img/pokemon/toxicroak.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "poison", "name": "Shiny Toxicroak", "sprite": "assets/img/pokemon/sh_toxicroak.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "poison", "name": "Shiny Seviper", "sprite": "assets/img/pokemon/sh_seviper.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "poison", "name": "Shiny Dustox", "sprite": "assets/img/pokemon/sh_dustox.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "psychic", "name": "Shiny Espeon", "sprite": "assets/img/pokemon/sh_espeon.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "psychic", "name": "Shiny Smeargle Psy", "sprite": "assets/img/pokemon/sh_smeargle.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "psychic", "name": "Shiny Wobbuffet", "sprite": "assets/img/pokemon/sh_wobbuffet.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "psychic", "name": "Shiny Slowking", "sprite": "assets/img/pokemon/sh_slowking.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "psychic", "name": "Alakazam", "sprite": "assets/img/pokemon/alakazam.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "psychic", "name": "Shiny Mr. Mime", "sprite": "assets/img/pokemon/sh_mr-mime.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "psychic", "name": "Wobbuffet", "sprite": "assets/img/pokemon/wobbuffet.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "psychic", "name": "Gallade", "sprite": "assets/img/pokemon/gallade.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "psychic", "name": "Shiny Smeargle (Psy)", "sprite": "assets/img/pokemon/sh_smeargle.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "rock", "name": "Rhyperior", "sprite": "assets/img/pokemon/rhyperior.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "rock", "name": "Shiny Golem", "sprite": "assets/img/pokemon/sh_golem.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "rock", "name": "Rampardos", "sprite": "assets/img/pokemon/rampardos.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "rock", "name": "Shiny Lunatone", "sprite": "assets/img/pokemon/sh_lunatone.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "rock", "name": "Shiny Magcargo", "sprite": "assets/img/pokemon/sh_magcargo.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "rock", "name": "Shiny Miltank", "sprite": "assets/img/pokemon/sh_miltank.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "rock", "name": "Tyranitar", "sprite": "assets/img/pokemon/tyranitar.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "rock", "name": "Shiny Solrock", "sprite": "assets/img/pokemon/sh_solrock.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "rock", "name": "Shiny Kabutops", "sprite": "assets/img/pokemon/sh_kabutops.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "rock", "name": "Shiny Omastar", "sprite": "assets/img/pokemon/sh_omastar.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "rock", "name": "Bastiodon", "sprite": "assets/img/pokemon/bastiodon.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "rock", "name": "Shiny Bastiodon", "sprite": "assets/img/pokemon/sh_bastiodon.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "rock", "name": "Shiny Armaldo", "sprite": "assets/img/pokemon/sh_armaldo.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "steel", "name": "Shiny Forretress", "sprite": "assets/img/pokemon/sh_forretress.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "steel", "name": "Lucario", "sprite": "assets/img/pokemon/lucario.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": true}, {"element": "steel", "name": "Magneton", "sprite": "assets/img/pokemon/magneton.png", "tier": "T3", "tier_cls": "tier-t3", "is_offtank": false}, {"element": "steel", "name": "Shiny Metang", "sprite": "assets/img/pokemon/sh_metang.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "steel", "name": "Shiny Magneton", "sprite": "assets/img/pokemon/sh_magneton.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "steel", "name": "Shiny Mawile", "sprite": "assets/img/pokemon/sh_mawile.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "steel", "name": "Shiny Skarmory", "sprite": "assets/img/pokemon/sh_skarmory.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "steel", "name": "Shiny Aggron", "sprite": "assets/img/pokemon/sh_aggron.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "water", "name": "Shiny Blastoise", "sprite": "assets/img/pokemon/sh_blastoise.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "water", "name": "Shiny Vaporeon", "sprite": "assets/img/pokemon/sh_vaporeon.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "water", "name": "Milotic", "sprite": "assets/img/pokemon/milotic.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "water", "name": "Shiny Feraligatr", "sprite": "assets/img/pokemon/sh_feraligatr.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": true}, {"element": "water", "name": "Shiny Politoed", "sprite": "assets/img/pokemon/sh_politoed.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "water", "name": "Shiny Starmie", "sprite": "assets/img/pokemon/sh_starmie.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "water", "name": "Shiny Sharpedo", "sprite": "assets/img/pokemon/sh_sharpedo.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "water", "name": "Shiny Kingdra", "sprite": "assets/img/pokemon/sh_kingdra.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "water", "name": "Shiny Ludicolo", "sprite": "assets/img/pokemon/sh_ludicolo.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "water", "name": "Shiny Gorebyss", "sprite": "assets/img/pokemon/sh_gorebyss.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "water", "name": "Shiny Huntail", "sprite": "assets/img/pokemon/sh_huntail.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "water", "name": "Shiny Relicanth", "sprite": "assets/img/pokemon/sh_relicanth.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "water", "name": "Shiny Walrein", "sprite": "assets/img/pokemon/sh_walrein.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "bug", "name": "Shiny Pinsir", "sprite": "assets/img/pokemon/sh_pinsir.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "bug", "name": "Shiny Scyther", "sprite": "assets/img/pokemon/sh_scyther.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "bug", "name": "Scolipede", "sprite": "assets/img/pokemon/scolipede.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "bug", "name": "Yanmega", "sprite": "assets/img/pokemon/yanmega.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "bug", "name": "Vespiquen", "sprite": "assets/img/pokemon/vespiquen.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dragon", "name": "Garchomp", "sprite": "assets/img/pokemon/garchomp.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dragon", "name": "Shiny Druddigon", "sprite": "assets/img/pokemon/sh_druddigon.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dragon", "name": "Shiny Smeargle", "sprite": "assets/img/pokemon/sh_smeargle.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dragon", "name": "Shiny Garchomp", "sprite": "assets/img/pokemon/sh_garchomp.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "dragon", "name": "Shiny Smeargle (Dragon)", "sprite": "assets/img/pokemon/sh_smeargle.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}, {"element": "dragon", "name": "Salamence", "sprite": "assets/img/pokemon/salamence.png", "tier": "T2", "tier_cls": "tier-t2", "is_offtank": false}, {"element": "coringa", "name": "Shiny Hitmonchan", "sprite": "assets/img/pokemon/sh_hitmonchan.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": true}, {"element": "coringa", "name": "Shiny Smeargle", "sprite": "assets/img/pokemon/sh_smeargle.png", "tier": "SR", "tier_cls": "tier-sr", "is_offtank": false}, {"element": "coringa", "name": "Castform", "sprite": "assets/img/pokemon/sh_castform.png", "tier": "T1", "tier_cls": "tier-t1", "is_offtank": false}];
+
+    let builderTeam = [null, null, null, null, null, null];
+    let currentBuilderFilter = 'all';
+
+    // Carrega do LocalStorage se existir
+    try {
+      const saved = localStorage.getItem('dndxp_hoenn_team');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length === 6) {
+          builderTeam = parsed;
+        }
+      }
+    } catch (_) {}
+
+    function saveBuilderTeam() {
+      try {
+        localStorage.setItem('dndxp_hoenn_team', JSON.stringify(builderTeam));
+      } catch (_) {}
+    }
+
+    function renderBuilderSlots() {
+      const container = document.getElementById('builderSlots');
+      if (!container) return;
+
+      let filledCount = 0;
+      let tiersCount = {};
+
+      container.innerHTML = builderTeam.map((poke, index) => {
+        if (poke) {
+          filledCount++;
+          tiersCount[poke.tier] = (tiersCount[poke.tier] || 0) + 1;
+          return `
+            <div class="builder-slot filled" id="builderSlot-${index}" 
+                 ondragover="builderAllowDrop(event)" ondragleave="builderDragLeave(event)" ondrop="builderDrop(event, ${index})"
+                 title="Clique no 'X' para remover">
+              <span class="builder-slot-num">#${index + 1}</span>
+              <button type="button" class="builder-slot-remove" onclick="event.stopPropagation(); builderRemoveSlot(${index})" title="Remover">&times;</button>
+              <div class="builder-slot-filled-content">
+                <img src="${poke.sprite}" alt="${poke.name}" class="poke-sprite builder-slot-sprite" loading="lazy">
+                <span class="builder-slot-name">${poke.name}</span>
+                <div style="display: flex; gap: 4px; flex-wrap: wrap; justify-content: center;">
+                  <span class="tier-tag ${poke.tier_cls}">${poke.tier}</span>
+                  ${poke.is_offtank ? '<span class="badge-offtank">OFFTANK</span>' : ''}
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          return `
+            <div class="builder-slot" id="builderSlot-${index}" 
+                 ondragover="builderAllowDrop(event)" ondragleave="builderDragLeave(event)" ondrop="builderDrop(event, ${index})"
+                 onclick="builderSlotEmptyClick(${index})">
+              <span class="builder-slot-num">#${index + 1}</span>
+              <div class="builder-slot-empty">
+                <span style="font-size: 1.3rem; opacity: 0.5;">+</span>
+                <span>Slot Vazio</span>
+                <span style="font-size: 0.65rem; color: var(--text-muted);">Arraste ou clique</span>
+              </div>
+            </div>
+          `;
+        }
+      }).join('');
+
+      const countEl = document.getElementById('builderCount');
+      if (countEl) countEl.textContent = `${filledCount}/6`;
+
+      const summaryEl = document.getElementById('builderTiersSummary');
+      if (summaryEl) {
+        const parts = Object.entries(tiersCount).map(([t, count]) => `${count}x ${t}`);
+        summaryEl.textContent = parts.length ? `(Composição: ${parts.join(', ')})` : '';
+      }
+
+      saveBuilderTeam();
+    }
+
+    function renderBuilderPool(filter = 'all') {
+      const grid = document.getElementById('builderPoolGrid');
+      if (!grid) return;
+
+      const filtered = filter === 'all' 
+        ? HOENN_POKES_DATA 
+        : HOENN_POKES_DATA.filter(p => p.element === filter);
+
+      grid.innerHTML = filtered.map((poke, i) => `
+        <div class="builder-pool-item" draggable="true" 
+             ondragstart="builderDragStart(event, ${JSON.stringify(poke).replace(/"/g, '&quot;')})"
+             onclick="builderAddPokemon(${JSON.stringify(poke).replace(/"/g, '&quot;')})"
+             title="Clique para adicionar ou arraste para um slot">
+          <img src="${poke.sprite}" alt="${poke.name}" class="poke-sprite" loading="lazy">
+          <span class="poke-name">${poke.name}</span>
+          <div style="display: flex; gap: 3px; justify-content: center;">
+            <span class="tier-tag ${poke.tier_cls}">${poke.tier}</span>
+            ${poke.is_offtank ? '<span class="badge-offtank" style="font-size: 0.6rem; padding: 1px 3px;">OT</span>' : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function builderFilterPool(element) {
+      currentBuilderFilter = element;
+      document.querySelectorAll('.builder-el-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.getAttribute('data-el') === element);
+      });
+      renderBuilderPool(element);
+    }
+
+    // Drag and Drop
+    let draggedPokemon = null;
+
+    function builderDragStart(e, poke) {
+      draggedPokemon = poke;
+      e.dataTransfer.setData('text/plain', JSON.stringify(poke));
+      e.dataTransfer.effectAllowed = 'copy';
+    }
+
+    function builderAllowDrop(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'copy';
+      const slot = e.currentTarget;
+      if (slot) slot.classList.add('drag-over');
+    }
+
+    function builderDragLeave(e) {
+      const slot = e.currentTarget;
+      if (slot) slot.classList.remove('drag-over');
+    }
+
+    function builderDrop(e, slotIndex) {
+      e.preventDefault();
+      const slot = e.currentTarget;
+      if (slot) slot.classList.remove('drag-over');
+
+      let poke = draggedPokemon;
+      if (!poke) {
+        try {
+          poke = JSON.parse(e.dataTransfer.getData('text/plain'));
+        } catch (_) {}
+      }
+
+      if (poke && slotIndex >= 0 && slotIndex < 6) {
+        builderTeam[slotIndex] = poke;
+        renderBuilderSlots();
+      }
+      draggedPokemon = null;
+    }
+
+    function builderAddPokemon(poke) {
+      // Adiciona no primeiro slot vazio
+      const firstEmpty = builderTeam.findIndex(s => s === null);
+      if (firstEmpty !== -1) {
+        builderTeam[firstEmpty] = poke;
+        renderBuilderSlots();
+      } else {
+        // Se todos ocupados, substitui o último ou avisa
+        builderTeam[5] = poke;
+        renderBuilderSlots();
+      }
+    }
+
+    function builderRemoveSlot(index) {
+      if (index >= 0 && index < 6) {
+        builderTeam[index] = null;
+        renderBuilderSlots();
+      }
+    }
+
+    function builderSlotEmptyClick(index) {
+      // Foca na barra de pokémons
+      const pool = document.getElementById('builderPoolGrid');
+      if (pool) pool.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function builderClearTeam() {
+      if (confirm('Deseja limpar todos os 6 slots do seu time?')) {
+        builderTeam = [null, null, null, null, null, null];
+        renderBuilderSlots();
+      }
+    }
+
+    function builderCopyTeam() {
+      const filled = builderTeam.filter(Boolean);
+      if (!filled.length) {
+        alert('Seu time está vazio! Adicione pokémons antes de copiar.');
+        return;
+      }
+
+      const text = 'Time Hoenn (Dormir Não Dá XP):\n' + 
+        builderTeam.map((p, i) => `#${i + 1}: ${p ? `${p.name} [${p.tier}]${p.is_offtank ? ' (Offtank)' : ''}` : 'Vazio'}`).join('\n');
+
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('btnCopyTeam');
+        if (btn) {
+          const orig = btn.textContent;
+          btn.textContent = 'Copiado!';
+          btn.style.backgroundColor = '#10b981';
+          setTimeout(() => {
+            btn.textContent = orig;
+            btn.style.backgroundColor = '';
+          }, 1600);
+        }
+      }).catch(() => {
+        alert(text);
+      });
+    }
+
+    // Inicializa o builder
+    document.addEventListener('DOMContentLoaded', () => {
+      renderBuilderSlots();
+      renderBuilderPool('all');
+    });
+  </script>
+
 </body>
 </html>
