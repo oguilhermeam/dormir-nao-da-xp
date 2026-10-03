@@ -27,12 +27,12 @@
 }
 
 :root {
-  /* Base Dormir Não Dá XP (Azul-Marinho Profundo da Guilda + Amarelo Ouro) */
-  --bg-0: #060922;          /* fundo azul-marinho profundo da logo */
-  --bg-1: #0b1132;          /* cards e painéis táticos */
-  --bg-2: #1a2558;          /* bordas sólidas azuladas */
-  --bg-hover: #141d4c;      /* hover de linhas e cards */
-  --black: #040618;         /* header, rodapé, tabelas escuras */
+  /* Fundo base preto com ambientação azul e amarelo da logo */
+  --bg-0: #06070a;          /* fundo geral escuro */
+  --bg-1: #0c0d12;          /* cards, painéis e blocos pretos */
+  --bg-2: #1c1f28;          /* bordas sólidas limpas */
+  --bg-hover: #151720;      /* hover sutil */
+  --black: #06070a;         /* preto profundo para header, tabelas e footer */
 
   --guild-blue: #2563eb;
   --guild-gold: #f9bf00;
@@ -95,18 +95,16 @@ body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #060922;
+  background-color: #06070a;
   background-image: 
-    /* Grade tática estilo MMO / Tibia em amarelo suave da guilda */
-    radial-gradient(circle, rgba(249, 191, 0, 0.06) 1px, transparent 1px),
-    /* Iluminação dourada nobre da logo no topo */
-    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(249, 191, 0, 0.18) 0%, transparent 65%),
-    /* Atmosfera azul-safira profunda da guilda nas laterais */
-    radial-gradient(ellipse 65% 55% at 0% 40%, rgba(37, 99, 235, 0.16) 0%, transparent 60%),
-    radial-gradient(ellipse 65% 55% at 100% 60%, rgba(59, 130, 246, 0.14) 0%, transparent 60%),
-    /* Base em degradê azul-marinho profundo oficial da guilda */
-    linear-gradient(180deg, #090e30 0%, #060922 45%, #040516 100%);
-  background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    /* Iluminação amarela/dourada suave da logo Dormir Não Dá XP no topo */
+    radial-gradient(ellipse 65% 40% at 50% -5%, rgba(249, 191, 0, 0.15) 0%, transparent 65%),
+    /* Iluminação azul suave da logo nas laterais */
+    radial-gradient(ellipse 60% 50% at 0% 45%, rgba(37, 99, 235, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 100% 65%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+    /* Base preta sólida e limpa */
+    linear-gradient(180deg, #090b10 0%, #06070a 45%, #040507 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
   background-attachment: fixed;
   color: var(--text);
   min-height: 100vh;
@@ -2656,42 +2654,8 @@ img.brand-img,
 }
 
 
-/* ==========================================================================
-   GAMEPLAY BACKGROUND LAYER (Página Inicial com Blur da Guilda)
-   ========================================================================== */
 
-.gameplay-bg-layer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-  overflow: hidden;
-}
 
-.gameplay-bg-img {
-  position: absolute;
-  top: -24px;
-  left: -24px;
-  right: -24px;
-  bottom: -24px;
-  background-image: url('../img/bg_gameplay.webp');
-  background-size: cover;
-  background-position: center 35%;
-  filter: blur(8px) brightness(0.28) saturate(1.15);
-  transform: scale(1.06);
-}
 
-.gameplay-bg-overlay {
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, rgba(249, 191, 0, 0.05) 1px, transparent 1px),
-    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(249, 191, 0, 0.16) 0%, transparent 65%),
-    radial-gradient(ellipse 65% 55% at 0% 50%, rgba(37, 99, 235, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 65% 55% at 100% 60%, rgba(59, 130, 246, 0.14) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(6, 9, 34, 0.72) 0%, rgba(6, 9, 34, 0.88) 50%, rgba(4, 5, 22, 0.97) 100%);
-  background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-}
+
+
