@@ -1,9 +1,10 @@
 /* ==========================================================================
-   DORMIR NÃO DÁ XP - Dark Style Minimalista (Endesga 64 Accents)
-   Foco: Contraste alto, leitura limpa, sem poluição visual, Dark Mode real
+   DORMIR NÃO DÁ XP - Compêndio PokeAlliance (PokéTibia)
+   Visual: Resurrect 64 Palette + Pixel Art Aesthetic + Game Wiki / Tibia Guide
+   Sem gradientes, sem blur, sem glow, sem arredondamentos excessivos.
    ========================================================================== */
 
-/* JetBrains Mono — Self-hosted, sem Google Fonts, sem requisição externa */
+/* JetBrains Mono (Self-hosted) */
 @font-face {
   font-family: 'JetBrains Mono';
   font-style: normal;
@@ -26,51 +27,42 @@
 }
 
 :root {
-  /* Dark Style Gamer Premium - Base profunda com atmosfera e profundidade */
-  --bg-deep: #07090e;              /* Preto azulado profundo */
-  --bg-surface: #0f131d;           /* Superfície de cards com tom game */
-  --bg-surface-hover: #151b28;     /* Hover suave */
-  --bg-elevated: #1a2233;         /* Painéis e barras secundárias */
-  --bg-darker: #0a0d14;
+  /* Paleta Resurrect 64 (Lospec) */
+  --bg-0: #2e222f;          /* fundo da página */
+  --bg-1: #3e3546;          /* cards, painéis */
+  --bg-2: #625565;          /* bordas, divisores, hover de fundo */
+  --black: #18141a;         /* header, rodapé, blocos de código/tabela */
+  --text: #c7dcd0;          /* texto principal */
+  --text-dim: #9babb2;      /* texto secundário */
 
-  /* Bordas refinadas com transparência elegante */
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-card: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.18);
-  --border-focus: rgba(255, 255, 255, 0.28);
+  /* Acentos com papel fixo */
+  --rocket: #c32454;        /* Equipe Rocket */
+  --rocket-hover: #f04f78;
+  --hoenn: #f9c22b;         /* Times Hoenn */
+  --hoenn-hover: #fbb954;
+  --teal: #0eaf9b;          /* links, estados ok, neutro */
+  --teal-hover: #30e1b9;
+  --roxo: #905ea9;          /* raridade / tags de NPC */
+
+  /* Cores de tabelas / status */
+  --status-weak: #e83b3b;   /* fraco / inimigo */
+  --status-resist: #1ebc73; /* resiste / recomendado */
+  --status-neutral: #4d9be6;/* neutro */
 
   /* Tipografia */
-  --text-white: #ffffff;
-  --text-primary: #e6e8ee;
-  --text-secondary: #949daf;
-  --text-muted: #5e6678;
+  --font-pixel: 'Pixelify Sans', monospace, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  /* Lado Inimigo (Vermelho Dark Sóbrio) */
-  --enemy-bg: rgba(234, 50, 60, 0.08);
-  --enemy-border: rgba(234, 50, 60, 0.25);
-  --enemy-text: #f87171;
-  --enemy-badge: #381216;
-
-  /* Lado Recomendado (Verde Tático Sóbrio) */
-  --counter-bg: rgba(16, 185, 129, 0.08);
-  --counter-border: rgba(16, 185, 129, 0.3);
-  --counter-text: #34d399;
-  --counter-badge: #0f2e21;
-
-  /* Acentos Gamer / Tier */
-  --edg-red: #ea323c;
-  --edg-gold: #f59e0b;
-  --edg-gold-subtle: rgba(245, 158, 11, 0.12);
-  --edg-shiny: #e879f9;
-  --edg-shiny-bg: rgba(232, 121, 249, 0.12);
-
-  /* Tipografia: Sans moderno para UI e Mono para números e códigos */
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'Consolas', monospace;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  /* Estrutura visual */
+  --radius: 2px;
+  --shadow-hard: 4px 4px 0 var(--black);
+  --shadow-hard-sm: 2px 2px 0 var(--black);
 }
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -79,390 +71,925 @@
 }
 
 html {
-  font-size: 15px;
+  font-size: 16px;
   scroll-behavior: smooth;
-  background-color: var(--bg-deep);
-  color: var(--text-primary);
+  background-color: var(--bg-0);
+  color: var(--text);
   color-scheme: dark;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: #07080b;
-  background-image: 
-    /* Brilho âmbar/dourado suave no topo esquerdo (estilo wiki premium) */
-    radial-gradient(ellipse 65% 55% at 5% 0%, rgba(217, 119, 6, 0.16) 0%, transparent 65%),
-    /* Atmosfera teal/azulada profunda no canto inferior direito */
-    radial-gradient(ellipse 70% 60% at 95% 100%, rgba(13, 148, 136, 0.14) 0%, transparent 60%),
-    /* Iluminação radial superior central com profundidade */
-    radial-gradient(ellipse 80% 45% at 50% -5%, rgba(51, 65, 85, 0.28) 0%, transparent 70%),
-    /* Degradê de fundo escuro aveludado */
-    linear-gradient(180deg, #0d1117 0%, #080a0e 40%, #050608 100%);
-  background-attachment: fixed;
-  color: var(--text-primary);
-  line-height: 1.55;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: var(--bg-0);
+  color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  animation: pageEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-body.is-page-transitioning {
-  opacity: 0;
-  transform: translateY(-4px);
-  transition: opacity 0.16s ease-out, transform 0.16s ease-out;
 }
 
 a {
-  color: inherit;
+  color: var(--teal);
   text-decoration: none;
+  transition: color 120ms ease;
 }
 
+a:hover {
+  color: var(--teal-hover);
+}
+
+h1, h2 {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+p {
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Sprites Pixel Art */
+img.poke-sprite,
+img.coringa-sprite,
+img.upgrade-chip-sprite,
+img.npc-enemy-thumb,
+img.brand-img,
+.poke-sprite,
+.coringa-sprite,
+.upgrade-chip-sprite,
+.npc-enemy-thumb {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Container */
 .container {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
-/* Header & Nav */
+/* ==========================================================================
+   HEADER & NAVBAR (Simples, sóbrio, estilo Wiki)
+   ========================================================================== */
+
 .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(7, 9, 14, 0.82);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 10px 0;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  background-color: var(--black);
+  border-bottom: 2px solid var(--bg-2);
+  padding: 0;
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
-  color: var(--text-white);
-  font-weight: 700;
-  font-size: 1.05rem;
+  color: var(--text);
+  font-family: var(--font-pixel);
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  padding: 10px 0;
+}
+
+.brand:hover {
+  color: var(--teal);
 }
 
 .brand-img {
   width: 32px;
   height: 32px;
-  border-radius: var(--radius-sm);
-  object-fit: cover;
-  border: 1px solid rgba(255, 200, 37, 0.3);
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
+  background-color: var(--bg-1);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   list-style: none;
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  color: var(--text-dim);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  transition: all 0.16s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.nav-icon {
-  opacity: 0.65;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  flex-shrink: 0;
-}
-
-.nav-link:hover .nav-icon,
-.nav-link.active .nav-icon {
-  opacity: 1;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 12px;
+  border-bottom: 3px solid transparent;
+  display: inline-block;
+  transition: color 120ms ease, border-color 120ms ease;
 }
 
 .nav-link:hover {
-  color: var(--text-white);
-  background: var(--bg-surface);
+  color: var(--text);
 }
 
 .nav-link.active {
-  color: var(--text-white);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-card);
+  color: var(--text);
+  border-bottom-color: var(--teal);
 }
 
-.inline-icon {
-  vertical-align: middle;
-  flex-shrink: 0;
+/* Versão específica de acento no nav se desejar */
+.nav-link[href*="equipe-rocket"].active {
+  border-bottom-color: var(--rocket);
 }
 
-/* Botões Dark */
+.nav-link[href*="times-hoenn"].active {
+  border-bottom-color: var(--hoenn);
+}
+
+/* ==========================================================================
+   BOTÕES SÓLIDOS (Estilo Retrô / Tibia)
+   ========================================================================== */
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
+  font-family: var(--font-mono);
   font-size: 0.88rem;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  border: 2px solid var(--black);
+  box-shadow: var(--shadow-hard-sm);
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid transparent;
-  transition: all 0.15s ease;
+  transition: background 120ms ease, color 120ms ease;
+  user-select: none;
 }
 
 .btn-rocket {
-  background: var(--edg-red);
-  color: #fff;
+  background-color: var(--rocket);
+  color: #ffffff;
 }
 
 .btn-rocket:hover {
-  background: #ff4752;
-  transform: translateY(-1px);
+  background-color: var(--rocket-hover);
+  color: #ffffff;
 }
 
 .btn-hoenn {
-  background: var(--edg-gold);
-  color: #111318 !important;
-  font-weight: 700;
-  border: 1px solid rgba(255, 200, 37, 0.9);
+  background-color: var(--hoenn);
+  color: var(--black);
 }
 
 .btn-hoenn:hover {
-  background: #ffe066;
-  color: #000 !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(255, 200, 37, 0.4);
+  background-color: var(--hoenn-hover);
+  color: var(--black);
+}
+
+.btn-teal {
+  background-color: var(--teal);
+  color: var(--black);
+}
+
+.btn-teal:hover {
+  background-color: var(--teal-hover);
+  color: var(--black);
 }
 
 .btn-secondary {
-  background: var(--bg-surface);
-  color: var(--text-white);
-  border: 1px solid var(--border-card);
+  background-color: var(--bg-1);
+  color: var(--text);
+  border-color: var(--bg-2);
 }
 
 .btn-secondary:hover {
-  background: var(--bg-elevated);
-  border-color: var(--border-hover);
+  background-color: var(--bg-2);
+  color: var(--text);
 }
 
-/* Top Section Rocket com Minimapa Embutido */
-.rocket-top-section {
-  padding: 32px 0 24px;
-  border-bottom: 1px solid var(--border-card);
+/* ==========================================================================
+   HERO COMPACTO E FUNCIONAL (Início)
+   ========================================================================== */
+
+.hero-compact {
+  padding: 24px 0 20px;
+  border-bottom: 2px solid var(--bg-2);
   margin-bottom: 28px;
 }
 
-.rocket-hero-layout {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 28px;
-  align-items: stretch;
+.hero-title {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+  color: var(--text);
 }
 
-.rocket-info-box {
+.hero-tagline {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  max-width: 820px;
+  line-height: 1.5;
+}
+
+/* Seções da Home */
+.section-header {
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
   justify-content: space-between;
-}
-
-.rocket-title-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 14px;
 }
 
-.rocket-badge-r {
-  width: 44px;
-  height: 44px;
-  background: var(--edg-red);
-  color: #fff;
-  display: grid;
-  place-items: center;
+.section-title {
+  font-size: 1.4rem;
+  color: var(--text);
+}
+
+.section-meta {
   font-family: var(--font-mono);
-  font-weight: 900;
-  font-size: 1.7rem;
-  border-radius: var(--radius-sm);
-  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--text-dim);
 }
 
-.rocket-title {
-  font-size: 1.9rem;
-  font-weight: 800;
-  color: var(--text-white);
-  letter-spacing: -0.02em;
+/* Tabela Rápida / Wiki Table */
+.quick-table-section {
+  margin-bottom: 36px;
 }
 
-.rocket-subtitle {
-  color: var(--text-secondary);
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard);
+  background-color: var(--bg-1);
+  border-radius: var(--radius);
+}
+
+.wiki-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
   font-size: 0.92rem;
-  margin-top: 2px;
 }
 
-/* Recompensas Pills */
-.rewards-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 14px 0 12px;
+.wiki-table thead {
+  background-color: var(--black);
+  border-bottom: 2px solid var(--bg-2);
 }
 
-.reward-tag {
-  background: var(--bg-darker);
-  border: 1px solid var(--border-card);
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: border-color 0.15s ease;
-}
-
-.reward-tag:hover {
-  border-color: var(--border-hover);
-}
-
-.token-pill {
+.wiki-table th {
+  padding: 10px 14px;
   font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.72rem;
-  padding: 1px 7px;
-  border-radius: 9999px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  border-right: 1px solid var(--bg-2);
 }
 
-.token-bronze { background: #5c3024; color: #f6ca9f; }
-.token-silver { background: #3b4252; color: #e5e9f0; }
-.token-gold { background: #614816; color: #ffeb57; }
+.wiki-table th:last-child {
+  border-right: none;
+}
 
-/* Minimap Card no cantinho */
-.minimap-card {
-  background: rgba(15, 19, 29, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
-  padding: 14px;
+.wiki-table tbody tr {
+  background-color: var(--bg-1);
+  border-bottom: 1px solid var(--bg-2);
+  transition: background 120ms ease;
+}
+
+.wiki-table tbody tr:nth-child(even) {
+  background-color: var(--bg-0);
+}
+
+.wiki-table tbody tr:hover {
+  background-color: var(--bg-2);
+}
+
+.wiki-table td {
+  padding: 12px 14px;
+  color: var(--text);
+  border-right: 1px solid var(--bg-2);
+  vertical-align: middle;
+}
+
+.wiki-table td:last-child {
+  border-right: none;
+}
+
+.table-link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.table-link.rocket-link { color: var(--rocket); }
+.table-link.rocket-link:hover { color: var(--rocket-hover); }
+.table-link.hoenn-link { color: var(--hoenn); }
+.table-link.hoenn-link:hover { color: var(--hoenn-hover); }
+.table-link.teal-link { color: var(--teal); }
+.table-link.teal-link:hover { color: var(--teal-hover); }
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* Tags de Metadados / Tabela */
+.tag-meta {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  border: 1px solid var(--bg-2);
+  background-color: var(--black);
+  text-transform: uppercase;
+}
+
+.tag-rocket-meta {
+  color: var(--rocket);
+  border-color: var(--rocket);
+}
+
+.tag-hoenn-meta {
+  color: var(--hoenn);
+  border-color: var(--hoenn);
+}
+
+.tag-teal-meta {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+/* ==========================================================================
+   CARDS DE GUIA (Blocos Clicáveis Inteiros)
+   ========================================================================== */
+
+.guide-blocks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.guide-block {
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-1);
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 120ms ease, border-color 120ms ease;
 }
 
-.minimap-header {
+.guide-block:hover {
+  background-color: var(--bg-2);
+  color: var(--text);
+}
+
+.guide-block.block-rocket:hover {
+  border-color: var(--rocket);
+}
+
+.guide-block.block-hoenn:hover {
+  border-color: var(--hoenn);
+}
+
+.guide-block-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.minimap-title {
-  font-size: 0.82rem;
+.guide-block-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border: 1px solid var(--bg-2);
+  background-color: var(--black);
+  text-transform: uppercase;
+}
+
+.guide-block-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.guide-block-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.guide-block-desc {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* Compatibilidade com classes anteriores */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-1);
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 120ms ease;
+}
+
+.card:hover {
+  background-color: var(--bg-2);
+  color: var(--text);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 10px 0 6px;
+}
+
+.card-desc {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--bg-2);
+  padding-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-white);
+  padding: 2px 6px;
+  border-radius: var(--radius);
+  border: 1px solid var(--bg-2);
+  background-color: var(--black);
+  display: inline-block;
+  width: fit-content;
+}
+
+.tag-rocket { color: var(--rocket); border-color: var(--rocket); }
+.tag-quest, .tag-hunt { color: var(--hoenn); border-color: var(--hoenn); }
+.tag-dica { color: var(--teal); border-color: var(--teal); }
+
+/* ==========================================================================
+   EQUIPE ROCKET - LAYOUT & ACCORDION
+   ========================================================================== */
+
+.rocket-top-section {
+  padding: 24px 0 20px;
+  border-bottom: 2px solid var(--bg-2);
+  margin-bottom: 24px;
+}
+
+.rocket-hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+.rocket-title-row {
   display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.rocket-badge-r {
+  width: 44px;
+  height: 44px;
+  background-color: var(--rocket);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 1.8rem;
+  border: 2px solid var(--black);
+  box-shadow: var(--shadow-hard-sm);
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.rocket-title {
+  font-size: 2rem;
+  color: var(--text);
+}
+
+.rocket-subtitle {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.rewards-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.reward-tag {
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.minimap-subtitle {
-  font-size: 0.72rem;
-  color: var(--enemy-text);
+.token-pill {
   font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 1px 6px;
+  border-radius: var(--radius);
+  border: 1px solid var(--bg-2);
+  background-color: var(--black);
+}
+
+.token-bronze { color: #f6ca9f; }
+.token-silver { color: #e5e9f0; }
+.token-gold { color: var(--hoenn); border-color: var(--hoenn); }
+
+/* Minimapa no cantinho */
+.minimap-card {
+  background-color: var(--bg-1);
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+
+.minimap-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.minimap-title {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.minimap-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
 }
 
 .minimap-preview-wrapper {
-  position: relative;
-  border-radius: var(--radius-sm);
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid var(--border-card);
   cursor: pointer;
-  background: #000;
-  max-height: 190px;
+  background-color: var(--black);
+  position: relative;
 }
 
 .minimap-img {
   width: 100%;
-  height: 190px;
+  height: 180px;
   object-fit: cover;
   display: block;
-  transition: transform 0.25s ease;
-}
-
-.minimap-preview-wrapper:hover .minimap-img {
-  transform: scale(1.04);
 }
 
 .minimap-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(9, 10, 13, 0.95) 100%);
-  padding: 8px 10px;
+  background-color: var(--black);
+  border-top: 1px solid var(--bg-2);
+  padding: 6px 10px;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--text-white);
+  color: var(--text-dim);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Barra de Filtro / Busca */
+/* Barra de Busca */
 .search-wrapper {
-  margin: 18px 0 24px;
+  margin: 16px 0 20px;
   position: relative;
 }
 
 .search-input {
   width: 100%;
-  background: rgba(15, 19, 29, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
-  padding: 13px 18px 13px 44px;
-  font-size: 0.92rem;
-  font-family: var(--font-sans);
-  color: var(--text-white);
+  background-color: var(--black);
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  color: var(--text);
   outline: none;
-  transition: all 0.18s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-hard-sm);
+  transition: border-color 120ms ease;
 }
 
 .search-input:focus {
-  border-color: var(--border-hover);
-  background: rgba(22, 28, 42, 0.9);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  border-color: var(--teal);
 }
 
 .search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
+  display: none; /* Sem ícones decorativos redundantes */
 }
 
-/* Grid de NPCs */
+/* Seletor Global de Versão (Izzonim vs Recomendado) */
+.tier-mode-switcher-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.tier-mode-switcher {
+  display: inline-flex;
+  gap: 4px;
+  background-color: var(--black);
+  padding: 4px;
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
+}
+
+.tier-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 120ms ease, background 120ms ease;
+  user-select: none;
+}
+
+.tier-mode-btn:hover {
+  color: var(--text);
+}
+
+.tier-mode-btn.active {
+  background-color: var(--bg-1);
+  color: var(--text);
+  border-color: var(--bg-2);
+}
+
+.tier-mode-btn.active.btn-mode-izzonim,
+.tier-mode-btn.active.btn-mode-inicial {
+  border-color: var(--status-resist);
+  color: var(--status-resist);
+}
+
+.tier-mode-btn.active.btn-mode-recomendado,
+.tier-mode-btn.active.btn-mode-plus {
+  border-color: var(--hoenn);
+  color: var(--hoenn);
+}
+
+/* Roster / Checklist de Pokémons */
+.rocket-roster-panel {
+  background-color: var(--bg-1);
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+}
+
+.roster-header-toggle {
+  width: 100%;
+  background-color: var(--black);
+  border: none;
+  border-bottom: 2px solid var(--bg-2);
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+  font-family: inherit;
+}
+
+.roster-header-toggle:hover {
+  background-color: var(--bg-0);
+}
+
+.roster-badge-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: block;
+}
+
+.roster-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.roster-count-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  color: var(--text);
+}
+
+.roster-desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.roster-toggle-action {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  padding: 5px 10px;
+  border-radius: var(--radius);
+}
+
+.roster-header-toggle:hover .roster-toggle-action {
+  background-color: var(--bg-2);
+}
+
+.roster-collapsible-content {
+  padding: 12px 14px;
+  background-color: var(--bg-1);
+}
+
+.roster-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.roster-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--black);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 3px 8px 3px 5px;
+  cursor: pointer;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  transition: background 120ms ease, border-color 120ms ease;
+  user-select: none;
+}
+
+.roster-chip:hover {
+  background-color: var(--bg-2);
+}
+
+.roster-chip.selected {
+  border-color: var(--teal);
+  background-color: var(--bg-0);
+  color: var(--teal);
+}
+
+.roster-chip-sprite-wrap {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roster-chip-sprite {
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.roster-chip-name {
+  font-weight: 600;
+}
+
+/* Status do Filtro */
+.filter-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  background-color: var(--black);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+}
+
+.filter-status-info {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.filter-status-info strong {
+  color: var(--text);
+}
+
+.filter-clear-btn {
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  color: var(--text);
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.filter-clear-btn:hover {
+  background-color: var(--bg-2);
+}
+
+/* Toolbar da Grid de NPCs */
 .npc-grid-toolbar {
   display: flex;
   align-items: center;
@@ -470,13 +997,11 @@ a {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 12px;
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
   padding: 8px 14px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
+  background-color: var(--black);
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard-sm);
+  border-radius: var(--radius);
 }
 
 .npc-toolbar-left {
@@ -486,294 +1011,243 @@ a {
 }
 
 .npc-toolbar-title {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--text-white);
-  letter-spacing: 0.02em;
+  font-family: var(--font-pixel);
+  font-size: 1.05rem;
+  color: var(--text);
 }
 
 .npc-toolbar-count {
-  font-size: 0.75rem;
-  color: var(--text-muted);
   font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
 }
 
 .npc-toolbar-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .btn-toolbar-toggle {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-card);
-  color: var(--text-secondary);
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: var(--radius-sm);
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.15s ease;
-  font-family: var(--font-sans);
-  display: inline-flex;
-  align-items: center;
+  transition: background 120ms ease;
 }
 
 .btn-toolbar-toggle:hover {
-  background: var(--bg-hover);
-  color: var(--text-white);
-  border-color: var(--border-hover);
+  background-color: var(--bg-2);
 }
 
+/* Cards dos NPCs */
 .npc-grid {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 960px;
-  margin: 0 auto 48px auto;
+  margin-bottom: 48px;
 }
 
 .npc-card {
-  background: rgba(15, 19, 29, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
+  background-color: var(--bg-1);
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.18s ease;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  transition: border-color 120ms ease;
 }
 
 .npc-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--text-dim);
 }
 
 .npc-card.open {
-  border-color: rgba(99, 102, 241, 0.45);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border-color: var(--teal);
 }
 
 .npc-card-giovanni {
-  border: 1px solid rgba(255, 200, 37, 0.35);
-  background: linear-gradient(180deg, #18151f 0%, var(--bg-surface) 100%);
+  border-color: var(--hoenn);
 }
 
 .npc-card-giovanni.open {
-  border-color: var(--edg-gold);
-  box-shadow: 0 8px 30px rgba(255, 200, 37, 0.12);
+  border-color: var(--hoenn);
 }
 
 .npc-giovanni-badge {
-  background: rgba(255, 200, 37, 0.15);
-  border: 1px solid var(--edg-gold);
-  color: #fff;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: var(--radius-sm);
-  font-size: 0.7rem;
+  background-color: var(--black);
+  border: 1px solid var(--hoenn);
+  color: var(--hoenn);
   font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: var(--radius);
 }
 
 /* Accordion Header */
 .npc-card-header {
-  background: var(--bg-elevated);
-  padding: 9px 14px;
+  background-color: var(--black);
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
   user-select: none;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  border-bottom: 2px solid transparent;
+  transition: background 120ms ease;
 }
 
 .npc-card-header:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background-color: var(--bg-0);
 }
 
 .npc-card.open .npc-card-header {
-  border-bottom: 1px solid var(--border-card);
-}
-
-.npc-card-header:focus-visible {
-  outline: 2px solid var(--accent-primary, #6366f1);
-  outline-offset: -2px;
+  border-bottom-color: var(--bg-2);
 }
 
 .npc-header-left {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
 }
 
 .npc-name {
-  font-size: 0.98rem;
-  font-weight: 800;
-  color: var(--text-white);
-  letter-spacing: 0.04em;
-  font-family: var(--font-sans);
+  font-family: var(--font-pixel);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
 .npc-num-badge {
-  font-size: 0.72rem;
-  color: var(--text-muted);
   font-family: var(--font-mono);
-  background: rgba(255, 255, 255, 0.04);
-  padding: 2px 6px;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  padding: 1px 6px;
+  border-radius: var(--radius);
 }
 
 .npc-header-preview {
   display: flex;
   align-items: center;
   margin-left: 6px;
-  margin-right: auto;
 }
 
 .npc-header-enemies {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 3px 8px;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .npc-enemy-thumb {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
-  opacity: 0.85;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-
-.npc-card:hover .npc-enemy-thumb {
-  opacity: 1;
-  transform: scale(1.08);
-}
-
-@media (max-width: 680px) {
-  .npc-header-preview {
-    display: none;
-  }
 }
 
 .npc-header-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin-left: auto;
 }
 
 .npc-accordion-action {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  font-family: var(--font-sans);
+  gap: 4px;
 }
 
-.npc-chevron {
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  color: var(--text-muted);
-  flex-shrink: 0;
+.npc-card.open .npc-accordion-action {
+  color: var(--teal);
 }
 
-.npc-card:hover .npc-chevron {
-  color: var(--text-white);
+.npc-card-giovanni.open .npc-accordion-action {
+  color: var(--hoenn);
 }
 
-.npc-card.open .npc-chevron {
-  transform: rotate(180deg);
-  color: var(--accent-primary, #6366f1);
-}
-
-.npc-card-giovanni.open .npc-chevron {
-  color: var(--edg-gold);
-}
-
-/* Accordion Body */
+/* Accordion Body / Tabelas de Duelo */
 .npc-card-body {
   display: none;
+  background-color: var(--bg-1);
 }
 
 .npc-card.open .npc-card-body {
   display: block;
-  animation: rocketAccordionFade 0.2s ease-out;
 }
 
-@keyframes rocketAccordionFade {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Indicador Claro de Colunas: Inimigo vs Recomendado */
 .duel-legend-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 14px;
-  background: var(--bg-darker);
-  border-bottom: 1px solid var(--border-subtle);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  padding: 6px 12px;
+  background-color: var(--black);
+  border-bottom: 2px solid var(--bg-2);
   font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .duel-legend-enemy {
-  color: var(--enemy-text);
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  color: var(--status-weak);
 }
 
 .duel-legend-counter {
-  color: var(--counter-text);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 4px;
+  color: var(--status-resist);
 }
 
-/* Duelos */
 .npc-duels {
-  padding: 10px 14px;
+  padding: 8px 12px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 8px 12px;
+  gap: 6px 10px;
+}
+
+.npc-duels.npc-duels-mode {
+  display: none !important;
+}
+
+.npc-duels.npc-duels-mode.active {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 6px 10px;
 }
 
 .duel-row {
   display: grid;
-  grid-template-columns: 1fr 24px 1fr;
+  grid-template-columns: 1fr 30px 1fr;
   align-items: center;
-  background: rgba(10, 13, 20, 0.55);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
+  background-color: var(--bg-0);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
   padding: 4px 8px;
   gap: 6px;
   min-height: 42px;
-  transition: all 0.16s ease;
+  transition: background 120ms ease;
+}
+
+.duel-row:nth-child(even) {
+  background-color: var(--bg-1);
 }
 
 .duel-row:hover {
-  background: rgba(22, 28, 42, 0.7);
-  border-color: var(--border-card);
+  background-color: var(--bg-2);
+}
+
+.duel-row.duel-highlighted {
+  border-color: var(--status-resist) !important;
+  background-color: var(--black) !important;
 }
 
 .duel-side {
@@ -785,55 +1259,32 @@ a {
 }
 
 .duel-side.enemy-side {
-  border-left: 2px solid var(--enemy-border);
+  border-left: 2px solid var(--status-weak);
   padding-left: 4px;
 }
 
 .duel-side.counter-side {
   justify-content: flex-end;
-  border-right: 2px solid var(--counter-border);
+  border-right: 2px solid var(--status-resist);
   padding-right: 4px;
 }
 
-.duel-row .poke-sprite,
 .poke-sprite {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
 }
 
 .poke-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   min-width: 0;
-  flex: 1;
   overflow: hidden;
-  line-height: 1.2;
 }
 
 .duel-side.enemy-side .poke-info {
   align-items: flex-start;
-  text-align: left;
-}
-
-.poke-name {
-  font-size: 0.80rem;
-  font-weight: 600;
-  color: var(--text-white);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  letter-spacing: -0.015em;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.duel-side.enemy-side .poke-name {
-  justify-content: flex-start;
   text-align: left;
 }
 
@@ -842,97 +1293,47 @@ a {
   text-align: right;
 }
 
+.poke-name {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .duel-side.counter-side .poke-name {
   justify-content: flex-end;
-  text-align: right;
-}
-
-.shiny-star-icon {
-  width: 15px;
-  height: 15px;
-  flex-shrink: 0;
-  display: inline-block;
-  position: relative;
-  top: -4px;
-  filter: drop-shadow(0 0 3px rgba(255, 200, 37, 0.8));
-  transition: transform 0.15s ease;
-}
-
-.duel-side.enemy-side .shiny-star-icon {
-  margin-left: -3px;
-  margin-right: 2px;
-}
-
-.duel-side.counter-side .shiny-star-icon {
-  margin-right: -3px;
-  margin-left: 2px;
-}
-
-.duel-row:hover .shiny-star-icon {
-  transform: scale(1.2) rotate(6deg);
 }
 
 .duel-vs {
-  display: grid;
-  place-items: center;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.65rem;
   font-weight: 800;
-  color: var(--text-muted);
-  opacity: 0.6;
+  color: var(--text-dim);
+  text-align: center;
 }
 
-/* Seção Time Econômico */
-.budget-section {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
-  padding: 24px;
-  margin: 40px 0 56px;
+.shiny-star-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.budget-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--border-card);
-  padding-bottom: 14px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.budget-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.budget-card {
-  background: var(--bg-deep);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.budget-card:hover {
-  border-color: var(--counter-border);
-}
-
-/* Lightbox Modal para o Mapa */
+/* Modal do Mapa */
 .modal-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(6px);
+  background-color: rgba(24, 20, 26, 0.9);
   z-index: 999;
   place-items: center;
-  padding: 20px;
+  padding: 16px;
 }
 
 .modal-overlay.active {
@@ -942,53 +1343,438 @@ a {
 .modal-content {
   max-width: 800px;
   width: 100%;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
+  background-color: var(--bg-1);
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
 }
 
 .modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
-  background: var(--bg-elevated);
-  border-bottom: 1px solid var(--border-card);
+  padding: 10px 14px;
+  background-color: var(--black);
+  border-bottom: 2px solid var(--bg-2);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
 .modal-close {
   background: transparent;
   border: none;
-  color: var(--text-secondary);
+  color: var(--text-dim);
   font-size: 1.2rem;
   cursor: pointer;
+  font-family: var(--font-mono);
 }
 
 .modal-close:hover {
-  color: #fff;
+  color: var(--text);
 }
 
 .modal-body {
   padding: 12px;
   text-align: center;
+  background-color: var(--black);
 }
 
 .modal-body img {
   max-width: 100%;
   height: auto;
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--bg-2);
 }
 
-/* Footer Dark */
+/* ==========================================================================
+   TIMES PARA CAÇAR EM HOENN
+   ========================================================================== */
+
+.hoenn-obs-card {
+  background-color: var(--bg-1);
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+
+.hoenn-obs-title {
+  font-family: var(--font-pixel);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--hoenn);
+  margin-bottom: 12px;
+}
+
+.hoenn-obs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.hoenn-obs-list li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.hoenn-obs-list li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  color: var(--hoenn);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* Coringas Grid */
+.hoenn-coringas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.coringa-card {
+  background-color: var(--black);
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.coringa-sprite {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.coringa-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.coringa-desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* Abas de Elementos em Hoenn */
+.hoenn-tabs-container {
+  margin-bottom: 24px;
+}
+
+.hoenn-tabs-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.hoenn-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: var(--black);
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.hoenn-tab-btn:hover {
+  background-color: var(--bg-1);
+  color: var(--text);
+}
+
+.hoenn-tab-btn.active {
+  background-color: var(--bg-1);
+  border-color: var(--hoenn);
+  color: var(--hoenn);
+  box-shadow: var(--shadow-hard-sm);
+}
+
+/* Painel do Elemento */
+.hoenn-element-panel {
+  display: none;
+  background-color: var(--bg-1);
+  border: 2px solid var(--bg-2);
+  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.hoenn-element-panel.active {
+  display: block;
+}
+
+.tier-mode-content {
+  display: none;
+}
+
+.tier-mode-content.active {
+  display: block;
+}
+
+.element-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--bg-2);
+}
+
+.element-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.type-icon-header {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius);
+}
+
+.type-icon-mini {
+  width: 18px;
+  height: 18px;
+}
+
+.element-tag-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border: 1px solid var(--bg-2);
+  background-color: var(--black);
+  border-radius: var(--radius);
+  text-transform: uppercase;
+  color: var(--hoenn);
+}
+
+.element-title {
+  font-family: var(--font-pixel);
+  font-size: 1.4rem;
+  color: var(--text);
+}
+
+.section-label-sub {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+/* Grid de Pokémons do Time */
+.poke-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.poke-card {
+  background-color: var(--black);
+  border: 2px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: border-color 120ms ease;
+}
+
+.poke-card:hover {
+  border-color: var(--teal);
+}
+
+.poke-card .poke-sprite {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+.poke-card .poke-name {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  min-height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poke-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+
+.tier-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: var(--radius);
+  border: 1px solid var(--bg-2);
+  background-color: var(--bg-1);
+}
+
+.tier-t1 { color: var(--status-neutral); border-color: var(--status-neutral); }
+.tier-t2 { color: var(--status-resist); border-color: var(--status-resist); }
+.tier-t3 { color: var(--roxo); border-color: var(--roxo); }
+.tier-sr { color: var(--hoenn); border-color: var(--hoenn); }
+
+.badge-offtank {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: var(--radius);
+  border: 1px solid var(--rocket);
+  color: var(--rocket);
+  background-color: var(--bg-1);
+}
+
+.badge-stars, .badge-test {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: var(--radius);
+  border: 1px solid var(--hoenn);
+  color: var(--hoenn);
+  background-color: var(--bg-1);
+}
+
+/* O que pode melhorar (Upgrades SR) */
+.upgrades-box {
+  background-color: var(--black);
+  border: 2px dashed var(--bg-2);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.upgrades-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--hoenn);
+  margin-bottom: 8px;
+}
+
+.upgrades-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.upgrade-chip {
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 3px 8px 3px 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.upgrade-chip-sprite {
+  width: 26px;
+  height: 26px;
+}
+
+.upgrade-chip-name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Prós e Contras */
+.pros-cons-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.pros-box {
+  background-color: var(--black);
+  border: 1px solid var(--bg-2);
+  border-left: 4px solid var(--status-resist);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+}
+
+.cons-box {
+  background-color: var(--black);
+  border: 1px solid var(--bg-2);
+  border-left: 4px solid var(--status-weak);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+}
+
+.pros-cons-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.pros-box .pros-cons-title { color: var(--status-resist); }
+.cons-box .pros-cons-title { color: var(--status-weak); }
+
+.pros-cons-text {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   FOOTER (Sóbrio, Tibia Wiki)
+   ========================================================================== */
+
 .footer {
   margin-top: auto;
-  border-top: 1px solid var(--border-card);
-  background: var(--bg-surface);
-  padding: 24px 0;
-  font-size: 0.82rem;
-  color: var(--text-muted);
+  border-top: 2px solid var(--bg-2);
+  background-color: var(--black);
+  padding: 20px 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
 }
 
 .footer-content {
@@ -1006,1276 +1792,56 @@ a {
 }
 
 .footer-links a {
-  color: var(--text-muted);
+  color: var(--text-dim);
   text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: var(--text-white);
+  color: var(--text);
 }
 
 /* ==========================================================================
-   HERO com Background de Gameplay (Blur + Overlay + Pills)
+   RESPONSIVIDADE (Mobile First / Clean)
    ========================================================================== */
-
-.hero-gameplay {
-  position: relative;
-  padding: 72px 0 56px;
-  overflow: hidden;
-  border-bottom: 1px solid var(--border-card);
-}
-
-.hero-bg-image {
-  position: absolute;
-  inset: 0;
-  background-image: url('../img/bg_gameplay.webp');
-  background-size: cover;
-  background-position: center 30%;
-  filter: blur(7px) brightness(0.28) saturate(0.7);
-  transform: scale(1.05); /* evita bordas brancas do blur */
-  z-index: 0;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(9, 10, 13, 0.3) 0%,
-    rgba(9, 10, 13, 0.55) 60%,
-    rgba(9, 10, 13, 0.95) 100%
-  );
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-/* Pills no Hero */
-.hero-pills-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 22px;
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 5px 14px;
-  border-radius: 9999px;
-  letter-spacing: 0.02em;
-  font-family: var(--font-mono);
-  white-space: nowrap;
-}
-
-.pill-red {
-  background: rgba(234, 50, 60, 0.18);
-  color: #f58288;
-  border: 1px solid rgba(234, 50, 60, 0.45);
-}
-
-.pill-ghost {
-  background: rgba(255, 255, 255, 0.07);
-  color: var(--text-secondary);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.pill-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #ea323c;
-  display: inline-block;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
-}
-
-/* Tipografia do Hero */
-.hero-title-main {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -0.03em;
-  line-height: 1.12;
-  margin-bottom: 14px;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-}
-
-.hero-title-sub {
-  font-size: 2rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  display: block;
-}
-
-.hero-description {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  max-width: 580px;
-  line-height: 1.65;
-  margin-bottom: 28px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-}
-
-/* Label de captura in-game */
-.hero-screenshot-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-}
 
 @media (max-width: 860px) {
   .rocket-hero-layout {
     grid-template-columns: 1fr;
   }
-  .npc-grid {
+  .pros-cons-row {
     grid-template-columns: 1fr;
   }
-  .cards-grid {
-    grid-template-columns: 1fr;
+  .hero-title {
+    font-size: 1.8rem;
   }
-  .hero-title-main {
-    font-size: 2.2rem;
+}
+
+@media (max-width: 680px) {
+  .npc-header-preview {
+    display: none;
   }
-  .hero-title-sub {
-    font-size: 1.5rem;
+  .nav-links {
+    gap: 0;
+  }
+  .nav-link {
+    padding: 10px 8px;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .duel-row {
-    padding: 3px 4px;
-    gap: 3px;
+    padding: 3px 6px;
+    gap: 4px;
   }
   .poke-sprite {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
   }
   .poke-name {
-    font-size: 0.74rem;
+    font-size: 0.78rem;
+  }
+  .poke-team-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-
-/* ==========================================================================
-   CARDS GRID & CARDS (Home e Compêndio)
-   ========================================================================== */
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 18px;
-  margin-bottom: 48px;
-}
-
-.card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
-  padding: 22px;
-  text-decoration: none !important;
-  color: var(--text-primary) !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.15s ease;
-}
-
-.card:hover {
-  background: var(--bg-surface-hover);
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-}
-
-.card-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-white) !important;
-  margin: 10px 0 6px;
-  text-decoration: none !important;
-}
-
-.card-desc {
-  font-size: 0.88rem;
-  color: var(--text-secondary) !important;
-  line-height: 1.5;
-  margin-bottom: 16px;
-  flex-grow: 1;
-  text-decoration: none !important;
-}
-
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 12px;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-/* Tags de Categorias Dark */
-.tag {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 3px 8px;
-  border-radius: 3px;
-  font-family: var(--font-mono);
-  display: inline-block;
-  width: fit-content;
-  text-decoration: none !important;
-}
-
-.tag-rocket {
-  background: rgba(234, 50, 60, 0.15);
-  color: var(--enemy-text);
-  border: 1px solid rgba(234, 50, 60, 0.35);
-}
-
-.tag-hunt {
-  background: rgba(58, 197, 79, 0.15);
-  color: var(--counter-text);
-  border: 1px solid rgba(58, 197, 79, 0.35);
-}
-
-.tag-quest {
-  background: rgba(255, 200, 37, 0.15);
-  color: #ffeb57;
-  border: 1px solid rgba(255, 200, 37, 0.35);
-}
-
-.tag-dica {
-  background: rgba(0, 205, 249, 0.15);
-  color: #0cf1ff;
-  border: 1px solid rgba(0, 205, 249, 0.35);
-}
-
-/* ==========================================================================
-   TIMES PARA CAÇAR EM HOENN
-   ========================================================================== */
-
-.hoenn-obs-card {
-  background: var(--bg-surface);
-  border: 1px solid rgba(255, 200, 37, 0.3);
-  border-radius: var(--radius-md);
-  padding: 24px;
-  margin-bottom: 32px;
-}
-
-.hoenn-obs-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--edg-gold);
-  margin-bottom: 12px;
-  letter-spacing: -0.01em;
-}
-
-.hoenn-obs-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  line-height: 1.55;
-  margin-bottom: 20px;
-}
-
-.hoenn-obs-list li {
-  position: relative;
-  padding-left: 20px;
-}
-
-.hoenn-obs-list li::before {
-  content: "•";
-  position: absolute;
-  left: 4px;
-  color: var(--edg-gold);
-  font-weight: 700;
-}
-
-.hoenn-coringas-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.coringa-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.coringa-sprite {
-  width: 52px;
-  height: 52px;
-  image-rendering: pixelated;
-  flex-shrink: 0;
-}
-
-.coringa-name {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-white);
-  margin-bottom: 4px;
-}
-
-.coringa-desc {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.45;
-}
-
-/* Navegação rápida por elementos (Pills fixas ou roláveis) */
-.hoenn-nav-pills {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-  padding: 4px 0;
-}
-
-.element-pill-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: 9999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-}
-
-.element-pill-link:hover {
-  background: var(--bg-elevated);
-  border-color: var(--border-hover);
-  color: var(--text-white);
-  transform: translateY(-1px);
-}
-
-/* Ícones de Tipagem Redondos - Clean Sword/Shield */
-.type-icon-mini {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  object-fit: contain;
-  vertical-align: middle;
-  flex-shrink: 0;
-}
-
-.type-icon-header {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  object-fit: contain;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
-
-.type-icons-group {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Sistema de Abas In-Place para Hoenn (Sem pular a página) */
-.hoenn-tabs-container {
-  margin-bottom: 24px;
-}
-
-.hoenn-tabs-bar {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 22px;
-}
-
-.hoenn-tab-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 15px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: 9999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: var(--font-mono);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.18s ease;
-  user-select: none;
-  white-space: nowrap;
-}
-
-.hoenn-tab-btn:hover {
-  background: var(--bg-elevated);
-  border-color: var(--border-hover);
-  color: var(--text-white);
-  transform: translateY(-1px);
-}
-
-.hoenn-tab-btn.active {
-  background: var(--bg-elevated);
-  border-color: var(--tab-accent, var(--edg-gold));
-  color: var(--text-white);
-  box-shadow: 0 0 14px rgba(255, 200, 37, 0.18);
-}
-
-/* Painel de Conteúdo de cada Elemento */
-.hoenn-element-panel {
-  display: none;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
-  padding: 24px;
-  position: relative;
-  transition: border-color 0.2s ease;
-}
-
-.hoenn-element-panel.active {
-  display: block;
-  animation: hoennTabFade 0.22s ease-out;
-}
-
-@keyframes hoennTabFade {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Seletor de Modo: Time Inicial vs Time Inicial Plus */
-.tier-mode-switcher-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.tier-mode-switcher {
-  display: inline-flex;
-  gap: 6px;
-  background: var(--bg-darker);
-  padding: 4px;
-  border-radius: 9999px;
-  border: 1px solid var(--border-card);
-}
-
-.tier-mode-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 18px;
-  border-radius: 9999px;
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--text-secondary);
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.18s ease;
-  user-select: none;
-}
-
-.tier-mode-btn:hover {
-  color: var(--text-white);
-}
-
-.tier-mode-btn.active {
-  background: var(--bg-surface);
-  color: var(--text-white);
-  border-color: rgba(255, 200, 37, 0.4);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-}
-
-.tier-mode-btn.active.btn-mode-inicial {
-  border-color: rgba(112, 223, 142, 0.5);
-  color: #70df8e;
-}
-
-.tier-mode-btn.active.btn-mode-plus {
-  border-color: rgba(255, 200, 37, 0.6);
-  color: #ffc825;
-}
-
-.tier-mode-btn.active.btn-mode-recomendado {
-  border-color: rgba(255, 200, 37, 0.6);
-  color: #ffc825;
-}
-
-.tier-mode-btn.active.btn-mode-izzonim {
-  border-color: rgba(112, 223, 142, 0.6);
-  color: #70df8e;
-}
-
-.npc-duels.npc-duels-mode {
-  display: none !important;
-}
-
-.npc-duels.npc-duels-mode.active {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 8px 12px;
-  animation: hoennTabFade 0.22s ease-out;
-}
-
-.tier-mode-content {
-  display: none;
-}
-
-.tier-mode-content.active {
-  display: block;
-  animation: hoennTabFade 0.2s ease-out;
-}
-
-.element-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border-card);
-}
-
-.element-title-group {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.element-tag-badge {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.element-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text-white);
-  letter-spacing: -0.01em;
-}
-
-.element-header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.element-meta-preview {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-}
-
-.element-chevron {
-  width: 20px;
-  height: 20px;
-  color: var(--text-muted);
-  transition: transform 0.25s ease, color 0.2s ease;
-}
-
-.hoenn-element-block.open .element-chevron {
-  transform: rotate(180deg);
-  color: var(--text-white);
-}
-
-.element-body {
-  display: none;
-  padding: 18px 20px 22px 20px;
-  border-top: 1px solid var(--border-card);
-}
-
-.hoenn-element-block.open .element-body {
-  display: block;
-  animation: hoennFadeIn 0.25s ease-out;
-}
-
-@keyframes hoennFadeIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.section-label-sub {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Grid de Pokémons do Time Inicial */
-.poke-team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 12px;
-  margin-bottom: 22px;
-}
-
-.poke-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-sm);
-  padding: 12px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.15s ease, border-color 0.15s ease;
-}
-
-.poke-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-hover);
-}
-
-.poke-card .poke-sprite {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  margin-bottom: 6px;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.45));
-  transition: transform 0.2s ease;
-}
-
-.poke-card:hover .poke-sprite {
-  transform: scale(1.08);
-}
-
-.poke-card .poke-name {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text-white);
-  line-height: 1.3;
-  margin-bottom: 6px;
-  min-height: 2.1em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.poke-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Badges de Tier, Offtank, Star e Teste */
-.tier-tag {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 9999px;
-  line-height: 1.2;
-}
-
-.tier-t1 {
-  background: rgba(12, 241, 255, 0.12);
-  color: #0cf1ff;
-  border: 1px solid rgba(12, 241, 255, 0.35);
-}
-
-.tier-t2 {
-  background: rgba(112, 223, 142, 0.12);
-  color: #70df8e;
-  border: 1px solid rgba(112, 223, 142, 0.35);
-}
-
-.tier-t3 {
-  background: rgba(192, 132, 252, 0.12);
-  color: #c084fc;
-  border: 1px solid rgba(192, 132, 252, 0.35);
-}
-
-.tier-sr {
-  background: rgba(255, 200, 37, 0.18);
-  color: #ffc825;
-  border: 1px solid rgba(255, 200, 37, 0.45);
-  font-weight: 800;
-}
-
-.badge-offtank {
-  background: rgba(249, 115, 22, 0.14);
-  color: #fb923c;
-  border: 1px solid rgba(249, 115, 22, 0.4);
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 9999px;
-}
-
-.badge-stars {
-  background: rgba(255, 200, 37, 0.12);
-  color: #ffeb57;
-  border: 1px solid rgba(255, 200, 37, 0.3);
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 2px 5px;
-  border-radius: 9999px;
-}
-
-.badge-test {
-  background: rgba(234, 179, 8, 0.15);
-  color: #fde047;
-  border: 1px solid rgba(234, 179, 8, 0.4);
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 9999px;
-}
-
-/* O que pode melhorar (Upgrades SR) */
-.upgrades-box {
-  background: var(--bg-darker);
-  border: 1px dashed rgba(255, 200, 37, 0.25);
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  margin-bottom: 18px;
-}
-
-.upgrades-title {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--edg-gold);
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.upgrades-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.upgrade-chip {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: 9999px;
-  padding: 4px 10px 4px 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.upgrade-chip-sprite {
-  width: 28px;
-  height: 28px;
-  image-rendering: pixelated;
-}
-
-.upgrade-chip-name {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-white);
-}
-
-/* Prós e Contras */
-.pros-cons-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-@media (max-width: 640px) {
-  .pros-cons-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-.pros-box {
-  background: rgba(51, 152, 75, 0.08);
-  border: 1px solid rgba(58, 197, 79, 0.25);
-  border-left: 3px solid #70df8e;
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-}
-
-.cons-box {
-  background: rgba(234, 50, 60, 0.08);
-  border: 1px solid rgba(234, 50, 60, 0.25);
-  border-left: 3px solid #f58288;
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-}
-
-.pros-cons-title {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 4px;
-}
-
-.pros-box .pros-cons-title {
-  color: #70df8e;
-}
-
-.cons-box .pros-cons-title {
-  color: #f58288;
-}
-
-.pros-cons-text {
-  font-size: 0.84rem;
-  color: var(--text-primary);
-  line-height: 1.45;
-}
-
-/* ==========================================================================
-   ANIMAÇÕES — Suporte CSS para animations.js
-   ========================================================================== */
-
-.reveal-ready {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.revealed {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-@keyframes btn-ripple {
-  to {
-    transform: scale(2.8);
-    opacity: 0;
-  }
-}
-
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Transição e feedback visual suave ao navegar para seções */
-.section-target-highlight {
-  animation: sectionTargetPulse 1.2s ease-out forwards;
-}
-
-@keyframes sectionTargetPulse {
-  0% {
-    box-shadow: 0 0 0 2px rgba(255, 200, 37, 0.5), 0 0 20px rgba(255, 200, 37, 0.15);
-  }
-  60% {
-    box-shadow: 0 0 0 2px rgba(255, 200, 37, 0.2), 0 0 10px rgba(255, 200, 37, 0.05);
-  }
-  100% {
-    box-shadow: none;
-  }
-}
-
-/* Entrada escalonada de cards ao alternar abas/modos em Hoenn */
-.hoenn-element-panel.active .tier-mode-content.active .strategy-col,
-.hoenn-element-panel.active .tier-mode-content.active .poke-card {
-  animation: hoennCardEntrance 0.28s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-}
-
-.hoenn-element-panel.active .tier-mode-content.active .strategy-col:nth-child(1),
-.hoenn-element-panel.active .tier-mode-content.active .poke-card:nth-child(1) {
-  animation-delay: 0.02s;
-}
-
-.hoenn-element-panel.active .tier-mode-content.active .strategy-col:nth-child(2),
-.hoenn-element-panel.active .tier-mode-content.active .poke-card:nth-child(2) {
-  animation-delay: 0.05s;
-}
-
-.hoenn-element-panel.active .tier-mode-content.active .strategy-col:nth-child(3),
-.hoenn-element-panel.active .tier-mode-content.active .poke-card:nth-child(3) {
-  animation-delay: 0.08s;
-}
-
-@keyframes hoennCardEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body {
-    animation: none !important;
-  }
-  body.is-page-transitioning {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-  .reveal-ready,
-  .fade-in-up,
-  .section-target-highlight,
-  .hoenn-element-panel.active .tier-mode-content.active .strategy-col,
-  .hoenn-element-panel.active .tier-mode-content.active .poke-card {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-    animation: none !important;
-  }
-  @keyframes btn-ripple { to {} }
-  @keyframes pulse-dot { 0%, 100% {} }
-}
-
-/* ==========================================================================
-   CHECKLIST / ACCORDION DE POKÉMONS NECESSÁRIOS (EQUIPE ROCKET)
-   Estilo: Dark Minimalista (Sem brilho neon, sem sombras coloridas)
-   ========================================================================== */
-.rocket-roster-panel {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
-  margin-bottom: 20px;
-  overflow: hidden;
-  transition: border-color 0.15s ease;
-}
-
-.roster-header-toggle {
-  width: 100%;
-  background: transparent;
-  border: none;
-  padding: 12px 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  cursor: pointer;
-  text-align: left;
-  color: inherit;
-  font-family: inherit;
-  transition: background-color 0.15s ease;
-}
-
-.roster-header-toggle:hover {
-  background-color: var(--bg-surface-hover);
-}
-
-.roster-header-left {
-  flex: 1 1 auto;
-}
-
-.roster-badge-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  margin-bottom: 3px;
-}
-
-.roster-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-white);
-  margin: 0 0 2px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-/* Badge simples e sóbrio */
-.roster-count-badge {
-  font-size: 0.72rem;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  background: var(--bg-darker);
-  color: var(--text-secondary);
-  border: 1px solid var(--border-card);
-  padding: 2px 10px;
-  border-radius: 9999px;
-}
-
-.roster-desc {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-.roster-header-right {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-/* Botão de Toggle sóbrio */
-.roster-toggle-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  color: var(--text-secondary);
-  background: var(--bg-darker);
-  border: 1px solid var(--border-card);
-  padding: 6px 14px;
-  border-radius: 9999px;
-  transition: all 0.15s ease;
-}
-
-.roster-header-toggle:hover .roster-toggle-action {
-  border-color: var(--border-hover);
-  color: var(--text-white);
-}
-
-.roster-arrow-icon {
-  transition: transform 0.2s ease;
-}
-
-.rocket-roster-panel.is-open .roster-arrow-icon {
-  transform: rotate(180deg);
-}
-
-.roster-collapsible-content {
-  padding: 0 18px 16px 18px;
-  border-top: 1px solid var(--border-card);
-}
-
-/* Container Flexível dos Chips em Pílula */
-.roster-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding-top: 14px;
-}
-
-/* CHIP FORMATO PÍLULA — ESTILO SÓBRIO IGUAL HOENN */
-.roster-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--bg-darker);
-  border: 1px solid var(--border-card);
-  border-radius: 9999px;
-  padding: 4px 12px 4px 6px;
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
-  text-align: left;
-  user-select: none;
-  font-family: inherit;
-  color: var(--text-secondary);
-}
-
-.roster-chip:hover {
-  background: var(--bg-surface-hover);
-  border-color: var(--border-hover);
-  color: var(--text-white);
-  transform: translateY(-1px);
-}
-
-.roster-chip.selected {
-  background: var(--bg-elevated);
-  border-color: rgba(112, 223, 142, 0.6);
-  color: #70df8e;
-}
-
-.rocket-roster-panel.mode-recomendado .roster-chip.selected {
-  border-color: rgba(255, 200, 37, 0.6);
-  color: #ffc825;
-}
-
-.roster-chip-sprite-wrap {
-  width: 24px;
-  height: 24px;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-}
-
-.roster-chip-sprite {
-  max-width: 22px;
-  max-height: 22px;
-  object-fit: contain;
-}
-
-.roster-chip-name {
-  font-size: 0.76rem;
-  font-weight: 600;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* ==========================================================================
-   BARRA DE STATUS DO FILTRO — SÓBRIA, SEM NEON
-   ========================================================================== */
-.filter-status-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 0 4px;
-  margin-top: -8px;
-  margin-bottom: 16px;
-}
-
-.filter-status-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-}
-
-.filter-status-info strong {
-  color: var(--text-white);
-}
-
-.filter-clear-btn {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-card);
-  color: var(--text-secondary);
-  border-radius: 9999px;
-  padding: 3px 12px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.filter-clear-btn:hover {
-  background: var(--bg-surface-hover);
-  border-color: var(--border-hover);
-  color: var(--text-white);
-}
-
-/* ==========================================================================
-   ANIMAÇÃO SUTIL DE ENTRADA AO FILTRAR
-   ========================================================================== */
-@keyframes rocketCardEntrance {
-  from {
-    opacity: 0.3;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.card-animate-in {
-  animation: rocketCardEntrance 0.2s ease-out backwards;
-}
-
-/* ==========================================================================
-   DESTAQUE LIMPO DA LINHA DE DUELO — SEM BRILHO NEON, SEM DROP SHADOW
-   ========================================================================== */
-.duel-row.duel-highlighted {
-  background: rgba(51, 152, 75, 0.12) !important;
-  border-color: rgba(58, 197, 79, 0.35) !important;
-}
-
-.duel-row.duel-highlighted .counter-side .poke-name {
-  color: #70df8e !important;
-  font-weight: 700;
-}
-
-.mode-recomendado .duel-row.duel-highlighted {
-  background: rgba(255, 200, 37, 0.09) !important;
-  border-color: rgba(255, 200, 37, 0.3) !important;
-}
-
-.mode-recomendado .duel-row.duel-highlighted .counter-side .poke-name {
-  color: #ffc825 !important;
-}
-
-@media (max-width: 768px) {
-  .roster-header-toggle {
-    padding: 12px 14px;
-    align-items: flex-start;
-  }
-  .roster-collapsible-content {
-    padding: 0 14px 14px 14px;
-  }
-  .roster-grid {
-    gap: 6px;
-  }
-  .roster-chip {
-    padding: 4px 10px 4px 4px;
-    gap: 6px;
-  }
-  .roster-chip-name {
-    font-size: 0.72rem;
-  }
-}
-
