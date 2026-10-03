@@ -263,9 +263,8 @@ function openItemDropModal(itemId) {
 
     const mapHtml = dropper.map_image ? `
       <div class="item-map-box" style="margin-top: 14px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+        <div style="margin-bottom: 6px;">
           <span class="item-locations-title" style="margin: 0; display: flex; align-items: center; gap: 6px;">🗺️ Mapa / Como Chegar:</span>
-          <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim);">Scroll para Zoom • Arraste</span>
         </div>
         <div class="map-zoom-viewport" id="mapViewport" onwheel="handleMapWheel(event)" onmousedown="handleMapMouseDown(event)">
           <div class="map-zoom-controls">
