@@ -417,108 +417,103 @@ var TALENTS_DATA = {
       desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
       items: [
         {
-          id: 'item_stone_grey',
-          name: 'Diamond Core',
-          name_pt: 'Núcleo de Diamante',
+          id: 'item_boulder_badge',
+          name: 'Boulder Badge',
           qty: 1,
-          icon: 'assets/img/talents/items/item_stone_grey.png',
+          icon: 'assets/img/talents/items/item_boulder_badge.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ginásio de Pewter (Brock)',
+            sprite: 'assets/img/talents/items/item_boulder_badge.png',
+            chance: '100%',
+            locations: [
+              'Pewter City (recompensa por derrotar o líder Brock no Ginásio de Pewter)'
+            ]
           }
         },
         {
-          id: 'item_rocks',
-          name: 'Hard Stone',
-          name_pt: 'Rocha Sólida',
+          id: 'item_stone_rocks',
+          name: 'Stone Rocks',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_rocks.png',
+          icon: 'assets/img/talents/items/item_stone_rocks.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Golem',
+            sprite: 'assets/img/pokemon/golem.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts de caverna e pedreiras com spawn de Golem e Graveler (Mt. Moon, Rock Tunnel)'
+            ]
           }
         },
         {
-          id: 'item_fossil_helix',
-          name: 'Helix Fossil',
-          name_pt: 'Fóssil Helix',
-          qty: 1500,
-          icon: 'assets/img/talents/items/item_fossil_helix.png',
-          dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
-          }
-        },
-        {
-          id: 'item_bone_long',
-          name: 'Thick Club',
-          name_pt: 'Osso Rígido',
-          qty: 1100,
-          icon: 'assets/img/talents/items/item_bone_long.png',
-          dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
-          }
-        },
-        {
-          id: 'item_drill_grey',
+          id: 'item_horn_drill',
           name: 'Horn Drill',
-          name_pt: 'Broca de Chifre',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_horn_drill.png',
+          dropper: {
+            name: 'Rhydon',
+            sprite: 'assets/img/pokemon/rhydon.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts montanhosas e Safari Zone com spawn de Rhydon e Rhyhorn'
+            ]
+          }
+        },
+        {
+          id: 'item_bone',
+          name: 'Bone',
+          qty: 1100,
+          icon: 'assets/img/talents/items/item_bone.png',
+          dropper: {
+            name: 'Marowak',
+            sprite: 'assets/img/pokemon/marowak.png',
+            chance: '45.0%',
+            locations: [
+              'Pokémon Tower em Lavender Town e hunts com spawn de Marowak e Cubone'
+            ]
+          }
+        },
+        {
+          id: 'item_steelix_tail',
+          name: 'Steelix Tail',
           qty: 900,
-          icon: 'assets/img/talents/items/item_drill_grey.png',
+          icon: 'assets/img/talents/items/item_steelix_tail.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Steelix',
+            sprite: 'assets/img/pokemon/steelix.png',
+            chance: '45.0%',
+            locations: [
+              'Cavernas profundas no subsolo e hunts montanhosas de Steelix'
+            ]
           }
         },
         {
-          id: 'item_scale_green',
-          name: 'Dragon Scale',
-          name_pt: 'Escama de Dragão',
+          id: 'item_rock_stone',
+          name: 'Rock Stone',
           qty: 500,
-          icon: 'assets/img/talents/items/item_scale_green.png',
+          icon: 'assets/img/talents/items/item_rock_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Pedra)',
+            sprite: 'assets/img/types/rock.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Pedra: Aron, Armaldo, Cranidos, Golem, Kabutops, Magcargo, Tyranitar, Solrock, Rhydon, Pupitar, Graveler, Onix, etc.',
+              'Hunts de caverna e montanhas em Kanto e Johto'
+            ]
           }
         },
         {
-          id: 'item_shell_brown',
-          name: 'Dome Fossil',
-          name_pt: 'Casca Fóssil',
+          id: 'item_earth_stone',
+          name: 'Earth Stone',
           qty: 500,
-          icon: 'assets/img/talents/items/item_shell_brown.png',
+          icon: 'assets/img/talents/items/item_earth_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Terra)',
+            sprite: 'assets/img/types/ground.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Terra: Dugtrio, Garchomp, Donphan, Golem, Graveler, Marowak, Nidoqueen, Nidoking, Rhydon, Sandslash, Torterra, Steelix, etc.',
+              'Hunts terrestres e desérticas em Kanto, Johto e Hoenn'
+            ]
           }
         }
       ]
@@ -533,108 +528,103 @@ var TALENTS_DATA = {
       desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
       items: [
         {
-          id: 'item_water_drop',
-          name: 'Mystic Water',
-          name_pt: 'Gota Mística',
+          id: 'item_cascade_badge',
+          name: 'Cascade Badge',
           qty: 1,
-          icon: 'assets/img/talents/items/item_water_drop.png',
+          icon: 'assets/img/talents/items/item_cascade_badge.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ginásio de Cerulean (Misty)',
+            sprite: 'assets/img/talents/items/item_cascade_badge.png',
+            chance: '100%',
+            locations: [
+              'Cerulean City (recompensa por derrotar a líder Misty no Ginásio de Cerulean)'
+            ]
           }
         },
         {
-          id: 'item_claw_darkblue',
-          name: 'Dark Blue Claw',
-          name_pt: 'Garra Marinha',
-          qty: 900,
-          icon: 'assets/img/talents/items/item_claw_darkblue.png',
+          id: 'item_lapras_fin',
+          name: 'Lapras Fin',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_lapras_fin.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Lapras',
+            sprite: 'assets/img/pokemon/lapras.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts aquáticas no mar aberto e ilhas com spawn de Lapras'
+            ]
           }
         },
         {
-          id: 'item_feather_blue_crest',
-          name: 'Ocean Crest',
-          name_pt: 'Penacho Glacial',
+          id: 'item_gyarados_tail',
+          name: 'Gyarados Tail',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_gyarados_tail.png',
+          dropper: {
+            name: 'Gyarados',
+            sprite: 'assets/img/pokemon/gyarados.png',
+            chance: '45.0%',
+            locations: [
+              'Lagos profundos e alto mar com spawn de Gyarados'
+            ]
+          }
+        },
+        {
+          id: 'item_aquatic_tail',
+          name: 'Aquatic Tail',
           qty: 1100,
-          icon: 'assets/img/talents/items/item_feather_blue_crest.png',
+          icon: 'assets/img/talents/items/item_aquatic_tail.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Azumarill',
+            sprite: 'assets/img/pokemon/azumarill.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts aquáticas, rios e praias com spawn de Azumarill e Marill'
+            ]
           }
         },
         {
-          id: 'item_fin_blue',
-          name: 'Sea Fin',
-          name_pt: 'Barbatana Azul',
-          qty: 1500,
-          icon: 'assets/img/talents/items/item_fin_blue.png',
+          id: 'item_water_cannon',
+          name: 'Water Cannon',
+          qty: 900,
+          icon: 'assets/img/talents/items/item_water_cannon.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Blastoise',
+            sprite: 'assets/img/pokemon/blastoise.png',
+            chance: '45.0%',
+            locations: [
+              'Ilhas aquáticas e hunts com spawn de Blastoise e Wartortle'
+            ]
           }
         },
         {
-          id: 'item_cannon_water',
-          name: 'Hydro Cannon',
-          name_pt: 'Canhão Hidráulico',
-          qty: 1500,
-          icon: 'assets/img/talents/items/item_cannon_water.png',
-          dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
-          }
-        },
-        {
-          id: 'item_crystal_ice',
-          name: 'Ice Crystal',
-          name_pt: 'Cristal de Gelo',
+          id: 'item_water_stone',
+          name: 'Water Stone',
           qty: 500,
-          icon: 'assets/img/talents/items/item_crystal_ice.png',
+          icon: 'assets/img/talents/items/item_water_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Água)',
+            sprite: 'assets/img/types/water.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Água: Blastoise, Feraligatr, Gyarados, Lapras, Poliwrath, Golduck, Tentacruel, Vaporeon, etc.',
+              'Hunts de água doce e alto mar em Kanto, Johto e Ilhas Laranja'
+            ]
           }
         },
         {
-          id: 'item_gem_emerald',
-          name: 'Emerald Gem',
-          name_pt: 'Gema Esmeralda',
+          id: 'item_ice_stone',
+          name: 'Ice Stone',
           qty: 500,
-          icon: 'assets/img/talents/items/item_gem_emerald.png',
+          icon: 'assets/img/talents/items/item_ice_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Gelo)',
+            sprite: 'assets/img/types/ice.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Gelo: Articuno, Cloyster, Dewgong, Glaceon, Jynx, Lapras, Mamoswine, Walrein, Weavile, etc.',
+              'Seafoam Islands e cavernas de gelo'
+            ]
           }
         }
       ]
@@ -649,93 +639,88 @@ var TALENTS_DATA = {
       desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
       items: [
         {
-          id: 'item_core_electric',
-          name: 'Thunder Core',
-          name_pt: 'Núcleo Elétrico',
+          id: 'item_thunder_badge',
+          name: 'Thunder Badge',
           qty: 1,
-          icon: 'assets/img/talents/items/item_core_electric.png',
+          icon: 'assets/img/talents/items/item_thunder_badge.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ginásio de Vermilion (Lt. Surge)',
+            sprite: 'assets/img/talents/items/item_thunder_badge.png',
+            chance: '100%',
+            locations: [
+              'Vermilion City (recompensa por derrotar o líder Lt. Surge no Ginásio de Vermilion)'
+            ]
           }
         },
         {
-          id: 'item_connector_electric',
-          name: 'Spark Connector',
-          name_pt: 'Conector de Alta Voltagem',
+          id: 'item_electric_sheep_tail',
+          name: 'Electric Sheep Tail',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_electric_sheep_tail.png',
+          dropper: {
+            name: 'Ampharos',
+            sprite: 'assets/img/pokemon/ampharos.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts elétricas com spawn de Ampharos, Flaaffy e Mareep'
+            ]
+          }
+        },
+        {
+          id: 'item_electric_tail',
+          name: 'Electric Tail',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_electric_tail.png',
+          dropper: {
+            name: 'Electabuzz',
+            sprite: 'assets/img/pokemon/electabuzz.png',
+            chance: '45.0%',
+            locations: [
+              'Power Plant e hunts elétricas com spawn de Electabuzz'
+            ]
+          }
+        },
+        {
+          id: 'item_electric_ear',
+          name: 'Electric Ear',
           qty: 1100,
-          icon: 'assets/img/talents/items/item_connector_electric.png',
+          icon: 'assets/img/talents/items/item_electric_ear.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Raichu',
+            sprite: 'assets/img/pokemon/raichu.png',
+            chance: '45.0%',
+            locations: [
+              'Power Plant e hunts com spawn de Raichu e Pikachu'
+            ]
           }
         },
         {
-          id: 'item_ring_electric',
-          name: 'Thunder Ring',
-          name_pt: 'Anel do Trovão',
-          qty: 1500,
-          icon: 'assets/img/talents/items/item_ring_electric.png',
-          dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
-          }
-        },
-        {
-          id: 'item_horn_gold',
-          name: 'Lightning Horn',
-          name_pt: 'Chifre de Relâmpago',
-          qty: 1500,
-          icon: 'assets/img/talents/items/item_horn_gold.png',
-          dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
-          }
-        },
-        {
-          id: 'item_fur_electric',
-          name: 'Static Mane',
-          name_pt: 'Juba Estática',
+          id: 'item_electric_collar',
+          name: 'Electric Collar',
           qty: 900,
-          icon: 'assets/img/talents/items/item_fur_electric.png',
+          icon: 'assets/img/talents/items/item_electric_collar.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Jolteon',
+            sprite: 'assets/img/pokemon/jolteon.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts elétricas com spawn de Jolteon e Eevee'
+            ]
           }
         },
         {
-          id: 'item_stone_thunder',
-          name: 'Thunder Shard',
-          name_pt: 'Fragmento de Pedra do Trovão',
+          id: 'item_thunder_stone',
+          name: 'Thunder Stone',
           qty: 1000,
-          icon: 'assets/img/talents/items/item_stone_thunder.png',
+          icon: 'assets/img/talents/items/item_thunder_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Elétrico)',
+            sprite: 'assets/img/types/electric.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Elétrico: Ampharos, Electabuzz, Electrode, Jolteon, Magneton, Magnezone, Raichu, Zapdos, etc.',
+              'Power Plant e usinas de energia elétrica'
+            ]
           }
         }
       ]
@@ -750,108 +735,103 @@ var TALENTS_DATA = {
       desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
       items: [
         {
-          id: 'item_flower_rainbow',
-          name: 'Rainbow Bloom',
-          name_pt: 'Flor Prismática',
+          id: 'item_rainbow_badge',
+          name: 'Rainbow Badge',
           qty: 1,
-          icon: 'assets/img/talents/items/item_flower_rainbow.png',
+          icon: 'assets/img/talents/items/item_rainbow_badge.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ginásio de Celadon (Erika)',
+            sprite: 'assets/img/talents/items/item_rainbow_badge.png',
+            chance: '100%',
+            locations: [
+              'Celadon City (recompensa por derrotar a líder Erika no Ginásio de Celadon)'
+            ]
           }
         },
         {
-          id: 'item_bulb_pink',
-          name: 'Flower Bulb',
-          name_pt: 'Bulbo Floral',
-          qty: 1500,
-          icon: 'assets/img/talents/items/item_bulb_pink.png',
-          dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
-          }
-        },
-        {
-          id: 'item_flower_red',
+          id: 'item_red_petal',
           name: 'Red Petal',
-          name_pt: 'Pétala Rubra',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_flower_red.png',
+          icon: 'assets/img/talents/items/item_red_petal.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Parasect',
+            sprite: 'assets/img/pokemon/parasect.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts de florestas densas e cavernas com spawn de Parasect e Paras'
+            ]
           }
         },
         {
-          id: 'item_leaves_grass',
-          name: 'Razor Grass',
-          name_pt: 'Lâminas de Relva',
+          id: 'item_big_petal',
+          name: 'Big Petal',
+          qty: 1500,
+          icon: 'assets/img/talents/items/item_big_petal.png',
+          dropper: {
+            name: 'Vileplume',
+            sprite: 'assets/img/pokemon/vileplume.png',
+            chance: '45.0%',
+            locations: [
+              'Florestas e selvas com spawn de Vileplume e Gloom'
+            ]
+          }
+        },
+        {
+          id: 'item_coconut_leaves',
+          name: 'Coconut Leaves',
           qty: 1100,
-          icon: 'assets/img/talents/items/item_leaves_grass.png',
+          icon: 'assets/img/talents/items/item_coconut_leaves.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Exeggutor',
+            sprite: 'assets/img/pokemon/exeggutor.png',
+            chance: '45.0%',
+            locations: [
+              'Ilhas tropicais, praias e selvas com spawn de Exeggutor'
+            ]
           }
         },
         {
-          id: 'item_vine_blue',
-          name: 'Blue Vine',
-          name_pt: 'Cipó Azul',
+          id: 'item_vine_hair',
+          name: 'Vine Hair',
           qty: 900,
-          icon: 'assets/img/talents/items/item_vine_blue.png',
+          icon: 'assets/img/talents/items/item_vine_hair.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Tangela',
+            sprite: 'assets/img/pokemon/tangela.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts ao sul de Pallet Town e pântanos com spawn de Tangela'
+            ]
           }
         },
         {
-          id: 'item_seed_green',
-          name: 'Miracle Seed',
-          name_pt: 'Semente Milagrosa',
+          id: 'item_leaf_stone',
+          name: 'Leaf Stone',
           qty: 500,
-          icon: 'assets/img/talents/items/item_seed_green.png',
+          icon: 'assets/img/talents/items/item_leaf_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Planta)',
+            sprite: 'assets/img/types/grass.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Planta: Bellsprout, Exeggutor, Jumpluff, Meganium, Sceptile, Shiftry, Tangela, Torterra, Venusaur, Vileplume, Victreebel, etc.',
+              'Florestas e selvas em Kanto, Johto e Hoenn'
+            ]
           }
         },
         {
-          id: 'item_leaf_green',
-          name: 'Jungle Leaf',
-          name_pt: 'Folha da Selva',
+          id: 'item_cocoon_stone',
+          name: 'Cocoon Stone',
           qty: 500,
-          icon: 'assets/img/talents/items/item_leaf_green.png',
+          icon: 'assets/img/talents/items/item_cocoon_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Inseto)',
+            sprite: 'assets/img/types/bug.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Inseto: Ariados, Beedrill, Butterfree, Heracross, Pinsir, Scizor, Scyther, Shuckle, Yanmega, etc.',
+              'Florestas e bosques em Kanto e Johto'
+            ]
           }
         }
       ]
@@ -866,98 +846,92 @@ var TALENTS_DATA = {
       desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
       items: [
         {
-          id: 'item_heart_pink',
-          name: 'Mystic Heart',
-          name_pt: 'Coração Místico',
+          id: 'item_soul_badge',
+          name: 'Soul Badge',
           qty: 1,
-          icon: 'assets/img/talents/items/item_heart_pink.png',
+          icon: 'assets/img/talents/items/item_soul_badge.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ginásio de Fuchsia (Koga)',
+            sprite: 'assets/img/talents/items/item_soul_badge.png',
+            chance: '100%',
+            locations: [
+              'Fuchsia City (recompensa por derrotar o líder Koga no Ginásio de Fuchsia)'
+            ]
           }
         },
         {
-          id: 'item_wing_bat_cyan',
-          name: 'Bat Wing',
-          name_pt: 'Asa de Quiróptero',
+          id: 'item_queen_ear',
+          name: 'Queen Ear',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_wing_bat_cyan.png',
+          icon: 'assets/img/talents/items/item_queen_ear.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Nidoqueen',
+            sprite: 'assets/img/pokemon/nidoqueen.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts venenosas com spawn de Nidoqueen e Nidorina'
+            ]
           }
         },
         {
-          id: 'item_pincer_purple',
-          name: 'Shadow Pincer',
-          name_pt: 'Pinça Sombria',
+          id: 'item_king_ear',
+          name: 'King Ear',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_pincer_purple.png',
+          icon: 'assets/img/talents/items/item_king_ear.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Nidoking',
+            sprite: 'assets/img/pokemon/nidoking.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts venenosas com spawn de Nidoking e Nidorino'
+            ]
           }
         },
         {
-          id: 'item_scythe_purple',
-          name: 'Night Scythe',
-          name_pt: 'Foice da Meia-Noite',
+          id: 'item_giant_bat_wing',
+          name: 'Giant Bat Wing',
           qty: 1100,
-          icon: 'assets/img/talents/items/item_scythe_purple.png',
+          icon: 'assets/img/talents/items/item_giant_bat_wing.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Golbat',
+            sprite: 'assets/img/pokemon/golbat.png',
+            chance: '45.0%',
+            locations: [
+              'Cavernas escuras, Mt. Moon, Rock Tunnel com spawn de Golbat e Crobat'
+            ]
           }
         },
         {
-          id: 'item_tongue_pink',
-          name: 'Ghost Tongue',
-          name_pt: 'Língua Espectral',
+          id: 'item_stinky_hand',
+          name: 'Stinky Hand',
           qty: 900,
-          icon: 'assets/img/talents/items/item_tongue_pink.png',
+          icon: 'assets/img/talents/items/item_stinky_hand.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Muk',
+            sprite: 'assets/img/pokemon/muk.png',
+            chance: '45.0%',
+            locations: [
+              'Esgotos de Celadon e Saffron e pântanos tóxicos com spawn de Muk e Grimer'
+            ]
           }
         },
         {
-          id: 'item_crystal_dusk',
-          name: 'Dusk Stone Shard',
-          name_pt: 'Fragmento da Noite',
+          id: 'item_venom_stone',
+          name: 'Venom Stone',
           qty: 1000,
-          icon: 'assets/img/talents/items/item_crystal_dusk.png',
+          icon: 'assets/img/talents/items/item_venom_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Veneno)',
+            sprite: 'assets/img/types/poison.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Veneno: Arbok, Crobat, Drapion, Garbodor, Gengar, Muk, Nidoking, Nidoqueen, Roserade, Seviper, Toxicroak, Weezing, etc.',
+              'Esgotos e pântanos em Kanto e Johto'
+            ]
           }
         }
       ]
-    }
-    ,
+    },
     {
       id: 'talent-cd-8',
       category: 'personagem',
@@ -968,93 +942,88 @@ var TALENTS_DATA = {
       desc_pt: 'Acelera em 1 segundo a regeneração do tempo de recarga (cooldown) das magias dos Pokémon guardados na bag (dentro das Pokébolas).',
       items: [
         {
-          id: 'item_medal_gold',
-          name: 'Golden Medal',
-          name_pt: 'Medalha de Ouro',
+          id: 'item_marsh_badge',
+          name: 'Marsh Badge',
           qty: 1,
-          icon: 'assets/img/talents/items/item_medal_gold.png',
+          icon: 'assets/img/talents/items/item_marsh_badge.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Ginásio de Saffron (Sabrina)',
+            sprite: 'assets/img/talents/items/item_marsh_badge.png',
+            chance: '100%',
+            locations: [
+              'Saffron City (recompensa por derrotar a líder Sabrina no Ginásio de Saffron)'
+            ]
           }
         },
         {
-          id: 'item_horn_yellow',
-          name: 'Golden Horn',
-          name_pt: 'Chifre Dourado',
+          id: 'item_psychic_moustache',
+          name: 'Psychic Moustache',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_horn_yellow.png',
+          icon: 'assets/img/talents/items/item_psychic_moustache.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Alakazam',
+            sprite: 'assets/img/pokemon/alakazam.png',
+            chance: '45.0%',
+            locations: [
+              'Hunts psíquicas com spawn de Alakazam e Kadabra'
+            ]
           }
         },
         {
-          id: 'item_skull_white',
-          name: 'White Skull',
-          name_pt: 'Crânio Branco',
+          id: 'item_two_eyed_black_tail',
+          name: 'Two-Eyed Black Tail',
           qty: 1500,
-          icon: 'assets/img/talents/items/item_skull_white.png',
+          icon: 'assets/img/talents/items/item_two_eyed_black_tail.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Girafarig',
+            sprite: 'assets/img/pokemon/girafarig.png',
+            chance: '45.0%',
+            locations: [
+              'Safari Zone e hunts de planície com spawn de Girafarig'
+            ]
           }
         },
         {
-          id: 'item_tail_redwhite',
-          name: 'Crimson Crest',
-          name_pt: 'Penacho Carmesim',
+          id: 'item_xatu_wing',
+          name: 'Xatu Wing',
           qty: 1100,
-          icon: 'assets/img/talents/items/item_tail_redwhite.png',
+          icon: 'assets/img/talents/items/item_xatu_wing.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Xatu',
+            sprite: 'assets/img/pokemon/xatu.png',
+            chance: '45.0%',
+            locations: [
+              'Ruínas de Alph e hunts com spawn de Xatu e Natu'
+            ]
           }
         },
         {
-          id: 'item_pins_metal',
-          name: 'Steel Pins',
-          name_pt: 'Espigão de Metal',
+          id: 'item_giraffe_antenna',
+          name: 'Giraffe Antenna',
           qty: 900,
-          icon: 'assets/img/talents/items/item_pins_metal.png',
+          icon: 'assets/img/talents/items/item_giraffe_antenna.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Girafarig',
+            sprite: 'assets/img/pokemon/girafarig.png',
+            chance: '45.0%',
+            locations: [
+              'Safari Zone e hunts de planície com spawn de Girafarig'
+            ]
           }
         },
         {
-          id: 'item_crystal_lightpink',
-          name: 'Radiant Gem',
-          name_pt: 'Gema Radiante',
+          id: 'item_enigma_stone',
+          name: 'Enigma Stone',
           qty: 1000,
-          icon: 'assets/img/talents/items/item_crystal_lightpink.png',
+          icon: 'assets/img/talents/items/item_enigma_stone.png',
           dropper: {
-            name: 'Em catalogação',
-            sprite: 'assets/img/logo.webp',
-            chance: '—',
-            rarity: 'Aguardando dados',
-            locations: ['Localização sendo mapeada pela guilda'],
-            is_placeholder: true
+            name: 'Vários Pokémon (Tipo Psíquico)',
+            sprite: 'assets/img/types/psychic.png',
+            chance: 'Muito Raro',
+            locations: [
+              'Dropa de Pokémon tipo Psíquico: Alakazam, Bronzong, Chimecho, Espeon, Exeggutor, Gallade, Gardevoir, Grumpig, Hypno, Jynx, Medicham, Metagross, Mr. Mime, Slowbro, Xatu, etc.',
+              'Hunts místicas e ruínas em Kanto e Johto'
+            ]
           }
         }
       ]
