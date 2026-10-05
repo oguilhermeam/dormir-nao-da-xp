@@ -568,6 +568,12 @@ img.brand-img,
   background-color: rgba(20, 184, 166, 0.12);
 }
 
+.tag-star-meta {
+  color: #60a5fa;
+  border-color: #3b82f6;
+  background-color: rgba(37, 99, 235, 0.12);
+}
+
 /* ==========================================================================
    CARDS DE GUIA COM IDENTIDADE E COR
    ========================================================================== */
@@ -599,7 +605,16 @@ img.brand-img,
   transform: translateY(-2px);
 }
 
-/* Acentos de Borda Superior Vibrantes */
+/* Acentos de Borda Superior Vibrantes e Hover Completo */
+.guide-block.block-star {
+  border-top: 3px solid #3b82f6;
+}
+
+.guide-block.block-star:hover {
+  border-color: #3b82f6;
+  box-shadow: var(--shadow-hard), 0 0 24px rgba(59, 130, 246, 0.28);
+}
+
 .guide-block.block-rocket {
   border-top: 3px solid var(--rocket);
 }
@@ -616,6 +631,15 @@ img.brand-img,
 .guide-block.block-hoenn:hover {
   border-color: var(--hoenn);
   box-shadow: var(--shadow-hard), 0 0 24px var(--hoenn-glow);
+}
+
+.guide-block.block-teal {
+  border-top: 3px solid var(--teal);
+}
+
+.guide-block.block-teal:hover {
+  border-color: var(--teal);
+  box-shadow: var(--shadow-hard), 0 0 24px var(--teal-glow);
 }
 
 .guide-block-header {
@@ -677,6 +701,28 @@ img.brand-img,
   text-decoration: none;
   color: var(--text);
   transition: all 140ms ease;
+}
+
+.card[data-category="economia"],
+.card[data-category="estrelar"] {
+  border-top: 3px solid #3b82f6;
+}
+
+.card[data-category="economia"]:hover,
+.card[data-category="estrelar"]:hover {
+  border-color: #3b82f6;
+  box-shadow: var(--shadow-hard), 0 0 20px rgba(59, 130, 246, 0.28);
+  transform: translateY(-2px);
+}
+
+.card[data-category="talentos"] {
+  border-top: 3px solid var(--teal);
+}
+
+.card[data-category="talentos"]:hover {
+  border-color: var(--teal);
+  box-shadow: var(--shadow-hard), 0 0 20px var(--teal-glow);
+  transform: translateY(-2px);
 }
 
 .card[data-category="rocket"] {
