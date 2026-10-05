@@ -21,31 +21,51 @@ document.addEventListener('DOMContentLoaded', () => {
   // Modo ativo de pagamento - por padrão a calculadora seleciona AUTOMATICAMENTE o melhor
   let selectedMode = 'auto'; // 'auto', 'moreDia', 'balanced', 'moreKk'
 
-  // Proporções por Tier (Multiplicadores em relação ao T3, onde T3 = 1x):
-  // T3: 4 DD / 1kk
-  // T2: 6 DD / 1.5kk (1.5x)
-  // T1: 10 DD / 2.5kk (2.5x)
-  // SR: 16 DD / 4kk (4x)
-  // UR: 24 DD / 6kk (6x)
-  // Legendary: 40 DD / 10kk (10x)
-  const TIER_MULTIPLIERS = {
-    't3': 1.0,
-    't2': 1.5,
-    't1': 2.5,
-    'sr': 4.0,
-    'ur': 6.0,
-    'legendary': 10.0
+  // Tabelas Oficiais Exatas por Tier (Modo Mais Diamante)
+  const STAR_TABLES = {
+    't3': [
+      { from: 0, to: 1, dd: 4, kk: 1, pokes: 1 },
+      { from: 1, to: 2, dd: 12, kk: 3, pokes: 2 },
+      { from: 2, to: 3, dd: 28, kk: 7, pokes: 4 },
+      { from: 3, to: 4, dd: 60, kk: 15, pokes: 8 },
+      { from: 4, to: 5, dd: 124, kk: 31, pokes: 16 }
+    ],
+    't2': [
+      { from: 0, to: 1, dd: 6, kk: 1.5, pokes: 1 },
+      { from: 1, to: 2, dd: 18, kk: 4.5, pokes: 2 },
+      { from: 2, to: 3, dd: 42, kk: 10.5, pokes: 4 },
+      { from: 3, to: 4, dd: 90, kk: 22.5, pokes: 8 },
+      { from: 4, to: 5, dd: 186, kk: 46.5, pokes: 16 }
+    ],
+    't1': [
+      { from: 0, to: 1, dd: 12, kk: 3, pokes: 1 },
+      { from: 1, to: 2, dd: 36, kk: 9, pokes: 2 },
+      { from: 2, to: 3, dd: 84, kk: 21, pokes: 4 },
+      { from: 3, to: 4, dd: 180, kk: 45, pokes: 8 },
+      { from: 4, to: 5, dd: 372, kk: 93, pokes: 16 }
+    ],
+    'sr': [
+      { from: 0, to: 1, dd: 16, kk: 4, pokes: 1 },
+      { from: 1, to: 2, dd: 48, kk: 12, pokes: 2 },
+      { from: 2, to: 3, dd: 112, kk: 28, pokes: 4 },
+      { from: 3, to: 4, dd: 240, kk: 60, pokes: 8 },
+      { from: 4, to: 5, dd: 496, kk: 124, pokes: 16 }
+    ],
+    'ur': [
+      { from: 0, to: 1, dd: 24, kk: 6, pokes: 1 },
+      { from: 1, to: 2, dd: 72, kk: 18, pokes: 2 },
+      { from: 2, to: 3, dd: 168, kk: 42, pokes: 4 },
+      { from: 3, to: 4, dd: 360, kk: 90, pokes: 8 },
+      { from: 4, to: 5, dd: 744, kk: 186, pokes: 16 }
+    ],
+    'legendary': [
+      { from: 0, to: 1, dd: 40, kk: 10, pokes: 1 },
+      { from: 1, to: 2, dd: 120, kk: 30, pokes: 2 },
+      { from: 2, to: 3, dd: 280, kk: 70, pokes: 4 },
+      { from: 3, to: 4, dd: 600, kk: 150, pokes: 8 },
+      { from: 4, to: 5, dd: 1240, kk: 310, pokes: 16 }
+    ]
   };
-
-  // Base Oficial T3 (Modo Mais Diamante)
-  // [startStar]: { dd, kk, pokes }
-  const T3_BASE_STEPS = [
-    { from: 0, to: 1, dd: 4, kk: 1, pokes: 1 },
-    { from: 1, to: 2, dd: 12, kk: 3, pokes: 2 },
-    { from: 2, to: 3, dd: 28, kk: 7, pokes: 4 },
-    { from: 3, to: 4, dd: 60, kk: 15, pokes: 8 },
-    { from: 4, to: 5, dd: 124, kk: 31, pokes: 16 }
-  ];
 
   // Percentual de Dano por Nível de Estrela
   const TIER_DAMAGE_PER_STAR = {
@@ -110,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ddRefHeader = document.getElementById('ddRefHeader');
     if (ddRefHeader) ddRefHeader.textContent = `${ddPriceK}k`;
 
-    const mult = TIER_MULTIPLIERS[tier] || 1.0;
+    const tierSteps = STAR_TABLES[tier] || STAR_TABLES['t3'];
 
     // Soma os passos selecionados na base oficial (Modo Mais Diamante)
     let totalBaseDD = 0;
@@ -118,10 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalPokes = 0;
 
     for (let s = curStar; s < tgtStar; s++) {
-      const step = T3_BASE_STEPS[s];
+      const step = tierSteps[s];
       if (step) {
-        totalBaseDD += Math.round(step.dd * mult);
-        totalBaseKK += Number((step.kk * mult).toFixed(2));
+        totalBaseDD += step.dd;
+        totalBaseKK += step.kk;
         totalPokes += step.pokes;
       }
     }
