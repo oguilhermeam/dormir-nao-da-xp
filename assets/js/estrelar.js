@@ -1,52 +1,94 @@
 /**
  * Dormir Não Dá XP - Calculadora de Ascensão Estelar
- * Lógica de cálculo, conversão de moedas (Diamond vs Dólares/kk) e otimização de custo
+ * Lógica matemática de Star Atual -> Star Objetivo, Custo em DD & KK, Bônus de Dano e Comparativo de Economia
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // Elementos do DOM
   const tierSelect = document.getElementById('starTier');
-  const starSelect = document.getElementById('starLevel');
+  const currentStarSelect = document.getElementById('currentStar');
+  const targetStarSelect = document.getElementById('targetStar');
   const ddPriceInput = document.getElementById('ddPrice'); // em $k (ex: 263k)
   const fodderCostInput = document.getElementById('fodderCost'); // em $kk
 
-  const splitPureDiaBtn = document.getElementById('splitPureDia');
-  const splitBalancedBtn = document.getElementById('splitBalanced');
-  const splitPureKkBtn = document.getElementById('splitPureKk');
-
-  // Valores base de exemplo por Tier (1 a 5 estrelas)
-  // Estrutura editável com os tiers oficiais do jogo:
-  const TIER_DEFAULTS = {
-    't3': { dia: 2, kk: 1 },
-    't2': { dia: 3, kk: 1.5 },
-    't1': { dia: 5, kk: 2 },
-    'sr': { dia: 8, kk: 3.5 },
-    'ur': { dia: 12, kk: 5 },
-    'legendary': { dia: 20, kk: 10 }
+  // Tabela Oficial de Custo por Upgrade de Estrela (100% Sucesso - Modo Mais Diamante)
+  // [startStar -> startStar+1]: { dd, kk, pokes }
+  const STAR_COSTS = {
+    't3': [
+      { from: 0, to: 1, dd: 4, kk: 1, pokes: 1 },
+      { from: 1, to: 2, dd: 12, kk: 3, pokes: 2 },
+      { from: 2, to: 3, dd: 24, kk: 6, pokes: 3 },
+      { from: 3, to: 4, dd: 40, kk: 10, pokes: 4 },
+      { from: 4, to: 5, dd: 60, kk: 15, pokes: 5 }
+    ],
+    't2': [
+      { from: 0, to: 1, dd: 6, kk: 1.5, pokes: 1 },
+      { from: 1, to: 2, dd: 18, kk: 4.5, pokes: 2 },
+      { from: 2, to: 3, dd: 36, kk: 9, pokes: 3 },
+      { from: 3, to: 4, dd: 60, kk: 15, pokes: 4 },
+      { from: 4, to: 5, dd: 90, kk: 22.5, pokes: 5 }
+    ],
+    't1': [
+      { from: 0, to: 1, dd: 10, kk: 2, pokes: 1 },
+      { from: 1, to: 2, dd: 30, kk: 6, pokes: 2 },
+      { from: 2, to: 3, dd: 60, kk: 12, pokes: 3 },
+      { from: 3, to: 4, dd: 100, kk: 20, pokes: 4 },
+      { from: 4, to: 5, dd: 150, kk: 30, pokes: 5 }
+    ],
+    'sr': [
+      { from: 0, to: 1, dd: 16, kk: 4, pokes: 1 },
+      { from: 1, to: 2, dd: 48, kk: 12, pokes: 2 },
+      { from: 2, to: 3, dd: 96, kk: 24, pokes: 3 },
+      { from: 3, to: 4, dd: 160, kk: 40, pokes: 4 },
+      { from: 4, to: 5, dd: 240, kk: 60, pokes: 5 }
+    ],
+    'ur': [
+      { from: 0, to: 1, dd: 24, kk: 6, pokes: 1 },
+      { from: 1, to: 2, dd: 72, kk: 18, pokes: 2 },
+      { from: 2, to: 3, dd: 144, kk: 36, pokes: 3 },
+      { from: 3, to: 4, dd: 240, kk: 60, pokes: 4 },
+      { from: 4, to: 5, dd: 360, kk: 90, pokes: 5 }
+    ],
+    'legendary': [
+      { from: 0, to: 1, dd: 40, kk: 10, pokes: 1 },
+      { from: 1, to: 2, dd: 120, kk: 30, pokes: 2 },
+      { from: 2, to: 3, dd: 240, kk: 60, pokes: 3 },
+      { from: 3, to: 4, dd: 400, kk: 100, pokes: 4 },
+      { from: 4, to: 5, dd: 600, kk: 150, pokes: 5 }
+    ]
   };
 
-  let currentMode = 'balanced'; // 'pure_dia', 'balanced', 'pure_kk'
+  // Percentual de Dano por Nível de Estrela
+  const TIER_DAMAGE_PER_STAR = {
+    't3': 2,
+    't2': 4,
+    't1': 6,
+    'sr': 8,
+    'ur': 10,
+    'legendary': 15
+  };
 
-  // Alternância de modo de pagamento
-  function setMode(mode) {
-    currentMode = mode;
-    [splitPureDiaBtn, splitBalancedBtn, splitPureKkBtn].forEach(btn => {
-      if (btn) btn.classList.remove('active');
+  // Garante que Star Objetivo sempre seja maior que Star Atual
+  function syncStarSelects() {
+    const current = parseInt(currentStarSelect.value, 10);
+    const target = parseInt(targetStarSelect.value, 10);
+
+    Array.from(targetStarSelect.options).forEach(opt => {
+      const val = parseInt(opt.value, 10);
+      opt.disabled = val <= current;
     });
 
-    if (mode === 'pure_dia' && splitPureDiaBtn) splitPureDiaBtn.classList.add('active');
-    if (mode === 'balanced' && splitBalancedBtn) splitBalancedBtn.classList.add('active');
-    if (mode === 'pure_kk' && splitPureKkBtn) splitPureKkBtn.classList.add('active');
-
-    calculate();
+    if (target <= current) {
+      targetStarSelect.value = String(current + 1);
+    }
   }
 
-  if (splitPureDiaBtn) splitPureDiaBtn.addEventListener('click', () => setMode('pure_dia'));
-  if (splitBalancedBtn) splitBalancedBtn.addEventListener('click', () => setMode('balanced'));
-  if (splitPureKkBtn) splitPureKkBtn.addEventListener('click', () => setMode('pure_kk'));
+  if (currentStarSelect) currentStarSelect.addEventListener('change', () => {
+    syncStarSelects();
+    calculate();
+  });
 
-  // Listener para inputs
-  [tierSelect, starSelect, ddPriceInput, fodderCostInput].forEach(el => {
+  [tierSelect, targetStarSelect, ddPriceInput, fodderCostInput].forEach(el => {
     if (el) {
       el.addEventListener('input', calculate);
       el.addEventListener('change', calculate);
@@ -54,103 +96,121 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function calculate() {
-    const tier = tierSelect ? tierSelect.value : 't1';
-    const star = starSelect ? parseInt(starSelect.value, 10) : 1;
-    // Preço do DD em $k (ex: 263k = 0.263kk)
-    const ddPriceK = ddPriceInput ? (parseFloat(ddPriceInput.value) || 0) : 0;
+    const tier = tierSelect ? tierSelect.value : 't3';
+    const curStar = currentStarSelect ? parseInt(currentStarSelect.value, 10) : 0;
+    const tgtStar = targetStarSelect ? parseInt(targetStarSelect.value, 10) : 1;
+    const ddPriceK = ddPriceInput ? (parseFloat(ddPriceInput.value) || 0) : 263;
     const ddPriceKk = ddPriceK / 1000;
     const fodderCostKk = fodderCostInput ? (parseFloat(fodderCostInput.value) || 0) : 0;
 
-    // Custos base de referência para a ascensão
-    const tierData = TIER_DEFAULTS[tier] || TIER_DEFAULTS['t1'];
-    let baseDia = tierData.dia * star;
-    let baseKk = tierData.kk * star;
+    const tierSteps = STAR_COSTS[tier] || STAR_COSTS['t3'];
 
-    let reqDia = 0;
-    let reqKk = 0;
+    let totalDD = 0;
+    let totalKK = 0;
+    let totalPokes = 0;
 
-    if (currentMode === 'pure_dia') {
-      reqDia = Math.round(baseDia * 1.8);
-      reqKk = 0;
-    } else if (currentMode === 'pure_kk') {
-      reqDia = 0;
-      reqKk = Number((baseKk * 2.2).toFixed(2));
-    } else {
-      reqDia = baseDia;
-      reqKk = baseKk;
+    for (let s = curStar; s < tgtStar; s++) {
+      const step = tierSteps[s];
+      if (step) {
+        totalDD += step.dd;
+        totalKK += step.kk;
+        totalPokes += step.pokes;
+      }
     }
 
-    // Exibir requisitos na UI do box in-game
-    const reqDiaEl = document.getElementById('costDiamondsDisplay');
-    const reqKkEl = document.getElementById('costKkDisplay');
-    if (reqDiaEl) reqDiaEl.textContent = reqDia;
-    if (reqKkEl) reqKkEl.textContent = `$${reqKk}kk`;
+    // Atualiza indicadores diretos
+    const ddDisplay = document.getElementById('costDiamondsDisplay');
+    const kkDisplay = document.getElementById('costKkDisplay');
+    const pokesDisplay = document.getElementById('pokesNeededDisplay');
+    const stepsTitle = document.getElementById('ascensionStepsTitle');
 
-    // Custo convertido em KK considerando o preço do Diamond (DD) no mercado
-    const diaCostInKk = reqDia * ddPriceKk;
-    const totalAscensionCostKk = diaCostInKk + reqKk;
-    const totalInvestmentKk = totalAscensionCostKk + fodderCostKk;
+    if (ddDisplay) ddDisplay.textContent = totalDD;
+    if (kkDisplay) kkDisplay.textContent = `$${totalKK}kk`;
+    if (pokesDisplay) pokesDisplay.textContent = `${totalPokes} Pokémon${totalPokes > 1 ? 's' : ''}`;
+    if (stepsTitle) stepsTitle.textContent = `${curStar}★ ➔ ${tgtStar}★ (${tgtStar - curStar} ${tgtStar - curStar === 1 ? 'estrela' : 'estrelas'})`;
 
-    // Resumo de custos
-    const totalCostKkEl = document.getElementById('totalCostKkDisplay');
-    const totalInvestEl = document.getElementById('totalInvestmentDisplay');
-    if (totalCostKkEl) totalCostKkEl.textContent = `$${totalAscensionCostKk.toFixed(3)}kk (${(totalAscensionCostKk * 1000).toFixed(0)}k)`;
-    if (totalInvestEl) totalInvestEl.textContent = `$${totalInvestmentKk.toFixed(3)}kk (${(totalInvestmentKk * 1000).toFixed(0)}k)`;
+    // Dano de Ataque Ganho
+    const dmgPerStar = TIER_DAMAGE_PER_STAR[tier] || 2;
+    const totalDmgGain = (tgtStar - curStar) * dmgPerStar;
+    const dmgGainDisplay = document.getElementById('dmgGainDisplay');
+    if (dmgGainDisplay) dmgGainDisplay.textContent = `+${totalDmgGain}% (${dmgPerStar}% por estrela)`;
 
-    // Comparativo das 3 Opções de Pagamento (Convertendo tudo para KK)
-    const pureDiaCostKk = (Math.round(baseDia * 1.8)) * ddPriceKk;
-    const pureKkCostKk = Number((baseKk * 2.2).toFixed(2));
-    const balancedCostKk = (baseDia * ddPriceKk) + baseKk;
+    // COMPARAÇÃO DAS 3 OPÇÕES DE PAGAMENTO (CONVERSÃO TOTAL EM KK):
+    // 1. Mais Diamante (Base da planilha do usuário): totalDD * ddPriceKk + totalKK
+    const costMoreDiaKk = (totalDD * ddPriceKk) + totalKK;
 
-    const compPureDiaEl = document.getElementById('compPureDiaVal');
+    // 2. Balanceado (Meio a meio): consome menos DD e mais KK
+    // Ratio de conversão do jogo: ~0.55 DDs a menos, compensado com +1.4x KKs
+    const diaBalanced = Math.round(totalDD * 0.55);
+    const kkBalanced = Number((totalKK * 1.5).toFixed(2));
+    const costBalancedKk = (diaBalanced * ddPriceKk) + kkBalanced;
+
+    // 3. Mais KK: consome quase nada de DD e muito mais KK
+    const diaMoreKk = Math.round(totalDD * 0.2);
+    const kkMoreKk = Number((totalKK * 2.3).toFixed(2));
+    const costMoreKkKk = (diaMoreKk * ddPriceKk) + kkMoreKk;
+
+    // Renderiza cards de comparação
+    const compMoreDiaEl = document.getElementById('compMoreDiaVal');
     const compBalancedEl = document.getElementById('compBalancedVal');
-    const compPureKkEl = document.getElementById('compPureKkVal');
+    const compMoreKkEl = document.getElementById('compMoreKkVal');
 
-    if (compPureDiaEl) compPureDiaEl.textContent = `$${pureDiaCostKk.toFixed(3)}kk`;
-    if (compBalancedEl) compBalancedEl.textContent = `$${balancedCostKk.toFixed(3)}kk`;
-    if (compPureKkEl) compPureKkEl.textContent = `$${pureKkCostKk.toFixed(3)}kk`;
+    if (compMoreDiaEl) compMoreDiaEl.textContent = `$${costMoreDiaKk.toFixed(3)}kk`;
+    if (compBalancedEl) compBalancedEl.textContent = `$${costBalancedKk.toFixed(3)}kk`;
+    if (compMoreKkEl) compMoreKkEl.textContent = `$${costMoreKkKk.toFixed(3)}kk`;
 
-    // Indicar a opção mais barata e economia
-    const costs = [
-      { mode: 'pure_dia', name: 'Mais Diamante', cost: pureDiaCostKk },
-      { mode: 'balanced', name: 'Balanceado', cost: balancedCostKk },
-      { mode: 'pure_kk', name: 'Mais KK', cost: pureKkCostKk }
+    // Identifica o melhor custo
+    const options = [
+      { id: 'moreDia', name: 'Mais Diamante', cost: costMoreDiaKk, elId: 'compItemMoreDia' },
+      { id: 'balanced', name: 'Balanceado', cost: costBalancedKk, elId: 'compItemBalanced' },
+      { id: 'moreKk', name: 'Mais KK', cost: costMoreKkKk, elId: 'compItemMoreKk' }
     ];
-    costs.sort((a, b) => a.cost - b.cost);
+    options.sort((a, b) => a.cost - b.cost);
 
-    const bestOption = costs[0];
-    const worstOption = costs[costs.length - 1];
-    const diffSavingsKk = worstOption.cost - bestOption.cost;
-    const diffSavingsK = diffSavingsKk * 1000;
+    const bestOption = options[0];
+    const worstOption = options[options.length - 1];
+    const savingsKk = worstOption.cost - bestOption.cost;
+    const savingsK = savingsKk * 1000;
 
+    // Destaca visualmente o card vencedor
+    ['compItemMoreDia', 'compItemBalanced', 'compItemMoreKk'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('is-winner');
+    });
+    const winnerEl = document.getElementById(bestOption.elId);
+    if (winnerEl) winnerEl.classList.add('is-winner');
+
+    // Badge de topo
     const badgeBest = document.getElementById('bestChoiceBadge');
     if (badgeBest) {
-      if (bestOption.mode === 'pure_dia') {
-        badgeBest.textContent = '💎 Mais vantajoso pagar com Diamonds';
+      if (bestOption.id === 'moreDia') {
+        badgeBest.textContent = '💎 Mais Diamante é a mais barata';
         badgeBest.className = 'calc-badge badge-dia';
-      } else if (bestOption.mode === 'pure_kk') {
-        badgeBest.textContent = '💵 Mais vantajoso pagar com KK ($Dólares)';
+      } else if (bestOption.id === 'moreKk') {
+        badgeBest.textContent = '💵 Mais KK é a mais barata';
         badgeBest.className = 'calc-badge badge-kk';
       } else {
-        badgeBest.textContent = '⚖️ Mais vantajoso modo Balanceado';
+        badgeBest.textContent = '⚖️ Balanceado é a mais barata';
         badgeBest.className = 'calc-badge badge-balanced';
       }
     }
 
-    // Painel de Economia
+    // Totais com Pokémon Sacrificado
+    const totalWithFodder = bestOption.cost + (totalPokes * fodderCostKk);
+    const totalCostKkEl = document.getElementById('totalCostKkDisplay');
+    const totalInvestEl = document.getElementById('totalInvestmentDisplay');
+
+    if (totalCostKkEl) totalCostKkEl.textContent = `$${bestOption.cost.toFixed(3)}kk (~${(bestOption.cost * 1000).toFixed(0)}k)`;
+    if (totalInvestEl) totalInvestEl.textContent = `$${totalWithFodder.toFixed(3)}kk (~${(totalWithFodder * 1000).toFixed(0)}k)`;
+
+    // Banner de Economia
     const savingsEl = document.getElementById('savingsResultDisplay');
-    const savingsCard = document.getElementById('savingsCardContainer');
-    if (savingsEl && savingsCard) {
-      if (diffSavingsKk > 0) {
-        savingsEl.innerHTML = `<strong>Economia de até $${diffSavingsKk.toFixed(3)}kk (~${diffSavingsK.toFixed(0)}k)</strong> escolhendo <u>${bestOption.name}</u> ao invés de ${worstOption.name}!`;
-        savingsCard.className = 'calc-profit-box profit';
-      } else {
-        savingsEl.textContent = 'Todas as opções possuem custos praticamente equivalentes.';
-        savingsCard.className = 'calc-profit-box neutral';
-      }
+    if (savingsEl) {
+      savingsEl.innerHTML = `<strong>🏆 Melhor escolha: <span style="text-decoration: underline;">${bestOption.name}</span></strong> — você economiza <strong>$${savingsKk.toFixed(3)}kk (~${savingsK.toFixed(0)}k)</strong> em relação à opção mais cara!`;
     }
   }
 
-  // Executa o cálculo inicial
+  // Inicialização
+  syncStarSelects();
   calculate();
 });

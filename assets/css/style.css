@@ -3976,224 +3976,316 @@ html.mode-lite .table-responsive {
   padding-left: 36px;
 }
 
-/* Mock Ingame Box */
-.ingame-cost-box {
-  background: linear-gradient(180deg, #18334a 0%, #102436 100%);
-  border: 2px solid #2877a8;
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
+/* ==========================================================================
+   CALCULADORA DE ESTRELAR (MINIMALISTA & CLARA)
+   ========================================================================== */
 
-.ingame-cost-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #e2f1fd;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
-
-.ingame-cost-row {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-
-.ingame-cost-val {
-  background-color: #0b1926;
-  border: 1px solid #1c4866;
-  border-radius: 6px;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.pixel-icon-cost {
-  width: 24px;
-  height: 24px;
-  image-rendering: pixelated;
-}
-
-.pixel-icon-sm {
-  width: 16px;
-  height: 16px;
-  image-rendering: pixelated;
-}
-
-.ingame-cost-modes {
+.star-calc-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  margin-top: 4px;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 20px;
+  margin-top: 16px;
 }
 
-.cost-mode-btn {
-  background-color: #0d2133;
-  border: 1px solid #1f4f72;
-  color: #c0d8ec;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 8px 6px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  transition: all 120ms ease;
+@media (max-width: 860px) {
+  .star-calc-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-.cost-mode-btn:hover {
-  background-color: #163653;
-  color: #ffffff;
-}
-
-.cost-mode-btn.active {
-  background: linear-gradient(180deg, #1f6496 0%, #124367 100%);
-  border-color: #3ca2e0;
-  color: #ffffff;
-  box-shadow: 0 0 8px rgba(60, 162, 224, 0.4);
-}
-
-.mode-split-icons {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-/* Análise & Comparativo */
-.calc-comparison-card {
-  background-color: var(--bg-0);
+.star-calc-panel {
+  background-color: var(--bg-1);
   border: 1px solid var(--bg-2);
   border-radius: var(--radius);
-  padding: 14px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
+  box-shadow: var(--shadow-hard-sm);
 }
 
-.calc-comparison-header {
+.panel-header-row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  font-size: 0.8rem;
-  font-weight: 700;
+  align-items: center;
+  gap: 10px;
   flex-wrap: wrap;
-  gap: 6px;
 }
 
-.calc-badge {
-  font-size: 0.72rem;
+.calc-badge-clean {
   font-family: var(--font-mono);
-  padding: 3px 8px;
+  font-size: 0.75rem;
+  background-color: var(--bg-0);
+  border: 1px solid var(--bg-2);
+  color: var(--guild-gold);
+  padding: 2px 8px;
   border-radius: 4px;
   font-weight: 700;
 }
 
-.badge-dia {
-  background-color: rgba(59, 130, 246, 0.2);
-  border: 1px solid #3b82f6;
+.star-range-row {
+  display: flex;
+  gap: 12px;
+}
+
+.calc-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.calc-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calc-label-tip {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  font-weight: 400;
+  font-family: var(--font-mono);
+}
+
+.calc-select, .calc-input {
+  background-color: var(--bg-0);
+  border: 1px solid var(--bg-2);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  padding: 7px 10px;
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 150ms ease;
+  width: 100%;
+}
+
+.calc-select:focus, .calc-input:focus {
+  border-color: var(--guild-blue);
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-inline-icon {
+  position: absolute;
+  left: 10px;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+
+.input-with-icon .calc-input {
+  padding-left: 36px;
+}
+
+/* Card de Bônus de Dano */
+.star-bonus-card {
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin-top: 4px;
+}
+
+.star-bonus-title {
+  font-size: 0.78rem;
+  font-weight: 700;
   color: #93c5fd;
 }
 
-.badge-kk {
-  background-color: rgba(34, 197, 94, 0.2);
-  border: 1px solid #22c55e;
-  color: #86efac;
+.star-bonus-val {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #60a5fa;
+  margin: 4px 0;
 }
 
-.badge-balanced {
-  background-color: rgba(168, 85, 247, 0.2);
-  border: 1px solid #a855f7;
-  color: #d8b4fe;
+.star-bonus-desc {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.4;
 }
 
-.comp-options-grid {
+/* Estatísticas Limpas de Custo */
+.ingame-cost-box-clean {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
 }
 
-.comp-item {
-  background-color: var(--bg-1);
+.cost-stat-item {
+  background-color: var(--bg-0);
   border: 1px solid var(--bg-2);
   border-radius: var(--radius);
-  padding: 8px;
+  padding: 10px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 10px;
 }
 
-.comp-label {
+.cost-stat-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pixel-icon-stat {
+  width: 26px;
+  height: 26px;
+  image-rendering: pixelated;
+}
+
+.cost-stat-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.cost-stat-label {
   font-size: 0.7rem;
   color: var(--text-dim);
 }
 
-.comp-val {
+.cost-stat-number {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 800;
   color: var(--text);
 }
 
-/* Resumo & Profit */
-.calc-summary-card {
+/* Seção de Comparativo com Destaque Claro */
+.calc-comparison-section {
   background-color: var(--bg-0);
   border: 1px solid var(--bg-2);
   border-radius: var(--radius);
   padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.summary-line {
+.comparison-section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.82rem;
-  color: var(--text-dim);
-  padding: 4px 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
-.summary-line strong {
+.comp-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.comp-choice-card {
+  background-color: var(--bg-1);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  transition: all 140ms ease;
+  position: relative;
+}
+
+.comp-choice-card.is-winner {
+  border-color: #22c55e;
+  background-color: rgba(34, 197, 94, 0.08);
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
+  transform: translateY(-2px);
+}
+
+.comp-choice-card.is-winner::after {
+  content: 'MAIS BARATO';
+  position: absolute;
+  top: -8px;
+  background-color: #22c55e;
+  color: #000000;
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.62rem;
+  font-weight: 900;
+  padding: 1px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+.choice-card-tag {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
+.choice-card-price {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 800;
   color: var(--text);
 }
 
-.calc-profit-box {
-  padding: 12px;
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  text-align: center;
-  border: 1px solid transparent;
-}
-
-.calc-profit-box.neutral {
-  background-color: var(--bg-1);
-  border-color: var(--bg-2);
-  color: var(--text-dim);
-}
-
-.calc-profit-box.profit {
-  background-color: rgba(34, 197, 94, 0.15);
-  border-color: #22c55e;
+.comp-choice-card.is-winner .choice-card-price {
   color: #4ade80;
 }
 
-.calc-profit-box.loss {
-  background-color: rgba(239, 68, 68, 0.15);
-  border-color: #ef4444;
-  color: #f87171;
+.choice-card-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
 }
+
+/* Resumo Final Clean */
+.calc-summary-clean {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.savings-banner-clean {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid #22c55e;
+  color: #86efac;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.summary-details-list {
+  background-color: var(--bg-0);
+  border: 1px solid var(--bg-2);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summary-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.summary-detail-row strong {
+  font-family: var(--font-mono);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
 
