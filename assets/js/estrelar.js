@@ -15,13 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const splitPureKkBtn = document.getElementById('splitPureKk');
 
   // Valores base de exemplo por Tier (1 a 5 estrelas)
-  // [dia, kk] para cada estrela de 1 a 5
+  // Estrutura editável com os tiers oficiais do jogo:
   const TIER_DEFAULTS = {
-    '1': { dia: 2, kk: 1 },
-    '2': { dia: 3, kk: 1.5 },
-    '3': { dia: 5, kk: 2 },
-    '4': { dia: 8, kk: 4 },
-    '5': { dia: 12, kk: 6 }
+    't3': { dia: 2, kk: 1 },
+    't2': { dia: 3, kk: 1.5 },
+    't1': { dia: 5, kk: 2 },
+    'sr': { dia: 8, kk: 3.5 },
+    'ur': { dia: 12, kk: 5 },
+    'legendary': { dia: 20, kk: 10 }
   };
 
   let currentMode = 'balanced'; // 'pure_dia', 'balanced', 'pure_kk'
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function calculate() {
-    const tier = tierSelect ? tierSelect.value : '3';
+    const tier = tierSelect ? tierSelect.value : 't1';
     const star = starSelect ? parseInt(starSelect.value, 10) : 1;
     // Preço do DD em $k (ex: 263k = 0.263kk)
     const ddPriceK = ddPriceInput ? (parseFloat(ddPriceInput.value) || 0) : 0;
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fodderCostKk = fodderCostInput ? (parseFloat(fodderCostInput.value) || 0) : 0;
 
     // Custos base de referência para a ascensão
-    const tierData = TIER_DEFAULTS[tier] || TIER_DEFAULTS['3'];
+    const tierData = TIER_DEFAULTS[tier] || TIER_DEFAULTS['t1'];
     let baseDia = tierData.dia * star;
     let baseKk = tierData.kk * star;
 
