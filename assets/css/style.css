@@ -4200,17 +4200,24 @@ html.mode-lite .table-responsive {
   text-align: center;
   gap: 4px;
   transition: all 140ms ease;
-  position: relative;
+  cursor: pointer;
 }
 
-.comp-choice-card.is-winner {
+.comp-choice-card:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--teal);
+}
+
+.comp-choice-card.is-selected {
+  outline: 2px solid var(--guild-blue);
+  background-color: rgba(37, 99, 235, 0.08);
+}
+
+.comp-choice-card.is-best {
   border-color: #22c55e;
-  background-color: rgba(34, 197, 94, 0.08);
-  box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
-  transform: translateY(-2px);
 }
 
-.comp-choice-card.is-winner::after {
+.comp-choice-card.is-best::after {
   content: 'MAIS BARATO';
   position: absolute;
   top: -8px;
@@ -4237,13 +4244,37 @@ html.mode-lite .table-responsive {
   color: var(--text);
 }
 
-.comp-choice-card.is-winner .choice-card-price {
+.comp-choice-card.is-best .choice-card-price {
   color: #4ade80;
+}
+
+.choice-card-breakdown {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--guild-gold);
+  background-color: rgba(249, 191, 0, 0.08);
+  border: 1px solid rgba(249, 191, 0, 0.25);
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin: 2px 0;
 }
 
 .choice-card-sub {
   font-size: 0.68rem;
   color: var(--text-muted);
+}
+
+.banner-optimal {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid #22c55e;
+  color: #86efac;
+}
+
+.banner-suboptimal {
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid #eab308;
+  color: #fde047;
 }
 
 /* Resumo Final Clean */
