@@ -146,34 +146,39 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Calcula os recursos para as 3 modalidades do jogo com base na taxa de conversão (1 DD = 500k = 0.5kk):
-    // 1. Mais Diamante (Base da planilha)
-    const dataMoreDia = { dd: totalBaseDD, kk: totalBaseKK };
+    // A taxa de conversão interna oficial do PokeAlliance é 1 DD = 500k (0.5kk).
+    // O valor total de referência no sistema do jogo (em KK) é:
+    const totalInternalValKk = (totalBaseDD * 0.5) + totalBaseKK;
 
-    // 2. Balanceado (Gasta menos DDs e mais KKs a uma taxa de 500k por DD)
-    // Reduz ~40% a 50% dos DDs e converte para KK
-    const diffDiaBalanced = Math.round(totalBaseDD * 0.45);
-    const dataBalanced = {
-      dd: totalBaseDD - diffDiaBalanced,
-      kk: Number((totalBaseKK + (diffDiaBalanced * 0.5)).toFixed(2))
+    // 1. Mais Diamante (Opção 1 no jogo: 2/3 do valor em DD, 1/3 em KK)
+    const dataMoreDia = {
+      dd: totalBaseDD,
+      kk: totalBaseKK
     };
 
-    // 3. Mais KK (Reduz ~75% dos DDs e converte para KK)
-    const diffDiaMoreKk = Math.round(totalBaseDD * 0.75);
+    // 2. Mais KK (Opção 2 / do meio no jogo: 1/3 do valor em DD, 2/3 em KK)
+    const moreKkDD = Math.round((totalInternalValKk * (1 / 3)) / 0.5);
     const dataMoreKk = {
-      dd: totalBaseDD - diffDiaMoreKk,
-      kk: Number((totalBaseKK + (diffDiaMoreKk * 0.5)).toFixed(2))
+      dd: moreKkDD,
+      kk: Number((totalInternalValKk - (moreKkDD * 0.5)).toFixed(2))
+    };
+
+    // 3. Meio a Meio / Balanceado (Opção 3 no jogo: 50% em DD, 50% em KK)
+    const balancedDD = Math.round((totalInternalValKk * 0.5) / 0.5);
+    const dataBalanced = {
+      dd: balancedDD,
+      kk: Number((totalInternalValKk - (balancedDD * 0.5)).toFixed(2))
     };
 
     // Custo Total Equivalente em KK para cada opção com base no preço real de mercado do DD
     const costMoreDiaKk = (dataMoreDia.dd * ddPriceKk) + dataMoreDia.kk;
-    const costBalancedKk = (dataBalanced.dd * ddPriceKk) + dataBalanced.kk;
     const costMoreKkKk = (dataMoreKk.dd * ddPriceKk) + dataMoreKk.kk;
+    const costBalancedKk = (dataBalanced.dd * ddPriceKk) + dataBalanced.kk;
 
     const options = [
       { id: 'moreDia', name: 'Mais Diamante', cost: costMoreDiaKk, data: dataMoreDia },
-      { id: 'balanced', name: 'Balanceado', cost: costBalancedKk, data: dataBalanced },
-      { id: 'moreKk', name: 'Mais KK', cost: costMoreKkKk, data: dataMoreKk }
+      { id: 'moreKk', name: 'Mais KK', cost: costMoreKkKk, data: dataMoreKk },
+      { id: 'balanced', name: 'Meio a Meio', cost: costBalancedKk, data: dataBalanced }
     ];
 
     // Ordena do menor para o maior para descobrir a OPÇÃO MAIS BARATA
