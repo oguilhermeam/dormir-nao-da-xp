@@ -758,8 +758,9 @@ var TALENTS_DATA = {
             sprite: 'assets/img/pokemon/venusaur.png',
             chance: '45.0%',
             locations: [
-              'Florestas e selvas com spawn de Venusaur e Ivysaur'
-            ]
+              'Mandarin South Island (Wildscape Lvl 150+)'
+            ],
+            map_image: 'assets/img/talents/maps/map_venusaur.png'
           }
         },
         {
