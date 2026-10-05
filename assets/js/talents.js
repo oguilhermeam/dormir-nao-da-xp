@@ -217,9 +217,13 @@ function initTalentSearch() {
   const searchInput = document.getElementById('talentSearchInput');
   if (!searchInput) return;
 
+  let searchTimer;
   searchInput.addEventListener('input', (e) => {
-    talentSearchQuery = e.target.value.trim();
-    renderTalents();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      talentSearchQuery = e.target.value.trim();
+      renderTalents();
+    }, 100);
   });
 }
 

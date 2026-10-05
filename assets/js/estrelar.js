@@ -18,9 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ddPriceInput = document.getElementById('ddPrice'); // em $k (ex: 263k)
   const fodderCostInput = document.getElementById('fodderCost'); // em $kk
 
-  // Modo ativo de pagamento - por padrão a calculadora seleciona AUTOMATICAMENTE o melhor
-  let selectedMode = 'auto'; // 'auto', 'moreDia', 'balanced', 'moreKk'
-
+  // A calculadora seleciona AUTOMATICAMENTE o modo mais lucrativo (menor custo)
   // Tabelas Oficiais Exatas por Tier (Modo Mais Diamante)
   const STAR_TABLES = {
     't3': [
@@ -92,20 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Interação ao clicar nos cards de opção
-  function bindChoiceCards() {
-    ['moreDia', 'balanced', 'moreKk'].forEach(mode => {
-      const card = document.getElementById(`compItem_${mode}`);
-      if (card) {
-        card.addEventListener('click', () => {
-          // Se o usuário clicar, alterna para aquele modo manualmente
-          selectedMode = mode;
-          calculate();
-        });
-      }
-    });
-  }
-
   if (currentStarSelect) currentStarSelect.addEventListener('change', () => {
     syncStarSelects();
     calculate();
@@ -125,6 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const ddPriceK = ddPriceInput ? (parseFloat(ddPriceInput.value) || 0) : 263;
     const ddPriceKk = ddPriceK / 1000;
     const fodderCostKk = fodderCostInput ? (parseFloat(fodderCostInput.value) || 0) : 0;
+
+    if (curStar >= tgtStar) {
+      syncStarSelects();
+      return;
+    }
 
     // Atualiza label do DD no header
     const ddRefHeader = document.getElementById('ddRefHeader');
@@ -188,10 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxSavingsKk = worstOption.cost - bestOption.cost;
     const maxSavingsK = maxSavingsKk * 1000;
 
-    // Se estiver em modo 'auto' ou o usuário não tiver fixado, usa a mais barata
-    const activeOpt = (selectedMode === 'auto')
-      ? bestOption
-      : (options.find(o => o.id === selectedMode) || bestOption);
+    // A calculadora sempre utiliza a opção mais barata e lucrativa
+    const activeOpt = bestOption;
 
     // Atualiza os stats de DD, KK e Pokés do topo (da opção ativa)
     const ddDisplay = document.getElementById('costDiamondsDisplay');

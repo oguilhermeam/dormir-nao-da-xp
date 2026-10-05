@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=1.8">
+  <link rel="stylesheet" href="assets/css/style.css?v=3.2">
 </head>
 <body class="home-page">
 
@@ -103,6 +103,19 @@
               <th style="width: 200px;">Metadados</th>
               <th style="width: 140px;">Prioridade</th>
             </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="estrelar.html" class="table-link" style="color: #60a5fa;">
+                  <img src="assets/img/icon_diamond.png" alt="Estrelar" style="width: 16px; height: 16px; image-rendering: pixelated; vertical-align: middle; margin-right: 4px;">
+                  <span>Ascensão Estelar</span>
+                </a>
+              </td>
+              <td>Calculadora de 100% de sucesso (0★ a 5★), otimizador de menor custo (DD vs KK) e bônus de dano.</td>
+              <td class="font-mono">T1 a T3 · Economia</td>
+              <td><span class="tag-meta" style="background: rgba(37, 99, 235, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35);">💎 Calculadora</span></td>
+            </tr>
             <tr>
               <td>
                 <a href="talentos.html" class="table-link teal-link">
@@ -114,10 +127,8 @@
               </td>
               <td>Árvore de talentos por categoria, itens de craft, porcentagem de drops e localização dos Pokémon.</td>
               <td class="font-mono">Materiais & Drops</td>
-              <td><span class="tag-meta tag-teal-meta"><svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="6" y="1" width="4" height="2"/><rect x="4" y="3" width="8" height="2"/><rect x="2" y="5" width="12" height="6"/><rect x="4" y="11" width="8" height="2"/><rect x="6" y="13" width="4" height="2"/></svg> Novo</span></td>
+              <td><span class="tag-meta tag-teal-meta"><svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="6" y="1" width="4" height="2"/><rect x="4" y="3" width="8" height="2"/><rect x="2" y="5" width="12" height="6"/><rect x="4" y="11" width="8" height="2"/><rect x="6" y="13" width="4" height="2"/></svg> Árvore</span></td>
             </tr>
-          </thead>
-          <tbody>
             <tr>
               <td>
                 <a href="equipe-rocket.html" class="table-link rocket-link">
@@ -161,12 +172,27 @@
       <div class="section-header">
         <h2 class="section-title">
           <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="2" y="2" width="11" height="12"/><rect x="4" y="4" width="7" height="8" fill="var(--black)"/><rect x="6" y="5" width="3" height="4" fill="var(--teal)"/><rect x="13" y="3" width="1" height="10" fill="var(--text-dim)"/></svg>
-          <span>Guias em Destaque</span>
+          <span>Guias e Ferramentas em Destaque</span>
         </h2>
       </div>
 
       <div class="guide-blocks-grid">
-        <!-- Card 1: Rocket -->
+        <!-- Card 1: Estrelar -->
+        <a href="estrelar.html" class="guide-block" style="border-top: 3px solid #3b82f6;">
+          <div class="guide-block-header">
+            <span class="guide-block-tag" style="background: rgba(37, 99, 235, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35); display: inline-flex; align-items: center; gap: 4px;">
+              <img src="assets/img/icon_diamond.png" alt="Estrelar" style="width: 14px; height: 14px; image-rendering: pixelated;">
+              Ascensão Estelar
+            </span>
+            <span class="guide-block-meta">100% Sucesso · Economia</span>
+          </div>
+          <h3 class="guide-block-title">Calculadora de Estrelas & Otimizador</h3>
+          <p class="guide-block-desc">
+            Calcule o custo exato para colocar de 0★ a 5★ no seu Pokémon. Comparativo automático de Diamante vs KK com base no valor de mercado para máximo lucro.
+          </p>
+        </a>
+
+        <!-- Card 2: Rocket -->
         <a href="equipe-rocket.html" class="guide-block block-rocket">
           <div class="guide-block-header">
             <span class="guide-block-tag tag-rocket-meta"><svg class="pixel-icon pixel-icon-rocket" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="3" y="1" width="7" height="2"/><rect x="3" y="3" width="9" height="4"/><rect x="6" y="3" width="3" height="2" fill="var(--black)"/><rect x="3" y="7" width="7" height="2"/><rect x="3" y="9" width="3" height="6"/><rect x="7" y="9" width="3" height="3"/><rect x="10" y="12" width="3" height="3"/></svg> Equipe Rocket</span>
@@ -174,11 +200,11 @@
           </div>
           <h3 class="guide-block-title">Tabela Completa da Equipe Rocket</h3>
           <p class="guide-block-desc">
-            Shadow, Frost, Thorn, Cipher, Phoenix, Scythe, Mirage, Zephyr, Obsidian, Vortex, Tempest, Eclipse e Giovanni. Inclui rota de Viridian, fraquezas, lista de pokémons recomendados e estratégia com time barato.
+            Shadow, Frost, Thorn, Cipher, Phoenix, Scythe, Mirage, Zephyr, Obsidian, Vortex, Tempest, Eclipse e Giovanni. Inclui rota de Viridian, fraquezas e time barato.
           </p>
         </a>
 
-        <!-- Card 2: Hoenn -->
+        <!-- Card 3: Hoenn -->
         <a href="times-hoenn.html" class="guide-block block-hoenn">
           <div class="guide-block-header">
             <span class="guide-block-tag tag-hoenn-meta"><svg class="pixel-icon pixel-icon-hoenn" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="5" y="5" width="6" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="6" y="11" width="4" height="2"/><rect x="7" y="13" width="2" height="2"/><rect x="7" y="7" width="2" height="2" fill="var(--black)"/></svg> Times Hoenn</span>
@@ -186,11 +212,11 @@
           </div>
           <h3 class="guide-block-title">Times para Caçar em Hoenn</h3>
           <p class="guide-block-desc">
-            Tabela interativa com Time Inicial Econômico (T2 e T3) e Time Inicial Plus (T1 e SR). Counters, offtanks, rotatividade de cooldown e análise de prós e contras para cada elemento.
+            Tabela interativa com Time Inicial Econômico (T2 e T3) e Time Inicial Plus (T1 e SR). Counters, offtanks, rotatividade de cooldown e análise de cada elemento.
           </p>
         </a>
 
-        <!-- Card 3: Talentos -->
+        <!-- Card 4: Talentos -->
         <a href="talentos.html" class="guide-block block-teal">
           <div class="guide-block-header">
             <span class="guide-block-tag tag-teal-meta">

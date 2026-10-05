@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=1.8">
+  <link rel="stylesheet" href="assets/css/style.css?v=3.2">
 </head>
 <body>
 
@@ -80,13 +80,47 @@
     <!-- Barra de Busca com Ícone Pixel Art -->
     <div class="search-wrapper">
       <svg class="pixel-icon search-pixel-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="4" y="2" width="5" height="2"/><rect x="2" y="4" width="2" height="5"/><rect x="9" y="4" width="2" height="5"/><rect x="4" y="9" width="5" height="2"/><rect x="9" y="9" width="2" height="2"/><rect x="11" y="11" width="3" height="3"/></svg>
-      <input type="text" id="guideSearch" class="search-input" placeholder="Buscar por Rocket, Hoenn, elemento, NPC, boss ou termo chave (Atalho: / ou Ctrl+K)...">
+      <input type="text" id="guideSearch" class="search-input" placeholder="Buscar por Rocket, Hoenn, Estrelar, Talentos, elemento, NPC ou boss (Atalho: / ou Ctrl+K)...">
     </div>
 
     <!-- Grid de Guias -->
     <div class="cards-grid" id="guidesGrid">
 
-      <!-- Guia 1: Equipe Rocket -->
+      <!-- Guia 1: Ascensão Estelar -->
+      <a href="estrelar.html" class="card guide-card-item" data-category="economia" data-title="Calculadora de Ascensão Estelar 100% Sucesso Otimizador" data-desc="Calculadora de custos exatos para colocar de 0 a 5 estrelas em Pokémon de todos os tiers. Compara na hora se vale mais a pena pagar em Diamante ou KK." data-tags="estrelar ascensao estrelas diamantes kk calculadora tier bonus dano economia t1 t2 t3 sr ur lendario">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span class="tag" style="background: rgba(37, 99, 235, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.35); display: inline-flex; align-items: center; gap: 4px;">
+            <img src="assets/img/icon_diamond.png" alt="Diamante" style="width: 14px; height: 14px; image-rendering: pixelated;"> Ascensão Estelar
+          </span>
+          <span class="font-mono" style="color: #60a5fa;">0★ a 5★</span>
+        </div>
+        <h3 class="card-title">Calculadora de Estrelar (Ascensão)</h3>
+        <p class="card-desc">Cálculo de 100% de sucesso por Tier. Seleciona automaticamente o método mais barato (Diamantes vs KKs) e exibe o bônus de dano.</p>
+        <div class="card-footer">
+          <span>Otimizador de Lucro · T1 ao Lendário</span>
+          <span style="color: #60a5fa; font-weight: 700;">Ferramenta</span>
+        </div>
+      </a>
+
+      <!-- Guia 2: Talentos do Jogador -->
+      <a href="talentos.html" class="card guide-card-item" data-category="talentos" data-title="Talentos do Jogador Árvore Materiais e Drops" data-desc="Árvore interativa de talentos por categoria, itens de craft, porcentagem de drops e localização dos Pokémon para farm." data-tags="talentos itens drops localizacao materiais pokemon arvore craft farm personagem caçador pescador">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span class="tag tag-quest" style="color: var(--teal); border-color: rgba(32, 178, 170, 0.4);">
+            <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+              <rect x="6" y="1" width="4" height="2"/><rect x="4" y="3" width="8" height="2"/><rect x="2" y="5" width="12" height="6"/><rect x="4" y="11" width="8" height="2"/><rect x="6" y="13" width="4" height="2"/>
+            </svg> Talentos
+          </span>
+          <span class="font-mono" style="color: var(--teal);">Árvore Completa</span>
+        </div>
+        <h3 class="card-title">Talentos do Jogador & Materiais</h3>
+        <p class="card-desc">Guia detalhado com todos os talentos, busca em tempo real, localização dos drops e rastreador de progresso salvo.</p>
+        <div class="card-footer">
+          <span>Crafting · Localização de Mobs</span>
+          <span style="color: var(--teal); font-weight: 700;">Árvore</span>
+        </div>
+      </a>
+
+      <!-- Guia 3: Equipe Rocket -->
       <a href="equipe-rocket.html" class="card guide-card-item" data-category="rocket" data-title="Equipe Rocket Guia e Counters 13 NPCs" data-desc="Tabela com todos os 13 NPCs da Rocket, Giovanni, sprites e estratégia de time econômico barato." data-tags="rocket giovanni tokens shadow frost thorn cipher phoenix scythe mirage zephyr obsidian vortex tempest eclipse">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <span class="tag tag-rocket"><svg class="pixel-icon pixel-icon-rocket" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="3" y="1" width="7" height="2"/><rect x="3" y="3" width="9" height="4"/><rect x="6" y="3" width="3" height="2" fill="var(--black)"/><rect x="3" y="7" width="7" height="2"/><rect x="3" y="9" width="3" height="6"/><rect x="7" y="9" width="3" height="3"/><rect x="10" y="12" width="3" height="3"/></svg> Equipe Rocket</span>
@@ -100,7 +134,7 @@
         </div>
       </a>
 
-      <!-- Guia 2: Times de Hoenn -->
+      <!-- Guia 4: Times de Hoenn -->
       <a href="times-hoenn.html" class="card guide-card-item" data-category="hoenn" data-title="Times para Caçar em Hoenn Iniciantes Mono Elemento" data-desc="Sugestões de times mono-elemento baratos para iniciar Hoenn com Tiers, Offtanks, Upgrades de SR e Prós/Contras." data-tags="hoenn hunt times rotação elemento dark ghost electric fairy fighting fire flying grass ground ice poison psychic rock steel water bug dragon smeargle hitmonchan">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <span class="tag tag-quest"><svg class="pixel-icon pixel-icon-hoenn" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="5" y="5" width="6" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="6" y="11" width="4" height="2"/><rect x="7" y="13" width="2" height="2"/><rect x="7" y="7" width="2" height="2" fill="var(--black)"/></svg> Times Hoenn</span>
