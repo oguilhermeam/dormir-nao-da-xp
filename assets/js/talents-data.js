@@ -90,7 +90,7 @@ var TALENTS_DATA = {
             locations: [
               'Ilha ao norte de Tangelo Island (subindo de Tangelo)'
             ],
-            map_image: 'assets/img/talents/maps/map_shiny_clefable.png'
+            map_image: 'assets/img/talents/maps/map_clefable.png'
           }
         },
         {
@@ -105,7 +105,7 @@ var TALENTS_DATA = {
             locations: [
               'Ilha ao norte de Tangelo Island (seguindo reto ao norte pelo mar)'
             ],
-            map_image: 'assets/img/talents/maps/map_shiny_wigglytuff.png'
+            map_image: 'assets/img/talents/maps/map_wigglytuff.png'
           }
         }
       ]
@@ -272,7 +272,7 @@ var TALENTS_DATA = {
             locations: [
               'Ilha ao norte de Tangelo Island (seguindo reto ao norte pelo mar)'
             ],
-            map_image: 'assets/img/talents/maps/map_shiny_wigglytuff.png'
+            map_image: 'assets/img/talents/maps/map_wigglytuff.png'
           }
         },
         {
@@ -287,7 +287,7 @@ var TALENTS_DATA = {
             locations: [
               'Ilha ao norte de Tangelo Island (subindo de Tangelo)'
             ],
-            map_image: 'assets/img/talents/maps/map_shiny_clefable.png'
+            map_image: 'assets/img/talents/maps/map_clefable.png'
           }
         },
         {
@@ -441,7 +441,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts de caverna e pedreiras com spawn de Golem e Graveler (Mt. Moon, Rock Tunnel)'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_golem.png'
           }
         },
         {
@@ -455,7 +456,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts montanhosas e Safari Zone com spawn de Rhydon e Rhyhorn'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_rhydon.png'
           }
         },
         {
@@ -469,7 +471,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Pokémon Tower em Lavender Town e hunts com spawn de Marowak e Cubone'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_marowak.png'
           }
         },
         {
@@ -483,7 +486,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Cavernas profundas no subsolo e hunts montanhosas de Steelix'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_steelix.png'
           }
         },
         {
@@ -552,7 +556,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts aquáticas no mar aberto e ilhas com spawn de Lapras'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_lapras.png'
           }
         },
         {
@@ -566,7 +571,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Lagos profundos e alto mar com spawn de Gyarados'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_gyarados.png'
           }
         },
         {
@@ -580,7 +586,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts aquáticas, ilhas e lagos com spawn de Vaporeon e Eevee'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_vaporeon.png'
           }
         },
         {
@@ -594,7 +601,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Ilhas aquáticas e hunts com spawn de Blastoise e Wartortle'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_blastoise.png'
           }
         },
         {
@@ -663,7 +671,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts elétricas com spawn de Ampharos, Flaaffy e Mareep'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_ampharos.png'
           }
         },
         {
@@ -677,7 +686,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Power Plant e hunts elétricas com spawn de Electabuzz'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_electabuzz.png'
           }
         },
         {
@@ -691,7 +701,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Power Plant e hunts com spawn de Raichu e Pikachu'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_raichu.png'
           }
         },
         {
@@ -705,7 +716,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts elétricas com spawn de Jolteon e Eevee'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_jolteon.png'
           }
         },
         {
@@ -774,7 +786,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Florestas e campos abertos com spawn de Meganium e Bayleef'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_meganium.png'
           }
         },
         {
@@ -788,7 +801,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Ilhas tropicais, praias e selvas com spawn de Exeggutor'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_exeggutor.png'
           }
         },
         {
@@ -802,7 +816,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts ao sul de Pallet Town e pântanos com spawn de Tangela'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_tangela.png'
           }
         },
         {
@@ -871,7 +886,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts venenosas com spawn de Nidoqueen e Nidorina'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_nidoqueen.png'
           }
         },
         {
@@ -885,7 +901,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts venenosas com spawn de Nidoking e Nidorino'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_nidoking.png'
           }
         },
         {
@@ -899,7 +916,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Cavernas escuras, Mt. Moon, Rock Tunnel com spawn de Crobat e Golbat'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_crobat.png'
           }
         },
         {
@@ -913,7 +931,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Esgotos de Celadon e Saffron e pântanos tóxicos com spawn de Muk e Grimer'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_muk.png'
           }
         },
         {
@@ -967,7 +986,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Hunts psíquicas com spawn de Alakazam e Kadabra'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_alakazam.png'
           }
         },
         {
@@ -981,7 +1001,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Dark Cave e hunts com spawn de Wobbuffet e Wynaut'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_wobbuffet.png'
           }
         },
         {
@@ -995,7 +1016,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Ruínas de Alph e hunts com spawn de Xatu e Natu'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_xatu.png'
           }
         },
         {
@@ -1009,7 +1031,8 @@ var TALENTS_DATA = {
             chance: '45.0%',
             locations: [
               'Safari Zone e hunts de planície com spawn de Girafarig'
-            ]
+            ],
+            map_image: 'assets/img/talents/maps/map_girafarig.png'
           }
         },
         {
