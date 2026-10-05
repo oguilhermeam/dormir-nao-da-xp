@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pokesDisplay) pokesDisplay.textContent = `${totalPokes} Pokémon${totalPokes > 1 ? 's' : ''}`;
     if (stepsTitle) stepsTitle.textContent = `${curStar}★ ➔ ${tgtStar}★ (${tgtStar - curStar} ${tgtStar - curStar === 1 ? 'estrela' : 'estrelas'})`;
 
-    // Atualiza cards comparativos
+    // Atualiza cards comparativos (apenas a melhor opção recebe destaque)
     options.forEach(opt => {
       const card = document.getElementById(`compItem_${opt.id}`);
       const valEl = document.getElementById(`compVal_${opt.id}`);
@@ -189,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (breakdownEl) breakdownEl.textContent = `${opt.data.dd} DD + $${opt.data.kk}kk`;
 
       if (card) {
-        card.classList.toggle('is-selected', opt.id === activeOpt.id);
         card.classList.toggle('is-best', opt.id === bestOption.id);
       }
     });
@@ -216,29 +215,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dmgGainDisplay) dmgGainDisplay.textContent = `+${totalDmgGain}% (${dmgPerStar}% por estrela)`;
 
     // Resumo de Custos Totais
-    const totalWithFodder = activeOpt.cost + (totalPokes * fodderCostKk);
+    const totalWithFodder = bestOption.cost + (totalPokes * fodderCostKk);
     const totalCostKkEl = document.getElementById('totalCostKkDisplay');
     const totalInvestEl = document.getElementById('totalInvestmentDisplay');
 
-    if (totalCostKkEl) totalCostKkEl.textContent = `$${activeOpt.cost.toFixed(3)}kk (~${(activeOpt.cost * 1000).toFixed(0)}k)`;
+    if (totalCostKkEl) totalCostKkEl.textContent = `$${bestOption.cost.toFixed(3)}kk (~${(bestOption.cost * 1000).toFixed(0)}k)`;
     if (totalInvestEl) totalInvestEl.textContent = `$${totalWithFodder.toFixed(3)}kk (~${(totalWithFodder * 1000).toFixed(0)}k)`;
 
     // Banner de Economia
     const savingsEl = document.getElementById('savingsResultDisplay');
     if (savingsEl) {
-      if (activeOpt.id === bestOption.id) {
-        savingsEl.innerHTML = `<strong>🏆 Rota Otimizada (${bestOption.name}) Selecionada Automaticamente!</strong><br>Economia de até <strong>$${maxSavingsKk.toFixed(3)}kk (~${maxSavingsK.toFixed(0)}k)</strong> em relação à opção mais cara.`;
-        savingsEl.className = 'savings-banner-clean banner-optimal';
-      } else {
-        const diffFromBest = activeOpt.cost - bestOption.cost;
-        savingsEl.innerHTML = `<strong>⚠️ Você selecionou manualmente ${activeOpt.name}:</strong> Mudando para <u>${bestOption.name}</u> você economiza <strong>+$${diffFromBest.toFixed(3)}kk (~${(diffFromBest * 1000).toFixed(0)}k)</strong>!`;
-        savingsEl.className = 'savings-banner-clean banner-suboptimal';
-      }
+      savingsEl.innerHTML = `<strong>🏆 Rota Otimizada (${bestOption.name}) Selecionada Automaticamente!</strong><br>Economia de <strong>$${maxSavingsKk.toFixed(3)}kk (~${maxSavingsK.toFixed(0)}k)</strong> em relação à pior opção.`;
+      savingsEl.className = 'savings-banner-clean banner-optimal';
     }
   }
 
   // Inicializa eventos
   syncStarSelects();
-  bindChoiceCards();
   calculate();
 });
