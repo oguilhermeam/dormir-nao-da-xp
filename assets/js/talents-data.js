@@ -575,11 +575,11 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_aquatic_tail.png',
           dropper: {
-            name: 'Azumarill',
-            sprite: 'assets/img/pokemon/azumarill.png',
+            name: 'Vaporeon',
+            sprite: 'assets/img/pokemon/vaporeon.png',
             chance: '45.0%',
             locations: [
-              'Hunts aquáticas, rios e praias com spawn de Azumarill e Marill'
+              'Hunts aquáticas, ilhas e lagos com spawn de Vaporeon e Eevee'
             ]
           }
         },
@@ -754,11 +754,11 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_red_petal.png',
           dropper: {
-            name: 'Parasect',
-            sprite: 'assets/img/pokemon/parasect.png',
+            name: 'Venusaur',
+            sprite: 'assets/img/pokemon/venusaur.png',
             chance: '45.0%',
             locations: [
-              'Hunts de florestas densas e cavernas com spawn de Parasect e Paras'
+              'Florestas e selvas com spawn de Venusaur e Ivysaur'
             ]
           }
         },
@@ -768,11 +768,11 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_big_petal.png',
           dropper: {
-            name: 'Vileplume',
-            sprite: 'assets/img/pokemon/vileplume.png',
+            name: 'Meganium',
+            sprite: 'assets/img/pokemon/meganium.png',
             chance: '45.0%',
             locations: [
-              'Florestas e selvas com spawn de Vileplume e Gloom'
+              'Florestas e campos abertos com spawn de Meganium e Bayleef'
             ]
           }
         },
@@ -893,11 +893,11 @@ var TALENTS_DATA = {
           qty: 1100,
           icon: 'assets/img/talents/items/item_giant_bat_wing.png',
           dropper: {
-            name: 'Golbat',
-            sprite: 'assets/img/pokemon/golbat.png',
+            name: 'Crobat',
+            sprite: 'assets/img/pokemon/crobat.png',
             chance: '45.0%',
             locations: [
-              'Cavernas escuras, Mt. Moon, Rock Tunnel com spawn de Golbat e Crobat'
+              'Cavernas escuras, Mt. Moon, Rock Tunnel com spawn de Crobat e Golbat'
             ]
           }
         },
@@ -975,11 +975,11 @@ var TALENTS_DATA = {
           qty: 1500,
           icon: 'assets/img/talents/items/item_two_eyed_black_tail.png',
           dropper: {
-            name: 'Girafarig',
-            sprite: 'assets/img/pokemon/girafarig.png',
+            name: 'Wobbuffet',
+            sprite: 'assets/img/pokemon/wobbuffet.png',
             chance: '45.0%',
             locations: [
-              'Safari Zone e hunts de planície com spawn de Girafarig'
+              'Dark Cave e hunts com spawn de Wobbuffet e Wynaut'
             ]
           }
         },
