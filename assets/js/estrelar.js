@@ -1,15 +1,14 @@
 /**
  * Dormir Não Dá XP - Calculadora de Ascensão Estelar
- * Lógica de cálculo, conversão de moedas (Diamond vs Dólares/kk) e análise de profit
+ * Lógica de cálculo, conversão de moedas (Diamond vs Dólares/kk) e otimização de custo
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // Elementos do DOM
   const tierSelect = document.getElementById('starTier');
   const starSelect = document.getElementById('starLevel');
-  const ddPriceInput = document.getElementById('ddPrice');
-  const marketPriceInput = document.getElementById('marketPrice');
-  const fodderCostInput = document.getElementById('fodderCost');
+  const ddPriceInput = document.getElementById('ddPrice'); // em $k (ex: 263k)
+  const fodderCostInput = document.getElementById('fodderCost'); // em $kk
 
   const splitPureDiaBtn = document.getElementById('splitPureDia');
   const splitBalancedBtn = document.getElementById('splitBalanced');
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Valores base de exemplo por Tier (1 a 5 estrelas)
   // [dia, kk] para cada estrela de 1 a 5
-  // Estrutura editável: se o usuário ajustar inputs manuais, refletir em tempo real
   const TIER_DEFAULTS = {
     '1': { dia: 2, kk: 1 },
     '2': { dia: 3, kk: 1.5 },
@@ -47,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (splitPureKkBtn) splitPureKkBtn.addEventListener('click', () => setMode('pure_kk'));
 
   // Listener para inputs
-  [tierSelect, starSelect, ddPriceInput, marketPriceInput, fodderCostInput].forEach(el => {
+  [tierSelect, starSelect, ddPriceInput, fodderCostInput].forEach(el => {
     if (el) {
       el.addEventListener('input', calculate);
       el.addEventListener('change', calculate);
@@ -57,13 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function calculate() {
     const tier = tierSelect ? tierSelect.value : '3';
     const star = starSelect ? parseInt(starSelect.value, 10) : 1;
-    const ddPriceKk = ddPriceInput ? (parseFloat(ddPriceInput.value) || 0) : 0;
-    const marketPriceKk = marketPriceInput ? (parseFloat(marketPriceInput.value) || 0) : 0;
+    // Preço do DD em $k (ex: 263k = 0.263kk)
+    const ddPriceK = ddPriceInput ? (parseFloat(ddPriceInput.value) || 0) : 0;
+    const ddPriceKk = ddPriceK / 1000;
     const fodderCostKk = fodderCostInput ? (parseFloat(fodderCostInput.value) || 0) : 0;
 
     // Custos base de referência para a ascensão
     const tierData = TIER_DEFAULTS[tier] || TIER_DEFAULTS['3'];
-    // Multiplicador pela estrela
     let baseDia = tierData.dia * star;
     let baseKk = tierData.kk * star;
 
@@ -71,27 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let reqKk = 0;
 
     if (currentMode === 'pure_dia') {
-      // Paga tudo ou quase tudo em Diamonds
       reqDia = Math.round(baseDia * 1.8);
       reqKk = 0;
     } else if (currentMode === 'pure_kk') {
-      // Paga tudo ou quase tudo em KKs
       reqDia = 0;
       reqKk = Number((baseKk * 2.2).toFixed(2));
     } else {
-      // Balanceado (Meio a meio)
       reqDia = baseDia;
       reqKk = baseKk;
     }
 
-    // Exibir requisitos na UI
+    // Exibir requisitos na UI do box in-game
     const reqDiaEl = document.getElementById('costDiamondsDisplay');
     const reqKkEl = document.getElementById('costKkDisplay');
     if (reqDiaEl) reqDiaEl.textContent = reqDia;
     if (reqKkEl) reqKkEl.textContent = `$${reqKk}kk`;
 
     // Custo convertido em KK considerando o preço do Diamond (DD) no mercado
-    // 1 Diamond = (ddPriceKk) KKs
     const diaCostInKk = reqDia * ddPriceKk;
     const totalAscensionCostKk = diaCostInKk + reqKk;
     const totalInvestmentKk = totalAscensionCostKk + fodderCostKk;
@@ -99,33 +93,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Resumo de custos
     const totalCostKkEl = document.getElementById('totalCostKkDisplay');
     const totalInvestEl = document.getElementById('totalInvestmentDisplay');
-    if (totalCostKkEl) totalCostKkEl.textContent = `$${totalAscensionCostKk.toFixed(2)}kk`;
-    if (totalInvestEl) totalInvestEl.textContent = `$${totalInvestmentKk.toFixed(2)}kk`;
+    if (totalCostKkEl) totalCostKkEl.textContent = `$${totalAscensionCostKk.toFixed(3)}kk (${(totalAscensionCostKk * 1000).toFixed(0)}k)`;
+    if (totalInvestEl) totalInvestEl.textContent = `$${totalInvestmentKk.toFixed(3)}kk (${(totalInvestmentKk * 1000).toFixed(0)}k)`;
 
-    // Análise de Melhor Opção de Pagamento (Comparativo de Custo Total em KK)
-    // Opção 1: Pure Dia convertida
+    // Comparativo das 3 Opções de Pagamento (Convertendo tudo para KK)
     const pureDiaCostKk = (Math.round(baseDia * 1.8)) * ddPriceKk;
-    // Opção 2: Pure KK
     const pureKkCostKk = Number((baseKk * 2.2).toFixed(2));
-    // Opção 3: Balanced
     const balancedCostKk = (baseDia * ddPriceKk) + baseKk;
 
     const compPureDiaEl = document.getElementById('compPureDiaVal');
     const compBalancedEl = document.getElementById('compBalancedVal');
     const compPureKkEl = document.getElementById('compPureKkVal');
 
-    if (compPureDiaEl) compPureDiaEl.textContent = `$${pureDiaCostKk.toFixed(2)}kk`;
-    if (compBalancedEl) compBalancedEl.textContent = `$${balancedCostKk.toFixed(2)}kk`;
-    if (compPureKkEl) compPureKkEl.textContent = `$${pureKkCostKk.toFixed(2)}kk`;
+    if (compPureDiaEl) compPureDiaEl.textContent = `$${pureDiaCostKk.toFixed(3)}kk`;
+    if (compBalancedEl) compBalancedEl.textContent = `$${balancedCostKk.toFixed(3)}kk`;
+    if (compPureKkEl) compPureKkEl.textContent = `$${pureKkCostKk.toFixed(3)}kk`;
 
-    // Indicar a opção mais barata
-    const bestCost = Math.min(pureDiaCostKk, pureKkCostKk, balancedCostKk);
+    // Indicar a opção mais barata e economia
+    const costs = [
+      { mode: 'pure_dia', name: 'Mais Diamante', cost: pureDiaCostKk },
+      { mode: 'balanced', name: 'Balanceado', cost: balancedCostKk },
+      { mode: 'pure_kk', name: 'Mais KK', cost: pureKkCostKk }
+    ];
+    costs.sort((a, b) => a.cost - b.cost);
+
+    const bestOption = costs[0];
+    const worstOption = costs[costs.length - 1];
+    const diffSavingsKk = worstOption.cost - bestOption.cost;
+    const diffSavingsK = diffSavingsKk * 1000;
+
     const badgeBest = document.getElementById('bestChoiceBadge');
     if (badgeBest) {
-      if (bestCost === pureDiaCostKk) {
+      if (bestOption.mode === 'pure_dia') {
         badgeBest.textContent = '💎 Mais vantajoso pagar com Diamonds';
         badgeBest.className = 'calc-badge badge-dia';
-      } else if (bestCost === pureKkCostKk) {
+      } else if (bestOption.mode === 'pure_kk') {
         badgeBest.textContent = '💵 Mais vantajoso pagar com KK ($Dólares)';
         badgeBest.className = 'calc-badge badge-kk';
       } else {
@@ -134,24 +136,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Lucro / Prejuízo (Profit)
-    const profitKk = marketPriceKk - totalInvestmentKk;
-    const profitEl = document.getElementById('profitResultDisplay');
-    const profitCard = document.getElementById('profitCardContainer');
-
-    if (profitEl && profitCard) {
-      if (marketPriceKk <= 0) {
-        profitEl.textContent = 'Insira o valor de mercado para ver o lucro';
-        profitCard.className = 'calc-profit-box neutral';
-      } else if (profitKk > 0) {
-        profitEl.innerHTML = `<strong>Lucro Estimado: +$${profitKk.toFixed(2)}kk</strong> (${((profitKk / totalInvestmentKk) * 100).toFixed(1)}% ROI)`;
-        profitCard.className = 'calc-profit-box profit';
-      } else if (profitKk < 0) {
-        profitEl.innerHTML = `<strong>Prejuízo Estimado: -$${Math.abs(profitKk).toFixed(2)}kk</strong> (${((profitKk / totalInvestmentKk) * 100).toFixed(1)}%)`;
-        profitCard.className = 'calc-profit-box loss';
+    // Painel de Economia
+    const savingsEl = document.getElementById('savingsResultDisplay');
+    const savingsCard = document.getElementById('savingsCardContainer');
+    if (savingsEl && savingsCard) {
+      if (diffSavingsKk > 0) {
+        savingsEl.innerHTML = `<strong>Economia de até $${diffSavingsKk.toFixed(3)}kk (~${diffSavingsK.toFixed(0)}k)</strong> escolhendo <u>${bestOption.name}</u> ao invés de ${worstOption.name}!`;
+        savingsCard.className = 'calc-profit-box profit';
       } else {
-        profitEl.textContent = 'Empate (Break-even): $0.00kk';
-        profitCard.className = 'calc-profit-box neutral';
+        savingsEl.textContent = 'Todas as opções possuem custos praticamente equivalentes.';
+        savingsCard.className = 'calc-profit-box neutral';
       }
     }
   }

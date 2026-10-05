@@ -126,33 +126,22 @@
         <div class="calc-field-group">
           <label for="ddPrice" class="calc-label">
             <span>Preço do Diamante (DD) no Mercado</span>
-            <span class="calc-label-tip">em $kk por unidade</span>
+            <span class="calc-label-tip">em $k por unidade</span>
           </label>
           <div class="input-with-icon">
             <img src="assets/img/icon_diamond.png" class="input-inline-icon" alt="Diamond">
-            <input type="number" id="ddPrice" class="calc-input" value="0.5" step="0.05" min="0" placeholder="Ex: 0.5">
+            <input type="number" id="ddPrice" class="calc-input" value="263" step="1" min="0" placeholder="Ex: 263">
           </div>
         </div>
 
         <div class="calc-field-group">
           <label for="fodderCost" class="calc-label">
-            <span>Custo do Pokémon Sacrificado (Secundário)</span>
-            <span class="calc-label-tip">em $kk</span>
+            <span>Custo do Pokémon Sacrificado (Opcional)</span>
+            <span class="calc-label-tip">em $kk (padrão 0 se você já tiver)</span>
           </label>
           <div class="input-with-icon">
             <img src="assets/img/icon_money.png" class="input-inline-icon" alt="Money">
-            <input type="number" id="fodderCost" class="calc-input" value="5" step="0.5" min="0" placeholder="Ex: 5">
-          </div>
-        </div>
-
-        <div class="calc-field-group">
-          <label for="marketPrice" class="calc-label">
-            <span>Preço de Venda do Pokémon Já Estrelado</span>
-            <span class="calc-label-tip">no mercado (em $kk)</span>
-          </label>
-          <div class="input-with-icon">
-            <img src="assets/img/icon_money.png" class="input-inline-icon" alt="Money">
-            <input type="number" id="marketPrice" class="calc-input" value="15" step="1" min="0" placeholder="Ex: 15">
+            <input type="number" id="fodderCost" class="calc-input" value="0" step="0.1" min="0" placeholder="Ex: 0">
           </div>
         </div>
       </section>
@@ -221,19 +210,19 @@
           </div>
         </div>
 
-        <!-- Resumo Financeiro & Profit -->
+        <!-- Resumo Financeiro & Economia -->
         <div class="calc-summary-card">
           <div class="summary-line">
             <span>Custo da Ascensão (Modo Selecionado):</span>
             <strong id="totalCostKkDisplay">$0.00kk</strong>
           </div>
           <div class="summary-line">
-            <span>Investimento Total (Ascensão + Pokémon Fodder):</span>
+            <span>Custo Total com Pokémon Sacrificado:</span>
             <strong id="totalInvestmentDisplay">$0.00kk</strong>
           </div>
 
-          <div id="profitCardContainer" class="calc-profit-box neutral" style="margin-top: 14px;">
-            <div id="profitResultDisplay">Insira os valores para analisar o lucro</div>
+          <div id="savingsCardContainer" class="calc-profit-box profit" style="margin-top: 14px;">
+            <div id="savingsResultDisplay">Calculando melhor rota de economia...</div>
           </div>
         </div>
 
@@ -264,7 +253,7 @@
     </div>
   </footer>
 
-  <script src="assets/js/estrelar.js?v=1.1"></script>
+  <script src="assets/js/estrelar.js?v=1.2"></script>
   <script src="assets/js/main.js?v=1.5" defer></script>
 </body>
 </html>
