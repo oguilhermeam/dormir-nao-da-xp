@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Estrelar (Ascensão) — Dormir Não Dá XP</title>
+  <meta name="description" content="Calculadora de Ascensão Estelar e análise de profit no PokeAlliance. Compare custos entre Diamantes e KKs em tempo real.">
+  <link rel="icon" type="image/webp" href="assets/img/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=3.0">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo.webp" alt="Logo" class="brand-img">
+        <span>Dormir Não Dá XP</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a href="index.html" class="nav-link">
+              <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="7" y="1" width="2" height="2"/><rect x="5" y="3" width="6" height="2"/><rect x="3" y="5" width="10" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="2" y="9" width="12" height="6"/><rect x="6" y="10" width="4" height="5" fill="var(--black)"/>
+              </svg>
+              <span>Início</span>
+            </a>
+          </li>
+          <li>
+            <a href="equipe-rocket.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-rocket" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="3" y="1" width="7" height="2"/><rect x="3" y="3" width="9" height="4"/><rect x="6" y="3" width="3" height="2" fill="var(--black)"/><rect x="3" y="7" width="7" height="2"/><rect x="3" y="9" width="3" height="6"/><rect x="7" y="9" width="3" height="3"/><rect x="10" y="12" width="3" height="3"/>
+              </svg>
+              <span>Equipe Rocket</span>
+            </a>
+          </li>
+          <li>
+            <a href="times-hoenn.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-hoenn" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="5" y="5" width="6" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="6" y="11" width="4" height="2"/><rect x="7" y="13" width="2" height="2"/><rect x="7" y="7" width="2" height="2" fill="var(--black)"/>
+              </svg>
+              <span>Times Hoenn</span>
+            </a>
+          </li>
+          <li>
+            <a href="talentos.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="6" y="1" width="4" height="2"/><rect x="4" y="3" width="8" height="2"/><rect x="2" y="5" width="12" height="6"/><rect x="4" y="11" width="8" height="2"/><rect x="6" y="13" width="4" height="2"/>
+              </svg>
+              <span>Talentos</span>
+            </a>
+          </li>
+          <li>
+            <a href="estrelar.html" class="nav-link active">
+              <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="1" y="5" width="14" height="2"/><rect x="3" y="7" width="10" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="4" y="11" width="3" height="3"/><rect x="9" y="11" width="3" height="3"/>
+              </svg>
+              <span>Estrelar</span>
+            </a>
+          </li>
+          <li>
+            <a href="guias.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="2" y="2" width="11" height="12"/><rect x="4" y="4" width="7" height="8" fill="var(--black)"/><rect x="6" y="5" width="3" height="4" fill="var(--teal)"/><rect x="13" y="3" width="1" height="10" fill="var(--text-dim)"/>
+              </svg>
+              <span>Compêndio</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 24px; padding-bottom: 48px;">
+
+    <!-- Cabeçalho da Página -->
+    <section class="talents-header">
+      <div class="talents-title-row">
+        <div class="talents-icon-badge" style="background: rgba(37, 99, 235, 0.15); border-color: rgba(37, 99, 235, 0.4);">
+          <img src="assets/img/icon_diamond.png" alt="Ascensão Estelar" style="width: 28px; height: 28px; image-rendering: pixelated;">
+        </div>
+        <div>
+          <h1 class="talents-title">Calculadora de Ascensão Estelar</h1>
+          <p class="talents-subtitle">Otimizador de custos (Diamantes vs KKs) e cálculo de margem de lucro para estrelar Pokémon no PokéAlliance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layout da Calculadora -->
+    <div class="star-calc-grid">
+
+      <!-- Coluna da Esquerda: Configuração e Cotações do Mercado -->
+      <section class="star-calc-panel">
+        <h2 class="panel-section-title">
+          <span>📊 Parâmetros & Mercado</span>
+        </h2>
+
+        <div class="calc-field-group">
+          <label for="starTier" class="calc-label">Tier do Pokémon</label>
+          <select id="starTier" class="calc-select">
+            <option value="1">Tier 1 (Comuns)</option>
+            <option value="2">Tier 2 (Incomuns)</option>
+            <option value="3" selected>Tier 3 (Raros / Intermediários)</option>
+            <option value="4">Tier 4 (Muito Raros)</option>
+            <option value="5">Tier 5 (Lendários / Super Fortes)</option>
+          </select>
+        </div>
+
+        <div class="calc-field-group">
+          <label for="starLevel" class="calc-label">Estrela Desejada (Nível)</label>
+          <select id="starLevel" class="calc-select">
+            <option value="1" selected>⭐ 1ª Estrela (★☆☆☆☆)</option>
+            <option value="2">⭐⭐ 2ª Estrela (★★☆☆☆)</option>
+            <option value="3">⭐⭐⭐ 3ª Estrela (★★★☆☆)</option>
+            <option value="4">⭐⭐⭐⭐ 4ª Estrela (★★★★☆)</option>
+            <option value="5">⭐⭐⭐⭐⭐ 5ª Estrela (★★★★★)</option>
+          </select>
+        </div>
+
+        <div class="calc-field-group">
+          <label for="ddPrice" class="calc-label">
+            <span>Preço do Diamante (DD) no Mercado</span>
+            <span class="calc-label-tip">em $kk por unidade</span>
+          </label>
+          <div class="input-with-icon">
+            <img src="assets/img/icon_diamond.png" class="input-inline-icon" alt="Diamond">
+            <input type="number" id="ddPrice" class="calc-input" value="0.5" step="0.05" min="0" placeholder="Ex: 0.5">
+          </div>
+        </div>
+
+        <div class="calc-field-group">
+          <label for="fodderCost" class="calc-label">
+            <span>Custo do Pokémon Sacrificado (Secundário)</span>
+            <span class="calc-label-tip">em $kk</span>
+          </label>
+          <div class="input-with-icon">
+            <img src="assets/img/icon_money.png" class="input-inline-icon" alt="Money">
+            <input type="number" id="fodderCost" class="calc-input" value="5" step="0.5" min="0" placeholder="Ex: 5">
+          </div>
+        </div>
+
+        <div class="calc-field-group">
+          <label for="marketPrice" class="calc-label">
+            <span>Preço de Venda do Pokémon Já Estrelado</span>
+            <span class="calc-label-tip">no mercado (em $kk)</span>
+          </label>
+          <div class="input-with-icon">
+            <img src="assets/img/icon_money.png" class="input-inline-icon" alt="Money">
+            <input type="number" id="marketPrice" class="calc-input" value="15" step="1" min="0" placeholder="Ex: 15">
+          </div>
+        </div>
+      </section>
+
+      <!-- Coluna da Direita: Simulação da UI do Jogo e Análise de Lucro -->
+      <section class="star-calc-panel">
+        <h2 class="panel-section-title">
+          <span>✨ Simulação do Custo de Ascensão</span>
+        </h2>
+
+        <!-- Mock da Janela de Custo do Jogo -->
+        <div class="ingame-cost-box">
+          <div class="ingame-cost-title">Custo de Ascensão</div>
+
+          <div class="ingame-cost-row">
+            <div class="ingame-cost-val">
+              <img src="assets/img/icon_diamond.png" alt="Diamond" class="pixel-icon-cost">
+              <span id="costDiamondsDisplay">5</span>
+            </div>
+            <div class="ingame-cost-val">
+              <img src="assets/img/icon_money.png" alt="Money" class="pixel-icon-cost">
+              <span id="costKkDisplay">$2kk</span>
+            </div>
+          </div>
+
+          <!-- Modos de Divisão do Jogo -->
+          <div class="ingame-cost-modes">
+            <button type="button" class="cost-mode-btn" id="splitPureDia" title="Pagar majoritariamente com Diamantes">
+              <img src="assets/img/icon_diamond.png" alt="Diamond" class="pixel-icon-sm">
+              <span>Mais Diamante</span>
+            </button>
+            <button type="button" class="cost-mode-btn active" id="splitBalanced" title="Pagar modo balanceado (meio a meio)">
+              <div class="mode-split-icons">
+                <img src="assets/img/icon_diamond.png" alt="Diamond" class="pixel-icon-sm">
+                <img src="assets/img/icon_money.png" alt="Money" class="pixel-icon-sm">
+              </div>
+              <span>Balanceado</span>
+            </button>
+            <button type="button" class="cost-mode-btn" id="splitPureKk" title="Pagar majoritariamente com KK">
+              <img src="assets/img/icon_money.png" alt="Money" class="pixel-icon-sm">
+              <span>Mais KK</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Indicador de Vantagem / Economia -->
+        <div class="calc-comparison-card">
+          <div class="calc-comparison-header">
+            <span>Qual modalidade sai mais barata com o DD atual?</span>
+            <span id="bestChoiceBadge" class="calc-badge badge-balanced">Calculando...</span>
+          </div>
+
+          <div class="comp-options-grid">
+            <div class="comp-item">
+              <span class="comp-label">💎 Mais Diamante:</span>
+              <span class="comp-val" id="compPureDiaVal">$0.00kk</span>
+            </div>
+            <div class="comp-item">
+              <span class="comp-label">⚖️ Balanceado:</span>
+              <span class="comp-val" id="compBalancedVal">$0.00kk</span>
+            </div>
+            <div class="comp-item">
+              <span class="comp-label">💵 Mais KK:</span>
+              <span class="comp-val" id="compPureKkVal">$0.00kk</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumo Financeiro & Profit -->
+        <div class="calc-summary-card">
+          <div class="summary-line">
+            <span>Custo da Ascensão (Modo Selecionado):</span>
+            <strong id="totalCostKkDisplay">$0.00kk</strong>
+          </div>
+          <div class="summary-line">
+            <span>Investimento Total (Ascensão + Pokémon Fodder):</span>
+            <strong id="totalInvestmentDisplay">$0.00kk</strong>
+          </div>
+
+          <div id="profitCardContainer" class="calc-profit-box neutral" style="margin-top: 14px;">
+            <div id="profitResultDisplay">Insira os valores para analisar o lucro</div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Dormir Não Dá XP</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="equipe-rocket.html">Equipe Rocket</a></li>
+        <li><a href="times-hoenn.html">Times Hoenn</a></li>
+        <li><a href="talentos.html">Talentos</a></li>
+        <li><a href="estrelar.html">Estrelar</a></li>
+        <li><a href="guias.html">Compêndio</a></li>
+      </ul>
+      <div class="footer-actions" style="margin-top: 6px;">
+        <button type="button" class="btn-lite-toggle" onclick="toggleLiteMode()" id="btnLiteToggle" title="Ativar/Desativar otimizações de FPS para PCs mais lentos">
+          <span class="lite-icon">⚡</span>
+          <span class="lite-text">Modo Leve: Desativado</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/estrelar.js?v=1.0"></script>
+  <script src="assets/js/main.js?v=1.5" defer></script>
+</body>
+</html>
