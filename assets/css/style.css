@@ -3980,6 +3980,50 @@ html.mode-lite .table-responsive {
    CALCULADORA DE ESTRELAR (MINIMALISTA & CLARA)
    ========================================================================== */
 
+.star-page-header {
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--bg-2);
+}
+
+.star-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.star-title-icon-badge {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.star-title-icon-badge img {
+  width: 26px;
+  height: 26px;
+  image-rendering: pixelated;
+}
+
+.star-page-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.star-page-subtitle {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin-top: 4px;
+}
+
 .star-calc-grid {
   display: grid;
   grid-template-columns: 1fr 1.25fr;
