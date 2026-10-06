@@ -2755,11 +2755,11 @@ body.home-page {
   left: -20px;
   right: -20px;
   bottom: -20px;
-  background-image: url('../img/bg_gameplay.webp');
+  background-image: url('../img/bg_halloween.webp');
   background-size: cover;
-  background-position: center 25%;
+  background-position: center 30%;
   background-repeat: no-repeat;
-  filter: blur(2px) brightness(0.68) saturate(1.35) hue-rotate(-22deg);
+  filter: blur(1.5px) brightness(0.64) saturate(1.2);
   transform: scale(1.04);
 }
 
