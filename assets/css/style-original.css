@@ -26,11 +26,7 @@
                  U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ==========================================================================
-   TEMA CLÁSSICO / ORIGINAL (Preservado e Salvo)
-   ========================================================================== */
-:root,
-html[data-theme="classic"] {
+:root {
   /* Fundo base preto com ambientação azul e amarelo da logo */
   --bg-0: #06070a;          /* fundo geral escuro */
   --bg-1: #0c0d12;          /* cards, painéis e blocos pretos */
@@ -65,8 +61,6 @@ html[data-theme="classic"] {
   --status-weak: #ef4444;   /* fraco / inimigo */
   --status-resist: #10b981; /* resiste / recomendado */
   --status-neutral: #3b82f6;/* neutro */
-  --counter-text: #14b8a6;
-  --edg-gold: #f9bf00;
 
   /* Tipografia */
   --font-pixel: 'Pixelify Sans', monospace, sans-serif;
@@ -77,58 +71,6 @@ html[data-theme="classic"] {
   --radius: 2px;
   --shadow-hard: 4px 4px 0 var(--black);
   --shadow-hard-sm: 2px 2px 0 var(--black);
-}
-
-/* ==========================================================================
-   TEMA HALLOWEEN (Edição Especial Temática)
-   Ativo por padrão ou via data-theme="halloween"
-   ========================================================================== */
-html:not([data-theme="classic"]),
-html[data-theme="halloween"] {
-  /* Fundo noturno assombrado e abissal */
-  --bg-0: #07050a;          /* noite escura com sutil tom roxo de abismo */
-  --bg-1: #0e0917;          /* cards e painéis em roxo abissal */
-  --bg-2: #241638;          /* bordas com névoa espectral de Gengar */
-  --bg-hover: #1c122b;      /* hover misterioso */
-  --black: #050308;         /* preto profundo */
-
-  /* Acentos de Halloween */
-  --guild-blue: #9d4edd;    /* Roxo fantasmagórico / Gastly */
-  --guild-gold: #ff7518;    /* Laranja Jack-o'-Lantern radiante */
-
-  --text: #f5f0fa;          /* branco osso com névoa suave */
-  --text-dim: #ab9ebc;      /* cinza fantasma */
-  --text-muted: #6b5c82;    /* cinza lápide */
-
-  /* Acentos Gamer Vibrantes Temáticos */
-  --rocket: #ef4444;        /* vermelho sangue */
-  --rocket-hover: #f87171;
-  --rocket-glow: rgba(239, 68, 68, 0.32);
-
-  --hoenn: #ff9f1c;         /* abóbora âmbar */
-  --hoenn-hover: #ffb74d;
-  --hoenn-glow: rgba(255, 159, 28, 0.30);
-
-  --teal: #ff7518;          /* abóbora principal para links e botões */
-  --teal-hover: #ff944d;
-  --teal-glow: rgba(255, 117, 24, 0.35);
-
-  --roxo: #b84dff;          /* púrpura espectral luminoso */
-  --roxo-glow: rgba(184, 77, 255, 0.35);
-
-  /* Status e Tabelas */
-  --status-weak: #ef4444;   /* vermelho sangue */
-  --status-resist: #22c55e; /* verde veneno / ectoplasma */
-  --status-neutral: #9d4edd;/* roxo espectral */
-  --counter-text: #ff7518;  /* destaque abóbora */
-  --edg-gold: #ff9f1c;
-
-  /* Extras de Halloween */
-  --halloween-orange: #ff7518;
-  --halloween-orange-glow: rgba(255, 117, 24, 0.45);
-  --halloween-purple: #9d4edd;
-  --halloween-purple-glow: rgba(157, 78, 221, 0.45);
-  --halloween-green: #22c55e;
 }
 
 /* ==========================================================================
@@ -179,15 +121,6 @@ html {
   background: var(--teal);
 }
 
-html:not([data-theme="classic"]) ::-webkit-scrollbar-thumb {
-  background: rgba(184, 77, 255, 0.28);
-}
-
-html:not([data-theme="classic"]) ::-webkit-scrollbar-thumb:hover {
-  background: var(--halloween-orange);
-  box-shadow: 0 0 8px var(--halloween-orange-glow);
-}
-
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
@@ -196,19 +129,6 @@ body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  background-color: var(--bg-0);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-  background-attachment: fixed;
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Fundo padrão / clássico */
-html[data-theme="classic"] body {
   background-color: #06070a;
   background-image: 
     /* Iluminação amarela/dourada suave da logo Dormir Não Dá XP no topo */
@@ -218,20 +138,14 @@ html[data-theme="classic"] body {
     radial-gradient(ellipse 60% 50% at 100% 65%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
     /* Base preta sólida e limpa */
     linear-gradient(180deg, #090b10 0%, #06070a 45%, #040507 100%);
-}
-
-/* Fundo temático de Halloween */
-html:not([data-theme="classic"]) body,
-html[data-theme="halloween"] body {
-  background-color: #07050a;
-  background-image: 
-    /* Iluminação da abóbora Jack-o'-Lantern no topo */
-    radial-gradient(ellipse 65% 40% at 50% -5%, rgba(255, 117, 24, 0.22) 0%, transparent 65%),
-    /* Iluminação roxa espectral nas laterais */
-    radial-gradient(ellipse 60% 50% at 0% 45%, rgba(157, 78, 221, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 100% 65%, rgba(157, 78, 221, 0.16) 0%, transparent 60%),
-    /* Base noturna abissal */
-    linear-gradient(180deg, #0d0818 0%, #07050a 45%, #040306 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -2816,11 +2730,6 @@ body.home-page {
 .gameplay-bg-overlay {
   position: absolute;
   inset: 0;
-  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-}
-
-/* Gameplay BG Clássico */
-html[data-theme="classic"] .gameplay-bg-overlay {
   background-image:
     /* Luz amarela/dourada nobre da guilda no topo */
     radial-gradient(ellipse 75% 45% at 50% -5%, rgba(249, 191, 0, 0.22) 0%, transparent 65%),
@@ -2829,23 +2738,7 @@ html[data-theme="classic"] .gameplay-bg-overlay {
     radial-gradient(ellipse 65% 55% at 100% 65%, rgba(37, 99, 235, 0.24) 0%, transparent 60%),
     /* Gradiente escuro no topo para dar contraste absoluto às letras e navegação */
     linear-gradient(180deg, rgba(6, 7, 10, 0.82) 0%, rgba(6, 7, 10, 0.65) 140px, rgba(6, 7, 10, 0.48) 320px, rgba(4, 5, 7, 0.88) 100%);
-}
-
-/* Gameplay BG Halloween */
-html:not([data-theme="classic"]) .gameplay-bg-overlay,
-html[data-theme="halloween"] .gameplay-bg-overlay {
-  background-image:
-    /* Luz Jack-o'-Lantern laranja no topo */
-    radial-gradient(ellipse 75% 45% at 50% -5%, rgba(255, 117, 24, 0.28) 0%, transparent 65%),
-    /* Luz roxa fantasmagórica nas laterais */
-    radial-gradient(ellipse 65% 55% at 0% 45%, rgba(157, 78, 221, 0.32) 0%, transparent 60%),
-    radial-gradient(ellipse 65% 55% at 100% 65%, rgba(157, 78, 221, 0.28) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(7, 5, 10, 0.86) 0%, rgba(7, 5, 10, 0.70) 140px, rgba(7, 5, 10, 0.52) 320px, rgba(4, 3, 6, 0.92) 100%);
-}
-
-html:not([data-theme="classic"]) .gameplay-bg-img,
-html[data-theme="halloween"] .gameplay-bg-img {
-  filter: blur(2px) brightness(0.65) saturate(1.2) hue-rotate(-15deg);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
 }
 
 .navbar,
@@ -4505,273 +4398,6 @@ html.mode-lite .table-responsive {
   font-family: var(--font-mono);
   color: var(--text);
   font-size: 0.9rem;
-}
-
-/* ==========================================================================
-   EDIÇÃO ESPECIAL: HALLOWEEN THEMING & SPOOKY ELEMENTS
-   ========================================================================== */
-
-/* Brand & Logo com Jack-o'-Lantern */
-html:not([data-theme="classic"]) .brand-img {
-  filter: drop-shadow(0 0 6px rgba(255, 117, 24, 0.75));
-  transition: filter 200ms ease;
-}
-
-html:not([data-theme="classic"]) .brand::after {
-  content: "🎃";
-  font-size: 1.15rem;
-  margin-left: 6px;
-  display: inline-block;
-  animation: pumpkinGlow 2.4s infinite ease-in-out;
-  filter: drop-shadow(0 0 6px rgba(255, 117, 24, 0.6));
-}
-
-@keyframes pumpkinGlow {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    filter: drop-shadow(0 0 4px rgba(255, 117, 24, 0.4));
-  }
-  50% {
-    transform: scale(1.15) rotate(-6deg);
-    filter: drop-shadow(0 0 10px rgba(255, 117, 24, 0.95));
-  }
-}
-
-/* Navbar Temática */
-html:not([data-theme="classic"]) .navbar {
-  background-color: rgba(8, 5, 13, 0.94);
-  border-bottom: 2px solid var(--bg-2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 117, 24, 0.15);
-}
-
-html:not([data-theme="classic"]) .nav-link:hover {
-  color: var(--guild-gold);
-}
-
-html:not([data-theme="classic"]) .nav-link.active {
-  border-color: var(--guild-blue);
-  background-color: rgba(157, 78, 221, 0.12);
-  box-shadow: 0 0 10px rgba(157, 78, 221, 0.25);
-}
-
-/* Títulos & Hero com Fogo de Abóbora */
-html:not([data-theme="classic"]) .hero-title span {
-  background: linear-gradient(135deg, #ffffff 15%, #ff9f1c 55%, #ff5400 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 22px rgba(255, 117, 24, 0.4);
-}
-
-html:not([data-theme="classic"]) .hero-compact {
-  border-left-color: var(--guild-gold);
-  background: linear-gradient(90deg, rgba(255, 117, 24, 0.12) 0%, rgba(157, 78, 221, 0.08) 50%, transparent 100%);
-}
-
-html:not([data-theme="classic"]) .section-title {
-  color: var(--guild-gold);
-  text-shadow: 0 0 10px rgba(255, 117, 24, 0.3);
-}
-
-/* Tabelas Temáticas de Halloween */
-html:not([data-theme="classic"]) .wiki-table thead th {
-  background: #150a22;
-  border-bottom: 2px solid var(--guild-gold);
-  color: #fff;
-}
-
-html:not([data-theme="classic"]) .wiki-table tbody tr:hover td {
-  background-color: rgba(255, 117, 24, 0.08);
-}
-
-/* Cards com Realce Espectral / Abóbora no Hover */
-html:not([data-theme="classic"]) .guide-card-item:hover,
-html:not([data-theme="classic"]) .npc-card:hover,
-html:not([data-theme="classic"]) .card:hover,
-html:not([data-theme="classic"]) .talent-card:hover,
-html:not([data-theme="classic"]) .roster-row-card:hover,
-html:not([data-theme="classic"]) .calc-card:hover,
-html:not([data-theme="classic"]) .minimap-card:hover {
-  border-color: rgba(255, 117, 24, 0.55) !important;
-  box-shadow: 0 0 18px rgba(255, 117, 24, 0.18), var(--shadow-hard) !important;
-}
-
-/* Campos de Busca com Brilho de Vela */
-html:not([data-theme="classic"]) .search-input:focus,
-html:not([data-theme="classic"]) #talentSearchInput:focus,
-html:not([data-theme="classic"]) #guideSearch:focus,
-html:not([data-theme="classic"]) #npcSearch:focus {
-  border-color: var(--guild-gold) !important;
-  box-shadow: 0 0 14px rgba(255, 117, 24, 0.35) !important;
-}
-
-/* Botões e Filtros */
-html:not([data-theme="classic"]) .filter-btn.active {
-  background-color: var(--guild-gold);
-  border-color: var(--guild-gold);
-  color: #06070a;
-  font-weight: 700;
-  box-shadow: 0 0 14px rgba(255, 117, 24, 0.45);
-}
-
-html:not([data-theme="classic"]) .btn-farm-list {
-  background-color: rgba(255, 117, 24, 0.14);
-  border-color: var(--guild-gold);
-  color: var(--guild-gold);
-}
-
-html:not([data-theme="classic"]) .btn-farm-list:hover {
-  background-color: var(--guild-gold);
-  color: #06070a;
-  box-shadow: 0 0 16px rgba(255, 117, 24, 0.55);
-}
-
-/* Botão de Alternar Tema (Theme Switcher) */
-.btn-theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background-color: var(--bg-1);
-  border: 1px solid var(--bg-2);
-  color: var(--text);
-  font-family: var(--font-pixel);
-  font-size: 0.82rem;
-  padding: 5px 10px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all 140ms ease;
-  user-select: none;
-  box-shadow: var(--shadow-hard-sm);
-  line-height: 1;
-}
-
-.btn-theme-toggle:hover {
-  border-color: var(--guild-gold);
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 0 12px var(--teal-glow);
-}
-
-html:not([data-theme="classic"]) .btn-theme-toggle {
-  border-color: rgba(255, 117, 24, 0.55);
-  background: rgba(255, 117, 24, 0.10);
-  color: #fff;
-}
-
-html:not([data-theme="classic"]) .btn-theme-toggle:hover {
-  background: rgba(255, 117, 24, 0.20);
-  box-shadow: 0 0 14px rgba(255, 117, 24, 0.4);
-}
-
-html[data-theme="classic"] .btn-theme-toggle {
-  border-color: var(--bg-2);
-  background: var(--bg-1);
-}
-
-.btn-theme-footer {
-  margin-top: 6px;
-}
-
-/* ==========================================================================
-   AMBIENTAÇÃO HALLOWEEN (Morcegos e Espíritos Flutuantes)
-   ========================================================================== */
-.halloween-spooks {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
-}
-
-html[data-theme="classic"] .halloween-spooks,
-html.mode-lite .halloween-spooks {
-  display: none !important;
-}
-
-.spook-item {
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
-  font-family: var(--font-pixel);
-  opacity: 0.65;
-  transition: opacity 300ms ease;
-}
-
-/* Morcego 1 voando suavemente no topo */
-.spook-bat-1 {
-  top: 22px;
-  right: -50px;
-  font-size: 1.35rem;
-  animation: batFly1 26s linear infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 117, 24, 0.5));
-}
-
-/* Morcego 2 voando na diagonal esquerda */
-.spook-bat-2 {
-  top: 95px;
-  left: -50px;
-  font-size: 1.15rem;
-  animation: batFly2 34s linear infinite 13s;
-  filter: drop-shadow(0 0 8px rgba(157, 78, 221, 0.5));
-}
-
-/* Fantasma sutil flutuando no canto inferior */
-.spook-ghost-1 {
-  bottom: 24px;
-  right: 28px;
-  font-size: 1.6rem;
-  opacity: 0.40;
-  animation: ghostFloat 4.5s ease-in-out infinite alternate;
-  filter: drop-shadow(0 0 14px rgba(157, 78, 221, 0.65));
-}
-
-@keyframes batFly1 {
-  0% { transform: translate(0, 0) scaleX(-1); opacity: 0; }
-  4% { opacity: 0.7; }
-  48% { transform: translate(-50vw, 32px) scaleX(-1); opacity: 0.75; }
-  50% { transform: translate(-52vw, 24px) scaleX(1); opacity: 0.7; }
-  96% { opacity: 0.7; }
-  100% { transform: translate(50px, -20px) scaleX(1); opacity: 0; }
-}
-
-@keyframes batFly2 {
-  0% { transform: translate(0, 0) scaleX(1); opacity: 0; }
-  4% { opacity: 0.65; }
-  50% { transform: translate(58vw, 40px) scaleX(1); opacity: 0.75; }
-  96% { opacity: 0.65; }
-  100% { transform: translate(110vw, 10px) scaleX(1); opacity: 0; }
-}
-
-@keyframes ghostFloat {
-  0% { transform: translateY(0) rotate(-4deg); opacity: 0.30; }
-  100% { transform: translateY(-18px) rotate(4deg); opacity: 0.60; }
-}
-
-/* Toast para Feedback do Tema */
-.theme-toast {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: var(--bg-1);
-  border: 2px solid var(--guild-gold);
-  border-radius: var(--radius);
-  color: var(--text);
-  font-family: var(--font-pixel);
-  font-size: 0.95rem;
-  padding: 10px 18px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 14px var(--teal-glow);
-  z-index: 9999;
-  opacity: 0;
-  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.theme-toast.show {
-  transform: translateX(-50%) translateY(0);
-  opacity: 1;
 }
 
 

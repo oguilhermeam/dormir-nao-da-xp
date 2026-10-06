@@ -3,7 +3,19 @@
 // Interações minimalistas, rápidas e sem dependências pesadas
 // ==========================================================================
 
+// Inicialização imediata do tema para evitar FOUC (flash de cores)
+(function initThemeEarly() {
+  const savedTheme = localStorage.getItem('dnd_site_theme');
+  // Padrão: Halloween ativo! Tema clássico preservado e restaurável a qualquer momento.
+  if (savedTheme === 'classic') {
+    document.documentElement.setAttribute('data-theme', 'classic');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'halloween');
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeSwitcher();
   initSearchAndFilter();
   initKeyboardShortcuts();
 });
@@ -242,4 +254,106 @@ function enableLiteModeFromToast() {
     `;
     setTimeout(() => toast.remove(), 2500);
   }
+}
+
+// ==========================================================================
+// GERENCIADOR DE TEMAS: HALLOWEEN & CLÁSSICO (PRESERVADO)
+// ==========================================================================
+
+function initThemeSwitcher() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'halloween';
+
+  // 1. Injeta Spooky Elements se ainda não existirem
+  if (!document.querySelector('.halloween-spooks')) {
+    const spooks = document.createElement('div');
+    spooks.className = 'halloween-spooks';
+    spooks.setAttribute('aria-hidden', 'true');
+    spooks.innerHTML = `
+      <div class="spook-item spook-bat-1">🦇</div>
+      <div class="spook-item spook-bat-2">🦇</div>
+      <div class="spook-item spook-ghost-1">👻</div>
+    `;
+    document.body.appendChild(spooks);
+  }
+
+  // 2. Injeta botão no Navbar se não existir
+  const navLinks = document.querySelector('.nav-links');
+  if (navLinks && !document.getElementById('themeToggleBtn')) {
+    const li = document.createElement('li');
+    li.className = 'nav-theme-item';
+    li.innerHTML = `
+      <button type="button" class="btn-theme-toggle" id="themeToggleBtn" onclick="toggleSiteTheme()" title="Alternar entre Tema Halloween e Tema Clássico">
+        <span class="theme-icon">🎃</span>
+        <span class="theme-text">Halloween</span>
+      </button>
+    `;
+    navLinks.appendChild(li);
+  }
+
+  // 3. Injeta botão no Rodapé se não existir
+  const footerActions = document.querySelector('.footer-actions');
+  if (footerActions && !document.getElementById('btnThemeToggleFooter')) {
+    const footerBtn = document.createElement('button');
+    footerBtn.type = 'button';
+    footerBtn.className = 'btn-theme-toggle btn-theme-footer';
+    footerBtn.id = 'btnThemeToggleFooter';
+    footerBtn.onclick = toggleSiteTheme;
+    footerBtn.title = 'Alternar entre Tema Halloween e Tema Clássico';
+    footerActions.appendChild(footerBtn);
+  }
+
+  updateThemeUI(currentTheme);
+}
+
+function toggleSiteTheme() {
+  const isClassic = document.documentElement.getAttribute('data-theme') === 'classic';
+  const newTheme = isClassic ? 'halloween' : 'classic';
+
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('dnd_site_theme', newTheme);
+
+  updateThemeUI(newTheme);
+
+  if (newTheme === 'halloween') {
+    showThemeToast('🎃 Tema de Halloween Ativado!');
+  } else {
+    showThemeToast('⚔️ Tema Clássico Restaurado!');
+  }
+}
+
+function updateThemeUI(theme) {
+  const isHalloween = theme !== 'classic';
+
+  // Botão Navbar
+  const navBtn = document.getElementById('themeToggleBtn');
+  if (navBtn) {
+    navBtn.innerHTML = isHalloween 
+      ? '<span class="theme-icon">🎃</span> <span class="theme-text">Halloween</span>'
+      : '<span class="theme-icon">⚔️</span> <span class="theme-text">Clássico</span>';
+    navBtn.title = isHalloween ? 'Tema Halloween Ativo (Clique para mudar para Clássico)' : 'Tema Clássico Ativo (Clique para mudar para Halloween)';
+  }
+
+  // Botão Footer
+  const footerBtn = document.getElementById('btnThemeToggleFooter');
+  if (footerBtn) {
+    footerBtn.innerHTML = isHalloween
+      ? '<span class="theme-icon">🎃</span> <span class="theme-text">Tema: <strong>Halloween</strong> (Clique para Clássico)</span>'
+      : '<span class="theme-icon">⚔️</span> <span class="theme-text">Tema: <strong>Clássico</strong> (Clique para Halloween)</span>';
+  }
+}
+
+function showThemeToast(msg) {
+  let toast = document.getElementById('themeToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'themeToast';
+    toast.className = 'theme-toast';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = msg;
+  toast.classList.add('show');
+  clearTimeout(window._themeToastTimer);
+  window._themeToastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2200);
 }

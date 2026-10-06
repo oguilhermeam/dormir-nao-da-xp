@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=3.3">
+  <link rel="stylesheet" href="assets/css/style.css?v=4.0">
 </head>
 <body class="home-page">
 
@@ -68,6 +68,12 @@
               <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="2" y="2" width="11" height="12"/><rect x="4" y="4" width="7" height="8" fill="var(--black)"/><rect x="6" y="5" width="3" height="4" fill="var(--teal)"/><rect x="13" y="3" width="1" height="10" fill="var(--text-dim)"/></svg>
               <span>Compêndio</span>
             </a>
+          </li>
+          <li class="nav-theme-item">
+            <button type="button" class="btn-theme-toggle" id="themeToggleBtn" onclick="toggleSiteTheme()" title="Alternar entre Tema Halloween e Tema Clássico">
+              <span class="theme-icon">🎃</span>
+              <span class="theme-text">Halloween</span>
+            </button>
           </li>
         </ul>
       </nav>
@@ -248,7 +254,11 @@
         <li><a href="estrelar.html">Estrelar</a></li>
         <li><a href="guias.html">Compêndio</a></li>
       </ul>
-          <div class="footer-actions" style="margin-top: 6px;">
+      <div class="footer-actions" style="margin-top: 6px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+        <button type="button" class="btn-theme-toggle btn-theme-footer" onclick="toggleSiteTheme()" id="btnThemeToggleFooter" title="Alternar entre Tema Halloween e Tema Clássico">
+          <span class="theme-icon">🎃</span>
+          <span class="theme-text">Tema: <strong>Halloween</strong> (Clique para Clássico)</span>
+        </button>
         <button type="button" class="btn-lite-toggle" onclick="toggleLiteMode()" id="btnLiteToggle" title="Ativar/Desativar otimizações de FPS para PCs mais lentos">
           <span class="lite-icon">⚡</span>
           <span class="lite-text">Modo Leve: Desativado</span>
@@ -257,6 +267,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=1.5" defer></script>
+  <script src="assets/js/main.js?v=2.0" defer></script>
 </body>
 </html>
