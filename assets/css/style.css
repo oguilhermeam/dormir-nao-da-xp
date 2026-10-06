@@ -133,13 +133,13 @@ body {
   line-height: 1.6;
   background-color: #07060a;
   background-image: 
-    /* Iluminação abóbora suave no topo */
-    radial-gradient(ellipse 65% 40% at 50% -5%, rgba(249, 115, 22, 0.15) 0%, transparent 65%),
+    /* Iluminação Jack-o'-Lantern alaranjada no topo */
+    radial-gradient(ellipse 65% 42% at 50% -5%, rgba(255, 117, 24, 0.22) 0%, transparent 65%),
     /* Iluminação roxa espectral suave nas laterais */
-    radial-gradient(ellipse 60% 50% at 0% 45%, rgba(147, 51, 234, 0.14) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 100% 65%, rgba(147, 51, 234, 0.12) 0%, transparent 60%),
-    /* Base preta sólida e limpa */
-    linear-gradient(180deg, #0c0914 0%, #07060a 45%, #050407 100%);
+    radial-gradient(ellipse 60% 50% at 0% 45%, rgba(147, 51, 234, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 100% 65%, rgba(147, 51, 234, 0.14) 0%, transparent 60%),
+    /* Base noturna abissal */
+    linear-gradient(180deg, #0e0a16 0%, #07060a 45%, #050407 100%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
   background-attachment: fixed;
   color: var(--text);
@@ -2725,7 +2725,7 @@ body.home-page {
   background-size: cover;
   background-position: center 25%;
   background-repeat: no-repeat;
-  filter: blur(2px) brightness(0.68) saturate(1.15);
+  filter: blur(2px) brightness(0.65) saturate(1.2) hue-rotate(-15deg);
   transform: scale(1.04);
 }
 
@@ -2733,13 +2733,13 @@ body.home-page {
   position: absolute;
   inset: 0;
   background-image:
-    /* Luz abóbora suave no topo */
-    radial-gradient(ellipse 75% 45% at 50% -5%, rgba(249, 115, 22, 0.18) 0%, transparent 65%),
+    /* Luz Jack-o'-Lantern alaranjada marcante no topo */
+    radial-gradient(ellipse 75% 45% at 50% -5%, rgba(255, 117, 24, 0.28) 0%, transparent 65%),
     /* Luz roxa espectral suave nas laterais */
-    radial-gradient(ellipse 65% 55% at 0% 45%, rgba(147, 51, 234, 0.20) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 55% at 0% 45%, rgba(147, 51, 234, 0.22) 0%, transparent 60%),
     radial-gradient(ellipse 65% 55% at 100% 65%, rgba(147, 51, 234, 0.18) 0%, transparent 60%),
     /* Gradiente escuro no topo para dar contraste absoluto às letras e navegação */
-    linear-gradient(180deg, rgba(7, 6, 10, 0.82) 0%, rgba(7, 6, 10, 0.65) 140px, rgba(7, 6, 10, 0.48) 320px, rgba(5, 4, 7, 0.88) 100%);
+    linear-gradient(180deg, rgba(7, 5, 10, 0.84) 0%, rgba(7, 5, 10, 0.68) 140px, rgba(7, 5, 10, 0.50) 320px, rgba(5, 4, 7, 0.90) 100%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
 }
 
@@ -4408,6 +4408,76 @@ html.mode-lite .table-responsive {
   content: "🎃";
   font-size: 1rem;
   margin-left: 6px;
+}
+
+/* ==========================================================================
+   AMBIENTAÇÃO HALLOWEEN: ANIMAÇÃO DE MORCEGOS E FANTASMA
+   ========================================================================== */
+.halloween-spooks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+html.mode-lite .halloween-spooks {
+  display: none !important;
+}
+
+.spook-item {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-pixel);
+  opacity: 0.70;
+}
+
+/* Morcego 1 voando suavemente no topo */
+.spook-bat-1 {
+  top: 22px;
+  right: -50px;
+  font-size: 1.35rem;
+  animation: batFly1 26s linear infinite;
+}
+
+/* Morcego 2 voando na diagonal esquerda */
+.spook-bat-2 {
+  top: 95px;
+  left: -50px;
+  font-size: 1.15rem;
+  animation: batFly2 34s linear infinite 13s;
+}
+
+/* Fantasma sutil flutuando no canto inferior */
+.spook-ghost-1 {
+  bottom: 24px;
+  right: 28px;
+  font-size: 1.6rem;
+  opacity: 0.45;
+  animation: ghostFloat 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes batFly1 {
+  0% { transform: translate(0, 0) scaleX(-1); opacity: 0; }
+  4% { opacity: 0.75; }
+  48% { transform: translate(-50vw, 32px) scaleX(-1); opacity: 0.8; }
+  50% { transform: translate(-52vw, 24px) scaleX(1); opacity: 0.75; }
+  96% { opacity: 0.75; }
+  100% { transform: translate(50px, -20px) scaleX(1); opacity: 0; }
+}
+
+@keyframes batFly2 {
+  0% { transform: translate(0, 0) scaleX(1); opacity: 0; }
+  4% { opacity: 0.7; }
+  50% { transform: translate(58vw, 40px) scaleX(1); opacity: 0.8; }
+  96% { opacity: 0.7; }
+  100% { transform: translate(110vw, 10px) scaleX(1); opacity: 0; }
+}
+
+@keyframes ghostFloat {
+  0% { transform: translateY(0) rotate(-4deg); opacity: 0.35; }
+  100% { transform: translateY(-18px) rotate(4deg); opacity: 0.65; }
 }
 
 

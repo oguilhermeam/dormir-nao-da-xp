@@ -4,9 +4,24 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  initHalloweenSpooks();
   initSearchAndFilter();
   initKeyboardShortcuts();
 });
+
+// Ambientação de Halloween (Morcegos e Fantasminha flutuando)
+function initHalloweenSpooks() {
+  if (document.querySelector('.halloween-spooks')) return;
+  const spooks = document.createElement('div');
+  spooks.className = 'halloween-spooks';
+  spooks.setAttribute('aria-hidden', 'true');
+  spooks.innerHTML = `
+    <div class="spook-item spook-bat-1">🦇</div>
+    <div class="spook-item spook-bat-2">🦇</div>
+    <div class="spook-item spook-ghost-1">👻</div>
+  `;
+  document.body.appendChild(spooks);
+}
 
 // Utilitário para evitar execuções excessivas e quedas de frame (debouncing)
 function debounce(fn, delay = 100) {
