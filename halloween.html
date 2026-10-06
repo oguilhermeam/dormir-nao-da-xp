@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evento de Halloween — Dormir Não Dá XP</title>
+  <meta name="description" content="Guia completo do Evento de Halloween do PokeAlliance: Dungeons Mismagius e Resident Evil, Boss Global Misdreavus, Halloween Pumpkins e Labirinto Semanal.">
+  <link rel="icon" type="image/webp" href="assets/img/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=4.5">
+</head>
+<body>
+
+  <!-- Background de Gameplay da Guilda com Ambientação Halloween -->
+  <div class="gameplay-bg-layer" aria-hidden="true">
+    <div class="gameplay-bg-img"></div>
+    <div class="gameplay-bg-overlay"></div>
+  </div>
+
+  <!-- Top Navigation com Ícones Pixel Art -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo.webp" alt="Logo" class="brand-img">
+        <span>Dormir Não Dá XP</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a href="index.html" class="nav-link">
+              <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="7" y="1" width="2" height="2"/><rect x="5" y="3" width="6" height="2"/><rect x="3" y="5" width="10" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="2" y="9" width="12" height="6"/><rect x="6" y="10" width="4" height="5" fill="var(--black)"/></svg>
+              <span>Início</span>
+            </a>
+          </li>
+          <li>
+            <a href="halloween.html" class="nav-link active">
+              <span>🎃 Halloween</span>
+            </a>
+          </li>
+          <li>
+            <a href="equipe-rocket.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-rocket" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="3" y="1" width="7" height="2"/><rect x="3" y="3" width="9" height="4"/><rect x="6" y="3" width="3" height="2" fill="var(--black)"/><rect x="3" y="7" width="7" height="2"/><rect x="3" y="9" width="3" height="6"/><rect x="7" y="9" width="3" height="3"/><rect x="10" y="12" width="3" height="3"/></svg>
+              <span>Equipe Rocket</span>
+            </a>
+          </li>
+          <li>
+            <a href="times-hoenn.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-hoenn" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="5" y="5" width="6" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="6" y="11" width="4" height="2"/><rect x="7" y="13" width="2" height="2"/><rect x="7" y="7" width="2" height="2" fill="var(--black)"/></svg>
+              <span>Times Hoenn</span>
+            </a>
+          </li>
+          <li>
+            <a href="talentos.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="6" y="1" width="4" height="2"/><rect x="4" y="3" width="8" height="2"/><rect x="2" y="5" width="12" height="6"/><rect x="4" y="11" width="8" height="2"/><rect x="6" y="13" width="4" height="2"/>
+              </svg>
+              <span>Talentos</span>
+            </a>
+          </li>
+          <li>
+            <a href="estrelar.html" class="nav-link">
+              <svg class="pixel-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges">
+                <rect x="7" y="1" width="2" height="2"/><rect x="6" y="3" width="4" height="2"/><rect x="1" y="5" width="14" height="2"/><rect x="3" y="7" width="10" height="2"/><rect x="5" y="9" width="6" height="2"/><rect x="4" y="11" width="3" height="3"/><rect x="9" y="11" width="3" height="3"/>
+              </svg>
+              <span>Estrelar</span>
+            </a>
+          </li>
+          <li>
+            <a href="guias.html" class="nav-link">
+              <svg class="pixel-icon pixel-icon-teal" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges"><rect x="2" y="2" width="11" height="12"/><rect x="4" y="4" width="7" height="8" fill="var(--black)"/><rect x="6" y="5" width="3" height="4" fill="var(--teal)"/><rect x="13" y="3" width="1" height="10" fill="var(--text-dim)"/></svg>
+              <span>Compêndio</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 24px; padding-bottom: 48px;">
+
+    <!-- Cabeçalho da Página -->
+    <div style="margin-bottom: 24px;">
+      <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span class="tag" style="background: rgba(249, 115, 22, 0.18); color: var(--guild-gold); border: 1px solid var(--guild-gold); font-family: var(--font-pixel); font-size: 0.78rem;">
+          🎃 EVENTO OFICIAL POKEALLIANCE
+        </span>
+        <span class="font-mono" style="color: var(--text-dim); font-size: 0.85rem;">Início: Pós-manutenção 04:00</span>
+      </div>
+      <h1 style="font-size: 2.1rem; margin-bottom: 8px; color: #ffffff; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <span>Evento de Halloween</span>
+      </h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 860px; line-height: 1.5;">
+        Compêndio completo com todas as novidades, horários de bosses globais, requisitos de dungeons, mecânicas de chaves e sistema do labirinto semanal.
+      </p>
+    </div>
+
+    <!-- Tabela Resumo Rápido do Evento -->
+    <section style="margin-bottom: 32px;">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>📋 Visão Geral das Atividades</span>
+        </h2>
+      </div>
+
+      <div class="table-responsive">
+        <table class="wiki-table">
+          <thead>
+            <tr>
+              <th style="width: 220px;">Atividade</th>
+              <th style="width: 170px;">Requisitos</th>
+              <th style="width: 230px;">Como Participar / Chaves</th>
+              <th>Principais Recompensas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span style="font-weight: 700; color: #c084fc; display: inline-flex; align-items: center; gap: 6px;">
+                  <img src="assets/img/pokemon/mismagius.png" alt="Mismagius" style="width: 26px; height: 26px; image-rendering: pixelated;">
+                  Dungeon Mismagius
+                </span>
+              </td>
+              <td><span class="font-mono">Level 150+ & VIP</span></td>
+              <td>2x <strong>Halloween Souvenir</strong>/dia ao logar (intransferível) no Trade Center</td>
+              <td>Buffs exclusivos de Halloween + Chance de captura Mismagius (Normal, T1)</td>
+            </tr>
+            <tr>
+              <td>
+                <span style="font-weight: 700; color: #f87171; display: inline-flex; align-items: center; gap: 6px;">
+                  ☣️ Dungeon Resident Evil
+                </span>
+              </td>
+              <td><span class="font-mono" style="color: var(--status-resist);">Sem VIP e sem Level</span></td>
+              <td>1 chave grátis toda segunda-feira + até 2 chaves/semana na loja de Diamonds</td>
+              <td>Buffs exclusivos + chance de dropar itens raríssimos temáticos</td>
+            </tr>
+            <tr>
+              <td>
+                <span style="font-weight: 700; color: #fb923c; display: inline-flex; align-items: center; gap: 6px;">
+                  <img src="assets/img/pokemon/misdreavus.png" alt="Misdreavus" style="width: 24px; height: 24px; image-rendering: pixelated;">
+                  Boss Global: Misdreavus
+                </span>
+              </td>
+              <td><span class="font-mono">Mínimo 50.000 Dano</span></td>
+              <td>Surge 6x ao dia: <strong>01:00, 05:00, 09:00, 13:00, 18:30 e 21:30</strong> (GMT-3)</td>
+              <td>Buffs para o personagem + <strong>30% Bônus de Loot global por 2 horas</strong></td>
+            </tr>
+            <tr>
+              <td>
+                <span style="font-weight: 700; color: #facc15; display: inline-flex; align-items: center; gap: 6px;">
+                  🎃 Halloween Pumpkin
+                </span>
+              </td>
+              <td><span class="font-mono">Qualquer level nas hunts</span></td>
+              <td>Spawna aleatoriamente pelas hunts nas versões Primal e Wildscape</td>
+              <td>Maior causador de dano ganha <strong>1kk de XP</strong> + Shinies extras invocados</td>
+            </tr>
+            <tr>
+              <td>
+                <span style="font-weight: 700; color: #38bdf8; display: inline-flex; align-items: center; gap: 6px;">
+                  🧩 Labirinto Semanal
+                </span>
+              </td>
+              <td><span class="font-mono">Colaborativo (Todos)</span></td>
+              <td>1x por semana; chave escondida muda de sala a cada 1 hora (reseta toda segunda)</td>
+              <td>Acesso à Sala Final e recompensas da missão semanal</td>
+            </tr>
+            <tr>
+              <td>
+                <span style="font-weight: 700; color: #e879f9; display: inline-flex; align-items: center; gap: 6px;">
+                  👻 Remake de Lavender Town
+                </span>
+              </td>
+              <td><span class="font-mono">Livre</span></td>
+              <td>Cidade reconstruída do zero com novas casas e mansão assombrada inédita</td>
+              <td>Exploração de mapa, novos imóveis e imersão</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Grid Detalhado com as Mecânicas -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; margin-bottom: 32px;">
+
+      <!-- Card 1: Dungeon Mismagius -->
+      <div class="card" style="border-left: 4px solid #c084fc;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="assets/img/pokemon/mismagius.png" alt="Mismagius" style="width: 44px; height: 44px; image-rendering: pixelated;">
+            <div>
+              <h3 style="margin: 0; font-size: 1.2rem; color: #ffffff;">Dungeon Mismagius</h3>
+              <span class="font-mono" style="font-size: 0.8rem; color: #c084fc;">Trade Center Event Portal</span>
+            </div>
+          </div>
+          <span class="tag" style="background: rgba(192, 132, 252, 0.15); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.4);">Diária</span>
+        </div>
+
+        <ul style="padding-left: 18px; margin: 0 0 14px; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
+          <li><strong>Requisitos:</strong> Personagem Level 150+ e conta VIP ativa.</li>
+          <li><strong>Entrada:</strong> Todo dia você recebe <strong>2 Halloween Souvenirs</strong> ao logar. Eles são as chaves da dungeon.</li>
+          <li><strong>Regra de chaves:</strong> Pessoais e intransferíveis (não podem ser negociadas).</li>
+          <li><strong>Recompensas:</strong> Buffs exclusivos de Halloween para o personagem e chance direta de <strong>capturar o Mismagius</strong> (versão normal, Tier 1).</li>
+        </ul>
+
+        <div style="padding: 10px 12px; background: rgba(192, 132, 252, 0.08); border-radius: var(--radius); border: 1px dashed rgba(192, 132, 252, 0.3); font-size: 0.88rem; color: var(--text-dim);">
+          💡 <em>Dica: Não deixe acumular chaves sem usar, pois o limite de entrada diária maximiza seus buffs para farm durante o evento.</em>
+        </div>
+      </div>
+
+      <!-- Card 2: Dungeon Resident Evil -->
+      <div class="card" style="border-left: 4px solid #f87171;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <div>
+            <h3 style="margin: 0; font-size: 1.2rem; color: #ffffff;">☣️ Dungeon Resident Evil</h3>
+            <span class="font-mono" style="font-size: 0.8rem; color: #f87171;">Nova Tradição de Halloween PKA</span>
+          </div>
+          <span class="tag" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4);">Semanal</span>
+        </div>
+
+        <ul style="padding-left: 18px; margin: 0 0 14px; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
+          <li><strong>Acesso Livre:</strong> Sem exigência de VIP e sem exigência de Level mínimo. Qualquer jogador pode participar!</li>
+          <li><strong>1 Chave Grátis/Semana:</strong> Entregue automaticamente a todo personagem toda segunda-feira.</li>
+          <li><strong>Chaves Extras:</strong> Até 2 chaves adicionais por semana disponíveis na loja de Diamonds (aba de Promoções).</li>
+          <li><strong>Recompensas:</strong> Buffs de atributos e chance de dropar <strong>itens raríssimos de Halloween</strong>.</li>
+        </ul>
+
+        <div style="padding: 10px 12px; background: rgba(239, 68, 68, 0.08); border-radius: var(--radius); border: 1px dashed rgba(239, 68, 68, 0.3); font-size: 0.88rem; color: var(--text-dim);">
+          ⚠️ <em>Importante: A chave semanal renova toda segunda-feira, portanto lembre-se de gastá-la antes do reset!</em>
+        </div>
+      </div>
+
+      <!-- Card 3: Boss Global Misdreavus -->
+      <div class="card" style="border-left: 4px solid #fb923c;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="assets/img/pokemon/misdreavus.png" alt="Misdreavus" style="width: 44px; height: 44px; image-rendering: pixelated;">
+            <div>
+              <h3 style="margin: 0; font-size: 1.2rem; color: #ffffff;">Boss Global: Misdreavus</h3>
+              <span class="font-mono" style="font-size: 0.8rem; color: #fb923c;">6 Spawns Diários (GMT-3)</span>
+            </div>
+          </div>
+          <span class="tag" style="background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.4);">Boss Global</span>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
+          <span class="font-mono" style="padding: 4px 8px; background: var(--bg-2); border-radius: 4px; font-size: 0.86rem; color: var(--guild-gold); font-weight: 700;">⏰ 01:00</span>
+          <span class="font-mono" style="padding: 4px 8px; background: var(--bg-2); border-radius: 4px; font-size: 0.86rem; color: var(--guild-gold); font-weight: 700;">⏰ 05:00</span>
+          <span class="font-mono" style="padding: 4px 8px; background: var(--bg-2); border-radius: 4px; font-size: 0.86rem; color: var(--guild-gold); font-weight: 700;">⏰ 09:00</span>
+          <span class="font-mono" style="padding: 4px 8px; background: var(--bg-2); border-radius: 4px; font-size: 0.86rem; color: var(--guild-gold); font-weight: 700;">⏰ 13:00</span>
+          <span class="font-mono" style="padding: 4px 8px; background: var(--bg-2); border-radius: 4px; font-size: 0.86rem; color: var(--guild-gold); font-weight: 700;">⏰ 18:30</span>
+          <span class="font-mono" style="padding: 4px 8px; background: var(--bg-2); border-radius: 4px; font-size: 0.86rem; color: var(--guild-gold); font-weight: 700;">⏰ 21:30</span>
+        </div>
+
+        <ul style="padding-left: 18px; margin: 0 0 14px; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
+          <li><strong>Critério de Dano:</strong> Cause pelo menos <strong>50.000 de dano</strong> para ter chance de receber Buffs de personagem.</li>
+          <li><strong>Bônus de Servidor:</strong> Ao ser derrotada, libera <strong>+30% de bônus de loot para TODO o servidor por 2 horas</strong>!</li>
+        </ul>
+
+        <div style="padding: 10px 12px; background: rgba(249, 115, 22, 0.08); border-radius: var(--radius); border: 1px dashed rgba(249, 115, 22, 0.3); font-size: 0.88rem; color: var(--text-dim);">
+          🔥 <em>Dica de Guilda: Guarde suas sessões pesadas de grind/loot para logo após a queda do Boss para aproveitar as 2h de loot 30%.</em>
+        </div>
+      </div>
+
+      <!-- Card 4: Halloween Pumpkin & Shinies -->
+      <div class="card" style="border-left: 4px solid #facc15;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <div>
+            <h3 style="margin: 0; font-size: 1.2rem; color: #ffffff;">🎃 Halloween Pumpkin nas Hunts</h3>
+            <span class="font-mono" style="font-size: 0.8rem; color: #facc15;">Spawn Aleatório em Hunts</span>
+          </div>
+          <span class="tag" style="background: rgba(250, 204, 21, 0.15); color: #facc15; border: 1px solid rgba(250, 204, 21, 0.4);">Hunt Event</span>
+        </div>
+
+        <ul style="padding-left: 18px; margin: 0 0 14px; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
+          <li>Surge inesperadamente durante o farm pelas hunts do mundo.</li>
+          <li><strong>Mecânica de Vida & Spawns Extras:</strong> Conforme ela perde vida, invoca Shinies extras:
+            <ul style="margin-top: 4px;">
+              <li><strong>Versão Primal:</strong> invoca <strong>3 Shinies extras</strong> ao redor!</li>
+              <li><strong>Versão Wildscape:</strong> invoca <strong>1 Shiny extra</strong> ao redor!</li>
+            </ul>
+          </li>
+          <li><strong>Premiação Top Dano:</strong> O jogador que causar mais dano recebe <strong>1kk de experiência pura</strong>, independente do seu level.</li>
+        </ul>
+      </div>
+
+      <!-- Card 5: Labirinto Semanal Colaborativo -->
+      <div class="card" style="border-left: 4px solid #38bdf8;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <div>
+            <h3 style="margin: 0; font-size: 1.2rem; color: #ffffff;">🧩 Labirinto Semanal</h3>
+            <span class="font-mono" style="font-size: 0.8rem; color: #38bdf8;">Missão em Equipe</span>
+          </div>
+          <span class="tag" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4);">Semanal</span>
+        </div>
+
+        <ul style="padding-left: 18px; margin: 0 0 14px; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
+          <li><strong>Objetivo:</strong> Localizar a chave escondida pelos corredores escuros e usá-la para destravar a sala final.</li>
+          <li><strong>Rotação da Chave:</strong> A localização da chave <strong>muda de lugar a cada 1 hora</strong>.</li>
+          <li><strong>Missão Colaborativa:</strong> Todos os jogadores e membros da guilda podem se comunicar e se ajudar na busca.</li>
+          <li><strong>Reset:</strong> A missão do labirinto reseta toda segunda-feira.</li>
+        </ul>
+      </div>
+
+      <!-- Card 6: Remake de Lavender Town -->
+      <div class="card" style="border-left: 4px solid #e879f9;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+          <div>
+            <h3 style="margin: 0; font-size: 1.2rem; color: #ffffff;">👻 Remake de Lavender Town</h3>
+            <span class="font-mono" style="font-size: 0.8rem; color: #e879f9;">Mapa Reconstruído do Zero</span>
+          </div>
+          <span class="tag" style="background: rgba(232, 121, 249, 0.15); color: #e879f9; border: 1px solid rgba(232, 121, 249, 0.4);">Mundo</span>
+        </div>
+
+        <p style="margin: 0 0 10px; font-size: 0.95rem; color: var(--text); line-height: 1.5;">
+          A cidade mais assombrada do universo Pokémon foi completamente reformulada para a estética de Halloween do PokéAlliance:
+        </p>
+        <ul style="padding-left: 18px; margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--text);">
+          <li>Novo traçado urbano e arquitetura fantasmagórica;</li>
+          <li>Novas casas disponíveis para os jogadores;</li>
+          <li>Uma <strong>mansão inédita</strong> assombrada pronta para exploração.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Dormir Não Dá XP</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="halloween.html">Halloween</a></li>
+        <li><a href="equipe-rocket.html">Equipe Rocket</a></li>
+        <li><a href="times-hoenn.html">Times Hoenn</a></li>
+        <li><a href="talentos.html">Talentos</a></li>
+        <li><a href="estrelar.html">Estrelar</a></li>
+        <li><a href="guias.html">Compêndio</a></li>
+      </ul>
+      <div class="footer-actions" style="margin-top: 6px;">
+        <button type="button" class="btn-lite-toggle" onclick="toggleLiteMode()" id="btnLiteToggle" title="Ativar/Desativar otimizações de FPS para PCs mais lentos">
+          <span class="lite-icon">⚡</span>
+          <span class="lite-text">Modo Leve: Desativado</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js?v=2.3" defer></script>
+</body>
+</html>
