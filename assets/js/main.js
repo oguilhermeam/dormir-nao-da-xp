@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initKeyboardShortcuts();
 });
 
-// Ambientação de Halloween (Morcegos e Fantasminha flutuando)
+// Ambientação de Halloween (Morcegos, Fantasma e Haunter flutuando)
 function initHalloweenSpooks() {
   if (document.querySelector('.halloween-spooks')) return;
   const spooks = document.createElement('div');
@@ -18,7 +18,9 @@ function initHalloweenSpooks() {
   spooks.innerHTML = `
     <div class="spook-item spook-bat-1">🦇</div>
     <div class="spook-item spook-bat-2">🦇</div>
+    <div class="spook-item spook-bat-3">🦇</div>
     <div class="spook-item spook-ghost-1">👻</div>
+    <div class="spook-item spook-haunter"><img src="assets/img/pokemon/haunter.png" alt="Haunter" class="spook-pokemon-img"></div>
   `;
   document.body.appendChild(spooks);
 }
